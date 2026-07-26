@@ -18,8 +18,8 @@
   --radius-sm: 12px;
   /* a sombra carrega o realce especular do vidro (inset no topo),
      assim todo componente que já usava --shadow vira vidro de uma vez */
-  --shadow: 0 1px 2px rgba(60, 64, 67, .09), inset 0 1px 0 var(--glass-rim);
-  --shadow-hover: 0 4px 12px rgba(60, 64, 67, .08), 0 16px 40px rgba(60, 64, 67, .14), inset 0 1px 0 var(--glass-rim);
+  --shadow: 0 1px 2px rgba(60, 64, 67, .07), 0 6px 18px rgba(60, 64, 67, .07), inset 0 1px 0 var(--glass-rim);
+  --shadow-hover: 0 6px 18px rgba(60, 64, 67, .1), 0 26px 60px rgba(60, 64, 67, .18), inset 0 1px 0 var(--glass-rim);
   --font-sans: "Google Sans", "Google Sans Text", Roboto, Arial, sans-serif;
   --font-text: "Google Sans Text", "Google Sans", Roboto, Arial, sans-serif;
   --font-serif: var(--font-sans);
@@ -34,17 +34,17 @@
   /* ---- Liquid Glass ----
      vidro = camada translúcida + realce especular na borda de cima + sombra difusa.
      --glass-blur só é aplicado onde há poucos elementos na tela (desfoque custa caro). */
-  --glass-tint: rgba(255, 255, 255, .58);
-  --glass-tint-strong: rgba(255, 255, 255, .76);
-  --glass-blur: 18px;
-  --glass-sat: 180%;
-  --glass-rim: rgba(255, 255, 255, .85);
-  --glass-edge: rgba(32, 33, 36, .08);
-  --glass-edge-hover: rgba(32, 33, 36, .13);
+  --glass-tint: rgba(255, 255, 255, .46);
+  --glass-tint-strong: rgba(255, 255, 255, .66);
+  --glass-blur: 28px;
+  --glass-sat: 200%;
+  --glass-rim: rgba(255, 255, 255, .98);
+  --glass-edge: rgba(32, 33, 36, .11);
+  --glass-edge-hover: rgba(32, 33, 36, .2);
   --glass-shadow: 0 2px 10px rgba(60, 64, 67, .06), 0 12px 34px rgba(60, 64, 67, .07);
   --glass-shadow-hover: 0 4px 14px rgba(60, 64, 67, .09), 0 20px 48px rgba(60, 64, 67, .13);
-  --glass-sheen: linear-gradient(160deg, rgba(255, 255, 255, .55) 0%, rgba(255, 255, 255, .12) 34%, rgba(255, 255, 255, 0) 62%);
-  --soft-glass: rgba(248, 249, 250, .72);
+  --glass-sheen: linear-gradient(150deg, rgba(255, 255, 255, .8) 0%, rgba(255, 255, 255, .28) 24%, rgba(255, 255, 255, .05) 48%, rgba(255, 255, 255, 0) 68%);
+  --soft-glass: rgba(248, 249, 250, .58);
 }
 
 /* ---------- Modo escuro ---------- */
@@ -52,37 +52,37 @@
 :root[data-theme="dark"] {
   --bg: #131314; --bg-soft: #1e1f20; --surface: #1e1f20;
   --ink: #e3e3e3; --muted: #9aa0a6; --line: #3c4043;
-  --shadow: 0 1px 2px rgba(0, 0, 0, .4), inset 0 1px 0 var(--glass-rim);
-  --shadow-hover: 0 4px 12px rgba(0, 0, 0, .42), 0 16px 40px rgba(0, 0, 0, .5), inset 0 1px 0 var(--glass-rim);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .3), inset 0 1px 0 var(--glass-rim);
+  --shadow-hover: 0 6px 18px rgba(0, 0, 0, .46), 0 26px 60px rgba(0, 0, 0, .58), inset 0 1px 0 var(--glass-rim);
   --g-azul-bg: #1f2a3a; --g-verde-bg: #1f2e22; --g-amarelo-bg: #332b16; --g-vermelho-bg: #3a1f1e;
   --dropdown-bg: rgba(30, 31, 32, .96);
-  --glass-tint: rgba(48, 49, 52, .55);
-  --glass-tint-strong: rgba(48, 49, 52, .8);
-  --glass-rim: rgba(255, 255, 255, .13);
-  --glass-edge: rgba(255, 255, 255, .1);
-  --glass-edge-hover: rgba(255, 255, 255, .18);
+  --glass-tint: rgba(46, 47, 51, .44);
+  --glass-tint-strong: rgba(38, 39, 43, .68);
+  --glass-rim: rgba(255, 255, 255, .22);
+  --glass-edge: rgba(255, 255, 255, .14);
+  --glass-edge-hover: rgba(255, 255, 255, .26);
   --glass-shadow: 0 2px 10px rgba(0, 0, 0, .34), 0 12px 34px rgba(0, 0, 0, .4);
   --glass-shadow-hover: 0 4px 14px rgba(0, 0, 0, .44), 0 20px 48px rgba(0, 0, 0, .54);
-  --glass-sheen: linear-gradient(160deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, .03) 34%, rgba(255, 255, 255, 0) 62%);
-  --soft-glass: rgba(30, 31, 32, .7);
+  --glass-sheen: linear-gradient(150deg, rgba(255, 255, 255, .17) 0%, rgba(255, 255, 255, .06) 24%, rgba(255, 255, 255, .01) 48%, rgba(255, 255, 255, 0) 68%);
+  --soft-glass: rgba(30, 31, 32, .55);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #131314; --bg-soft: #1e1f20; --surface: #1e1f20;
     --ink: #e3e3e3; --muted: #9aa0a6; --line: #3c4043;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .4), inset 0 1px 0 var(--glass-rim);
-    --shadow-hover: 0 4px 12px rgba(0, 0, 0, .42), 0 16px 40px rgba(0, 0, 0, .5), inset 0 1px 0 var(--glass-rim);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .3), inset 0 1px 0 var(--glass-rim);
+    --shadow-hover: 0 6px 18px rgba(0, 0, 0, .46), 0 26px 60px rgba(0, 0, 0, .58), inset 0 1px 0 var(--glass-rim);
     --g-azul-bg: #1f2a3a; --g-verde-bg: #1f2e22; --g-amarelo-bg: #332b16; --g-vermelho-bg: #3a1f1e;
     --dropdown-bg: rgba(30, 31, 32, .96);
-    --glass-tint: rgba(48, 49, 52, .55);
-    --glass-tint-strong: rgba(48, 49, 52, .8);
-    --glass-rim: rgba(255, 255, 255, .13);
-    --glass-edge: rgba(255, 255, 255, .1);
-    --glass-edge-hover: rgba(255, 255, 255, .18);
+    --glass-tint: rgba(46, 47, 51, .44);
+    --glass-tint-strong: rgba(38, 39, 43, .68);
+    --glass-rim: rgba(255, 255, 255, .22);
+    --glass-edge: rgba(255, 255, 255, .14);
+    --glass-edge-hover: rgba(255, 255, 255, .26);
     --glass-shadow: 0 2px 10px rgba(0, 0, 0, .34), 0 12px 34px rgba(0, 0, 0, .4);
     --glass-shadow-hover: 0 4px 14px rgba(0, 0, 0, .44), 0 20px 48px rgba(0, 0, 0, .54);
-    --glass-sheen: linear-gradient(160deg, rgba(255, 255, 255, .1) 0%, rgba(255, 255, 255, .03) 34%, rgba(255, 255, 255, 0) 62%);
-    --soft-glass: rgba(30, 31, 32, .7);
+    --glass-sheen: linear-gradient(150deg, rgba(255, 255, 255, .17) 0%, rgba(255, 255, 255, .06) 24%, rgba(255, 255, 255, .01) 48%, rgba(255, 255, 255, 0) 68%);
+    --soft-glass: rgba(30, 31, 32, .55);
   }
 }
 /* números sobre pastel usam cor de destaque -dark; no escuro isso perde contraste — força --ink */
@@ -105,9 +105,10 @@ body::before {
   content: '';
   position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(58% 44% at 8% 2%, rgba(26, 115, 232, .07), transparent 62%),
-    radial-gradient(48% 38% at 94% 0%, rgba(24, 128, 56, .055), transparent 62%),
-    radial-gradient(54% 42% at 76% 98%, rgba(249, 171, 0, .05), transparent 64%);
+    radial-gradient(62% 48% at 6% 0%, rgba(26, 115, 232, .2), transparent 64%),
+    radial-gradient(52% 42% at 96% 4%, rgba(24, 128, 56, .15), transparent 64%),
+    radial-gradient(58% 46% at 78% 96%, rgba(249, 171, 0, .14), transparent 66%),
+    radial-gradient(46% 40% at 30% 70%, rgba(217, 48, 37, .09), transparent 66%);
 }
 :root[data-theme="dark"] body::before { opacity: .5; }
 @media (prefers-color-scheme: dark) {
@@ -233,6 +234,51 @@ header.site::before,
   body::before { display: none; }
 }
 
+/* A luz ambiente respira devagar. 34s é lento o bastante para não competir
+   com a leitura — percebe-se ao permanecer na página, não ao chegar nela. */
+@media (prefers-reduced-motion: no-preference) {
+  body::before { animation: aurora-respira 34s var(--ease) infinite alternate; }
+}
+@keyframes aurora-respira {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(-2.5%, 2%, 0) scale(1.12); }
+}
+
+/* Realce de luz que passeia pelo cartão conforme o ponteiro se move.
+   Sem JS: a posição vem de --mx/--my, com um centro padrão se ninguém mexer. */
+.card::after,
+.portal::after,
+.stat::after,
+.award::after,
+.media-card::after,
+.book-card::after {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit; pointer-events: none;
+  background: radial-gradient(38% 60% at var(--mx, 50%) var(--my, 0%),
+              rgba(255, 255, 255, .5), transparent 70%);
+  opacity: 0; transition: opacity .4s var(--ease);
+}
+.card:hover::after,
+.portal:hover::after,
+.stat:hover::after,
+.award:hover::after,
+.media-card:hover::after,
+.book-card:hover::after { opacity: 1; }
+:root[data-theme="dark"] .card::after,
+:root[data-theme="dark"] .portal::after,
+:root[data-theme="dark"] .stat::after { background: radial-gradient(38% 60% at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, .1), transparent 70%); }
+
+/* Barra de progresso de leitura, nas páginas de conteúdo */
+.leitura {
+  position: fixed; top: 0; left: 0; z-index: 100;
+  height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--accent), var(--g-verde) 60%, var(--g-amarelo));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 50%, transparent);
+  transition: width .1s linear;
+}
+@media (prefers-reduced-motion: reduce) { .leitura { transition: none; } }
+
 /* ---------- Foco visível (navegação por teclado) ---------- */
 
 :focus-visible {
@@ -289,13 +335,24 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* ---------- Cabeçalho e navegação ---------- */
 
 header.site {
-  background: var(--glass-tint-strong);
+  background: var(--glass-tint);
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
-  border-bottom: 1px solid var(--glass-edge);
+  border-bottom: 1px solid transparent;
   box-shadow: inset 0 1px 0 var(--glass-rim);
   position: sticky; top: 0; z-index: 50;
+  transition: background .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
 }
+/* ao rolar, o vidro adensa e o conteúdo passa nitidamente embaçado atrás */
+header.site.rolado {
+  background: var(--glass-tint-strong);
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 1.5)) saturate(230%);
+  backdrop-filter: blur(calc(var(--glass-blur) * 1.5)) saturate(230%);
+  border-bottom-color: var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-rim), 0 8px 30px rgba(60, 64, 67, .1);
+}
+:root[data-theme="dark"] header.site.rolado { box-shadow: inset 0 1px 0 var(--glass-rim), 0 8px 30px rgba(0, 0, 0, .5); }
+@media (prefers-reduced-motion: reduce) { header.site { transition: none; } }
 .header-inner {
   max-width: 1200px; margin: 0 auto; padding: 0 1.25rem;
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
@@ -503,7 +560,8 @@ p.section-lead { color: var(--muted); font-size: 1.12rem; max-width: 62ch; margi
 /* ---------- Landing: hero ---------- */
 
 .hero {
-  background: var(--bg);
+  /* transparente de propósito: fundo opaco aqui tapava a luz ambiente */
+  background: transparent;
   padding: 5.5rem 0 0;
 }
 .hero-text { max-width: 64ch; margin: 0 auto; text-align: center; }
@@ -634,6 +692,27 @@ p.section-lead { color: var(--muted); font-size: 1.12rem; max-width: 62ch; margi
   max-width: 20ch; margin-inline: auto;
 }
 .accentword { color: var(--accent); }
+/* palavra de destaque em degradê — com a cor sólida acima como reserva
+   para navegador antigo, impressão e modo de alto contraste */
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  @media not (prefers-contrast: more) {
+    .accentword {
+      background: linear-gradient(96deg, var(--accent) 0%, #7c4dff 48%, var(--g-verde) 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+  }
+}
+/* brilho difuso atrás do título, para o hero não nascer chapado */
+/* isolate: sem isso o brilho de z-index -1 escaparia para trás do fundo da seção */
+.hero-text { position: relative; isolation: isolate; }
+.hero-text::before {
+  content: ''; position: absolute; z-index: -1;
+  left: 50%; top: -8%; width: min(760px, 92%); aspect-ratio: 1.6;
+  transform: translateX(-50%);
+  background: radial-gradient(50% 50% at 50% 50%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
+  filter: blur(30px); pointer-events: none;
+}
 .hero .lead {
   font-size: clamp(1.08rem, 1.6vw, 1.3rem); color: var(--muted);
   max-width: 58ch; margin: 1.4rem 0 2.2rem; line-height: 1.55;
@@ -663,10 +742,116 @@ p.section-lead { color: var(--muted); font-size: 1.12rem; max-width: 62ch; margi
 .stat:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
 .stat b {
   display: block;
-  font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 700; letter-spacing: -.03em;
+  font-size: clamp(2rem, 3.2vw, 2.9rem); font-weight: 700; letter-spacing: -.035em;
+  line-height: 1.05;
   color: var(--ink);
+  font-variant-numeric: tabular-nums;
 }
-.stat span { font-size: .84rem; color: var(--muted); }
+.stat span { font-size: .84rem; color: var(--muted); display: block; margin-top: .35rem; }
+.stats .stat { padding: 2rem 1.5rem; }
+.stat:hover { transform: translateY(-6px); }
+
+/* ============================================================
+   Gráfico — prêmios e reconhecimentos por ano
+   Colunas finas, topo arredondado, base reta. Uma série só, então
+   não leva legenda: o título já diz o que está plotado.
+   ============================================================ */
+
+.grafico {
+  margin: 0;
+  padding: 1.6rem 1.5rem 1.2rem;
+  border-radius: var(--radius);
+  background: var(--glass-tint-strong);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--shadow);
+  position: relative; isolation: isolate;
+}
+.grafico::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit; background: var(--glass-sheen); pointer-events: none;
+}
+.g-titulo { font-size: 1.05rem; font-weight: 700; letter-spacing: -.015em; color: var(--ink); font-family: var(--font-sans); }
+.g-sub { font-size: .84rem; color: var(--muted); margin-top: .25rem; }
+
+.g-plot {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+  align-items: end; gap: 2px;                 /* o vão de 2px separa as colunas */
+  height: 190px; margin: 1.5rem 0 0;
+  padding-bottom: 1.7rem;                     /* espaço do rótulo do ano */
+  position: relative;
+}
+/* linhas de grade finas e recessivas */
+.g-plot::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; bottom: 1.7rem;
+  background: repeating-linear-gradient(to top, var(--glass-edge) 0 1px, transparent 1px 33.33%);
+  pointer-events: none;
+}
+.g-col {
+  position: relative; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+  border-radius: 8px 8px 0 0;
+}
+.g-col:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.g-bar {
+  width: 100%; max-width: 24px;               /* nunca preenche a faixa inteira */
+  height: var(--h);
+  background: var(--accent);
+  border-radius: 4px 4px 0 0;                 /* topo arredondado, base reta */
+  transition: height .9s var(--ease), background .2s var(--ease);
+}
+.g-col:hover .g-bar { background: var(--accent-dark); }
+.g-col[data-v="0"] .g-bar { background: var(--glass-edge); }
+.g-val {
+  font-size: .78rem; font-weight: 700; color: var(--ink);
+  margin-bottom: .3rem; font-variant-numeric: tabular-nums;
+}
+.g-col[data-v="0"] .g-val { color: transparent; }
+.g-ano {
+  position: absolute; bottom: -1.45rem; left: 50%; transform: translateX(-50%);
+  font-size: .68rem; color: var(--muted); font-variant-numeric: tabular-nums;
+}
+/* dica que aparece ao passar o ponteiro ou chegar pelo teclado */
+.g-tip {
+  position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px);
+  width: max-content; max-width: 230px;
+  padding: .5rem .7rem; border-radius: 12px;
+  font-size: .74rem; line-height: 1.4; text-align: left; color: var(--ink);
+  background: var(--dropdown-bg);
+  -webkit-backdrop-filter: blur(16px) saturate(var(--glass-sat));
+  backdrop-filter: blur(16px) saturate(var(--glass-sat));
+  border: 1px solid var(--glass-edge); box-shadow: var(--shadow-hover);
+  opacity: 0; pointer-events: none; z-index: 5;
+  transition: opacity .18s var(--ease), transform .18s var(--ease);
+}
+.g-col:hover .g-tip, .g-col:focus-visible .g-tip { opacity: 1; transform: translateX(-50%) translateY(0); }
+.g-col:nth-child(-n+2) .g-tip { left: 0; transform: translateX(0) translateY(4px); }
+.g-col:nth-child(-n+2):hover .g-tip, .g-col:nth-child(-n+2):focus-visible .g-tip { transform: translateX(0) translateY(0); }
+.g-col:nth-last-child(-n+2) .g-tip { left: auto; right: 0; transform: translateX(0) translateY(4px); }
+.g-col:nth-last-child(-n+2):hover .g-tip, .g-col:nth-last-child(-n+2):focus-visible .g-tip { transform: translateX(0) translateY(0); }
+
+/* alternativa em texto — o gráfico nunca é a única via para o dado */
+.g-tabela { margin-top: 1.2rem; font-size: .86rem; }
+.g-tabela summary { cursor: pointer; color: var(--accent); font-weight: 500; }
+.g-tabela table { width: 100%; border-collapse: collapse; margin-top: .8rem; }
+.g-tabela th, .g-tabela td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--glass-edge); }
+.g-tabela th { font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; }
+.g-tabela td:first-child { font-variant-numeric: tabular-nums; white-space: nowrap; width: 4.5rem; }
+
+:root[data-theme="dark"] .g-bar { background: #4a90e2; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .g-bar { background: #4a90e2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .g-bar { transition: none; }
+  .g-tip { transition: none; }
+}
+@media (max-width: 620px) {
+  .g-plot { height: 150px; }
+  .g-ano { font-size: .6rem; }
+  .grafico { padding: 1.2rem 1rem 1rem; }
+}
 
 /* ---------- Landing: pilares e cards ---------- */
 
@@ -703,9 +888,18 @@ p.section-lead { color: var(--muted); font-size: 1.12rem; max-width: 62ch; margi
 /* ---------- Páginas internas ---------- */
 
 .page-hero {
-  background: var(--soft-glass);
-  padding: 3.2rem 0 2.6rem;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 9%, transparent), transparent 78%),
+    var(--soft-glass);
+  padding: 3.6rem 0 3rem;
+  border-bottom: 1px solid var(--glass-edge);
 }
+/* filete de cor no topo, na cor da seção */
+.page-hero::after {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 35%, transparent) 70%, transparent);
+}
+.page-hero h1 { letter-spacing: -.03em; }
 .breadcrumb { font-size: .82rem; color: var(--muted); margin-bottom: .9rem; }
 .breadcrumb a { color: var(--muted); text-decoration: none; }
 .breadcrumb a:hover { color: var(--accent); }
@@ -1169,6 +1363,66 @@ body.theme-nucleo { --accent: #0d9488; --accent-dark: #0b7c72; --tint: #e2f5f2; 
 .shot { border-radius: var(--radius); overflow: hidden; background: var(--glass-tint-strong); margin: 0; }
 .shot img { display: block; width: 100%; height: auto; }
 .shot figcaption { padding: .6rem 1rem; font-size: .8rem; color: var(--muted); border-top: 1px solid var(--glass-edge); }
+
+/* ============================================================
+   Páginas de conteúdo — mais relevo, mesma legibilidade
+   ============================================================ */
+
+/* h2 com marcador em degradê à esquerda */
+article.content h2 {
+  position: relative; padding-left: .9rem;
+}
+article.content h2::before {
+  content: ''; position: absolute; left: 0; top: .18em; bottom: .18em;
+  width: 4px; border-radius: 4px;
+  background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 30%, transparent));
+}
+article.content .card h2::before, article.content .grafico h2::before { display: none; }
+
+/* o conversor transforma linha em CAIXA ALTA em h3, então a maioria dos
+   subtítulos do acervo é h3 — ele ganha um traço curto, não uma barra */
+article.content h3 { position: relative; padding-left: 1.5rem; }
+article.content h3::before {
+  content: ''; position: absolute; left: 0; top: .52em;
+  width: 14px; height: 3px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 25%, transparent));
+}
+article.content .card h3, article.content .pillar h3 { padding-left: 0; }
+article.content .card h3::before, article.content .pillar h3::before { display: none; }
+
+/* marcadores da lista na cor de ação, em vez de cinza morto */
+article.content li::marker { color: color-mix(in srgb, var(--accent) 55%, transparent); }
+
+/* cartões de link e listas com mais profundidade e resposta ao toque */
+.link-card, .childlist a, .topic-grid a {
+  transition: transform .28s var(--ease), box-shadow .28s var(--ease),
+              background .28s var(--ease), border-color .28s var(--ease);
+}
+.link-card:hover { transform: translateY(-4px) scale(1.012); }
+.childlist a:hover { transform: translateX(5px); box-shadow: var(--shadow-hover); }
+.topic-grid a:hover { transform: translateY(-3px) scale(1.015); }
+.link-card:hover .lc-ico {
+  background: color-mix(in srgb, var(--accent) 16%, var(--surface));
+  transform: scale(1.06) rotate(-3deg);
+}
+.link-card .lc-ico { transition: background .28s var(--ease), transform .28s var(--ease); }
+
+/* embeds com moldura de vidro mais marcada */
+.embed { border-radius: var(--radius); }
+.embed:hover { transform: translateY(-2px); }
+.embed { transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease); }
+
+/* citação com aspa decorativa */
+.quote { position: relative; padding-left: 3.2rem; }
+.quote::after {
+  content: '\201C'; position: absolute; left: 1rem; top: .1em;
+  font-size: 3.4rem; line-height: 1; font-family: var(--font-sans);
+  color: color-mix(in srgb, var(--accent) 32%, transparent);
+}
+
+/* entrada suave também nas subpáginas */
+.reveal { transform: translateY(28px); }
+.reveal.in { transform: none; }
 
 /* ---------- Rodapé ---------- */
 

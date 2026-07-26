@@ -6,10 +6,15 @@
   if (!('IntersectionObserver' in window)) return;
 
   var sel = [
+    // página inicial
     '.section .card', '.section .portal', '.stats .stat', '.media-card',
     '.paper-card', '.book-card', '.award', '.section .kicker',
     '.section .section-title', '.section .section-lead', '.rx-mock',
-    '.timeline li', '.seal', '.archive-band', '.quote'
+    '.timeline li', '.seal', '.archive-band', '.quote', '.grafico',
+    // páginas de conteúdo — blocos, nunca itens de lista longa
+    // (o acervo de citações tem 400+ e animar cada um travaria o celular)
+    'article.content h2', 'article.content .link-card', 'article.content .embed',
+    'article.content .card', 'article.content .topic-group', '.shot', '.ep-app'
   ].join(',');
 
   var els = Array.prototype.slice.call(document.querySelectorAll(sel));

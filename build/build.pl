@@ -533,6 +533,7 @@ $a{footer}
 <script src="$a{p}assets/reveal.js" defer></script>
 <script src="$a{p}assets/theme.js" defer></script>
 <script src="$a{p}assets/toc.js" defer></script>
+<script src="$a{p}assets/brilho.js" defer></script>
 </body>
 </html>
 HTML
@@ -741,6 +742,90 @@ HTML
     $n++;
 }
 
+# ---------------- gráfico: prêmios e reconhecimentos por ano ----------------
+# Os números saem da seção PREMIOS de vitrine-dados.md — a mesma lista que
+# alimenta a página de prêmios. Cadastrou um prêmio novo lá, o gráfico muda
+# sozinho. Nenhum número é digitado à mão aqui.
+sub premios_por_ano {
+    open my $fh, '<:encoding(UTF-8)', "$ROOT/vitrine-dados.md" or return ();
+    local $/; my $txt = <$fh>; close $fh;
+    my ($bloco) = $txt =~ /^##\s+PREMIOS\s*$(.*?)^##\s/ms;
+    return () unless $bloco;
+    my %por_ano;
+    for my $l (split /\n/, $bloco) {
+        next unless $l =~ /^-\s*(\d{4})\s*\|\s*([^|]+?)\s*(?:\|.*)?$/;
+        push @{ $por_ano{$1} }, $2;
+    }
+    return %por_ano;
+}
+
+sub grafico_premios_html {
+    my %ano = premios_por_ano();
+    return '' unless %ano;
+
+    my $ini = 2016;                                   # criação da Escola de Pacientes DF
+    my @anos_todos = sort { $a <=> $b } keys %ano;
+    my $fim = $anos_todos[-1];
+    return '' if $fim < $ini;
+
+    my $antes = 0; $antes += scalar @{ $ano{$_} } for grep { $_ <  $ini } @anos_todos;
+    my $desde = 0; $desde += scalar @{ $ano{$_} } for grep { $_ >= $ini } @anos_todos;
+
+    my $max = 1;
+    for my $a ($ini .. $fim) {
+        my $n = $ano{$a} ? scalar @{ $ano{$a} } : 0;
+        $max = $n if $n > $max;
+    }
+
+    my $colunas = '';
+    for my $a ($ini .. $fim) {
+        my @p = $ano{$a} ? @{ $ano{$a} } : ();
+        my $n = scalar @p;
+        my $h = sprintf('%.1f', $n / $max * 100);
+        my $rot = $n == 1 ? '1 prêmio' : "$n prêmios";
+        my $tip = $n
+            ? join('', map { '<b>' . esc($_) . '</b>' } @p)
+            : '<span>Nenhum prêmio registrado neste ano</span>';
+        $colunas .= qq{<div class="g-col" data-v="$n" tabindex="0" role="listitem" aria-label="$a: $rot">}
+                  . qq{<span class="g-tip">$tip</span>}
+                  . qq{<span class="g-val" aria-hidden="true">$n</span>}
+                  . qq{<div class="g-bar" style="--h:$h%"></div>}
+                  . qq{<span class="g-ano" aria-hidden="true">$a</span>}
+                  . qq{</div>\n};
+    }
+
+    my $linhas = '';
+    for my $a (reverse @anos_todos) {
+        for my $p (@{ $ano{$a} }) {
+            $linhas .= qq{<tr><td>$a</td><td>@{[esc($p)]}</td></tr>\n};
+        }
+    }
+
+    my @anos_antes = grep { $_ < $ini } @anos_todos;
+    my $nota = $antes
+        ? qq{ Outros $antes, de @{[ join(' e ', @anos_antes) ]}, são anteriores ao grupo e ficam fora do gráfico — a lista completa está abaixo.}
+        : '';
+
+    return <<HTML;
+<figure class="grafico">
+<figcaption>
+<p class="g-titulo">Prêmios e reconhecimentos por ano</p>
+<p class="g-sub">Os $desde reconhecimentos recebidos desde a criação da Escola, em 2016.$nota</p>
+</figcaption>
+<div class="g-plot" role="list" aria-label="Prêmios por ano, de $ini a $fim">
+$colunas</div>
+<details class="g-tabela">
+<summary>Ver a lista completa em texto</summary>
+<table>
+<thead><tr><th scope="col">Ano</th><th scope="col">Reconhecimento</th></tr></thead>
+<tbody>
+$linhas</tbody>
+</table>
+</details>
+</figure>
+HTML
+}
+
 # ---------------- carrossel de fotos da página inicial ----------------
 # Cada foto só entra se o arquivo existir em build/assets/img/. Enquanto
 # nenhuma delas estiver na pasta, a home mostra a foto estática de sempre
@@ -880,9 +965,11 @@ my @NUCLEO_SHOTS = (
     my $header = header_html('', 'inicio');
     my $footer = footer_html('');
     my $carrossel = hero_carousel_html();
+    my $grafico   = grafico_premios_html();
     $tpl =~ s/\{\{HEADER\}\}/$header/;
     $tpl =~ s/\{\{FOOTER\}\}/$footer/;
     $tpl =~ s/\{\{HERO_CARROSSEL\}\}/$carrossel/;
+    $tpl =~ s/\{\{GRAFICO_PREMIOS\}\}/$grafico/;
     write_file("$OUT/index.html", $tpl);
     $n++;
 }

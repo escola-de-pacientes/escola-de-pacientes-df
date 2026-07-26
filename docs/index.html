@@ -121,10 +121,47 @@
     </div>
   </div>
   <!-- carrossel de fotos do campus, montado pelo build.pl (ver HERO_SLIDES) -->
-  <figure class="hero-banner">
-<img src="assets/img/unb-campus.jpg" alt="Corredor do Instituto Central de Ciências (Minhocão) no Campus Darcy Ribeiro da UnB" fetchpriority="high">
-<figcaption>Instituto Central de Ciências (ICC) — Campus Darcy Ribeiro, Universidade de Brasília · Foto: Beto Monteiro / Secom UnB</figcaption>
+  <section class="hero-carousel" aria-roledescription="carrossel" aria-label="Fotos do Campus Darcy Ribeiro da UnB" data-intervalo="6500">
+<div class="hc-viewport">
+<figure class="hc-slide is-active" role="group" aria-roledescription="slide" aria-label="Foto 1 de 6">
+<img src="assets/img/unb-icc-jardim.jpg" alt="Jardim entre as alas do Instituto Central de Ciências da UnB, com uma palmeira ao centro e as colunas de concreto dos dois lados, sob céu de nuvens" fetchpriority="high">
+<figcaption>Jardim entre as alas do Instituto Central de Ciências (ICC) — Campus Darcy Ribeiro, UnB · Foto: Julia Seabra / Secom UnB</figcaption>
 </figure>
+<figure class="hc-slide" role="group" aria-roledescription="slide" aria-label="Foto 2 de 6" aria-hidden="true">
+<img src="assets/img/unb-fs-fm.jpg" alt="Estudantes conversando e caminhando na entrada do prédio da Faculdade de Saúde e da Faculdade de Medicina da UnB, ao entardecer" loading="lazy">
+<figcaption>Entrada da Faculdade de Saúde e da Faculdade de Medicina (FS–FM) — Campus Darcy Ribeiro, UnB · Foto: Beto Monteiro / Secom UnB</figcaption>
+</figure>
+<figure class="hc-slide" role="group" aria-roledescription="slide" aria-label="Foto 3 de 6" aria-hidden="true">
+<img src="assets/img/unb-primaveras.jpg" alt="Primaveras cor-de-rosa floridas subindo pelas vigas de concreto do Instituto Central de Ciências" loading="lazy">
+<figcaption>Primaveras em flor sob as vigas do ICC — Campus Darcy Ribeiro, UnB · Foto: Julio Minasi / Secom UnB</figcaption>
+</figure>
+<figure class="hc-slide" role="group" aria-roledescription="slide" aria-label="Foto 4 de 6" aria-hidden="true">
+<img src="assets/img/unb-jardim-interno.jpg" alt="Jardim interno do campus, com canteiros elevados, caminho de ladrilho e árvores diante de um prédio de colunas" loading="lazy">
+<figcaption>Jardim interno — Campus Darcy Ribeiro, UnB · Foto: Raquel Aviani / Secom UnB</figcaption>
+</figure>
+<figure class="hc-slide" role="group" aria-roledescription="slide" aria-label="Foto 5 de 6" aria-hidden="true">
+<img src="assets/img/unb-zinias.jpg" alt="Canteiro de zínias cor-de-rosa e laranja floridas diante da colunata de concreto do Instituto Central de Ciências" loading="lazy">
+<figcaption>Floração diante da colunata do ICC — Campus Darcy Ribeiro, UnB · Foto: Beto Monteiro / Secom UnB</figcaption>
+</figure>
+<figure class="hc-slide" role="group" aria-roledescription="slide" aria-label="Foto 6 de 6" aria-hidden="true">
+<img src="assets/img/unb-convivencia.jpg" alt="Duas pessoas conversando sentadas em um banco no jardim do campus, entre palmeiras e primaveras floridas" loading="lazy">
+<figcaption>Convivência no jardim do campus — Campus Darcy Ribeiro, UnB · Foto: Isa Lima / Secom UnB</figcaption>
+</figure>
+</div>
+<button type="button" class="hc-nav hc-prev" aria-label="Foto anterior"><span class="msym">chevron_left</span></button>
+<button type="button" class="hc-nav hc-next" aria-label="Próxima foto"><span class="msym">chevron_right</span></button>
+<button type="button" class="hc-play" aria-label="Pausar a troca automática de fotos" aria-pressed="false"><span class="msym">pause</span></button>
+<div class="hc-dots" role="group" aria-label="Escolher a foto">
+<button type="button" class="hc-dot is-on" data-i="0" aria-label="Mostrar a foto 1 de 6" aria-current="true"></button>
+<button type="button" class="hc-dot" data-i="1" aria-label="Mostrar a foto 2 de 6"></button>
+<button type="button" class="hc-dot" data-i="2" aria-label="Mostrar a foto 3 de 6"></button>
+<button type="button" class="hc-dot" data-i="3" aria-label="Mostrar a foto 4 de 6"></button>
+<button type="button" class="hc-dot" data-i="4" aria-label="Mostrar a foto 5 de 6"></button>
+<button type="button" class="hc-dot" data-i="5" aria-label="Mostrar a foto 6 de 6"></button>
+</div>
+<p class="hc-live" aria-live="polite" aria-atomic="true"></p>
+</section>
+
   <div class="wrap">
     <!-- 2. NÚMEROS DE IMPACTO -->
     <div class="stats">

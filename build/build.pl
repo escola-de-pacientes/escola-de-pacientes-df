@@ -691,20 +691,23 @@ HTML
 # (unb-campus.jpg) — o site nunca fica sem imagem.
 my @HERO_SLIDES = (
     ['unb-icc-jardim.jpg',
-     'Jardim entre as alas do Instituto Central de Ciências da UnB, com palmeira ao centro e as colunas de concreto dos dois lados',
-     'Jardim entre as alas do Instituto Central de Ciências — Campus Darcy Ribeiro, UnB'],
+     'Jardim entre as alas do Instituto Central de Ciências da UnB, com uma palmeira ao centro e as colunas de concreto dos dois lados, sob céu de nuvens',
+     'Jardim entre as alas do Instituto Central de Ciências (ICC) — Campus Darcy Ribeiro, UnB · Foto: Julia Seabra / Secom UnB'],
+    ['unb-fs-fm.jpg',
+     'Estudantes conversando e caminhando na entrada do prédio da Faculdade de Saúde e da Faculdade de Medicina da UnB, ao entardecer',
+     'Entrada da Faculdade de Saúde e da Faculdade de Medicina (FS–FM) — Campus Darcy Ribeiro, UnB · Foto: Beto Monteiro / Secom UnB'],
     ['unb-primaveras.jpg',
      'Primaveras cor-de-rosa floridas subindo pelas vigas de concreto do Instituto Central de Ciências',
-     'Primaveras em flor sob as vigas do ICC — Campus Darcy Ribeiro, UnB'],
+     'Primaveras em flor sob as vigas do ICC — Campus Darcy Ribeiro, UnB · Foto: Julio Minasi / Secom UnB'],
     ['unb-jardim-interno.jpg',
-     'Jardim interno entre os blocos do campus, com canteiros elevados, caminho de ladrilho e árvores',
-     'Jardim interno entre os blocos — Campus Darcy Ribeiro, UnB'],
+     'Jardim interno do campus, com canteiros elevados, caminho de ladrilho e árvores diante de um prédio de colunas',
+     'Jardim interno — Campus Darcy Ribeiro, UnB · Foto: Raquel Aviani / Secom UnB'],
     ['unb-zinias.jpg',
      'Canteiro de zínias cor-de-rosa e laranja floridas diante da colunata de concreto do Instituto Central de Ciências',
-     'Floração diante da colunata do ICC — Campus Darcy Ribeiro, UnB'],
+     'Floração diante da colunata do ICC — Campus Darcy Ribeiro, UnB · Foto: Beto Monteiro / Secom UnB'],
     ['unb-convivencia.jpg',
      'Duas pessoas conversando sentadas em um banco no jardim do campus, entre palmeiras e primaveras floridas',
-     'Convivência no jardim do campus — Campus Darcy Ribeiro, UnB'],
+     'Convivência no jardim do campus — Campus Darcy Ribeiro, UnB · Foto: Isa Lima / Secom UnB'],
 );
 
 # foto usada enquanto o carrossel não tiver imagens

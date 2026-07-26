@@ -25,8 +25,9 @@ docs/               # SITE GERADO — não editar à mão
 As páginas-portal por público ficam em `build/content/para-pacientes.md`, `para-estudantes.md`,
 `para-pesquisadores.md` e `para-profissionais.md`.
 
-Para trocar as fotos: substitua os arquivos em `build/assets/img/` (`logo.png`, `dr-estevao.jpg`,
-`unb-fm.jpg`) mantendo os nomes, e rode o gerador novamente.
+Para trocar as fotos: substitua os arquivos em `build/assets/img/` (`logo.png`, `dr-estevao.jpg`)
+mantendo os nomes, e rode o gerador novamente. As fotos do topo da home ficam na seção
+[Carrossel de fotos da página inicial](#carrossel-de-fotos-da-página-inicial).
 
 ## Como editar
 
@@ -59,23 +60,31 @@ são **opcionais**: cada uma só entra se o arquivo existir em
 estática de sempre (`unb-campus.jpg`) — o site nunca fica sem imagem. Com uma
 foto só, vira figura estática, sem controles.
 
-Salve os JPGs com estes nomes e rode `perl build/build.pl`:
+Fotos publicadas hoje, todas da Secom UnB:
 
-| Arquivo | Foto |
-|---|---|
-| `unb-icc-jardim.jpg`     | Jardim entre as alas do ICC, com palmeira ao centro |
-| `unb-primaveras.jpg`     | Primaveras floridas sob as vigas de concreto |
-| `unb-jardim-interno.jpg` | Jardim interno entre os blocos, com canteiros elevados |
-| `unb-zinias.jpg`         | Canteiro de zínias diante da colunata do ICC |
-| `unb-convivencia.jpg`    | Pessoas sentadas em um banco no jardim |
+| Arquivo | Foto | Crédito |
+|---|---|---|
+| `unb-icc-jardim.jpg`     | Jardim entre as alas do ICC, com palmeira ao centro | Julia Seabra |
+| `unb-fs-fm.jpg`          | Estudantes na entrada da FS–FM, ao entardecer       | Beto Monteiro |
+| `unb-primaveras.jpg`     | Primaveras floridas sob as vigas de concreto        | Julio Minasi |
+| `unb-jardim-interno.jpg` | Jardim interno, com canteiros elevados              | Raquel Aviani |
+| `unb-zinias.jpg`         | Canteiro de zínias diante da colunata do ICC        | Beto Monteiro |
+| `unb-convivencia.jpg`    | Pessoas sentadas em um banco no jardim              | Isa Lima |
 
-A lista — com o texto alternativo e a legenda de cada foto — fica em
-`@HERO_SLIDES`, no `build.pl`. É lá que se muda a ordem, a legenda ou o
-crédito do fotógrafo. O comportamento do carrossel está em
-`build/assets/carousel.js` (troca automática a cada 6,5 s, com pausa).
+Para acrescentar, tirar ou reordenar fotos, mexa em `@HERO_SLIDES`, no
+`build.pl` — é lá que ficam o texto alternativo e a legenda com o crédito de
+cada uma. O comportamento do carrossel está em `build/assets/carousel.js`
+(troca automática a cada 6,5 s, com pausa).
 
-> Formato sugerido: JPG de 2000 px de largura, com o assunto no centro — a
-> foto é cortada para preencher a faixa, que muda de altura conforme a tela.
+Há ainda `unb-fm.jpg` (placa da Faculdade de Medicina, com estudantes) e
+`unb-campus.jpg` na pasta, fora do carrossel. `unb-campus.jpg` é a foto de
+reserva: se nenhuma das fotos da lista estiver na pasta, é ela que aparece.
+
+> Formato sugerido: JPG de pelo menos 1600 px de largura, com o assunto no
+> centro — a foto é cortada para preencher a faixa, que muda de altura
+> conforme a tela. As fotos atuais têm cerca de 800 px, então ficam um pouco
+> macias em telas grandes; se conseguir os originais em resolução maior no
+> banco de imagens da Secom UnB, é só substituir mantendo os nomes.
 
 ## Página do Núcleo EP
 

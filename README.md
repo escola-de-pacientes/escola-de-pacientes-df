@@ -62,29 +62,44 @@ foto só, vira figura estática, sem controles.
 
 Fotos publicadas hoje, todas da Secom UnB:
 
-| Arquivo | Foto | Crédito |
-|---|---|---|
-| `unb-icc-jardim.jpg`     | Jardim entre as alas do ICC, com palmeira ao centro | Julia Seabra |
-| `unb-fs-fm.jpg`          | Estudantes na entrada da FS–FM, ao entardecer       | Beto Monteiro |
-| `unb-primaveras.jpg`     | Primaveras floridas sob as vigas de concreto        | Julio Minasi |
-| `unb-jardim-interno.jpg` | Jardim interno, com canteiros elevados              | Raquel Aviani |
-| `unb-zinias.jpg`         | Canteiro de zínias diante da colunata do ICC        | Beto Monteiro |
-| `unb-convivencia.jpg`    | Pessoas sentadas em um banco no jardim              | Isa Lima |
+| Arquivo | Foto | Crédito | Original |
+|---|---|---|---|
+| `unb-icc-jardim.jpg`     | Jardim entre as alas do ICC, com palmeira ao centro | Júlio Minasi | 6677 px |
+| `unb-fs-fm.jpg`          | Estudantes na entrada da FS–FM, ao entardecer       | Beto Monteiro | 799 px |
+| `unb-primaveras.jpg`     | Primaveras floridas ao longo do corredor do ICC     | Secom UnB | 3888 px |
+| `unb-estudo.jpg`         | Estudante escrevendo em um banco do jardim          | Secom UnB | 4642 px |
+| `unb-jardim-interno.jpg` | Jardineiro cuidando dos canteiros do ICC            | Secom UnB | 4634 px |
 
 Para acrescentar, tirar ou reordenar fotos, mexa em `@HERO_SLIDES`, no
 `build.pl` — é lá que ficam o texto alternativo e a legenda com o crédito de
 cada uma. O comportamento do carrossel está em `build/assets/carousel.js`
 (troca automática a cada 6,5 s, com pausa).
 
-Há ainda `unb-fm.jpg` (placa da Faculdade de Medicina, com estudantes) e
-`unb-campus.jpg` na pasta, fora do carrossel. `unb-campus.jpg` é a foto de
-reserva: se nenhuma das fotos da lista estiver na pasta, é ela que aparece.
+### Tamanhos das fotos
 
-> Formato sugerido: JPG de pelo menos 1600 px de largura, com o assunto no
-> centro — a foto é cortada para preencher a faixa, que muda de altura
-> conforme a tela. As fotos atuais têm cerca de 800 px, então ficam um pouco
-> macias em telas grandes; se conseguir os originais em resolução maior no
-> banco de imagens da Secom UnB, é só substituir mantendo os nomes.
+Cada foto pode ter versões `-800`, `-1400` e `-2000` ao lado do arquivo
+principal (ex.: `unb-estudo-800.jpg`). Quando existem, o gerador monta um
+`srcset` e o navegador baixa só a que serve para a tela: **cerca de 100 KB no
+celular em vez de 560 KB**. Quando não existem, ele usa o arquivo único —
+então **para acrescentar uma foto nova basta jogar um JPG na pasta**, sem
+gerar tamanho nenhum. As versões atuais foram feitas com Pillow a partir dos
+originais da Secom, a 80 de qualidade.
+
+Além disso, o carrossel só baixa a foto que vai mostrar (e adianta a
+seguinte), em vez de baixar as cinco ao abrir a página.
+
+`unb-fs-fm.jpg` é a única em resolução baixa (799 px) — não achamos o
+original em alta. Ela fica um pouco mais macia que as outras, mas é a única
+foto que mostra as faculdades da área da saúde, por isso foi mantida.
+
+Fora do carrossel, a pasta guarda `unb-fm.jpg` (placa da Faculdade de
+Medicina) e `unb-campus.jpg`, que é a foto de reserva: se nenhuma da lista
+estiver na pasta, é ela que aparece.
+
+> Para trocar uma foto: jogue o JPG na pasta com o mesmo nome (de preferência
+> com 2000 px de largura) e apague as versões `-800`/`-1400`/`-2000` antigas,
+> ou gere as novas. O assunto deve estar no centro — a foto é cortada para
+> preencher a faixa, que muda de altura conforme a tela.
 
 ## Página do Núcleo EP
 

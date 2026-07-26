@@ -747,23 +747,20 @@ HTML
 # (unb-campus.jpg) — o site nunca fica sem imagem.
 my @HERO_SLIDES = (
     ['unb-icc-jardim.jpg',
-     'Jardim entre as alas do Instituto Central de Ciências da UnB, com uma palmeira ao centro e as colunas de concreto dos dois lados, sob céu de nuvens',
-     'Jardim entre as alas do Instituto Central de Ciências (ICC) — Campus Darcy Ribeiro, UnB · Foto: Julia Seabra / Secom UnB'],
+     'Jardim entre as alas do Instituto Central de Ciências da UnB, com uma palmeira ao centro e as colunas de concreto dos dois lados, sob céu azul',
+     'Jardim entre as alas do Instituto Central de Ciências (ICC) — Campus Darcy Ribeiro, UnB · Foto: Júlio Minasi / Secom UnB'],
     ['unb-fs-fm.jpg',
      'Estudantes conversando e caminhando na entrada do prédio da Faculdade de Saúde e da Faculdade de Medicina da UnB, ao entardecer',
      'Entrada da Faculdade de Saúde e da Faculdade de Medicina (FS–FM) — Campus Darcy Ribeiro, UnB · Foto: Beto Monteiro / Secom UnB'],
     ['unb-primaveras.jpg',
-     'Primaveras cor-de-rosa floridas subindo pelas vigas de concreto do Instituto Central de Ciências',
-     'Primaveras em flor sob as vigas do ICC — Campus Darcy Ribeiro, UnB · Foto: Julio Minasi / Secom UnB'],
+     'Primaveras cor-de-rosa floridas no canteiro que acompanha o corredor do Instituto Central de Ciências',
+     'Primaveras em flor ao longo do corredor do ICC — Campus Darcy Ribeiro, UnB · Foto: Secom UnB'],
+    ['unb-estudo.jpg',
+     'Estudante sentada em um banco de concreto no jardim do campus, escrevendo em um caderno apoiado no colo',
+     'Estudo no jardim do ICC — Campus Darcy Ribeiro, UnB · Foto: Secom UnB'],
     ['unb-jardim-interno.jpg',
-     'Jardim interno do campus, com canteiros elevados, caminho de ladrilho e árvores diante de um prédio de colunas',
-     'Jardim interno — Campus Darcy Ribeiro, UnB · Foto: Raquel Aviani / Secom UnB'],
-    ['unb-zinias.jpg',
-     'Canteiro de zínias cor-de-rosa e laranja floridas diante da colunata de concreto do Instituto Central de Ciências',
-     'Floração diante da colunata do ICC — Campus Darcy Ribeiro, UnB · Foto: Beto Monteiro / Secom UnB'],
-    ['unb-convivencia.jpg',
-     'Duas pessoas conversando sentadas em um banco no jardim do campus, entre palmeiras e primaveras floridas',
-     'Convivência no jardim do campus — Campus Darcy Ribeiro, UnB · Foto: Isa Lima / Secom UnB'],
+     'Jardineiro cuidando dos canteiros floridos do jardim entre as alas do Instituto Central de Ciências',
+     'Cuidado diário dos jardins do ICC — Campus Darcy Ribeiro, UnB · Foto: Secom UnB'],
 );
 
 # foto usada enquanto o carrossel não tiver imagens
@@ -773,8 +770,25 @@ my @HERO_FALLBACK = ('unb-campus.jpg',
 
 sub hero_figure_html {
     my ($file, $alt, $cap, $eager) = @_;
-    my $load = $eager ? ' fetchpriority="high"' : ' loading="lazy"';
-    return qq{<img src="assets/img/$file" alt="@{[esc($alt)]}"$load>\n}
+    my ($base, $ext) = $file =~ /^(.*)\.([^.]+)$/;
+
+    # Se existirem variantes foto-800.jpg / -1400 / -2000, o navegador escolhe
+    # a menor que serve para a tela dele: no celular baixa ~100 KB em vez de
+    # ~560 KB. Sem variantes, usa o arquivo único — quem acrescentar uma foto
+    # nova não precisa gerar tamanho nenhum.
+    my @larguras = grep { -e "$ROOT/assets/img/$base-$_.$ext" } (800, 1400, 2000);
+    my $srcset = @larguras
+        ? ' srcset="' . join(', ', map { "assets/img/$base-$_.$ext ${_}w" } @larguras) . '" sizes="100vw"'
+        : '';
+
+    # A primeira foto carrega de imediato. As outras só quando o carrossel vai
+    # mostrá-las (o carousel.js troca data-src por src). Sem JavaScript, só a
+    # primeira aparece de qualquer forma, então nada se perde.
+    my $fonte = $eager
+        ? qq{ src="assets/img/$file"$srcset fetchpriority="high"}
+        : do { (my $s = $srcset) =~ s/ srcset=/ data-srcset=/; qq{ data-src="assets/img/$file"$s} };
+
+    return qq{<img$fonte alt="@{[esc($alt)]}" decoding="async">\n}
          . qq{<figcaption>@{[esc($cap)]}</figcaption>};
 }
 

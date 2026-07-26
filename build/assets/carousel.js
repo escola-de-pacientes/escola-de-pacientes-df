@@ -23,8 +23,20 @@
   var timer = null;
   var pausadoPeloVisitante = calmo;   // quem pediu menos movimento já começa parado
 
+  // As fotos, menos a primeira, nascem com data-src. Só viram src quando o
+  // carrossel precisa delas — assim a home abre baixando uma foto, e não seis.
+  function carregar(i) {
+    var img = slides[(i + slides.length) % slides.length].querySelector('img');
+    if (!img || !img.dataset.src) return;
+    if (img.dataset.srcset) { img.srcset = img.dataset.srcset; delete img.dataset.srcset; }
+    img.src = img.dataset.src;
+    delete img.dataset.src;
+  }
+
   function mostrar(i, anunciar) {
     atual = (i + slides.length) % slides.length;
+    carregar(atual);
+    carregar(atual + 1);   // adianta a próxima, para a troca não piscar
     slides.forEach(function (s, k) {
       var on = k === atual;
       s.classList.toggle('is-active', on);

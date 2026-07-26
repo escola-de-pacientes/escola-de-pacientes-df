@@ -7,13 +7,11 @@ use open ':std', ':encoding(UTF-8)';
 use File::Path qw(make_path);
 use File::Basename qw(dirname);
 use URI::Escape qw(uri_unescape);
-use Digest::MD5 qw(md5_hex);
-use Encode qw(encode_utf8);
 
 my $ROOT   = dirname(__FILE__);
 my $OUT    = "$ROOT/../docs";
 my $SITE   = 'Escola de Pacientes DF';
-my $SITE_URL = 'https://escola-de-pacientes.github.io/escola-de-pacientes-df';
+my $SITE_URL = 'https://soaresramosjoaolucas-oss.github.io/escola-de-pacientes-df';
 
 # ---------------- manifesto ----------------
 my (%page, @order);          # slug -> {title, cat, group}
@@ -47,7 +45,6 @@ my @NAV = (
         ['boas-vindas', 'Boas-vindas'],
         ['dr-estevao-rolim', 'Dr. Estêvão Rolim'],
         ['equipe', 'Equipe e Grupo de Pesquisa'],
-        ['nucleo-ep', 'Núcleo EP — sistema do grupo'],
         ['premios', 'Prêmios e Reconhecimentos'],
         ['reportagens', 'Na Mídia'],
         ['historia-da-medicina', 'História da Medicina'],
@@ -123,34 +120,6 @@ sub title_of {
     $t =~ s/-/ /g; return ucfirst $t;
 }
 
-# ---------------- versão dos arquivos de estilo e script ----------------
-# O navegador guarda assets/style.css em cache. Sem nada que diferencie uma
-# versão da outra, quem já visitou o site continua vendo o CSS velho depois
-# de uma atualização — e a página quebra, porque o HTML é novo e o estilo não.
-# Solução: cada arquivo ganha ?v=<resumo do próprio conteúdo>. Muda o
-# conteúdo, muda o endereço, o navegador baixa de novo. Não mudou nada, o
-# endereço é o mesmo e o cache continua valendo (e o docs/ não fica sujo de
-# diferença a cada geração).
-my %ASSET_VER;
-
-sub asset_ver {
-    my ($name) = @_;
-    return $ASSET_VER{$name} if exists $ASSET_VER{$name};
-    my $src = "$ROOT/assets/$name";
-    my $v = 'x';
-    if (open my $fh, '<:raw', $src) {
-        local $/; $v = substr(md5_hex(scalar <$fh>), 0, 8); close $fh;
-    }
-    return $ASSET_VER{$name} = $v;
-}
-
-# carimba a versão em todo assets/*.css e assets/*.js citado no HTML
-sub versionar {
-    my ($html) = @_;
-    $html =~ s{(assets/)([\w.\-]+\.(?:css|js))(?=["'])}{$1 . $2 . '?v=' . asset_ver($2)}ge;
-    return $html;
-}
-
 # ---------------- helpers HTML ----------------
 sub esc { my $s = shift; $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&gt;/g; $s }
 
@@ -166,7 +135,7 @@ sub clean_url {
         (my $path = $u) =~ s{^/}{}; $path =~ s{[#?].*$}{};
         $path =~ s{/$}{};
         if ($path eq '' or $path eq 'home') { return $p eq '' ? './' : $p; }
-        return "$p$path/" if exists $content{$path} or $path eq 'temas' or $path eq 'az' or $path eq 'nucleo-ep';
+        return "$p$path/" if exists $content{$path} or $path eq 'temas' or $path eq 'az';
         return "http://www.escoladepacientes.com/$path";   # não migrada: aponta pro antigo
     }
     return $u;
@@ -414,7 +383,6 @@ sub header_html {
     my $home = $p eq '' ? './' : $p;
     my $nav = nav_html($p, $cat);
     return <<HTML;
-<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <header class="site">
 <div class="header-inner">
 <a class="brand" href="$home">
@@ -540,35 +508,9 @@ HTML
 
 sub write_file {
     my ($path, $data) = @_;
-    $data = versionar($data) if $path =~ /\.html$/;
     make_path(dirname($path));
     open my $fh, '>:encoding(UTF-8)', $path or die "$path: $!";
     print $fh $data; close $fh;
-}
-
-# ---------------- índice de busca ----------------
-# Gerado antes das páginas: elas citam este arquivo, e a citação precisa já
-# carregar a versão certa dele.
-{
-    my @entries;
-    push @entries, { t => 'Temas Clínicos (índice)', p => 'temas', c => 'Temas Clínicos' };
-    push @entries, { t => 'Núcleo EP — sistema do grupo de pesquisa', p => 'nucleo-ep', c => 'A Escola' };
-    for my $path (sort keys %content) {
-        my ($top) = split m{/}, $path;
-        my $cat = $page{$top} ? $cat_label{ $page{$top}{cat} } // '' : '';
-        my $t = title_of($path);
-        push @entries, { t => $t, p => $path, c => $cat };
-    }
-    my $json = join ",\n", map {
-        my %e = %$_;
-        for (values %e) { s/\\/\\\\/g; s/"/\\"/g; }
-        qq{{"t":"$e{t}","p":"$e{p}","c":"$e{c}"}}
-    } @entries;
-    my $js = "window.SEARCH_INDEX = [\n$json\n];\n";
-    # este arquivo não existe em build/assets/, então a versão sai do que
-    # acabou de ser montado aqui
-    $ASSET_VER{'search-index.js'} = substr(md5_hex(encode_utf8($js)), 0, 8);
-    write_file("$OUT/assets/search-index.js", $js);
 }
 
 # ---------------- páginas de conteúdo ----------------
@@ -631,7 +573,7 @@ JS
 <nav class="breadcrumb" aria-label="Localização">$crumb</nav>
 <h1>@{[esc($title)]}</h1>
 </div></div>
-<article class="content" id="conteudo"><div class="wrap-narrow">
+<article class="content"><div class="wrap-narrow">
 $body_html
 </div></article>
 HTML
@@ -679,7 +621,7 @@ HTML
 <nav class="breadcrumb" aria-label="Localização"><a href="$p">Início</a><span class="sep">›</span><span>Temas Clínicos</span></nav>
 <h1>Temas Clínicos</h1>
 </div></div>
-<article class="content" id="conteudo"><div class="wrap">
+<article class="content"><div class="wrap">
 <p class="section-lead">Materiais de orientação, referência e educação em saúde organizados por área. Cada tema reúne impressos para pacientes, documentos técnicos e material de referência para estudo.</p>
 $groups_html
 </div></article>
@@ -725,7 +667,7 @@ HTML
 <nav class="breadcrumb" aria-label="Localização"><a href="$p">Início</a><span class="sep">›</span><span>Acervo</span><span class="sep">›</span><span>Índice A–Z</span></nav>
 <h1>Acervo completo — Índice A–Z</h1>
 </div></div>
-<article class="content" id="conteudo"><div class="wrap">
+<article class="content"><div class="wrap">
 <p class="section-lead">Todas as $total páginas do acervo da Escola de Pacientes DF. Use a busca no topo do site ou navegue por letra: $letters_nav</p>
 $list
 </div></article>
@@ -741,134 +683,14 @@ HTML
     $n++;
 }
 
-# ---------------- carrossel de fotos da página inicial ----------------
-# Cada foto só entra se o arquivo existir em build/assets/img/. Enquanto
-# nenhuma delas estiver na pasta, a home mostra a foto estática de sempre
-# (unb-campus.jpg) — o site nunca fica sem imagem.
-my @HERO_SLIDES = (
-    ['unb-icc-jardim.jpg',
-     'Jardim entre as alas do Instituto Central de Ciências da UnB, com uma palmeira ao centro e as colunas de concreto dos dois lados, sob céu de nuvens',
-     'Jardim entre as alas do Instituto Central de Ciências (ICC) — Campus Darcy Ribeiro, UnB · Foto: Julia Seabra / Secom UnB'],
-    ['unb-fs-fm.jpg',
-     'Estudantes conversando e caminhando na entrada do prédio da Faculdade de Saúde e da Faculdade de Medicina da UnB, ao entardecer',
-     'Entrada da Faculdade de Saúde e da Faculdade de Medicina (FS–FM) — Campus Darcy Ribeiro, UnB · Foto: Beto Monteiro / Secom UnB'],
-    ['unb-primaveras.jpg',
-     'Primaveras cor-de-rosa floridas subindo pelas vigas de concreto do Instituto Central de Ciências',
-     'Primaveras em flor sob as vigas do ICC — Campus Darcy Ribeiro, UnB · Foto: Julio Minasi / Secom UnB'],
-    ['unb-jardim-interno.jpg',
-     'Jardim interno do campus, com canteiros elevados, caminho de ladrilho e árvores diante de um prédio de colunas',
-     'Jardim interno — Campus Darcy Ribeiro, UnB · Foto: Raquel Aviani / Secom UnB'],
-    ['unb-zinias.jpg',
-     'Canteiro de zínias cor-de-rosa e laranja floridas diante da colunata de concreto do Instituto Central de Ciências',
-     'Floração diante da colunata do ICC — Campus Darcy Ribeiro, UnB · Foto: Beto Monteiro / Secom UnB'],
-    ['unb-convivencia.jpg',
-     'Duas pessoas conversando sentadas em um banco no jardim do campus, entre palmeiras e primaveras floridas',
-     'Convivência no jardim do campus — Campus Darcy Ribeiro, UnB · Foto: Isa Lima / Secom UnB'],
-);
-
-# foto usada enquanto o carrossel não tiver imagens
-my @HERO_FALLBACK = ('unb-campus.jpg',
-    'Corredor do Instituto Central de Ciências (Minhocão) no Campus Darcy Ribeiro da UnB',
-    'Instituto Central de Ciências (ICC) — Campus Darcy Ribeiro, Universidade de Brasília · Foto: Beto Monteiro / Secom UnB');
-
-sub hero_figure_html {
-    my ($file, $alt, $cap, $eager) = @_;
-    my $load = $eager ? ' fetchpriority="high"' : ' loading="lazy"';
-    return qq{<img src="assets/img/$file" alt="@{[esc($alt)]}"$load>\n}
-         . qq{<figcaption>@{[esc($cap)]}</figcaption>};
-}
-
-sub hero_carousel_html {
-    my @have = grep { -e "$ROOT/assets/img/$_->[0]" } @HERO_SLIDES;
-    @have = (\@HERO_FALLBACK) unless @have;
-    my $total = scalar @have;
-
-    # uma foto só: figura estática, sem controles nem script
-    if ($total == 1) {
-        my ($f, $alt, $cap) = @{ $have[0] };
-        return qq{<figure class="hero-banner">\n} . hero_figure_html($f, $alt, $cap, 1) . qq{\n</figure>};
-    }
-
-    my ($slides, $dots) = ('', '');
-    for my $i (0 .. $#have) {
-        my ($f, $alt, $cap) = @{ $have[$i] };
-        my $num = $i + 1;
-        my $on  = $i == 0;
-        $slides .= qq{<figure class="hc-slide@{[ $on ? ' is-active' : '' ]}" role="group" }
-                 . qq{aria-roledescription="slide" aria-label="Foto $num de $total"}
-                 . qq{@{[ $on ? '' : ' aria-hidden="true"' ]}>\n}
-                 . hero_figure_html($f, $alt, $cap, $on) . qq{\n</figure>\n};
-        $dots .= qq{<button type="button" class="hc-dot@{[ $on ? ' is-on' : '' ]}" data-i="$i" }
-               . qq{aria-label="Mostrar a foto $num de $total"@{[ $on ? ' aria-current="true"' : '' ]}></button>\n};
-    }
-
-    return <<HTML;
-<section class="hero-carousel" aria-roledescription="carrossel" aria-label="Fotos do Campus Darcy Ribeiro da UnB" data-intervalo="6500">
-<div class="hc-viewport">
-$slides</div>
-<button type="button" class="hc-nav hc-prev" aria-label="Foto anterior"><span class="msym">chevron_left</span></button>
-<button type="button" class="hc-nav hc-next" aria-label="Próxima foto"><span class="msym">chevron_right</span></button>
-<button type="button" class="hc-play" aria-label="Pausar a troca automática de fotos" aria-pressed="false"><span class="msym">pause</span></button>
-<div class="hc-dots" role="group" aria-label="Escolher a foto">
-$dots</div>
-<p class="hc-live" aria-live="polite" aria-atomic="true"></p>
-</section>
-HTML
-}
-
-# ---------------- página do Núcleo EP ----------------
-# Capturas de tela são opcionais: cada figura só entra no site se o arquivo
-# existir em build/assets/img/. Para publicar um print, salve o PNG com um
-# dos nomes abaixo nessa pasta e rode o gerador de novo — nada mais.
-my @NUCLEO_SHOTS = (
-    ['nucleo-minha-area.png', 'Minha área de trabalho — o que está sob a responsabilidade de cada integrante'],
-    ['nucleo-dashboard.png',  'Dashboard — os indicadores do grupo e o próximo passo de cada projeto'],
-    ['nucleo-cronograma.png', 'Cronograma — demandas e oportunidades acadêmicas na mesma linha do tempo'],
-    ['nucleo-projetos.png',   'Projetos — agrupados por situação, com os que precisam de atenção no topo'],
-);
-{
-    my $p = '../';
-    open my $fh, '<:encoding(UTF-8)', "$ROOT/nucleo-ep.html" or die $!;
-    local $/; my $body = <$fh>; close $fh;
-
-    my @figs = map {
-        my ($file, $cap) = @$_;
-        my $c = esc($cap);
-        qq{<figure class="shot"><img src="${p}assets/img/$file" alt="$c" loading="lazy"><figcaption>$c</figcaption></figure>};
-    } grep { -e "$ROOT/assets/img/$_->[0]" } @NUCLEO_SHOTS;
-
-    my $shots = @figs
-        ? qq{<h2>O sistema por dentro</h2>\n}
-          . qq{<p class="section-lead">Telas do Núcleo EP em uso pelo grupo.</p>\n}
-          . qq{<div class="shot-grid">\n} . join("\n", @figs) . qq{\n</div>}
-        : '';
-
-    $body =~ s/\{\{SHOTS\}\}/$shots/;
-    $body =~ s/\{\{P\}\}/$p/g;
-
-    write_file("$OUT/nucleo-ep/index.html", page_shell(
-        title  => "Núcleo EP — o sistema do grupo de pesquisa — $SITE",
-        desc   => "O Núcleo EP é o sistema onde a Escola de Pacientes DF organiza projetos, prazos, responsáveis e as oportunidades acadêmicas do grupo de pesquisa. Acesso restrito aos integrantes.",
-        p      => $p,
-        canon  => "$SITE_URL/nucleo-ep/",
-        header => header_html($p, 'nucleo-ep'),
-        body   => $body,
-        footer => footer_html($p),
-        body_class => 'theme-nucleo',
-    ));
-    $n++;
-}
-
 # ---------------- landing page ----------------
 {
     open my $fh, '<:encoding(UTF-8)', "$ROOT/landing.html" or die $!;
     local $/; my $tpl = <$fh>; close $fh;
     my $header = header_html('', 'inicio');
     my $footer = footer_html('');
-    my $carrossel = hero_carousel_html();
     $tpl =~ s/\{\{HEADER\}\}/$header/;
     $tpl =~ s/\{\{FOOTER\}\}/$footer/;
-    $tpl =~ s/\{\{HERO_CARROSSEL\}\}/$carrossel/;
     write_file("$OUT/index.html", $tpl);
     $n++;
 }
@@ -892,6 +714,24 @@ for my $a (glob "$ROOT/assets/img/*") {
     copy_raw($a, "$OUT/assets/img/$name");
 }
 
+# ---------------- índice de busca ----------------
+{
+    my @entries;
+    push @entries, { t => 'Temas Clínicos (índice)', p => 'temas', c => 'Temas Clínicos' };
+    for my $path (sort keys %content) {
+        my ($top) = split m{/}, $path;
+        my $cat = $page{$top} ? $cat_label{ $page{$top}{cat} } // '' : '';
+        my $t = title_of($path);
+        push @entries, { t => $t, p => $path, c => $cat };
+    }
+    my $json = join ",\n", map {
+        my %e = %$_;
+        for (values %e) { s/\\/\\\\/g; s/"/\\"/g; }
+        qq{{"t":"$e{t}","p":"$e{p}","c":"$e{c}"}}
+    } @entries;
+    write_file("$OUT/assets/search-index.js", "window.SEARCH_INDEX = [\n$json\n];\n");
+}
+
 # ---------------- extras ----------------
 write_file("$OUT/.nojekyll", '');
 write_file("$OUT/404.html", page_shell(
@@ -899,7 +739,7 @@ write_file("$OUT/404.html", page_shell(
     desc   => "Página não encontrada.",
     p      => '/escola-de-pacientes-df/',
     header => header_html('/escola-de-pacientes-df/', ''),
-    body   => qq{<div class="page-hero"><div class="wrap-narrow"><h1>Página não encontrada</h1></div></div><article class="content" id="conteudo"><div class="wrap-narrow"><p>O endereço acessado não existe neste site. <a href="/escola-de-pacientes-df/">Voltar ao início</a>.</p></div></article>},
+    body   => qq{<div class="page-hero"><div class="wrap-narrow"><h1>Página não encontrada</h1></div></div><article class="content"><div class="wrap-narrow"><p>O endereço acessado não existe neste site. <a href="/escola-de-pacientes-df/">Voltar ao início</a>.</p></div></article>},
     footer => footer_html('/escola-de-pacientes-df/'),
 ));
 

@@ -7,8 +7,6 @@ O grupo de pesquisa funciona com coordenação estudantil: um aluno de Medicina 
 
 Quer participar? Veja o portal de [Estudantes](/para-estudantes) e acompanhe as [notícias](/noticias) do grupo.
 
-O grupo organiza projetos, prazos e oportunidades acadêmicas no [Núcleo EP](/nucleo-ep), o sistema de gestão interno da Escola de Pacientes DF.
-
 ORIENTADOR
 
 Grupo de Pesquisa - Atualizado em 2026-Abril

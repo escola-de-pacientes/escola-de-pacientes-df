@@ -9,7 +9,13 @@
   // coleta títulos de seção (h2 e h3 diretos do conteúdo)
   var heads = Array.prototype.filter.call(
     container.querySelectorAll('h2, h3'),
-    function (h) { return h.textContent.trim().length > 1; }
+    function (h) {
+      if (h.textContent.trim().length <= 1) return false;
+      // a recepção de boas-vindas é faixa de acolhimento, não seção de
+      // conteúdo — no sumário ela só atrapalharia
+      if (h.closest && h.closest('.recepcao')) return false;
+      return true;
+    }
   );
   if (heads.length < 4) return;               // só vale a pena com muitas seções
 

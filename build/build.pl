@@ -437,6 +437,10 @@ sub header_html {
 <label class="nav-toggle" for="nav-toggle" aria-label="Abrir menu"><span></span><span></span><span></span></label>
 <nav class="main" aria-label="Navegação principal">
 $nav
+<a class="btn-nucleo" href="https://adm-epdf.vercel.app" target="_blank" rel="noopener" title="Núcleo EP — sistema de gestão do grupo (acesso restrito aos integrantes)">
+<svg viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><rect x="2.8" y="2.8" width="26.4" height="26.4" rx="8" stroke="currentColor" stroke-width="3"/><path d="M9.6 16.4 L14 20.8 L22.8 11.2" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<span class="btn-nucleo-txt">Núcleo EP</span>
+</a>
 <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema" title="Tema claro/escuro"><span class="msym">dark_mode</span></button>
 <div class="searchbox">
 <input id="busca" type="search" placeholder="Buscar página…" aria-label="Buscar páginas do site" autocomplete="off" data-root="$p">
@@ -596,6 +600,11 @@ for my $path (sort keys %content) {
 
     my $body_html = md_to_html($content{$path}, $p);
 
+    # recepção festiva no topo da página de boas-vindas
+    if ($path eq 'boas-vindas') {
+        $body_html = recepcao_html() . $body_html;
+    }
+
     # retrato do coordenador na página de apresentação
     if ($path eq 'dr-estevao-rolim') {
         $body_html = qq{<figure class="portrait"><img src="${p}assets/img/dr-estevao.jpg" alt="Foto do Prof. Dr. Estêvão Cubas Rolim"><figcaption>Prof. Dr. Estêvão Cubas Rolim</figcaption></figure>\n} . $body_html;
@@ -752,6 +761,76 @@ HTML
         footer => footer_html($p),
     ));
     $n++;
+}
+
+# ---------------- recepção da página de boas-vindas ----------------
+# Bloco festivo que abre a página. A ideia é que quem chega sinta que entrou
+# em algum lugar, antes de encarar o conteúdo operacional que vem depois.
+sub recepcao_html {
+    # os passos vêm do checklist de entrada que já existe no conteúdo da página
+    my @passos = (
+        ['orcid',     'fingerprint',  'ORCID',            'Seu identificador acadêmico, para sempre'],
+        ['lattes',    'article',      'Lattes',           'O currículo oficial brasileiro'],
+        ['scholar',   'school',       'Google Scholar',   'A vitrine pública da sua produção'],
+        ['drive',     'folder_open',  'Google Drive',     'Onde ficam os materiais do grupo'],
+        ['classroom', 'assignment',   'Google Classroom', 'A fonte única das suas tarefas'],
+    );
+    my $total = scalar @passos;
+    my $itens = '';
+    for my $p (@passos) {
+        my ($id, $ico, $nome, $desc) = @$p;
+        $itens .= qq{<li><label class="rc-passo">}
+                . qq{<input type="checkbox" data-passo="$id">}
+                . qq{<span class="rc-check" aria-hidden="true"></span>}
+                . qq{<span class="rc-ico"><span class="msym">$ico</span></span>}
+                . qq{<span class="rc-txt"><b>@{[esc($nome)]}</b><small>@{[esc($desc)]}</small></span>}
+                . qq{</label></li>\n};
+    }
+
+    # a trajetória é a mesma que o sistema do grupo acompanha
+    my @etapas = (
+        ['waving_hand',   'Boas-vindas',       'Você está aqui'],
+        ['menu_book',     'Treinamento',       'Método científico e as ferramentas do grupo'],
+        ['rocket_launch', 'Primeira atividade','Sua entrada de fato em um projeto'],
+        ['workspace_premium', 'Primeiro artigo', 'A publicação que leva o seu nome'],
+    );
+    my $trilha = '';
+    for my $i (0 .. $#etapas) {
+        my ($ico, $nome, $desc) = @{ $etapas[$i] };
+        my $agora = $i == 0 ? ' rc-agora' : '';
+        $trilha .= qq{<li class="rc-etapa$agora">}
+                 . qq{<span class="rc-etapa-ico"><span class="msym">$ico</span></span>}
+                 . qq{<b>@{[esc($nome)]}</b><small>@{[esc($desc)]}</small>}
+                 . qq{</li>\n};
+    }
+
+    return <<HTML;
+<section class="recepcao" aria-labelledby="rc-titulo">
+<div class="rc-topo">
+<p class="rc-kicker">Que bom que você chegou</p>
+<h2 id="rc-titulo">Seja muito bem-vindo(a) à<br>Escola de Pacientes DF</h2>
+<p class="rc-lead">A partir de hoje você faz parte de um grupo que, desde 2016, leva educação em saúde para dentro do SUS — e que já publicou 42 trabalhos, recebeu 12 reconhecimentos e realizou mais de 24 mil atendimentos. Nada disso aconteceu sem gente nova chegando. Agora é a sua vez.</p>
+<button type="button" class="rc-festa" id="rc-festa">Soltar os confetes de novo</button>
+</div>
+
+<div class="rc-grade">
+<div class="rc-bloco">
+<h3>Seus primeiros passos</h3>
+<p class="rc-nota">Marque conforme for concluindo — fica salvo neste navegador, só para você se organizar.</p>
+<ul class="rc-passos">
+$itens</ul>
+<p class="rc-progresso" id="rc-progresso" data-total="$total" aria-live="polite">0 de $total concluídos</p>
+</div>
+
+<div class="rc-bloco">
+<h3>Por onde você vai passar</h3>
+<p class="rc-nota">O caminho que todo integrante percorre no grupo.</p>
+<ol class="rc-trilha">
+$trilha</ol>
+</div>
+</div>
+</section>
+HTML
 }
 
 # ---------------- gráfico: prêmios e reconhecimentos por ano ----------------

@@ -1,10 +1,8 @@
 # Boas-vindas
 
-Seja bem-vindo(a) à Escola de Pacientes!
+Esta página é o seu ponto de partida. Aqui está tudo que você precisa para conhecer o grupo, entender como ele funciona no dia a dia e dar os primeiros passos com segurança. Leia com calma — e volte sempre que surgir uma dúvida.
 
-Nesta página, você encontrará os principais materiais e orientações para conhecer melhor o grupo, entender seu funcionamento e acessar conteúdos úteis para sua jornada.
-
-MANUAL DO MEMBRO
+📘 MANUAL DO MEMBRO
 
 Um guia completo para entender o funcionamento da Escola de Pacientes!
 
@@ -12,23 +10,23 @@ Um guia completo para entender o funcionamento da Escola de Pacientes!
 
 Prefere abrir em outra aba? [Manual do membro](https://docs.google.com/document/d/1CEBbe9gZFT8h4YCmZVrm6SJoJWOO6WBeNsJBvfuaKsE/edit?usp=sharing)
 
-SANTA-IA
+🤖 SANTA-IA
 
 Tem alguma dúvida sobre o grupo de pesquisa? Pergunte à SANTA-IA, a assistente de inteligência artificial da Escola de Pacientes:
 
 [Perguntar à SANTA-IA](https://g.co/gemini/share/131babc1b9d3h)
 
-IAS — NOTEBOOK LM
+🎬 IAS — NOTEBOOK LM
 
 Vídeo explicando um pouco mais sobre o Notebook LM e como usá-lo nos estudos do grupo:
 
 [EMBED: YouTube Video, Notebook LM — Escola de Pacientes](https://www.youtube.com/embed/vo6RrBsR-A0)
 
-SOBRE O GRUPO
+🏛️ SOBRE O GRUPO
 
 A Escola de Pacientes DF é um grupo de atividades acadêmicas — ensino, pesquisa e extensão — ativo desde 2016, vinculado à UnB e à rede da SES-DF, sob orientação do [Prof. Dr. Estêvão Cubas Rolim](/dr-estevao-rolim). Conheça a [equipe](/equipe), os [projetos](/receita-simples) e os portais por público: [Pacientes](/para-pacientes), [Estudantes](/para-estudantes), [Pesquisadores](/para-pesquisadores) e [Profissionais](/para-profissionais).
 
-FLUXO PÓS-ARTIGO — PUBLICAÇÃO EM REVISTA
+🏆 FLUXO PÓS-ARTIGO — PUBLICAÇÃO EM REVISTA
 
 1) O QUE CONFERIR ASSIM QUE O ARTIGO FOR PUBLICADO
 
@@ -58,7 +56,7 @@ Use a referência publicada pela revista como base para checagem: Rolim, E. C., 
 - Evite acumular publicações sem registro: o ideal é atualizar o Lattes sempre que um artigo for publicado ou, no máximo, uma vez por semestre. Quando deixa acumular, a atualização vira retrabalho; fazendo aos poucos, fica rápido e organizado.
 - Sempre confira sua caixa de e-mail (inclusive SPAM): muitas vezes a confirmação da sua publicação foi enviada e se "perdeu" na caixa de entrada. Fique atento!
 
-GUIA DO GRUPO DE PESQUISA — DÚVIDAS FREQUENTES
+🧭 GUIA DO GRUPO DE PESQUISA — DÚVIDAS FREQUENTES
 
 1) FUNDAMENTOS DE PESQUISA E TIPOS DE ESTUDO
 
@@ -72,7 +70,7 @@ GUIA DO GRUPO DE PESQUISA — DÚVIDAS FREQUENTES
 - Relato de Caso — foca na descrição detalhada de um caso clínico específico, devido à sua raridade ou forma de manejo.
 - Como decidir o método para cada pergunta: quero apresentar em congresso → resumo simples/expandido · quero mapear um tema amplo → revisão de escopo · quero responder uma pergunta específica com evidência forte → revisão sistemática · aplicação prática de uma tecnologia → relato de experiência · descrição de um caso clínico específico → relato de caso.
 
-COMO FAZER CADA TIPO DE ESTUDO — GUIAS PASSO A PASSO
+🔬 COMO FAZER CADA TIPO DE ESTUDO — GUIAS PASSO A PASSO
 
 Saber o que é cada método é o primeiro passo; o segundo é saber executá-lo. Cada tipo de estudo tem um **guia internacional de referência** que lista, item por item, o que precisa constar. Use o guia desde o começo, não só na hora de escrever: ele funciona como roteiro do trabalho inteiro.
 
@@ -105,7 +103,7 @@ Materiais do próprio grupo que se conectam a esta etapa: [triagem de artigos no
 - Zotero ou Mendeley? Pode usar qualquer um. A padronização final deve seguir exatamente o que o edital ou periódico exige (estilo de citação e referências) — confira as normas antes da submissão.
 - Checklist de onboarding — obrigatório: ORCID, Lattes e Google Scholar atualizados, além de acesso ao Google Drive e Google Classroom. Outras ferramentas dependem do projeto.
 
-GUIA PRÁTICO DE FERRAMENTAS
+🧰 GUIA PRÁTICO DE FERRAMENTAS
 
 - Lattes — principal currículo acadêmico: [https://abre.ai/lattesss](https://abre.ai/lattesss)
 - ORCID — identificador acadêmico; manter atualizado regularmente: [https://orcid.org](https://orcid.org)
@@ -116,7 +114,7 @@ GUIA PRÁTICO DE FERRAMENTAS
 
 As três contas do checklist de entrada — Lattes, ORCID e Google Scholar — servem a coisas diferentes e se complementam. O **Lattes** é o currículo oficial brasileiro, exigido por editais e bolsas. O **ORCID** é um número que identifica você para sempre, em qualquer país e revista, mesmo se você mudar de nome, de e-mail ou de instituição. O **Google Scholar** é a vitrine pública: é onde as pessoas encontram e citam o seu trabalho. O passo a passo do Lattes está mais acima; abaixo, os outros dois.
 
-CRIAR E CONFIGURAR O ORCID — PASSO A PASSO
+🆔 CRIAR E CONFIGURAR O ORCID — PASSO A PASSO
 
 - Passo 1 — Criar a conta: acesse [orcid.org](https://orcid.org), clique em "Sign in / Register" e depois em "Register now".
 - Passo 2 — Escolher o e-mail com cuidado: use um e-mail que você vá manter por anos. E-mail institucional expira quando você se forma — se usar o da UnB, cadastre também um e-mail pessoal como alternativo, em "Account settings → Emails". Perder o acesso ao e-mail cadastrado é o problema mais comum com o ORCID.
@@ -126,7 +124,7 @@ CRIAR E CONFIGURAR O ORCID — PASSO A PASSO
 - Passo 6 — Adicionar as publicações sem digitar tudo: em "Works", use "Add works → Search & link" e escolha a base (Crossref é a mais completa para artigos com DOI). Também dá para colar o DOI em "Add works → Add DOI" — os dados vêm preenchidos automaticamente.
 - Passo 7 — Guardar o seu iD: ele tem o formato 0000-0000-0000-0000. Anote e use em **todas** as submissões de artigo, resumo e edital. Muitas revistas já exigem o ORCID de cada autor no momento da submissão.
 
-CRIAR E CONFIGURAR O GOOGLE SCHOLAR — PASSO A PASSO
+🎓 CRIAR E CONFIGURAR O GOOGLE SCHOLAR — PASSO A PASSO
 
 - Passo 1 — Abrir o perfil: entre em [scholar.google.com](https://scholar.google.com) com a sua conta Google e clique em "Meu perfil", no topo à esquerda.
 - Passo 2 — Preencher os dados: nome completo (do jeito que você assina os artigos), afiliação — "Universidade de Brasília" — e áreas de interesse. No campo de e-mail, use o **e-mail institucional** (@aluno.unb.br ou @unb.br): é ele que faz o seu perfil aparecer nas buscas do Scholar.
@@ -162,7 +160,7 @@ Depois de criar as três contas, junte tudo: coloque o link do ORCID e do Google
 - Transparência: declare o uso de IA no manuscrito sempre que a ferramenta for utilizada para redigir partes do texto, analisar dados ou traduzir termos técnicos.
 - Contra alucinações: é proibido usar IA para busca bibliográfica; toda fonte citada deve ser conferida manualmente no documento original. Nunca use IA para interpretar resultados sem análise prévia sua.
 
-FAQ FIXA — RESUMO RÁPIDO
+❓ FAQ FIXA — RESUMO RÁPIDO
 
 - 1. Tarefas da semana: a fonte única de verdade é o Google Classroom; o WhatsApp serve para alertas. Em divergência, vale o que está postado e datado no Classroom.
 - 2. Temas: você pode propor, a decisão final é do professor, e o tema entra no fluxo quando alinhado aos prazos de congressos.
@@ -170,14 +168,14 @@ FAQ FIXA — RESUMO RÁPIDO
 - 4. Ferramentas: não há padrão único; siga o definido em cada tarefa. O foco é o resultado entregue no Classroom.
 - 5. IA: pode para reescrever, corrigir, resumir e formatar; proibido gerar texto final sem revisão, inventar dados ou buscar bibliografia. Revisão humana obrigatória e uso declarado.
 
-NORMAS ABNT E PADRONIZAÇÃO
+📐 NORMAS ABNT E PADRONIZAÇÃO
 
 Para garantir a qualidade acadêmica das publicações, todos os membros devem seguir as normas da ABNT:
 
 - [Guia completo para a elaboração de trabalhos acadêmicos (PUC-SP)](https://www.pucsp.br/sites/default/files/download/biblioteca/2025/manual-para-elaboracao-do-trabalho-academico-com-citacoes-e-referencias-em-padrao-abnt.pdf)
 - [Referências com nomes compostos, sobrenomes hispânicos e prefixos (ESPM)](https://normas-abnt.espm.br/index.php?title=Refer%C3%AAncia_(obrigat%C3%B3rio))
 
-ACESSO A PERIÓDICOS E CAPACITAÇÃO
+🔑 ACESSO A PERIÓDICOS E CAPACITAÇÃO
 
 - Acesso CAFe (Periódicos CAPES) — bases científicas com login institucional: [https://www.periodicos.capes.gov.br/index.php/acesso-cafe.html](https://www.periodicos.capes.gov.br/index.php/acesso-cafe.html)
 - Scopus Sources — revistas de maior impacto por área: [https://www.scopus.com/sources.uri](https://www.scopus.com/sources.uri)

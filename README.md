@@ -51,6 +51,32 @@ Para trocar as fotos: substitua os arquivos em `build/assets/img/` (`logo.png`, 
 2. Acrescente uma linha em `build/manifest.txt` com a categoria desejada.
 3. Rode `perl build/build.pl`.
 
+## Carrossel de fotos da página inicial
+
+O topo da home mostra um carrossel de fotos do Campus Darcy Ribeiro. As fotos
+são **opcionais**: cada uma só entra se o arquivo existir em
+`build/assets/img/`. Enquanto nenhuma estiver na pasta, a home exibe a foto
+estática de sempre (`unb-campus.jpg`) — o site nunca fica sem imagem. Com uma
+foto só, vira figura estática, sem controles.
+
+Salve os JPGs com estes nomes e rode `perl build/build.pl`:
+
+| Arquivo | Foto |
+|---|---|
+| `unb-icc-jardim.jpg`     | Jardim entre as alas do ICC, com palmeira ao centro |
+| `unb-primaveras.jpg`     | Primaveras floridas sob as vigas de concreto |
+| `unb-jardim-interno.jpg` | Jardim interno entre os blocos, com canteiros elevados |
+| `unb-zinias.jpg`         | Canteiro de zínias diante da colunata do ICC |
+| `unb-convivencia.jpg`    | Pessoas sentadas em um banco no jardim |
+
+A lista — com o texto alternativo e a legenda de cada foto — fica em
+`@HERO_SLIDES`, no `build.pl`. É lá que se muda a ordem, a legenda ou o
+crédito do fotógrafo. O comportamento do carrossel está em
+`build/assets/carousel.js` (troca automática a cada 6,5 s, com pausa).
+
+> Formato sugerido: JPG de 2000 px de largura, com o assunto no centro — a
+> foto é cortada para preencher a faixa, que muda de altura conforme a tela.
+
 ## Página do Núcleo EP
 
 O **Núcleo EP** é o sistema de gestão interno do grupo de pesquisa

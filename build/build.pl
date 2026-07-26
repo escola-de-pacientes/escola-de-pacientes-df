@@ -11,7 +11,7 @@ use URI::Escape qw(uri_unescape);
 my $ROOT   = dirname(__FILE__);
 my $OUT    = "$ROOT/../docs";
 my $SITE   = 'Escola de Pacientes DF';
-my $SITE_URL = 'https://soaresramosjoaolucas-oss.github.io/escola-de-pacientes-df';
+my $SITE_URL = 'https://escola-de-pacientes.github.io/escola-de-pacientes-df';
 
 # ---------------- manifesto ----------------
 my (%page, @order);          # slug -> {title, cat, group}
@@ -685,6 +685,78 @@ HTML
     $n++;
 }
 
+# ---------------- carrossel de fotos da página inicial ----------------
+# Cada foto só entra se o arquivo existir em build/assets/img/. Enquanto
+# nenhuma delas estiver na pasta, a home mostra a foto estática de sempre
+# (unb-campus.jpg) — o site nunca fica sem imagem.
+my @HERO_SLIDES = (
+    ['unb-icc-jardim.jpg',
+     'Jardim entre as alas do Instituto Central de Ciências da UnB, com palmeira ao centro e as colunas de concreto dos dois lados',
+     'Jardim entre as alas do Instituto Central de Ciências — Campus Darcy Ribeiro, UnB'],
+    ['unb-primaveras.jpg',
+     'Primaveras cor-de-rosa floridas subindo pelas vigas de concreto do Instituto Central de Ciências',
+     'Primaveras em flor sob as vigas do ICC — Campus Darcy Ribeiro, UnB'],
+    ['unb-jardim-interno.jpg',
+     'Jardim interno entre os blocos do campus, com canteiros elevados, caminho de ladrilho e árvores',
+     'Jardim interno entre os blocos — Campus Darcy Ribeiro, UnB'],
+    ['unb-zinias.jpg',
+     'Canteiro de zínias cor-de-rosa e laranja floridas diante da colunata de concreto do Instituto Central de Ciências',
+     'Floração diante da colunata do ICC — Campus Darcy Ribeiro, UnB'],
+    ['unb-convivencia.jpg',
+     'Duas pessoas conversando sentadas em um banco no jardim do campus, entre palmeiras e primaveras floridas',
+     'Convivência no jardim do campus — Campus Darcy Ribeiro, UnB'],
+);
+
+# foto usada enquanto o carrossel não tiver imagens
+my @HERO_FALLBACK = ('unb-campus.jpg',
+    'Corredor do Instituto Central de Ciências (Minhocão) no Campus Darcy Ribeiro da UnB',
+    'Instituto Central de Ciências (ICC) — Campus Darcy Ribeiro, Universidade de Brasília · Foto: Beto Monteiro / Secom UnB');
+
+sub hero_figure_html {
+    my ($file, $alt, $cap, $eager) = @_;
+    my $load = $eager ? ' fetchpriority="high"' : ' loading="lazy"';
+    return qq{<img src="assets/img/$file" alt="@{[esc($alt)]}"$load>\n}
+         . qq{<figcaption>@{[esc($cap)]}</figcaption>};
+}
+
+sub hero_carousel_html {
+    my @have = grep { -e "$ROOT/assets/img/$_->[0]" } @HERO_SLIDES;
+    @have = (\@HERO_FALLBACK) unless @have;
+    my $total = scalar @have;
+
+    # uma foto só: figura estática, sem controles nem script
+    if ($total == 1) {
+        my ($f, $alt, $cap) = @{ $have[0] };
+        return qq{<figure class="hero-banner">\n} . hero_figure_html($f, $alt, $cap, 1) . qq{\n</figure>};
+    }
+
+    my ($slides, $dots) = ('', '');
+    for my $i (0 .. $#have) {
+        my ($f, $alt, $cap) = @{ $have[$i] };
+        my $num = $i + 1;
+        my $on  = $i == 0;
+        $slides .= qq{<figure class="hc-slide@{[ $on ? ' is-active' : '' ]}" role="group" }
+                 . qq{aria-roledescription="slide" aria-label="Foto $num de $total"}
+                 . qq{@{[ $on ? '' : ' aria-hidden="true"' ]}>\n}
+                 . hero_figure_html($f, $alt, $cap, $on) . qq{\n</figure>\n};
+        $dots .= qq{<button type="button" class="hc-dot@{[ $on ? ' is-on' : '' ]}" data-i="$i" }
+               . qq{aria-label="Mostrar a foto $num de $total"@{[ $on ? ' aria-current="true"' : '' ]}></button>\n};
+    }
+
+    return <<HTML;
+<section class="hero-carousel" aria-roledescription="carrossel" aria-label="Fotos do Campus Darcy Ribeiro da UnB" data-intervalo="6500">
+<div class="hc-viewport">
+$slides</div>
+<button type="button" class="hc-nav hc-prev" aria-label="Foto anterior"><span class="msym">chevron_left</span></button>
+<button type="button" class="hc-nav hc-next" aria-label="Próxima foto"><span class="msym">chevron_right</span></button>
+<button type="button" class="hc-play" aria-label="Pausar a troca automática de fotos" aria-pressed="false"><span class="msym">pause</span></button>
+<div class="hc-dots" role="group" aria-label="Escolher a foto">
+$dots</div>
+<p class="hc-live" aria-live="polite" aria-atomic="true"></p>
+</section>
+HTML
+}
+
 # ---------------- página do Núcleo EP ----------------
 # Capturas de tela são opcionais: cada figura só entra no site se o arquivo
 # existir em build/assets/img/. Para publicar um print, salve o PNG com um
@@ -734,8 +806,10 @@ my @NUCLEO_SHOTS = (
     local $/; my $tpl = <$fh>; close $fh;
     my $header = header_html('', 'inicio');
     my $footer = footer_html('');
+    my $carrossel = hero_carousel_html();
     $tpl =~ s/\{\{HEADER\}\}/$header/;
     $tpl =~ s/\{\{FOOTER\}\}/$footer/;
+    $tpl =~ s/\{\{HERO_CARROSSEL\}\}/$carrossel/;
     write_file("$OUT/index.html", $tpl);
     $n++;
 }

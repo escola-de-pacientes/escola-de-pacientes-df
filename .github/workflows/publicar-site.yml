@@ -1,0 +1,65 @@
+# Gera o site no próprio GitHub, a cada mudança em build/.
+#
+# Por que isto existe: o site era gerado numa máquina local e enviado pronto.
+# Quando essa cópia local ficava desatualizada, o envio desfazia o trabalho
+# que já estava no repositório — foi o que aconteceu em 26/07/2026, quando um
+# envio automático devolveu build.pl e style.css a versões antigas e deixou
+# uma página no ar sem estilo.
+#
+# Aqui não existe cópia local: o site é sempre gerado a partir do build/ que
+# está no GitHub. Com isto no ar, NÃO É MAIS PRECISO rodar o gerador nem
+# enviar a pasta docs/ à mão. Basta editar build/ e enviar.
+
+name: Publicar o site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'build/**'
+      - '.github/workflows/publicar-site.yml'
+  workflow_dispatch:        # permite disparar à mão, pelo painel do GitHub
+
+permissions:
+  contents: write           # necessário para gravar a pasta docs/ de volta
+
+# nunca duas gerações ao mesmo tempo, para não brigarem pelo mesmo commit
+concurrency:
+  group: publicar-site
+  cancel-in-progress: false
+
+jobs:
+  gerar:
+    name: Gerar docs/ a partir de build/
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar o módulo de Perl que o gerador usa
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends liburi-perl
+
+      - name: Rodar o gerador
+        run: perl build/build.pl
+
+      - name: Publicar, se alguma coisa mudou
+        run: |
+          if [ -z "$(git status --porcelain docs)" ]; then
+            echo "A pasta docs/ já está igual ao que o gerador produz. Nada a publicar."
+            exit 0
+          fi
+
+          echo "Mudanças encontradas:"
+          git status --short docs | head -20
+
+          git config user.name  "Gerador do site"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "Regenera docs/ a partir de build/ ($GITHUB_SHA)"
+
+          # este envio mexe só em docs/, e o gatilho acima só observa build/,
+          # então não dispara o processo de novo
+          git push

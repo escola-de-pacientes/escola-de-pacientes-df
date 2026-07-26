@@ -32,11 +32,26 @@ mantendo os nomes, e rode o gerador novamente. As fotos do topo da home ficam na
 ## Como editar
 
 1. Edite o conteúdo em `build/content/` ou `build/content2/` (ou os templates em `build/`).
-2. Gere o site novamente:
-   ```sh
-   perl build/build.pl
-   ```
-3. Faça commit e push — o GitHub Pages publica automaticamente.
+2. Faça commit e push da pasta `build/`.
+3. Pronto. O GitHub gera a pasta `docs/` sozinho e o Pages publica.
+
+> ⚠️ **Não gere o site na sua máquina para depois enviar a pasta `docs/`.**
+> Quem faz isso é o GitHub, pelo `.github/workflows/publicar-site.yml`.
+>
+> Esse aviso tem motivo: em 26/07/2026 um envio automático feito a partir de
+> uma cópia local desatualizada devolveu `build.pl` e `style.css` a versões
+> antigas, apagou a revisão visual inteira e deixou a página `/nucleo-ep/` no
+> ar sem estilo nenhum. Gerando no GitHub, não existe cópia local para ficar
+> velha e isso não pode se repetir.
+
+Se quiser ver o resultado antes de enviar, pode rodar `perl build/build.pl`
+localmente — só não envie a `docs/` gerada junto; deixe o GitHub cuidar dela.
+
+### Rodar o gerador localmente (opcional)
+
+```sh
+perl build/build.pl        # precisa do módulo URI::Escape
+```
 
 ### Formato do conteúdo
 

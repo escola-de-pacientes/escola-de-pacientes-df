@@ -29,7 +29,9 @@
   });
 
   var nav = document.createElement('nav');
-  nav.className = 'toc';
+  // páginas de largura total (.wrap) precisam de mais espaço à direita que as
+  // de coluna estreita (.wrap-narrow), senão o sumário cai por cima do texto
+  nav.className = container.classList.contains('wrap-narrow') ? 'toc' : 'toc toc-wide';
   nav.setAttribute('aria-label', 'Nesta página');
   var html = '<p class="toc-title">Nesta página</p><ul>';
   heads.forEach(function (h) {

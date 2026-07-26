@@ -72,6 +72,22 @@ GUIA DO GRUPO DE PESQUISA — DÚVIDAS FREQUENTES
 - Relato de Caso — foca na descrição detalhada de um caso clínico específico, devido à sua raridade ou forma de manejo.
 - Como decidir o método para cada pergunta: quero apresentar em congresso → resumo simples/expandido · quero mapear um tema amplo → revisão de escopo · quero responder uma pergunta específica com evidência forte → revisão sistemática · aplicação prática de uma tecnologia → relato de experiência · descrição de um caso clínico específico → relato de caso.
 
+COMO FAZER CADA TIPO DE ESTUDO — GUIAS PASSO A PASSO
+
+Saber o que é cada método é o primeiro passo; o segundo é saber executá-lo. Cada tipo de estudo tem um **guia internacional de referência** que lista, item por item, o que precisa constar. Use o guia desde o começo, não só na hora de escrever: ele funciona como roteiro do trabalho inteiro.
+
+- [EQUATOR Network — comece por aqui: índice de guias por tipo de estudo](https://www.equator-network.org/)
+- [PRISMA — revisão sistemática e revisão de escopo (PRISMA-ScR)](https://www.prisma-statement.org/)
+- [Cochrane Handbook — revisão sistemática, o método capítulo a capítulo](https://training.cochrane.org/handbook)
+- [JBI Manual — revisão de escopo e outras sínteses de evidência](https://synthesismanual.jbi.global/)
+- [CARE — relato de caso: o que descrever e em que ordem](https://www.care-statement.org/)
+- [COREQ — pesquisa qualitativa: entrevistas e grupos focais](https://www.equator-network.org/reporting-guidelines/coreq/)
+- [STROBE — estudos observacionais: coorte, caso-controle e transversal](https://www.strobe-statement.org/)
+
+Como usar na prática: escolha o guia do seu tipo de estudo, baixe o checklist, e vá preenchendo conforme avança. Na submissão, muitas revistas pedem esse checklist preenchido como anexo — quem seguiu desde o início já entrega pronto.
+
+Materiais do próprio grupo que se conectam a esta etapa: [triagem de artigos no Rayyan](/rayyan-revisao-de-literatura), [onde buscar referências](/ciencia-onde-buscar-referencias), [banco de citações](/ciencia-banco-de-citacoes) e [pesquisa participativa (CBPR)](/cbpr-pesquisa-participativa-baseada-na-comunidade).
+
 2) DEFINIÇÃO E GESTÃO DE TEMAS — PIPELINE DO GRUPO
 
 - Quem define o tema final? O professor define os temas centrais, mas os membros podem sugerir temas complementares. A proposta precisa estar alinhada ao projeto e ser validada pela coordenação, que decide o tema final.
@@ -91,12 +107,38 @@ GUIA DO GRUPO DE PESQUISA — DÚVIDAS FREQUENTES
 
 GUIA PRÁTICO DE FERRAMENTAS
 
-- Google Scholar — organizar e mostrar sua produção acadêmica
 - Lattes — principal currículo acadêmico: [https://abre.ai/lattesss](https://abre.ai/lattesss)
-- ORCID — identificador acadêmico; manter atualizado regularmente
+- ORCID — identificador acadêmico; manter atualizado regularmente: [https://orcid.org](https://orcid.org)
+- Google Scholar — organizar e mostrar sua produção acadêmica: [https://scholar.google.com](https://scholar.google.com)
 - CAFe — acesso institucional a artigos: [https://abre.ai/capes-cafe](https://abre.ai/capes-cafe)
 - Zotero / Mendeley — gerenciadores de referência (importar, organizar e citar)
 - Rayyan — triagem de artigos, útil e intuitiva: [https://abre.ai/rayann](https://abre.ai/rayann)
+
+As três contas do checklist de entrada — Lattes, ORCID e Google Scholar — servem a coisas diferentes e se complementam. O **Lattes** é o currículo oficial brasileiro, exigido por editais e bolsas. O **ORCID** é um número que identifica você para sempre, em qualquer país e revista, mesmo se você mudar de nome, de e-mail ou de instituição. O **Google Scholar** é a vitrine pública: é onde as pessoas encontram e citam o seu trabalho. O passo a passo do Lattes está mais acima; abaixo, os outros dois.
+
+CRIAR E CONFIGURAR O ORCID — PASSO A PASSO
+
+- Passo 1 — Criar a conta: acesse [orcid.org](https://orcid.org), clique em "Sign in / Register" e depois em "Register now".
+- Passo 2 — Escolher o e-mail com cuidado: use um e-mail que você vá manter por anos. E-mail institucional expira quando você se forma — se usar o da UnB, cadastre também um e-mail pessoal como alternativo, em "Account settings → Emails". Perder o acesso ao e-mail cadastrado é o problema mais comum com o ORCID.
+- Passo 3 — Definir a visibilidade: na criação, escolha deixar o registro **público** ("Everyone"). Um ORCID privado não cumpre a função de identificar você nas publicações.
+- Passo 4 — Confirmar: valide o cadastro pelo link enviado ao seu e-mail.
+- Passo 5 — Preencher a afiliação: em "Employment" e "Education and qualifications", informe a Universidade de Brasília e o seu vínculo (graduação, curso, período).
+- Passo 6 — Adicionar as publicações sem digitar tudo: em "Works", use "Add works → Search & link" e escolha a base (Crossref é a mais completa para artigos com DOI). Também dá para colar o DOI em "Add works → Add DOI" — os dados vêm preenchidos automaticamente.
+- Passo 7 — Guardar o seu iD: ele tem o formato 0000-0000-0000-0000. Anote e use em **todas** as submissões de artigo, resumo e edital. Muitas revistas já exigem o ORCID de cada autor no momento da submissão.
+
+CRIAR E CONFIGURAR O GOOGLE SCHOLAR — PASSO A PASSO
+
+- Passo 1 — Abrir o perfil: entre em [scholar.google.com](https://scholar.google.com) com a sua conta Google e clique em "Meu perfil", no topo à esquerda.
+- Passo 2 — Preencher os dados: nome completo (do jeito que você assina os artigos), afiliação — "Universidade de Brasília" — e áreas de interesse. No campo de e-mail, use o **e-mail institucional** (@aluno.unb.br ou @unb.br): é ele que faz o seu perfil aparecer nas buscas do Scholar.
+- Passo 3 — Selecionar os seus artigos: o Scholar mostra grupos de trabalhos com nomes parecidos com o seu. Confira um por um antes de adicionar — homônimos são frequentes, e artigo de outra pessoa no seu perfil é erro difícil de perceber depois.
+- Passo 4 — Escolher como atualizar: prefira **"Enviar atualizações por e-mail para revisão"** em vez da atualização automática. Assim você aprova cada inclusão e evita que trabalhos de homônimos entrem sozinhos.
+- Passo 5 — Tornar o perfil público: marque "Tornar meu perfil público". Sem isso, ninguém encontra você — e é justamente esse o objetivo da ferramenta.
+- Passo 6 — Confirmar o e-mail institucional: valide pelo link recebido. Só depois dessa confirmação o perfil passa a ser indexado nas buscas.
+- Passo 7 — Adicionar o que faltou: se um artigo seu não aparecer sozinho, use "+ → Adicionar artigo manualmente" e preencha os dados exatamente como estão no site da revista.
+
+Depois de criar as três contas, junte tudo: coloque o link do ORCID e do Google Scholar na assinatura de e-mail e no seu Lattes. Assim qualquer pessoa — e qualquer avaliador de edital — chega à sua produção por um clique.
+
+> As telas dessas ferramentas mudam de tempos em tempos. Se o nome de um botão estiver diferente, procure pela função descrita no passo — a ordem das etapas costuma se manter. Se travar em alguma parte, pergunte no grupo ou à SANTA-IA.
 
 5) FLUXO COMPLETO DO ARTIGO E ESCRITA CIENTÍFICA
 

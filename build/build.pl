@@ -257,6 +257,11 @@ sub link_card_html {
 sub inline_fmt {
     my ($line, $p) = @_;
     $line = esc($line);
+    # negrito com **dois** asteriscos. Só o par duplo: asterisco solto aparece
+    # no acervo como curinga de arquivo (*.pdf) e marca de nota de rodapé, e
+    # itálico de um asterisco só quebraria essas páginas. Crase também fica de
+    # fora — é usada como apóstrofo em centenas de títulos (STUDENT`S).
+    $line =~ s{\*\*(?=\S)(.+?)(?<=\S)\*\*}{<strong>$1</strong>}g;
     $line =~ s{\[([^\]\[]*)\]\(([^)\s]+)\)}{
         my ($t, $u) = ($1, $2); $u = clean_url($u, $p);
         my $ext = $u =~ m{^https?://} ? ' target="_blank" rel="noopener"' : '';
@@ -338,6 +343,13 @@ sub md_to_html {
 
         if ($l =~ /^##\s+(.+)/)  { $close_blocks->(); push @html, '<h2>' . inline_fmt($1, $p) . '</h2>'; next; }
         if ($l =~ /^###+\s+(.+)/){ $close_blocks->(); push @html, '<h3>' . inline_fmt($1, $p) . '</h3>'; next; }
+
+        # "> texto" vira um aviso destacado (dica, ressalva, atenção)
+        if ($l =~ /^>\s?(.+)/) {
+            $close_blocks->();
+            push @html, '<p class="nota">' . inline_fmt($1, $p) . '</p>';
+            next;
+        }
 
         # item de lista (item que é só um link vira card)
         if ($l =~ /^-\s+(.+)/) {

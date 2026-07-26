@@ -1412,6 +1412,26 @@ article.content li::marker { color: color-mix(in srgb, var(--accent) 55%, transp
 .embed:hover { transform: translateY(-2px); }
 .embed { transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease); }
 
+/* aviso destacado — o "> texto" do conteúdo */
+article.content .nota {
+  position: relative; isolation: isolate;
+  margin: 1.6rem 0;
+  padding: 1rem 1.2rem 1rem 3rem;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--accent) 7%, var(--soft-glass));
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  box-shadow: var(--shadow);
+  font-size: .95rem; color: var(--ink);
+}
+article.content .nota::before {
+  content: 'i';
+  position: absolute; left: 1rem; top: 1.05rem;
+  width: 20px; height: 20px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--accent); color: #fff;
+  font-family: var(--font-sans); font-size: .75rem; font-weight: 700; font-style: italic;
+}
+
 /* citação com aspa decorativa */
 .quote { position: relative; padding-left: 3.2rem; }
 .quote::after {

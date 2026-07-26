@@ -7,6 +7,8 @@ use open ':std', ':encoding(UTF-8)';
 use File::Path qw(make_path);
 use File::Basename qw(dirname);
 use URI::Escape qw(uri_unescape);
+use Digest::MD5 qw(md5_hex);
+use Encode qw(encode_utf8);
 
 my $ROOT   = dirname(__FILE__);
 my $OUT    = "$ROOT/../docs";
@@ -119,6 +121,34 @@ sub title_of {
     }
     my $t = (split m{/}, $path)[-1];
     $t =~ s/-/ /g; return ucfirst $t;
+}
+
+# ---------------- versão dos arquivos de estilo e script ----------------
+# O navegador guarda assets/style.css em cache. Sem nada que diferencie uma
+# versão da outra, quem já visitou o site continua vendo o CSS velho depois
+# de uma atualização — e a página quebra, porque o HTML é novo e o estilo não.
+# Solução: cada arquivo ganha ?v=<resumo do próprio conteúdo>. Muda o
+# conteúdo, muda o endereço, o navegador baixa de novo. Não mudou nada, o
+# endereço é o mesmo e o cache continua valendo (e o docs/ não fica sujo de
+# diferença a cada geração).
+my %ASSET_VER;
+
+sub asset_ver {
+    my ($name) = @_;
+    return $ASSET_VER{$name} if exists $ASSET_VER{$name};
+    my $src = "$ROOT/assets/$name";
+    my $v = 'x';
+    if (open my $fh, '<:raw', $src) {
+        local $/; $v = substr(md5_hex(scalar <$fh>), 0, 8); close $fh;
+    }
+    return $ASSET_VER{$name} = $v;
+}
+
+# carimba a versão em todo assets/*.css e assets/*.js citado no HTML
+sub versionar {
+    my ($html) = @_;
+    $html =~ s{(assets/)([\w.\-]+\.(?:css|js))(?=["'])}{$1 . $2 . '?v=' . asset_ver($2)}ge;
+    return $html;
 }
 
 # ---------------- helpers HTML ----------------
@@ -510,9 +540,35 @@ HTML
 
 sub write_file {
     my ($path, $data) = @_;
+    $data = versionar($data) if $path =~ /\.html$/;
     make_path(dirname($path));
     open my $fh, '>:encoding(UTF-8)', $path or die "$path: $!";
     print $fh $data; close $fh;
+}
+
+# ---------------- índice de busca ----------------
+# Gerado antes das páginas: elas citam este arquivo, e a citação precisa já
+# carregar a versão certa dele.
+{
+    my @entries;
+    push @entries, { t => 'Temas Clínicos (índice)', p => 'temas', c => 'Temas Clínicos' };
+    push @entries, { t => 'Núcleo EP — sistema do grupo de pesquisa', p => 'nucleo-ep', c => 'A Escola' };
+    for my $path (sort keys %content) {
+        my ($top) = split m{/}, $path;
+        my $cat = $page{$top} ? $cat_label{ $page{$top}{cat} } // '' : '';
+        my $t = title_of($path);
+        push @entries, { t => $t, p => $path, c => $cat };
+    }
+    my $json = join ",\n", map {
+        my %e = %$_;
+        for (values %e) { s/\\/\\\\/g; s/"/\\"/g; }
+        qq{{"t":"$e{t}","p":"$e{p}","c":"$e{c}"}}
+    } @entries;
+    my $js = "window.SEARCH_INDEX = [\n$json\n];\n";
+    # este arquivo não existe em build/assets/, então a versão sai do que
+    # acabou de ser montado aqui
+    $ASSET_VER{'search-index.js'} = substr(md5_hex(encode_utf8($js)), 0, 8);
+    write_file("$OUT/assets/search-index.js", $js);
 }
 
 # ---------------- páginas de conteúdo ----------------
@@ -834,25 +890,6 @@ for my $a (glob "$ROOT/assets/*") {
 for my $a (glob "$ROOT/assets/img/*") {
     my ($name) = $a =~ m{([^/\\]+)$};
     copy_raw($a, "$OUT/assets/img/$name");
-}
-
-# ---------------- índice de busca ----------------
-{
-    my @entries;
-    push @entries, { t => 'Temas Clínicos (índice)', p => 'temas', c => 'Temas Clínicos' };
-    push @entries, { t => 'Núcleo EP — sistema do grupo de pesquisa', p => 'nucleo-ep', c => 'A Escola' };
-    for my $path (sort keys %content) {
-        my ($top) = split m{/}, $path;
-        my $cat = $page{$top} ? $cat_label{ $page{$top}{cat} } // '' : '';
-        my $t = title_of($path);
-        push @entries, { t => $t, p => $path, c => $cat };
-    }
-    my $json = join ",\n", map {
-        my %e = %$_;
-        for (values %e) { s/\\/\\\\/g; s/"/\\"/g; }
-        qq{{"t":"$e{t}","p":"$e{p}","c":"$e{c}"}}
-    } @entries;
-    write_file("$OUT/assets/search-index.js", "window.SEARCH_INDEX = [\n$json\n];\n");
 }
 
 # ---------------- extras ----------------

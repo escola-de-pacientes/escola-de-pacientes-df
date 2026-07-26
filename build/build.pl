@@ -45,6 +45,7 @@ my @NAV = (
         ['boas-vindas', 'Boas-vindas'],
         ['dr-estevao-rolim', 'Dr. Estêvão Rolim'],
         ['equipe', 'Equipe e Grupo de Pesquisa'],
+        ['nucleo-ep', 'Núcleo EP — sistema do grupo'],
         ['premios', 'Prêmios e Reconhecimentos'],
         ['reportagens', 'Na Mídia'],
         ['historia-da-medicina', 'História da Medicina'],
@@ -135,7 +136,7 @@ sub clean_url {
         (my $path = $u) =~ s{^/}{}; $path =~ s{[#?].*$}{};
         $path =~ s{/$}{};
         if ($path eq '' or $path eq 'home') { return $p eq '' ? './' : $p; }
-        return "$p$path/" if exists $content{$path} or $path eq 'temas' or $path eq 'az';
+        return "$p$path/" if exists $content{$path} or $path eq 'temas' or $path eq 'az' or $path eq 'nucleo-ep';
         return "http://www.escoladepacientes.com/$path";   # não migrada: aponta pro antigo
     }
     return $u;
@@ -383,6 +384,7 @@ sub header_html {
     my $home = $p eq '' ? './' : $p;
     my $nav = nav_html($p, $cat);
     return <<HTML;
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <header class="site">
 <div class="header-inner">
 <a class="brand" href="$home">
@@ -573,7 +575,7 @@ JS
 <nav class="breadcrumb" aria-label="Localização">$crumb</nav>
 <h1>@{[esc($title)]}</h1>
 </div></div>
-<article class="content"><div class="wrap-narrow">
+<article class="content" id="conteudo"><div class="wrap-narrow">
 $body_html
 </div></article>
 HTML
@@ -621,7 +623,7 @@ HTML
 <nav class="breadcrumb" aria-label="Localização"><a href="$p">Início</a><span class="sep">›</span><span>Temas Clínicos</span></nav>
 <h1>Temas Clínicos</h1>
 </div></div>
-<article class="content"><div class="wrap">
+<article class="content" id="conteudo"><div class="wrap">
 <p class="section-lead">Materiais de orientação, referência e educação em saúde organizados por área. Cada tema reúne impressos para pacientes, documentos técnicos e material de referência para estudo.</p>
 $groups_html
 </div></article>
@@ -667,7 +669,7 @@ HTML
 <nav class="breadcrumb" aria-label="Localização"><a href="$p">Início</a><span class="sep">›</span><span>Acervo</span><span class="sep">›</span><span>Índice A–Z</span></nav>
 <h1>Acervo completo — Índice A–Z</h1>
 </div></div>
-<article class="content"><div class="wrap">
+<article class="content" id="conteudo"><div class="wrap">
 <p class="section-lead">Todas as $total páginas do acervo da Escola de Pacientes DF. Use a busca no topo do site ou navegue por letra: $letters_nav</p>
 $list
 </div></article>
@@ -679,6 +681,49 @@ HTML
         header => header_html($p, 'az'),
         body   => $body,
         footer => footer_html($p),
+    ));
+    $n++;
+}
+
+# ---------------- página do Núcleo EP ----------------
+# Capturas de tela são opcionais: cada figura só entra no site se o arquivo
+# existir em build/assets/img/. Para publicar um print, salve o PNG com um
+# dos nomes abaixo nessa pasta e rode o gerador de novo — nada mais.
+my @NUCLEO_SHOTS = (
+    ['nucleo-minha-area.png', 'Minha área de trabalho — o que está sob a responsabilidade de cada integrante'],
+    ['nucleo-dashboard.png',  'Dashboard — os indicadores do grupo e o próximo passo de cada projeto'],
+    ['nucleo-cronograma.png', 'Cronograma — demandas e oportunidades acadêmicas na mesma linha do tempo'],
+    ['nucleo-projetos.png',   'Projetos — agrupados por situação, com os que precisam de atenção no topo'],
+);
+{
+    my $p = '../';
+    open my $fh, '<:encoding(UTF-8)', "$ROOT/nucleo-ep.html" or die $!;
+    local $/; my $body = <$fh>; close $fh;
+
+    my @figs = map {
+        my ($file, $cap) = @$_;
+        my $c = esc($cap);
+        qq{<figure class="shot"><img src="${p}assets/img/$file" alt="$c" loading="lazy"><figcaption>$c</figcaption></figure>};
+    } grep { -e "$ROOT/assets/img/$_->[0]" } @NUCLEO_SHOTS;
+
+    my $shots = @figs
+        ? qq{<h2>O sistema por dentro</h2>\n}
+          . qq{<p class="section-lead">Telas do Núcleo EP em uso pelo grupo.</p>\n}
+          . qq{<div class="shot-grid">\n} . join("\n", @figs) . qq{\n</div>}
+        : '';
+
+    $body =~ s/\{\{SHOTS\}\}/$shots/;
+    $body =~ s/\{\{P\}\}/$p/g;
+
+    write_file("$OUT/nucleo-ep/index.html", page_shell(
+        title  => "Núcleo EP — o sistema do grupo de pesquisa — $SITE",
+        desc   => "O Núcleo EP é o sistema onde a Escola de Pacientes DF organiza projetos, prazos, responsáveis e as oportunidades acadêmicas do grupo de pesquisa. Acesso restrito aos integrantes.",
+        p      => $p,
+        canon  => "$SITE_URL/nucleo-ep/",
+        header => header_html($p, 'nucleo-ep'),
+        body   => $body,
+        footer => footer_html($p),
+        body_class => 'theme-nucleo',
     ));
     $n++;
 }
@@ -718,6 +763,7 @@ for my $a (glob "$ROOT/assets/img/*") {
 {
     my @entries;
     push @entries, { t => 'Temas Clínicos (índice)', p => 'temas', c => 'Temas Clínicos' };
+    push @entries, { t => 'Núcleo EP — sistema do grupo de pesquisa', p => 'nucleo-ep', c => 'A Escola' };
     for my $path (sort keys %content) {
         my ($top) = split m{/}, $path;
         my $cat = $page{$top} ? $cat_label{ $page{$top}{cat} } // '' : '';
@@ -739,7 +785,7 @@ write_file("$OUT/404.html", page_shell(
     desc   => "Página não encontrada.",
     p      => '/escola-de-pacientes-df/',
     header => header_html('/escola-de-pacientes-df/', ''),
-    body   => qq{<div class="page-hero"><div class="wrap-narrow"><h1>Página não encontrada</h1></div></div><article class="content"><div class="wrap-narrow"><p>O endereço acessado não existe neste site. <a href="/escola-de-pacientes-df/">Voltar ao início</a>.</p></div></article>},
+    body   => qq{<div class="page-hero"><div class="wrap-narrow"><h1>Página não encontrada</h1></div></div><article class="content" id="conteudo"><div class="wrap-narrow"><p>O endereço acessado não existe neste site. <a href="/escola-de-pacientes-df/">Voltar ao início</a>.</p></div></article>},
     footer => footer_html('/escola-de-pacientes-df/'),
 ));
 

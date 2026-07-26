@@ -14,6 +14,7 @@ build/
                     #   · o MENU principal é a estrutura @NAV no topo do build.pl (curado, enxuto)
                     #   · gera também /temas (índice de temas) e /az (índice A–Z do acervo)
   landing.html      # template da página inicial (vitrine institucional)
+  nucleo-ep.html    # template da página do Núcleo EP (sistema de gestão do grupo)
   vitrine-dados.md  # dados curados da vitrine (publicações, prêmios, reportagens, trajetória)
   assets/           # CSS, JS de busca e imagens copiados para docs/assets/
   content/          # conteúdo das páginas principais (markdown simplificado)
@@ -49,6 +50,32 @@ Para trocar as fotos: substitua os arquivos em `build/assets/img/` (`logo.png`, 
 1. Crie `build/content/minha-pagina.md`.
 2. Acrescente uma linha em `build/manifest.txt` com a categoria desejada.
 3. Rode `perl build/build.pl`.
+
+## Página do Núcleo EP
+
+O **Núcleo EP** é o sistema de gestão interno do grupo de pesquisa
+(`https://adm-epdf.vercel.app`, acesso restrito aos integrantes). A página de
+apresentação fica em `build/nucleo-ep.html` — é HTML direto, não markdown,
+porque tem uma ilustração da interface desenhada em CSS.
+
+### Publicar capturas de tela reais
+
+A página aceita prints do sistema, mas eles são **opcionais**: só entram no site
+se o arquivo existir. Para publicar, salve os PNGs em `build/assets/img/` com
+estes nomes e rode `perl build/build.pl`:
+
+| Arquivo | Tela |
+|---|---|
+| `nucleo-minha-area.png` | Minha área de trabalho |
+| `nucleo-dashboard.png`  | Dashboard |
+| `nucleo-cronograma.png` | Cronograma |
+| `nucleo-projetos.png`   | Projetos |
+
+Uma seção "O sistema por dentro" aparece sozinha assim que houver ao menos um
+arquivo. A lista fica em `@NUCLEO_SHOTS`, no `build.pl`.
+
+> Antes de publicar um print, confira que não há nome de pessoa, e-mail ou
+> título de projeto que o grupo prefira não tornar público.
 
 ## Origem do conteúdo
 

@@ -359,7 +359,10 @@ header.site.rolado {
   min-height: 64px;
 }
 
-.brand { display: flex; align-items: center; gap: .7rem; text-decoration: none !important; }
+/* flex:none + nowrap: sem isso, na faixa em que o menu fica apertado, o
+   cabeçalho espremia a marca e "Escola de Pacientes" quebrava em três linhas */
+.brand { display: flex; align-items: center; gap: .7rem; flex: none; text-decoration: none !important; }
+.brand-name strong, .brand-name span { white-space: nowrap; }
 .brand-mark { width: 38px; height: 38px; border-radius: 9px; object-fit: contain; flex: none; }
 .brand-name { display: flex; flex-direction: column; line-height: 1.12; }
 .brand-name strong { font-size: 1.02rem; font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
@@ -768,7 +771,11 @@ p.section-lead { color: var(--muted); font-size: 1.12rem; max-width: 62ch; margi
 .hero-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
 
 .stats {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  /* 170px cabia cinco colunas em ~980px (o que o celular usa no "modo
+     desktop") e a coluna ficava estreita demais para "atendimentos
+     realizados": a palavra estourava a borda do cartão. Com 200px passam a
+     ser quatro por linha nessa largura, e continuam cinco no computador. */
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   padding-bottom: 5.5rem;
 }
@@ -895,13 +902,31 @@ p.section-lead { color: var(--muted); font-size: 1.12rem; max-width: 62ch; margi
   .g-bar { transition: none; }
   .g-tip { transition: none; }
 }
-@media (max-width: 620px) {
+@media (max-width: 700px) {
   .g-plot { height: 150px; }
   .g-ano { font-size: .6rem; }
   .grafico { padding: 1.2rem 1rem 1rem; }
+  /* A dica tem 220px e a coluna, aqui, tem ~28px: centrada, ela ultrapassava
+     a borda da tela (mesmo invisível, ocupa espaço e empurra a rolagem).
+     Em tela de toque também não há como "passar o mouse" — e a lista
+     completa em texto está logo abaixo do gráfico. */
+  .g-tip { display: none; }
 }
+.g-tip { max-width: min(230px, 68vw); }
 
 /* ---------- Landing: pilares e cards ---------- */
+
+/* Rede de segurança contra corte de texto em qualquer grade de cartões.
+   Item de grid nasce com min-width auto e, quando a trilha tem largura
+   mínima fixa (minmax), a palavra longa vaza a borda em vez de quebrar.
+   Isso aparecia no "modo desktop" do celular, onde a viewport fica em
+   ~980px e as colunas ficam bem mais estreitas do que no computador. */
+.stats > *, .grid > *, .awards > *, .portal-grid > *, .media-grid > *,
+.pub-grid > *, .topic-grid > *, .link-grid > *, .rc-grade > * { min-width: 0; }
+.stat span, .stat b, .pillar h3, .pillar p, .portal h3, .portal p,
+.award span, .award small, .media-card .title, .paper-card h3,
+.book-info h3, .topic-grid a, .rc-txt b, .rc-txt small, .rc-etapa b, .rc-etapa small,
+.lc-body b, .lc-body small { overflow-wrap: break-word; }
 
 .grid { display: grid; gap: 1.3rem; }
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
@@ -1223,7 +1248,42 @@ body.theme-verde   { --accent: var(--n-verde);   --accent-dark: var(--n-verde-da
 body.theme-azul    { --accent: var(--n-azul);    --accent-dark: var(--n-azul-dark);    --tint: var(--n-azul-bg); }
 body.theme-roxo    { --accent: var(--n-roxo-dark); --accent-dark: #8a4b00;              --tint: var(--n-roxo-bg); }
 body.theme-laranja { --accent: var(--n-laranja); --accent-dark: var(--n-laranja-dark); --tint: var(--n-laranja-bg); }
-body[class*="theme-"] .page-hero { background: var(--tint); }
+body[class*="theme-"] .page-hero {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 12%, transparent), transparent 78%),
+    var(--tint);
+}
+
+/* ---------- Cores de ação no modo escuro ----------
+   Medido: sobre o fundo escuro, as cores claras ficam entre 3,7 e 4,1 de
+   contraste — abaixo do mínimo de 4,5 para texto. Isso valia para o site
+   inteiro, não só para os temas: o azul padrão dava 4,12. Os valores abaixo
+   foram medidos um a um, contra o fundo (#131314) e contra o cartão
+   (#1e1f20), e todos passam nos dois.
+   O theme-teal ainda tinha um agravante: o --tint era um verde-água claro
+   fixo, sem versão escura, então a faixa do título ficava clara no modo
+   escuro e o título sumia nela (1,14 de contraste). */
+:root[data-theme="dark"] { --accent: #8ab4f8; --accent-dark: #aecbfa; }
+:root[data-theme="dark"] body.theme-teal    { --accent: #35b3c2; --accent-dark: #5bc7d4; --tint: #102a2e; }
+:root[data-theme="dark"] body.theme-verde   { --accent: #5bb974; --accent-dark: #81c995; }
+:root[data-theme="dark"] body.theme-azul    { --accent: #8ab4f8; --accent-dark: #aecbfa; }
+:root[data-theme="dark"] body.theme-roxo    { --accent: #fdd663; --accent-dark: #fde293; }
+:root[data-theme="dark"] body.theme-laranja { --accent: #f28b82; --accent-dark: #f6aea9; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --accent: #8ab4f8; --accent-dark: #aecbfa; }
+  :root:not([data-theme="light"]) body.theme-teal    { --accent: #35b3c2; --accent-dark: #5bc7d4; --tint: #102a2e; }
+  :root:not([data-theme="light"]) body.theme-verde   { --accent: #5bb974; --accent-dark: #81c995; }
+  :root:not([data-theme="light"]) body.theme-azul    { --accent: #8ab4f8; --accent-dark: #aecbfa; }
+  :root:not([data-theme="light"]) body.theme-roxo    { --accent: #fdd663; --accent-dark: #fde293; }
+  :root:not([data-theme="light"]) body.theme-laranja { --accent: #f28b82; --accent-dark: #f6aea9; }
+}
+/* botão principal: com a cor de ação clara, o texto branco deixa de servir */
+:root[data-theme="dark"] .btn-primary,
+:root[data-theme="dark"] .rc-festa { color: #10233b; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .btn-primary,
+  :root:not([data-theme="light"]) .rc-festa { color: #10233b; }
+}
 body[class*="theme-"] .childlist a:hover { background: var(--tint); }
 body[class*="theme-"] .topic-grid a:hover { background: var(--tint); box-shadow: none; }
 
@@ -1302,6 +1362,23 @@ body[class*="theme-"] .topic-grid a:hover { background: var(--tint); box-shadow:
 .recepcao::before {
   content: ''; position: absolute; inset: 0; z-index: -1;
   border-radius: inherit; background: var(--glass-sheen); pointer-events: none;
+}
+/* No escuro o halo amarelo sobre o vidro escuro lê como barro. Aqui os dois
+   halos saem da própria cor do tema, que já é clara no escuro. */
+:root[data-theme="dark"] .recepcao,
+:root[data-theme="dark"] body.theme-teal .recepcao {
+  background:
+    radial-gradient(120% 90% at 12% 0%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 62%),
+    radial-gradient(100% 80% at 92% 8%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 60%),
+    var(--glass-tint-strong);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .recepcao {
+    background:
+      radial-gradient(120% 90% at 12% 0%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 62%),
+      radial-gradient(100% 80% at 92% 8%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 60%),
+      var(--glass-tint-strong);
+  }
 }
 
 .rc-topo { text-align: center; max-width: 62ch; margin: 0 auto 2.4rem; }
@@ -1454,9 +1531,9 @@ body[class*="theme-"] .topic-grid a:hover { background: var(--tint); box-shadow:
 
 /* verde da marca do sistema — vive só nesta página e na logo */
 body.theme-nucleo { --accent: #0d9488; --accent-dark: #0b7c72; --tint: #e2f5f2; --ink-band: #0d9488; }
-:root[data-theme="dark"] body.theme-nucleo { --tint: #10312f; }
+:root[data-theme="dark"] body.theme-nucleo { --accent: #2dd4bf; --accent-dark: #5eead4; --tint: #10312f; --ink-band: #0f766e; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) body.theme-nucleo { --tint: #10312f; }
+  :root:not([data-theme="light"]) body.theme-nucleo { --accent: #2dd4bf; --accent-dark: #5eead4; --tint: #10312f; --ink-band: #0f766e; }
 }
 
 .ep-hero { display: grid; grid-template-columns: 1fr; gap: 2.4rem; align-items: center; }

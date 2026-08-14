@@ -773,7 +773,7 @@ sub recepcao_html {
         ['lattes',    'article',      'Lattes',           'O currículo oficial brasileiro'],
         ['scholar',   'school',       'Google Scholar',   'A vitrine pública da sua produção'],
         ['drive',     'folder_open',  'Google Drive',     'Onde ficam os materiais do grupo'],
-        ['classroom', 'assignment',   'Google Classroom', 'A fonte única das suas tarefas'],
+        ['nucleo',    'hub',          'Núcleo EP',        'Peça seu acesso à coordenação'],
     );
     my $total = scalar @passos;
     my $itens = '';

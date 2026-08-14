@@ -14,7 +14,7 @@ Prefere abrir em outra aba? [Manual do membro](https://docs.google.com/document/
 
 Tem alguma dúvida sobre o grupo de pesquisa? Pergunte à SANTA-IA, a assistente de inteligência artificial da Escola de Pacientes:
 
-[Perguntar à SANTA-IA](https://g.co/gemini/share/131babc1b9d3h)
+[Perguntar à SANTA-IA](https://gemini.google.com/gem/195Dhc1mNblmVY_HEae-SEvgucdhj1P2M?usp=sharing)
 
 🎬 IAS — NOTEBOOK LM
 
@@ -89,19 +89,35 @@ Materiais do próprio grupo que se conectam a esta etapa: [triagem de artigos no
 2) DEFINIÇÃO E GESTÃO DE TEMAS — PIPELINE DO GRUPO
 
 - Quem define o tema final? O professor define os temas centrais, mas os membros podem sugerir temas complementares. A proposta precisa estar alinhada ao projeto e ser validada pela coordenação, que decide o tema final.
-- Quando o tema vira "trabalho oficial"? A demanda é movida por prazos de congressos e editais. O trabalho só se torna oficial (gerando pontuação e direito a coautoria) quando é listado na Tabela Mestra. A partir daí, os temas são distribuídos em grupos ou solo, e a rotina alterna entre checkpoints coletivos (informes rápidos via WhatsApp) e a escrita ativa no Google Docs e Classroom.
+- Quando o tema vira "trabalho oficial"? A demanda é movida por prazos de congressos e editais. O trabalho só se torna oficial (gerando pontuação e direito a coautoria) quando é listado na Tabela Mestra. A partir daí, os temas são distribuídos em grupos ou solo, e a rotina alterna entre checkpoints coletivos (informes rápidos via WhatsApp), a escrita ativa no Google Docs e o acompanhamento de prazos no Núcleo EP.
 - Trabalho coletivo vs. "contrato" individual: nossa dinâmica separa Decisão (coletiva) de Execução (individual). O planejamento e os prazos são alinhados em grupo, mas o seu "contrato" de entrega é pessoal: você deve cumprir as tarefas técnicas da sua função (ex.: triagem, extração ou escrita). Como a pontuação é individual, o seu nome no artigo depende da sua entrega específica — seu reconhecimento não é prejudicado pelo desempenho de terceiros.
 
 3) PLANEJAMENTO SEMANAL E ACOMPANHAMENTO
 
-- Onde encontro minhas tarefas? O Google Classroom é a fonte única de verdade para tarefas e prazos. WhatsApp e e-mail são canais de apoio para avisos e alertas.
+- Onde encontro minhas tarefas? O Núcleo EP é a fonte única de verdade para tarefas e prazos: ao entrar, você vê o que é seu, o que está vencendo e o próximo passo de cada projeto. WhatsApp e e-mail são canais de apoio para avisos e alertas.
 - Como acompanho minha pontuação? A pontuação é atualizada constantemente pelo professor, que envia o extrato de forma proativa via WhatsApp privado. A transparência é total: você pode solicitar seu status ao professor ou à coordenação a qualquer momento.
 
 4) FERRAMENTAS E CONTAS — SETUP PRÁTICO
 
-- Qual ferramenta para qual etapa? Não há ferramenta fixa; varia conforme o projeto. Em geral: Google Drive (organização), Google Docs (escrita) e Google Classroom (atividades). Zotero ou Mendeley para referências; Lattes, Google Scholar e ORCID para currículo. Se o professor indicar uma ferramenta específica, siga a orientação.
+- Qual ferramenta para qual etapa? Não há ferramenta fixa; varia conforme o projeto. Em geral: Google Drive (organização), Google Docs (escrita) e Núcleo EP (projetos, prazos e demandas). Zotero ou Mendeley para referências; Lattes, Google Scholar e ORCID para currículo. Se o professor indicar uma ferramenta específica, siga a orientação.
 - Zotero ou Mendeley? Pode usar qualquer um. A padronização final deve seguir exatamente o que o edital ou periódico exige (estilo de citação e referências) — confira as normas antes da submissão.
-- Checklist de onboarding — obrigatório: ORCID, Lattes e Google Scholar atualizados, além de acesso ao Google Drive e Google Classroom. Outras ferramentas dependem do projeto.
+- Checklist de onboarding — obrigatório: ORCID, Lattes e Google Scholar atualizados, além de acesso ao Google Drive e ao Núcleo EP. Outras ferramentas dependem do projeto.
+
+🔑 NÚCLEO EP — PEÇA SEU ACESSO LOGO NO PRIMEIRO DIA
+
+O Núcleo EP é o sistema próprio da Escola de Pacientes DF, e é onde a sua vida no grupo acontece: os projetos, os prazos, quem é responsável por cada tarefa e as oportunidades acadêmicas abertas — editais, prêmios e congressos — ficam todos ali, em um lugar só. Ele substituiu as planilhas soltas e o **Google Classroom, que o grupo não usa mais**. Se alguém te mandar procurar tarefa no Classroom, é informação antiga.
+
+Como pedir o seu acesso: **não existe cadastro público** — as contas são criadas pela coordenação, uma a uma. Então esse é um passo que depende de você dar o primeiro sinal:
+
+- Passo 1 — Peça o acesso: fale com a coordenação ou com o professor (pelo WhatsApp do grupo mesmo) e diga que você entrou agora e precisa do acesso ao Núcleo EP.
+- Passo 2 — Informe o seu e-mail: o login é por e-mail e senha, então diga qual e-mail você usa no dia a dia — é nele que a conta será criada. Use o mesmo e-mail do Google Drive, para não misturar.
+- Passo 3 — Entre e olhe a sua área: ao acessar pela primeira vez, vá em "Minha área". É a sua tela — ela mostra o que é seu, o que já venceu, o que vence esta semana e o próximo passo de cada projeto de que você participa.
+- Passo 4 — Crie o hábito: abra o Núcleo EP no começo de cada semana. Em caso de dúvida sobre prazo, o que vale é o que está registrado e datado lá.
+
+Não fique esperando ser chamado(a): enquanto o acesso não sai, você não enxerga os prazos do grupo. Pedir leva um minuto e é o que destrava o resto.
+
+- [Conheça o Núcleo EP por dentro, tela por tela](/nucleo-ep)
+- Acessar o Núcleo EP (para quem já tem login): [https://adm-epdf.vercel.app](https://adm-epdf.vercel.app)
 
 🧰 GUIA PRÁTICO DE FERRAMENTAS
 
@@ -140,9 +156,9 @@ Depois de criar as três contas, junte tudo: coloque o link do ORCID e do Google
 
 5) FLUXO COMPLETO DO ARTIGO E ESCRITA CIENTÍFICA
 
-- Da ideia à publicação: o fluxo começa com a definição do tema pelo professor, geralmente ligado à Atenção Primária, com mini-guia orientando a escrita. A produção ocorre de forma individual ou em grupo. O acompanhamento acontece por checkpoints e atividades no Classroom. A revisão é contínua, feita pelos alunos e pelo professor. Ao final, todos os membros revisam integralmente o material antes da submissão. A contribuição ao longo do processo influencia a coautoria.
+- Da ideia à publicação: o fluxo começa com a definição do tema pelo professor, geralmente ligado à Atenção Primária, com mini-guia orientando a escrita. A produção ocorre de forma individual ou em grupo. O acompanhamento acontece por checkpoints e pelas demandas registradas no Núcleo EP. A revisão é contínua, feita pelos alunos e pelo professor. Ao final, todos os membros revisam integralmente o material antes da submissão. A contribuição ao longo do processo influencia a coautoria.
 - Estrutura básica de um artigo: IMRaD — Introdução, Método, Resultados e Discussão. A conclusão pode aparecer ao final da Discussão ou como seção separada, conforme o periódico.
-- Entregáveis por fase: variam conforme o projeto. Em geral os materiais já são fornecidos pelo professor ou estão no Drive, e os membros atuam na leitura, análise e escrita. Tudo é organizado no Classroom e acompanhado até a submissão.
+- Entregáveis por fase: variam conforme o projeto. Em geral os materiais já são fornecidos pelo professor ou estão no Drive, e os membros atuam na leitura, análise e escrita. Tudo é organizado no Núcleo EP e acompanhado até a submissão.
 - Onde ficam os modelos: no Google Drive do projeto (templates, checklist PRISMA, exemplos de artigos do grupo). O acesso é disponibilizado conforme o andamento.
 
 6) LEITURA CRÍTICA E ORGANIZAÇÃO DO CONHECIMENTO
@@ -162,10 +178,10 @@ Depois de criar as três contas, junte tudo: coloque o link do ORCID e do Google
 
 ❓ FAQ FIXA — RESUMO RÁPIDO
 
-- 1. Tarefas da semana: a fonte única de verdade é o Google Classroom; o WhatsApp serve para alertas. Em divergência, vale o que está postado e datado no Classroom.
+- 1. Tarefas da semana: a fonte única de verdade é o Núcleo EP; o WhatsApp serve para alertas. Em divergência, vale o que está registrado e datado no Núcleo EP.
 - 2. Temas: você pode propor, a decisão final é do professor, e o tema entra no fluxo quando alinhado aos prazos de congressos.
-- 3. Pontuação/coautoria: o professor atualiza e envia o extrato via WhatsApp privado. Pontuam: entregas no Classroom, presença em checkpoints e participações em atas. Pontos garantem a vaga na coautoria.
-- 4. Ferramentas: não há padrão único; siga o definido em cada tarefa. O foco é o resultado entregue no Classroom.
+- 3. Pontuação/coautoria: o professor atualiza e envia o extrato via WhatsApp privado. Pontuam: entregas no Núcleo EP, presença em checkpoints e participações em atas. Pontos garantem a vaga na coautoria.
+- 4. Ferramentas: não há padrão único; siga o definido em cada tarefa. O foco é o resultado entregue no Núcleo EP.
 - 5. IA: pode para reescrever, corrigir, resumir e formatar; proibido gerar texto final sem revisão, inventar dados ou buscar bibliografia. Revisão humana obrigatória e uso declarado.
 
 📐 NORMAS ABNT E PADRONIZAÇÃO

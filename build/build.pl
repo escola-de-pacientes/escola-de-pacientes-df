@@ -508,7 +508,7 @@ sub page_shell {
     my $head_extra = $a{head_extra} // '';
     my $body_class = $a{body_class} ? qq{ class="$a{body_class}"} : '';
     my $canon = $a{canon} // $SITE_URL;
-    my $ogimg = "$SITE_URL/assets/img/og-card.jpg";
+    my $ogimg = "$SITE_URL/assets/img/og-card-v2.jpg";
     return <<HTML;
 <!DOCTYPE html>
 <html lang="pt-BR">

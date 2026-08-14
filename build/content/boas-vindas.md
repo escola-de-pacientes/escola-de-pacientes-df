@@ -1,107 +1,61 @@
 # Boas-vindas
 
-Esta página é o seu ponto de partida. Aqui está tudo que você precisa para conhecer o grupo, entender como ele funciona no dia a dia e dar os primeiros passos com segurança. Leia com calma — e volte sempre que surgir uma dúvida.
+Se você nunca participou de um grupo de pesquisa, esta página foi escrita para você. Ela está em etapas, na ordem em que as coisas realmente acontecem: primeiro entender onde você entrou, depois deixar seus acessos prontos, depois entender como o grupo funciona — e só então os tipos de trabalho e a escrita.
+
+Não precisa ler tudo hoje. Leia as Etapas 1 e 2, faça o que a Etapa 3 pede, e volte às outras quando a sua vez chegar. Ninguém aqui espera que você saiba nada disso no primeiro dia — todo mundo que está no grupo começou exatamente onde você está agora.
+
+## ETAPA 1 — ONDE VOCÊ ENTROU
+
+🏛️ SOBRE O GRUPO
+
+A Escola de Pacientes DF é um grupo de atividades acadêmicas — ensino, pesquisa e extensão — ativo desde 2016, vinculado à UnB e à rede da SES-DF, sob orientação do [Prof. Dr. Estêvão Cubas Rolim](/dr-estevao-rolim). Na prática, o grupo faz duas coisas ligadas entre si: leva educação em saúde para pacientes e profissionais do SUS, e transforma essa experiência em trabalhos científicos.
+
+Conheça a [equipe](/equipe), os [projetos](/receita-simples) e os portais por público: [Pacientes](/para-pacientes), [Estudantes](/para-estudantes), [Pesquisadores](/para-pesquisadores) e [Profissionais](/para-profissionais).
 
 📘 MANUAL DO MEMBRO
 
-Um guia completo para entender o funcionamento da Escola de Pacientes!
+Este é o documento mais importante para quem está chegando: explica, com calma e em detalhe, como a Escola de Pacientes funciona no dia a dia. Se você só tiver tempo para uma leitura, que seja esta.
 
 [EMBED: Document, Manual do membro — Escola de Pacientes](https://docs.google.com/document/d/1CEBbe9gZFT8h4YCmZVrm6SJoJWOO6WBeNsJBvfuaKsE/preview)
 
 Prefere abrir em outra aba? [Manual do membro](https://docs.google.com/document/d/1CEBbe9gZFT8h4YCmZVrm6SJoJWOO6WBeNsJBvfuaKsE/edit?usp=sharing)
 
-🤖 SANTA-IA
+🤖 SANTA-IA — TIRE DÚVIDAS A QUALQUER HORA
 
-Tem alguma dúvida sobre o grupo de pesquisa? Pergunte à SANTA-IA, a assistente de inteligência artificial da Escola de Pacientes:
+Ficou com uma dúvida boba e não quer incomodar ninguém? Não existe dúvida boba, mas existe pressa: a SANTA-IA é a assistente de inteligência artificial do grupo e responde na hora, com base nas informações da Escola de Pacientes.
 
 [Perguntar à SANTA-IA](https://gemini.google.com/gem/195Dhc1mNblmVY_HEae-SEvgucdhj1P2M?usp=sharing)
 
-🎬 IAS — NOTEBOOK LM
+## ETAPA 2 — O MUNDO DA PESQUISA EM 5 MINUTOS
 
-Vídeo explicando um pouco mais sobre o Notebook LM e como usá-lo nos estudos do grupo:
+Antes de qualquer ferramenta ou prazo, vale entender o vocabulário. Quase todo mundo que chega trava não por falta de capacidade, mas porque as pessoas ao redor usam palavras que ninguém parou para explicar. Estas são elas.
 
-[EMBED: YouTube Video, Notebook LM — Escola de Pacientes](https://www.youtube.com/embed/vo6RrBsR-A0)
+🔤 O VOCABULÁRIO QUE VOCÊ VAI OUVIR
 
-🏛️ SOBRE O GRUPO
+- **Pesquisa** — investigar uma pergunta de forma organizada e registrada, de um jeito que outra pessoa possa conferir o caminho que você fez. É isso, no fundo: pergunta clara, método explícito, resultado honesto.
+- **Artigo científico** — o texto que apresenta um estudo completo. É a produção mais valorizada e a que leva mais tempo.
+- **Periódico (ou revista científica)** — a publicação onde os artigos saem. "Publicar em uma revista" quer dizer ter o seu artigo aceito por ela.
+- **Revisão por pares** — antes de aceitar, a revista envia o seu texto a outros pesquisadores, que avaliam e pedem correções. É por isso que demora — e é justamente por isso que um artigo publicado tem valor.
+- **Congresso** — evento em que se apresentam trabalhos, geralmente em formato curto. É quase sempre a primeira experiência de quem chega ao grupo.
+- **Resumo** — a versão curta de um trabalho, enviada para congressos. É por aqui que você provavelmente vai começar.
+- **Coautoria** — ter o seu nome na lista de autores do trabalho. Depende do que você efetivamente entregou (mais sobre isso na Etapa 4).
+- **DOI** — uma espécie de "CPF" do artigo: um código que leva sempre até ele, mesmo que o site da revista mude.
+- **ISSN** — o código que identifica a revista (não o artigo).
+- **Edital** — chamada pública com prazo, para inscrever trabalhos, concorrer a prêmio ou pedir bolsa. Boa parte do ritmo do grupo é ditada por eles.
+- **Atenção Primária** — a porta de entrada do SUS: UBS, saúde da família, o atendimento do dia a dia. É o campo da maior parte dos nossos trabalhos.
+- **Tabela Mestra** — a lista oficial dos trabalhos do grupo. Enquanto um tema não entra nela, ele ainda não é um trabalho oficial.
+- **IMRaD** — a estrutura padrão de um artigo: Introdução, Método, Resultados e Discussão. Detalhada na Etapa 6.
+- **PICO** — um jeito de organizar uma pergunta de pesquisa em quatro partes: população, intervenção, comparação e desfecho (o resultado que você quer medir).
+- **Triagem** — ler títulos e resumos de muitos artigos para separar os que entram no estudo dos que não entram. Costuma ser a primeira tarefa técnica de quem chega.
+- **Extração** — depois da triagem, copiar de cada artigo escolhido os dados que serão comparados.
 
-A Escola de Pacientes DF é um grupo de atividades acadêmicas — ensino, pesquisa e extensão — ativo desde 2016, vinculado à UnB e à rede da SES-DF, sob orientação do [Prof. Dr. Estêvão Cubas Rolim](/dr-estevao-rolim). Conheça a [equipe](/equipe), os [projetos](/receita-simples) e os portais por público: [Pacientes](/para-pacientes), [Estudantes](/para-estudantes), [Pesquisadores](/para-pesquisadores) e [Profissionais](/para-profissionais).
+🎯 POR QUE ISSO VALE O SEU TEMPO
 
-🏆 FLUXO PÓS-ARTIGO — PUBLICAÇÃO EM REVISTA
+Participar de pesquisa na graduação muda o seu currículo e a sua cabeça. Na prática, você sai daqui com trabalhos publicados com o seu nome, experiência real de método científico, apresentações em congresso e um currículo que pesa em processo seletivo, bolsa e residência. E aprende a ler um artigo com desconfiança saudável — o que serve para o resto da vida profissional, mesmo que você nunca mais escreva um.
 
-1) O QUE CONFERIR ASSIM QUE O ARTIGO FOR PUBLICADO
+## ETAPA 3 — SUA PRIMEIRA SEMANA: DEIXE OS ACESSOS PRONTOS
 
-- Título final do artigo
-- Nome da revista
-- Ano, volume, número e páginas (ou e-location)
-- DOI
-- ISSN da revista
-
-Use sempre os dados exatamente como aparecem no site da revista.
-
-2) ATUALIZAÇÃO DO CURRÍCULO LATTES — PASSO A PASSO
-
-- Passo 1 — Abrir o Currículo Lattes: acesse o Lattes e clique em Produções.
-- Passo 2 — Incluir o artigo: vá em Produções → Artigos publicados na íntegra.
-- Passo 3 — Preencher os dados da revista: informe o ISSN (ex.: 2525-8761), ano de publicação, volume e número (ex.: Vol. 11 No. 12, 2025) e a seção quando aplicável (ex.: Original Papers).
-- Passo 4 — Informações do artigo: número de páginas ou e-location (ex.: e84839), palavras-chave e áreas do conhecimento. Confira a ordem e grafia dos autores.
-- Passo 5 — Finalizar: salve o registro no Lattes.
-
-3) REFERÊNCIA DO ARTIGO — MODELO DE CONFERÊNCIA
-
-Use a referência publicada pela revista como base para checagem: Rolim, E. C., Campos, A. C. M., Lima, E. da S., & Oliveira, J. L. A. de. (2025). O canal YouTube da Escola de Pacientes DF como estratégia digital de educação permanente em saúde: análise documental e indicadores de uso. Brazilian Journal of Development, 11(12), e84839. [https://doi.org/10.34117/bjdv11n12-087](https://doi.org/10.34117/bjdv11n12-087) — a referência não é colada no Lattes, mas ajuda a evitar erros de preenchimento.
-
-4) ORGANIZAÇÃO PESSOAL — RECOMENDADO
-
-- Organize no Drive uma pasta específica com: PDF final do artigo, comprovante de publicação e print ou página do DOI.
-- Evite acumular publicações sem registro: o ideal é atualizar o Lattes sempre que um artigo for publicado ou, no máximo, uma vez por semestre. Quando deixa acumular, a atualização vira retrabalho; fazendo aos poucos, fica rápido e organizado.
-- Sempre confira sua caixa de e-mail (inclusive SPAM): muitas vezes a confirmação da sua publicação foi enviada e se "perdeu" na caixa de entrada. Fique atento!
-
-🧭 GUIA DO GRUPO DE PESQUISA — DÚVIDAS FREQUENTES
-
-1) FUNDAMENTOS DE PESQUISA E TIPOS DE ESTUDO
-
-- O que é uma revisão sistemática? É um tipo de estudo que reúne, analisa e organiza pesquisas já publicadas sobre uma pergunta específica, seguindo um método rigoroso e transparente.
-- Resumo Simples — texto curto focado em congressos e eventos, ideal para comunicações rápidas.
-- Resumo Expandido — texto detalhado (3 a 5 páginas) com referências e análise preliminar; funciona como um "mini-artigo".
-- Artigo Completo — produção profunda e definitiva para publicação em revistas científicas (periódicos).
-- Scoping Review (Revisão de Escopo) — mapeia os conceitos principais de uma área e identifica lacunas na literatura; é mais ampla que a sistemática.
-- Systematic Review (Revisão Sistemática) — focada em responder uma pergunta clínica ou assistencial específica com alto rigor metodológico.
-- Relato de Experiência — descreve uma vivência prática (como uma ação da Escola de Pacientes), refletindo sobre os desafios e aprendizados da equipe.
-- Relato de Caso — foca na descrição detalhada de um caso clínico específico, devido à sua raridade ou forma de manejo.
-- Como decidir o método para cada pergunta: quero apresentar em congresso → resumo simples/expandido · quero mapear um tema amplo → revisão de escopo · quero responder uma pergunta específica com evidência forte → revisão sistemática · aplicação prática de uma tecnologia → relato de experiência · descrição de um caso clínico específico → relato de caso.
-
-🔬 COMO FAZER CADA TIPO DE ESTUDO — GUIAS PASSO A PASSO
-
-Saber o que é cada método é o primeiro passo; o segundo é saber executá-lo. Cada tipo de estudo tem um **guia internacional de referência** que lista, item por item, o que precisa constar. Use o guia desde o começo, não só na hora de escrever: ele funciona como roteiro do trabalho inteiro.
-
-- [EQUATOR Network — comece por aqui: índice de guias por tipo de estudo](https://www.equator-network.org/)
-- [PRISMA — revisão sistemática e revisão de escopo (PRISMA-ScR)](https://www.prisma-statement.org/)
-- [Cochrane Handbook — revisão sistemática, o método capítulo a capítulo](https://training.cochrane.org/handbook)
-- [JBI Manual — revisão de escopo e outras sínteses de evidência](https://synthesismanual.jbi.global/)
-- [CARE — relato de caso: o que descrever e em que ordem](https://www.care-statement.org/)
-- [COREQ — pesquisa qualitativa: entrevistas e grupos focais](https://www.equator-network.org/reporting-guidelines/coreq/)
-- [STROBE — estudos observacionais: coorte, caso-controle e transversal](https://www.strobe-statement.org/)
-
-Como usar na prática: escolha o guia do seu tipo de estudo, baixe o checklist, e vá preenchendo conforme avança. Na submissão, muitas revistas pedem esse checklist preenchido como anexo — quem seguiu desde o início já entrega pronto.
-
-Materiais do próprio grupo que se conectam a esta etapa: [triagem de artigos no Rayyan](/rayyan-revisao-de-literatura), [onde buscar referências](/ciencia-onde-buscar-referencias), [banco de citações](/ciencia-banco-de-citacoes) e [pesquisa participativa (CBPR)](/cbpr-pesquisa-participativa-baseada-na-comunidade).
-
-2) DEFINIÇÃO E GESTÃO DE TEMAS — PIPELINE DO GRUPO
-
-- Quem define o tema final? O professor define os temas centrais, mas os membros podem sugerir temas complementares. A proposta precisa estar alinhada ao projeto e ser validada pela coordenação, que decide o tema final.
-- Quando o tema vira "trabalho oficial"? A demanda é movida por prazos de congressos e editais. O trabalho só se torna oficial (gerando pontuação e direito a coautoria) quando é listado na Tabela Mestra. A partir daí, os temas são distribuídos em grupos ou solo, e a rotina alterna entre checkpoints coletivos (informes rápidos via WhatsApp), a escrita ativa no Google Docs e o acompanhamento de prazos no Núcleo EP.
-- Trabalho coletivo vs. "contrato" individual: nossa dinâmica separa Decisão (coletiva) de Execução (individual). O planejamento e os prazos são alinhados em grupo, mas o seu "contrato" de entrega é pessoal: você deve cumprir as tarefas técnicas da sua função (ex.: triagem, extração ou escrita). Como a pontuação é individual, o seu nome no artigo depende da sua entrega específica — seu reconhecimento não é prejudicado pelo desempenho de terceiros.
-
-3) PLANEJAMENTO SEMANAL E ACOMPANHAMENTO
-
-- Onde encontro minhas tarefas? O Núcleo EP é a fonte única de verdade para tarefas e prazos: ao entrar, você vê o que é seu, o que está vencendo e o próximo passo de cada projeto. WhatsApp e e-mail são canais de apoio para avisos e alertas.
-- Como acompanho minha pontuação? A pontuação é atualizada constantemente pelo professor, que envia o extrato de forma proativa via WhatsApp privado. A transparência é total: você pode solicitar seu status ao professor ou à coordenação a qualquer momento.
-
-4) FERRAMENTAS E CONTAS — SETUP PRÁTICO
-
-- Qual ferramenta para qual etapa? Não há ferramenta fixa; varia conforme o projeto. Em geral: Google Drive (organização), Google Docs (escrita) e Núcleo EP (projetos, prazos e demandas). Zotero ou Mendeley para referências; Lattes, Google Scholar e ORCID para currículo. Se o professor indicar uma ferramenta específica, siga a orientação.
-- Zotero ou Mendeley? Pode usar qualquer um. A padronização final deve seguir exatamente o que o edital ou periódico exige (estilo de citação e referências) — confira as normas antes da submissão.
-- Checklist de onboarding — obrigatório: ORCID, Lattes e Google Scholar atualizados, além de acesso ao Google Drive e ao Núcleo EP. Outras ferramentas dependem do projeto.
+Esta é a única etapa que pede ação imediata. São cinco itens — os mesmos do checklist no topo desta página. Enquanto eles não estiverem prontos, você não consegue receber tarefa nem aparecer como autor em lugar nenhum.
 
 🔑 NÚCLEO EP — PEÇA SEU ACESSO LOGO NO PRIMEIRO DIA
 
@@ -119,16 +73,13 @@ Não fique esperando ser chamado(a): enquanto o acesso não sai, você não enxe
 - [Conheça o Núcleo EP por dentro, tela por tela](/nucleo-ep)
 - Acessar o Núcleo EP (para quem já tem login): [https://adm-epdf.vercel.app](https://adm-epdf.vercel.app)
 
-🧰 GUIA PRÁTICO DE FERRAMENTAS
+🪪 AS TRÊS CONTAS ACADÊMICAS — PARA QUE SERVE CADA UMA
 
-- Lattes — principal currículo acadêmico: [https://abre.ai/lattesss](https://abre.ai/lattesss)
-- ORCID — identificador acadêmico; manter atualizado regularmente: [https://orcid.org](https://orcid.org)
-- Google Scholar — organizar e mostrar sua produção acadêmica: [https://scholar.google.com](https://scholar.google.com)
-- CAFe — acesso institucional a artigos: [https://abre.ai/capes-cafe](https://abre.ai/capes-cafe)
-- Zotero / Mendeley — gerenciadores de referência (importar, organizar e citar)
-- Rayyan — triagem de artigos, útil e intuitiva: [https://abre.ai/rayann](https://abre.ai/rayann)
+Todo pesquisador mantém três cadastros, e eles não são a mesma coisa. O **Lattes** é o currículo oficial brasileiro, exigido por editais e bolsas. O **ORCID** é um número que identifica você para sempre, em qualquer país e revista, mesmo que mude de nome, de e-mail ou de instituição. O **Google Scholar** é a vitrine pública: é onde as pessoas encontram e citam o seu trabalho.
 
-As três contas do checklist de entrada — Lattes, ORCID e Google Scholar — servem a coisas diferentes e se complementam. O **Lattes** é o currículo oficial brasileiro, exigido por editais e bolsas. O **ORCID** é um número que identifica você para sempre, em qualquer país e revista, mesmo se você mudar de nome, de e-mail ou de instituição. O **Google Scholar** é a vitrine pública: é onde as pessoas encontram e citam o seu trabalho. O passo a passo do Lattes está mais acima; abaixo, os outros dois.
+Crie os três agora, ainda vazios. Parece inútil ter currículo sem nada dentro — mas quando sair a sua primeira publicação, você só precisa acrescentar uma linha, em vez de descobrir tudo isso com prazo correndo.
+
+- Lattes — o currículo acadêmico brasileiro, na plataforma do CNPq: [https://abre.ai/lattesss](https://abre.ai/lattesss)
 
 🆔 CRIAR E CONFIGURAR O ORCID — PASSO A PASSO
 
@@ -150,49 +101,130 @@ As três contas do checklist de entrada — Lattes, ORCID e Google Scholar — s
 - Passo 6 — Confirmar o e-mail institucional: valide pelo link recebido. Só depois dessa confirmação o perfil passa a ser indexado nas buscas.
 - Passo 7 — Adicionar o que faltou: se um artigo seu não aparecer sozinho, use "+ → Adicionar artigo manualmente" e preencha os dados exatamente como estão no site da revista.
 
-Depois de criar as três contas, junte tudo: coloque o link do ORCID e do Google Scholar na assinatura de e-mail e no seu Lattes. Assim qualquer pessoa — e qualquer avaliador de edital — chega à sua produção por um clique.
+Depois de criar as três, junte tudo: coloque o link do ORCID e do Google Scholar na assinatura de e-mail e no seu Lattes. Assim qualquer pessoa — e qualquer avaliador de edital — chega à sua produção com um clique.
 
 > As telas dessas ferramentas mudam de tempos em tempos. Se o nome de um botão estiver diferente, procure pela função descrita no passo — a ordem das etapas costuma se manter. Se travar em alguma parte, pergunte no grupo ou à SANTA-IA.
 
-5) FLUXO COMPLETO DO ARTIGO E ESCRITA CIENTÍFICA
+🧰 AS FERRAMENTAS DO DIA A DIA
 
-- Da ideia à publicação: o fluxo começa com a definição do tema pelo professor, geralmente ligado à Atenção Primária, com mini-guia orientando a escrita. A produção ocorre de forma individual ou em grupo. O acompanhamento acontece por checkpoints e pelas demandas registradas no Núcleo EP. A revisão é contínua, feita pelos alunos e pelo professor. Ao final, todos os membros revisam integralmente o material antes da submissão. A contribuição ao longo do processo influencia a coautoria.
-- Estrutura básica de um artigo: IMRaD — Introdução, Método, Resultados e Discussão. A conclusão pode aparecer ao final da Discussão ou como seção separada, conforme o periódico.
-- Entregáveis por fase: variam conforme o projeto. Em geral os materiais já são fornecidos pelo professor ou estão no Drive, e os membros atuam na leitura, análise e escrita. Tudo é organizado no Núcleo EP e acompanhado até a submissão.
-- Onde ficam os modelos: no Google Drive do projeto (templates, checklist PRISMA, exemplos de artigos do grupo). O acesso é disponibilizado conforme o andamento.
+Não há ferramenta obrigatória para tudo: varia conforme o projeto, e se o professor indicar uma específica, siga a orientação. Em geral o grupo usa o Google Drive para organizar os arquivos, o Google Docs para escrever junto e o Núcleo EP para prazos e demandas. Além dessas, duas categorias aparecem em quase todo trabalho:
 
-6) LEITURA CRÍTICA E ORGANIZAÇÃO DO CONHECIMENTO
+- Zotero ou Mendeley — guardam suas referências e geram a lista de citações pronta. Pode usar qualquer um dos dois; o que importa é seguir, no fim, o estilo exigido pelo edital ou pela revista.
+- Rayyan — organiza a triagem de artigos de uma revisão, e é bem intuitivo: [https://abre.ai/rayann](https://abre.ai/rayann)
 
-- Destaques de artigos: selecionam de forma rápida e padronizada as informações essenciais de cada leitura — PICO (população, intervenção, comparação, desfecho), métodos, resultados principais, limitações e conclusão — para uso direto na escrita sem reler o artigo completo.
-- Banco de citações: fica no Google Drive do projeto, como repositório organizado de artigos em PDF/Docs, resumos e registros. A reutilização deve ser feita sem "colagem": leia, compreenda e reescreva com suas próprias palavras, mantendo a referência ao original.
-- Referências no texto: distribua ao longo do texto para sustentar cada ideia. Diretrizes para recomendações consolidadas, estudos primários para dados específicos, revisões para contextualização.
-- IA na leitura e síntese: use como apoio para compreender artigos, explicar trechos difíceis e estruturar ideias — sempre com leitura ativa e interpretação própria, como suporte e não substituição do processo intelectual.
+## ETAPA 4 — COMO O GRUPO FUNCIONA NO DIA A DIA
 
-7) USO DE INTELIGÊNCIA ARTIFICIAL — LIMITES E PADRÃO DO GRUPO
+📅 ONDE FICAM AS SUAS TAREFAS
 
-- Permitido: prompts estruturados para correção gramatical, sugestão de sinônimos, formatação de referências, resumo de artigos para estudo e extração de dados brutos de tabelas.
-- Não permitido: gerar texto final diretamente ("copiar e colar"), delegar a escrita de conclusões ou criar conteúdo sem base nos dados reais.
-- A regra do grupo: revisão humana obrigatória em 100% das sugestões. A IA sugere, você valida e assina embaixo.
-- Transparência: declare o uso de IA no manuscrito sempre que a ferramenta for utilizada para redigir partes do texto, analisar dados ou traduzir termos técnicos.
-- Contra alucinações: é proibido usar IA para busca bibliográfica; toda fonte citada deve ser conferida manualmente no documento original. Nunca use IA para interpretar resultados sem análise prévia sua.
+O Núcleo EP é a fonte única de verdade para tarefas e prazos: ao entrar, você vê o que é seu, o que está vencendo e o próximo passo de cada projeto. WhatsApp e e-mail servem para avisos e alertas — se houver divergência, vale o que está registrado e datado no sistema.
 
-❓ FAQ FIXA — RESUMO RÁPIDO
+🧩 COMO UM TEMA VIRA TRABALHO OFICIAL
 
-- 1. Tarefas da semana: a fonte única de verdade é o Núcleo EP; o WhatsApp serve para alertas. Em divergência, vale o que está registrado e datado no Núcleo EP.
-- 2. Temas: você pode propor, a decisão final é do professor, e o tema entra no fluxo quando alinhado aos prazos de congressos.
-- 3. Pontuação/coautoria: o professor atualiza e envia o extrato via WhatsApp privado. Pontuam: entregas no Núcleo EP, presença em checkpoints e participações em atas. Pontos garantem a vaga na coautoria.
-- 4. Ferramentas: não há padrão único; siga o definido em cada tarefa. O foco é o resultado entregue no Núcleo EP.
-- 5. IA: pode para reescrever, corrigir, resumir e formatar; proibido gerar texto final sem revisão, inventar dados ou buscar bibliografia. Revisão humana obrigatória e uso declarado.
+- Quem decide o tema: o professor define os temas centrais, e você pode sugerir temas complementares. A proposta precisa conversar com o projeto e ser validada pela coordenação, que dá a palavra final.
+- Quando ele vira oficial: o ritmo é ditado por prazos de congressos e editais. O trabalho só se torna oficial — gerando pontuação e direito a coautoria — quando entra na Tabela Mestra. A partir daí os temas são distribuídos, em grupo ou individualmente, e a rotina alterna entre checkpoints coletivos, a escrita no Google Docs e o acompanhamento de prazos no Núcleo EP.
 
-📐 NORMAS ABNT E PADRONIZAÇÃO
+🤝 A DECISÃO É COLETIVA, A ENTREGA É INDIVIDUAL
 
-Para garantir a qualidade acadêmica das publicações, todos os membros devem seguir as normas da ABNT:
+O planejamento e os prazos são combinados em grupo, mas o seu compromisso de entrega é pessoal: você cumpre as tarefas técnicas da sua função — triagem, extração ou escrita, por exemplo. Como a pontuação é individual, o seu nome no trabalho depende da sua entrega específica. Na prática, isso protege você: o seu reconhecimento não é prejudicado se outra pessoa atrasar.
 
-- [Guia completo para a elaboração de trabalhos acadêmicos (PUC-SP)](https://www.pucsp.br/sites/default/files/download/biblioteca/2025/manual-para-elaboracao-do-trabalho-academico-com-citacoes-e-referencias-em-padrao-abnt.pdf)
-- [Referências com nomes compostos, sobrenomes hispânicos e prefixos (ESPM)](https://normas-abnt.espm.br/index.php?title=Refer%C3%AAncia_(obrigat%C3%B3rio))
+🏅 PONTUAÇÃO E COAUTORIA
 
-🔑 ACESSO A PERIÓDICOS E CAPACITAÇÃO
+A pontuação é atualizada constantemente pelo professor, que envia o extrato de forma proativa por WhatsApp privado — e você pode pedir o seu status ao professor ou à coordenação quando quiser. Pontuam as entregas registradas no Núcleo EP, a presença em checkpoints e a participação em atas. São esses pontos que garantem a sua vaga na coautoria.
 
-- Acesso CAFe (Periódicos CAPES) — bases científicas com login institucional: [https://www.periodicos.capes.gov.br/index.php/acesso-cafe.html](https://www.periodicos.capes.gov.br/index.php/acesso-cafe.html)
-- Scopus Sources — revistas de maior impacto por área: [https://www.scopus.com/sources.uri](https://www.scopus.com/sources.uri)
-- Playlist de capacitação do grupo — escrita, métodos de pesquisa e orientações gerais: [Vídeos instrutivos no YouTube](https://youtube.com/playlist?list=PLK23gfoa5wbKZq0iZK_qWm-TVHj_wrRBO)
+## ETAPA 5 — OS TIPOS DE TRABALHO, DO MAIS SIMPLES AO MAIS COMPLETO
+
+Os formatos abaixo estão em ordem de esforço: os primeiros são por onde se começa, os últimos levam meses. Você não precisa dominar todos — precisa saber em qual o seu trabalho se encaixa.
+
+📊 OS FORMATOS
+
+- **Resumo simples** — texto curto, para congressos e eventos. É a porta de entrada mais comum.
+- **Resumo expandido** — versão detalhada, de 3 a 5 páginas, com referências e uma análise preliminar. Funciona como um "mini-artigo".
+- **Relato de experiência** — descreve uma vivência prática, como uma ação da Escola de Pacientes, refletindo sobre desafios e aprendizados da equipe.
+- **Relato de caso** — descreve em detalhe um caso clínico específico, em geral por ser raro ou por ter um manejo que ensina algo.
+- **Revisão de escopo (scoping review)** — mapeia os conceitos principais de um tema e mostra onde ainda faltam estudos. É mais ampla que a sistemática.
+- **Revisão sistemática** — reúne e analisa as pesquisas já publicadas sobre uma pergunta específica, com método rigoroso e transparente, para responder a essa pergunta com evidência forte.
+- **Artigo completo** — a produção mais profunda e definitiva, feita para publicar em revista científica.
+
+🧭 QUAL DELES É O SEU
+
+Deixe a sua pergunta escolher o formato: quero apresentar em congresso → resumo simples ou expandido · quero mapear um tema amplo → revisão de escopo · quero responder uma pergunta específica com evidência forte → revisão sistemática · quero mostrar uma prática que deu certo → relato de experiência · quero descrever um caso clínico → relato de caso.
+
+## ETAPA 6 — COMO SE ESCREVE UM TRABALHO
+
+🧱 A ESTRUTURA DE UM ARTIGO
+
+Quase todo artigo segue o IMRaD, quatro blocos na mesma ordem: **Introdução** (por que este estudo existe), **Método** (o que você fez, em detalhe suficiente para alguém repetir), **Resultados** (o que encontrou, sem interpretar) e **Discussão** (o que isso significa e como conversa com o que já se sabia). A conclusão pode fechar a discussão ou virar seção própria, conforme a revista pedir.
+
+🔄 DA IDEIA À PUBLICAÇÃO
+
+O caminho começa com a definição do tema pelo professor, quase sempre ligado à Atenção Primária, acompanhado de um mini-guia de escrita. A produção acontece sozinho ou em grupo, com acompanhamento por checkpoints e pelas demandas registradas no Núcleo EP. A revisão é contínua — de colegas e do professor — e, no fim, todos revisam o material inteiro antes da submissão. Quanto mais você contribui ao longo do caminho, maior é a sua participação como autor. Os modelos, checklists e exemplos de artigos do grupo ficam no Google Drive do projeto, liberados conforme o trabalho avança.
+
+📖 COMO LER E GUARDAR O QUE VOCÊ LÊ
+
+Ler artigo sem anotar é trabalho perdido: daqui a duas semanas você vai reler tudo de novo. O grupo usa um formato padrão de destaques — PICO, método, principais resultados, limitações e conclusão — que permite escrever depois sem reabrir o artigo inteiro. O material lido fica organizado no banco de citações do projeto, e a regra ao reaproveitar é simples: leia, entenda e reescreva com as suas palavras, sempre citando a fonte. Copiar e colar, nunca.
+
+- [Onde buscar referências](/ciencia-onde-buscar-referencias) — por onde procurar artigos
+- [Banco de citações](/ciencia-banco-de-citacoes) — como o grupo organiza o que já leu
+- [Rayyan — triagem de literatura](/rayyan-revisao-de-literatura) — o passo a passo da triagem
+- [Pesquisa participativa (CBPR)](/cbpr-pesquisa-participativa-baseada-na-comunidade) — a abordagem usada em parte dos projetos
+
+🎬 NOTEBOOK LM — UMA IA PARA ESTUDAR OS SEUS ARTIGOS
+
+[EMBED: YouTube Video, Notebook LM — Escola de Pacientes](https://www.youtube.com/embed/vo6RrBsR-A0)
+
+📐 NORMAS E GUIAS DE REFERÊNCIA
+
+Duas coisas diferentes: as **normas ABNT** dizem como formatar citações e referências; os **guias internacionais** dizem o que precisa constar em cada tipo de estudo. Use o guia do seu tipo de estudo desde o começo, como roteiro do trabalho — muitas revistas pedem o checklist preenchido junto com a submissão, e quem seguiu desde o início já entrega pronto.
+
+- [EQUATOR Network](https://www.equator-network.org/) — comece aqui: índice de guias por tipo de estudo
+- [PRISMA](https://www.prisma-statement.org/) — revisão sistemática e revisão de escopo
+- [Cochrane Handbook](https://training.cochrane.org/handbook) — revisão sistemática, capítulo a capítulo
+- [JBI Manual](https://synthesismanual.jbi.global/) — revisão de escopo e outras sínteses
+- [CARE](https://www.care-statement.org/) — relato de caso
+- [COREQ](https://www.equator-network.org/reporting-guidelines/coreq/) — pesquisa qualitativa
+- [STROBE](https://www.strobe-statement.org/) — estudos observacionais
+- [Normas ABNT — guia da PUC-SP](https://www.pucsp.br/sites/default/files/download/biblioteca/2025/manual-para-elaboracao-do-trabalho-academico-com-citacoes-e-referencias-em-padrao-abnt.pdf) — citações e referências
+- [ABNT — nomes compostos e sobrenomes estrangeiros](https://normas-abnt.espm.br/index.php?title=Refer%C3%AAncia_(obrigat%C3%B3rio)) — os casos que geram dúvida
+
+🔎 ONDE ENCONTRAR OS ARTIGOS
+
+- Acesso CAFe (Periódicos CAPES) — leia artigos pagos com o login da UnB: [https://www.periodicos.capes.gov.br/index.php/acesso-cafe.html](https://www.periodicos.capes.gov.br/index.php/acesso-cafe.html)
+- Scopus Sources — para conferir o peso de uma revista na sua área: [https://www.scopus.com/sources.uri](https://www.scopus.com/sources.uri)
+- Playlist de capacitação do grupo — escrita, métodos e orientações gerais: [Vídeos instrutivos no YouTube](https://youtube.com/playlist?list=PLK23gfoa5wbKZq0iZK_qWm-TVHj_wrRBO)
+
+## ETAPA 7 — INTELIGÊNCIA ARTIFICIAL: O QUE PODE E O QUE NÃO PODE
+
+A IA é bem-vinda como apoio e proibida como substituta. A regra do grupo cabe em uma frase: **a IA sugere, você confere e assina embaixo** — revisão humana em 100% das sugestões.
+
+- Pode: corrigir gramática, sugerir sinônimos, formatar referências, resumir artigos para você estudar, explicar trechos difíceis e organizar dados de tabelas.
+- Não pode: gerar o texto final para copiar e colar, escrever as conclusões por você ou criar conteúdo sem base nos dados reais.
+- Nunca para buscar bibliografia: modelos de IA inventam referências que parecem verdadeiras. Toda fonte citada tem de ser conferida por você no documento original.
+- Transparência: declare o uso de IA no trabalho sempre que ela ajudar a redigir partes do texto, analisar dados ou traduzir termos técnicos.
+
+## ETAPA 8 — DEPOIS QUE O TRABALHO É PUBLICADO
+
+Esta etapa é para daqui a alguns meses — quando sair a sua primeira publicação. Guarde o endereço e volte aqui na hora.
+
+📋 O QUE ANOTAR ASSIM QUE O ARTIGO SAIR
+
+Copie do site da revista, exatamente como está lá: título final, nome da revista, ano, volume, número e páginas (ou e-location), DOI e ISSN. Confira também a ordem e a grafia dos nomes dos autores.
+
+📄 LANÇAR A PUBLICAÇÃO NO LATTES
+
+No Lattes, vá em **Produções → Artigos publicados na íntegra** e preencha com os dados que você anotou: ISSN, ano, volume e número, páginas ou e-location, palavras-chave e áreas do conhecimento. Depois é só salvar. Use a referência publicada pela revista como gabarito de conferência — ela não é colada no Lattes, mas evita erro de preenchimento.
+
+Assim é uma referência pronta, de um artigo do próprio grupo — repare onde aparecem a revista, o ano, o volume, a e-location e o DOI: Rolim, E. C., Campos, A. C. M., Lima, E. da S., & Oliveira, J. L. A. de. (2025). O canal YouTube da Escola de Pacientes DF como estratégia digital de educação permanente em saúde: análise documental e indicadores de uso. Brazilian Journal of Development, 11(12), e84839. [https://doi.org/10.34117/bjdv11n12-087](https://doi.org/10.34117/bjdv11n12-087)
+
+🗂️ ORGANIZAÇÃO PESSOAL
+
+- Guarde no Drive uma pasta por artigo, com o PDF final, o comprovante de publicação e a página do DOI.
+- Atualize o Lattes assim que cada trabalho sair, ou no máximo uma vez por semestre. Acumulado vira retrabalho; aos poucos, leva minutos.
+- Confira o e-mail, inclusive o SPAM: a confirmação de publicação chega por lá e se perde com facilidade.
+
+## ETAPA 9 — DÚVIDAS RÁPIDAS
+
+- **Onde vejo o que tenho para fazer?** No Núcleo EP. O WhatsApp serve para alertas; em caso de divergência, vale o que está registrado e datado no sistema.
+- **Posso escolher meu tema?** Pode propor. A decisão final é do professor, e o tema entra no fluxo quando se alinha aos prazos de congressos e editais.
+- **Como eu viro coautor?** Entregando: as tarefas registradas no Núcleo EP, a presença em checkpoints e a participação em atas geram pontos, e os pontos garantem a vaga na coautoria.
+- **Preciso saber tudo de método antes de começar?** Não. Quase todo mundo começa pela triagem de artigos e vai aprendendo o resto no caminho, com o guia do tipo de estudo em mãos.
+- **Travei e não sei a quem perguntar.** Pergunte no grupo, à coordenação ou à SANTA-IA. Perguntar cedo é sempre mais barato do que refazer depois.

@@ -1760,21 +1760,67 @@ body.theme-simula { --accent: #5145cd; --accent-dark: #423ab0; --tint: #ecebfb; 
 .sp-actions { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.6rem; }
 .sp-note { font-size: .84rem; color: var(--muted); margin-top: 1rem; }
 
+/* ---------- O código da turma ----------
+   É a única coisa que o estudante precisa TER antes de começar, e estava em
+   letra miúda embaixo dos botões — lido só depois de esbarrar na trava.
+   Vira bloco, com o traço grosso que o Hub usa nos seus próprios símbolos. */
+.sp-chave {
+  display: flex; align-items: flex-start; gap: 1rem;
+  margin-top: 1.8rem; padding: 1.2rem 1.3rem;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  box-shadow: 5px 5px 0 color-mix(in srgb, var(--accent) 34%, transparent);
+}
+.sp-chave-ico {
+  flex: none; display: grid; place-items: center;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: #fdd663; border: 2px solid var(--ink);
+}
+.sp-chave-ico .msym { font-size: 22px; color: #202124; }
+:root[data-theme="dark"] .sp-chave-ico { border-color: #202124; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sp-chave-ico { border-color: #202124; } }
+.sp-chave-t { font-weight: 700; font-size: 1.05rem; letter-spacing: -.015em; color: var(--ink); }
+.sp-chave-p { font-size: .92rem; color: var(--muted); line-height: 1.5; margin-top: .25rem; }
+.sp-chave-nao { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
+.sp-chave-nao span {
+  padding: .2rem .6rem; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--soft-glass));
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  font-size: .78rem; font-weight: 600; color: var(--ink);
+}
+@media (max-width: 560px) { .sp-chave { padding: 1.1rem; gap: .8rem; } }
+
 /* o traço do símbolo é currentColor, e aqui ele recebe a cor de ação da
    página — assim o símbolo clareia junto com o resto no modo escuro, em vez
    de ficar num índigo fixo que some contra a faixa escura do título */
 .sp-logo { display: inline-flex; align-items: center; gap: .6rem; color: var(--accent); }
-.sp-logo > span { color: var(--ink); }
 .sp-logo svg { width: 34px; height: 34px; flex: none; }
+/* o traço sob o nome é a assinatura visual do Hub, que sublinha em cor a
+   parte que importa do título. Vem por background para não brigar com o
+   sublinhado de link nem ser cortado pelas descidas das letras. */
+.sp-logo > span {
+  color: var(--ink);
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-size: 100% 5px;
+  background-position: 0 100%;
+  padding-bottom: 3px;
+}
 
-/* ---------- Ilustração da consulta (paciente inventado para a figura) ---------- */
+/* ---------- Ilustração da consulta ----------
+   Desenhada a partir da tela real do produto: barra em cima, painel de
+   controle à esquerda, conversa à direita. A figura tem paleta própria
+   (--m-*) porque é a captura de OUTRO sistema dentro desta página — ela não
+   deve acompanhar o índigo desta aba, senão deixa de parecer o que é. */
 
 .sp-app {
-  --m-bg: #ffffff; --m-head: #f7f7fb; --m-ink: #1f1e2b; --m-muted: #6b6980;
-  --m-line: rgba(31, 30, 43, .1); --m-brand: #5145cd;
-  --m-pac: #f1f0f8; --m-est: #5145cd; --m-est-ink: #ffffff;
+  --m-bg: #ffffff; --m-page: #f6f6f4; --m-head: #ffffff;
+  --m-ink: #1f1e2b; --m-muted: #6b6980; --m-line: rgba(31, 30, 43, .12);
+  --m-brand: #1a73e8;
+  --m-pac: #f1f1ef; --m-est: #1a73e8; --m-est-ink: #ffffff;
   display: flex; flex-direction: column;
-  background: var(--m-bg); color: var(--m-ink);
+  background: var(--m-page); color: var(--m-ink);
   border-radius: 16px; overflow: hidden;
   border: 1px solid var(--glass-edge);
   box-shadow: var(--shadow-hover);
@@ -1782,62 +1828,121 @@ body.theme-simula { --accent: #5145cd; --accent-dark: #423ab0; --tint: #ecebfb; 
   transition: transform .35s var(--ease), box-shadow .35s var(--ease);
 }
 .sp-app:hover { transform: translateY(-4px); }
-:root[data-theme="dark"] .sp-app { --m-bg: #191922; --m-head: #20202c; --m-ink: #f0eff5; --m-muted: #9c9ab0; --m-line: rgba(255, 255, 255, .11); --m-brand: #a5a0f5; --m-pac: #262533; --m-est: #5f57d8; --m-est-ink: #ffffff; }
+:root[data-theme="dark"] .sp-app { --m-bg: #191922; --m-page: #131318; --m-head: #191922; --m-ink: #f0eff5; --m-muted: #9c9ab0; --m-line: rgba(255, 255, 255, .12); --m-brand: #8ab4f8; --m-pac: #262533; --m-est: #2b64c4; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .sp-app { --m-bg: #191922; --m-head: #20202c; --m-ink: #f0eff5; --m-muted: #9c9ab0; --m-line: rgba(255, 255, 255, .11); --m-brand: #a5a0f5; --m-pac: #262533; --m-est: #5f57d8; --m-est-ink: #ffffff; }
+  :root:not([data-theme="light"]) .sp-app { --m-bg: #191922; --m-page: #131318; --m-head: #191922; --m-ink: #f0eff5; --m-muted: #9c9ab0; --m-line: rgba(255, 255, 255, .12); --m-brand: #8ab4f8; --m-pac: #262533; --m-est: #2b64c4; }
 }
 
-.sp-app-top { display: flex; align-items: center; gap: .6rem; padding: .6rem .75rem; background: var(--m-head); border-bottom: 1px solid var(--m-line); }
-.sp-who { display: flex; align-items: center; gap: .5rem; min-width: 0; }
-.sp-face { width: 26px; height: 26px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--m-brand); color: #fff; font-size: .58rem; font-weight: 700; letter-spacing: .02em; }
-:root[data-theme="dark"] .sp-face { color: #17162a; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sp-face { color: #17162a; } }
-.sp-who .t { min-width: 0; }
-.sp-who .t b { display: block; font-size: .72rem; font-weight: 700; letter-spacing: -.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.sp-who .t span { display: block; color: var(--m-muted); font-size: .56rem; }
-.sp-ia { margin-left: auto; flex: none; display: inline-flex; align-items: center; gap: .25rem; padding: .2rem .45rem; border: 1px solid var(--m-line); border-radius: 999px; color: var(--m-muted); font-size: .58rem; font-weight: 600; }
-.sp-ia .msym { font-size: 12px; }
+/* barra do produto */
+/* .sp-appbar, e não .sp-bar: este arquivo já usa .sp-bar para as barrinhas
+   de percentual do feedback, de 5px de altura. Como aquela regra vem depois,
+   ela vencia — e a barra do produto era achatada a 5px, com o nome saindo
+   cortado pelo overflow do cartão. */
+.sp-appbar { display: flex; align-items: center; gap: .8rem; padding: .5rem .7rem; background: var(--m-head); border-bottom: 1px solid var(--m-line); }
+.sp-brand { display: flex; align-items: center; gap: .4rem; color: var(--m-brand); }
+.sp-brand svg { width: 17px; height: 17px; flex: none; }
+.sp-brand b { display: block; font-size: .72rem; font-weight: 700; letter-spacing: -.015em; color: var(--m-ink); }
+.sp-brand small { display: block; font-size: .45rem; letter-spacing: .1em; text-transform: uppercase; color: var(--m-muted); }
+.sp-tabs { display: flex; gap: .8rem; }
+.sp-tabs span { font-size: .62rem; color: var(--m-muted); }
+.sp-tabs span.on { color: var(--m-ink); font-weight: 600; }
 
-.sp-talk { display: flex; flex-direction: column; gap: .4rem; padding: .85rem .75rem; }
-.sp-msg { max-width: 84%; padding: .42rem .62rem; border-radius: 12px; margin: 0; }
+/* as duas colunas */
+.sp-body { display: grid; grid-template-columns: minmax(0, 38%) minmax(0, 1fr); gap: .5rem; padding: .5rem; }
+.sp-side, .sp-chat { background: var(--m-bg); border: 1px solid var(--m-line); border-radius: 10px; min-width: 0; }
+
+/* painel de controle */
+.sp-side { padding: .6rem .6rem .65rem; }
+.sp-area { font-size: .46rem; letter-spacing: .1em; text-transform: uppercase; color: var(--m-muted); }
+.sp-pac { font-size: .84rem; font-weight: 700; letter-spacing: -.015em; margin: .1rem 0 .3rem; }
+.sp-side-p { font-size: .54rem; color: var(--m-muted); line-height: 1.42; padding-bottom: .55rem; border-bottom: 1px solid var(--m-line); }
+.sp-lab { font-size: .55rem; font-weight: 600; margin: .6rem 0 .3rem; }
+.sp-ias { display: flex; flex-wrap: wrap; gap: .25rem; }
+.sp-iab { display: inline-flex; align-items: center; gap: .25rem; padding: .24rem .4rem; border: 1px solid var(--m-line); border-radius: 7px; font-size: .55rem; }
+.sp-iab i { width: 11px; height: 11px; border-radius: 3px; flex: none; display: grid; place-items: center; background: var(--m-brand); color: #fff; font-style: normal; font-size: .4rem; font-weight: 700; }
+.sp-iab.on { border-color: var(--m-brand); box-shadow: inset 0 0 0 1px var(--m-brand); font-weight: 600; }
+.sp-code { display: block; padding: .32rem .45rem; border: 1px solid var(--m-line); border-radius: 7px; font-size: .58rem; letter-spacing: .05em; }
+.sp-btn { display: block; margin-top: .5rem; padding: .34rem; border-radius: 7px; background: var(--m-brand); color: #fff; text-align: center; font-size: .55rem; font-weight: 600; }
+.sp-btn.ghost { background: var(--m-bg); color: var(--m-ink); border: 1px solid var(--m-line); font-weight: 500; }
+.sp-side-p.sem-linha { border-bottom: 0; padding-bottom: 0; margin-top: .4rem; }
+
+/* conversa */
+.sp-chat { display: flex; flex-direction: column; }
+.sp-chat-top { display: flex; align-items: center; gap: .4rem; padding: .5rem .6rem; border-bottom: 1px solid var(--m-line); }
+/* o rosto vem com anel dourado, como no produto */
+.sp-face { width: 26px; height: 26px; border-radius: 50%; flex: none; background: #fff; border: 1.5px solid #e8b931; padding: 1px; }
+.sp-chat-top .t { min-width: 0; }
+.sp-chat-top .t b { display: block; font-size: .68rem; font-weight: 700; letter-spacing: -.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sp-chat-top .t span { display: block; color: var(--m-muted); font-size: .52rem; }
+.sp-badge { margin-left: auto; flex: none; display: inline-flex; align-items: center; gap: .25rem; padding: .18rem .45rem; border-radius: 999px; background: var(--m-pac); color: var(--m-muted); font-size: .52rem; font-weight: 600; }
+.sp-badge i { width: 5px; height: 5px; border-radius: 50%; background: var(--m-brand); flex: none; }
+
+.sp-talk { flex: 1; display: flex; flex-direction: column; gap: .35rem; padding: .7rem .6rem; }
+.sp-msg { max-width: 86%; padding: .38rem .55rem; border-radius: 11px; margin: 0; }
 .sp-msg.pac { background: var(--m-pac); border-bottom-left-radius: 4px; align-self: flex-start; }
 .sp-msg.est { background: var(--m-est); color: var(--m-est-ink); border-bottom-right-radius: 4px; align-self: flex-end; }
-.sp-msg.dig { display: inline-flex; gap: .2rem; padding: .55rem .62rem; }
+.sp-msg.dig { display: inline-flex; gap: .2rem; padding: .5rem .55rem; }
 .sp-msg.dig i { width: 5px; height: 5px; border-radius: 50%; background: var(--m-muted); animation: sp-blink 1.3s var(--ease) infinite; }
 .sp-msg.dig i:nth-child(2) { animation-delay: .18s; }
 .sp-msg.dig i:nth-child(3) { animation-delay: .36s; }
 @keyframes sp-blink { 0%, 60%, 100% { opacity: .28; } 30% { opacity: 1; } }
 
-.sp-app-foot { display: flex; align-items: center; gap: .5rem; padding: .6rem .75rem; border-top: 1px solid var(--m-line); }
-.sp-input { flex: 1; min-width: 0; padding: .35rem .6rem; border: 1px solid var(--m-line); border-radius: 999px; color: var(--m-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.sp-send { flex: none; padding: .35rem .6rem; border-radius: 999px; background: var(--m-brand); color: #fff; font-weight: 600; font-size: .6rem; }
-:root[data-theme="dark"] .sp-send { color: #17162a; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sp-send { color: #17162a; } }
+.sp-app-foot { display: flex; align-items: center; gap: .4rem; padding: .5rem .6rem 0; }
+.sp-input { flex: 1; min-width: 0; padding: .34rem .55rem; border: 1px solid var(--m-line); border-radius: 8px; color: var(--m-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sp-send { flex: none; width: 20px; height: 20px; border-radius: 6px; background: var(--m-brand); color: #fff; display: grid; place-items: center; font-size: .62rem; font-weight: 700; }
+.sp-priv { padding: .4rem .6rem .55rem; margin: 0; text-align: center; color: var(--m-muted); font-size: .48rem; line-height: 1.35; }
 
+/* no celular a figura fica estreita demais para duas colunas: fica a
+   conversa, que é o que a ilustração precisa mostrar */
+@media (max-width: 700px) {
+  .sp-body { grid-template-columns: 1fr; }
+  .sp-side { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   .sp-app:hover { transform: none; }
   .sp-msg.dig i { animation: none; opacity: .5; }
 }
 
-/* ---------- Os três passos ---------- */
+/* ---------- Os três passos, no desenho do Hub ----------
+   Símbolo redondo de traço grosso sobre cor chapada, número no canto. É a
+   linguagem visual do próprio Hub, trazida para cá de propósito: quem sai
+   desta página e abre o produto precisa reconhecer que chegou no lugar certo. */
 
-.sp-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1rem; counter-reset: sp; }
+.sp-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1rem; }
 .sp-step {
   position: relative; padding: 1.5rem 1.4rem 1.4rem;
-  border-radius: var(--radius); background: var(--glass-tint);
+  border-radius: var(--radius); background: var(--surface);
   border: 1px solid var(--glass-edge); box-shadow: var(--shadow);
   transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .sp-step:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-.sp-num {
+
+.sp-sim {
   display: grid; place-items: center;
-  width: 34px; height: 34px; border-radius: 50%;
-  background: color-mix(in srgb, var(--accent) 16%, var(--surface));
-  color: var(--accent); font-weight: 700; font-size: 1rem;
-  margin-bottom: .8rem;
+  width: 54px; height: 54px; border-radius: 50%;
+  border: 2.5px solid var(--ink);
+  margin-bottom: 1rem;
 }
-/* h3 dentro do passo é título de cartão, e não o rótulo em caixa alta que o
-   conversor de conteúdo produz — mesma exceção que .card e .pillar já abrem */
+.sp-sim .msym { font-size: 26px; color: var(--ink); }
+.sp-sim.azul    { background: #a8c7fa; }
+.sp-sim.verde   { background: #81c995; }
+.sp-sim.amarelo { background: #fdd663; }
+/* o traço e o símbolo são sempre escuros: as três cores de fundo são claras
+   nos dois temas, então inverter no escuro apagaria o desenho */
+:root[data-theme="dark"] .sp-sim { border-color: #202124; }
+:root[data-theme="dark"] .sp-sim .msym { color: #202124; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sp-sim { border-color: #202124; }
+  :root:not([data-theme="light"]) .sp-sim .msym { color: #202124; }
+}
+
+.sp-num {
+  position: absolute; top: 1.1rem; right: 1.2rem;
+  display: grid; place-items: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--bg-soft); color: var(--muted);
+  font-size: .78rem; font-weight: 700;
+}
 article.content .sp-step h3 {
   padding-left: 0; margin-top: 0; margin-bottom: .4rem;
   font-size: 1.1rem; letter-spacing: -.015em;
@@ -1846,6 +1951,36 @@ article.content .sp-step h3 {
 article.content .sp-step h3::before { display: none; }
 .sp-step p { font-size: .94rem; color: var(--muted); line-height: 1.55; }
 @media (prefers-reduced-motion: reduce) { .sp-step:hover { transform: none; } }
+
+/* ---------- A fila de rostos ----------
+   São os personagens do próprio Hub. Aqui eles dizem, sem texto, que cada
+   caso é uma pessoa — e não um enunciado de prova. */
+
+.sp-rostos { margin: 2.2rem 0 1rem; text-align: center; }
+.sp-rostos-t { color: var(--muted); font-size: 1rem; margin-bottom: 1.1rem; }
+.sp-rostos-fila { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+.sp-rostos-fila img {
+  width: 74px; height: 74px; border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  padding: 3px;
+  transition: transform .3s var(--ease);
+}
+.sp-rostos-fila img:nth-child(even) { background: #fdf1cf; }
+.sp-rostos-fila img:nth-child(3n) { background: #dcefe2; }
+.sp-rostos-fila img:hover { transform: translateY(-4px) rotate(-3deg); }
+/* os desenhos são de traço preto sobre fundo transparente: no modo escuro
+   precisam continuar sobre claro, senão o rosto desaparece */
+:root[data-theme="dark"] .sp-rostos-fila img { border-color: #f0eff5; background: #e8e7ee; }
+:root[data-theme="dark"] .sp-rostos-fila img:nth-child(even) { background: #f3e6c4; }
+:root[data-theme="dark"] .sp-rostos-fila img:nth-child(3n) { background: #d5e7db; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sp-rostos-fila img { border-color: #f0eff5; background: #e8e7ee; }
+  :root:not([data-theme="light"]) .sp-rostos-fila img:nth-child(even) { background: #f3e6c4; }
+  :root:not([data-theme="light"]) .sp-rostos-fila img:nth-child(3n) { background: #d5e7db; }
+}
+@media (prefers-reduced-motion: reduce) { .sp-rostos-fila img:hover { transform: none; } }
+@media (max-width: 520px) { .sp-rostos-fila img { width: 58px; height: 58px; } }
 
 /* ---------- Antes e agora ---------- */
 

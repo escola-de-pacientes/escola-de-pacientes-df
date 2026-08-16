@@ -2081,3 +2081,90 @@ article.content .sp-fb-wrap h3:first-child { margin-top: 0; }
    servir — a mesma troca que o .btn-primary já faz no resto do site */
 :root[data-theme="dark"] .nv-selo { color: #17162a; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .nv-selo { color: #17162a; } }
+
+/* ============================================================
+   Perfil — página do Dr. Estêvão
+   ============================================================ */
+
+.perfil-hero { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+@media (min-width: 900px) { .perfil-hero { grid-template-columns: minmax(0, 1fr) minmax(0, .48fr); gap: 3rem; } }
+.perfil-hero .lead { color: var(--muted); font-size: 1.08rem; line-height: 1.6; margin-top: .9rem; max-width: 60ch; }
+.perfil-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: .6rem; margin-top: 1.8rem; }
+
+.perfil-retrato {
+  margin: 0; border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); box-shadow: var(--shadow-hover);
+  border: 1px solid var(--glass-edge);
+}
+.perfil-retrato img { display: block; width: 100%; height: auto; }
+.perfil-retrato figcaption { padding: .7rem 1rem; font-size: .82rem; color: var(--muted); text-align: center; }
+
+/* a lista de cursos e congressos é longa; na linha do tempo ela ganha um
+   compasso mais curto para não virar um paredão de 21 blocos altos */
+article.content .timeline.lista-densa li { margin-bottom: .55rem; font-size: .93rem; }
+
+.perfil-data { margin-top: 2.4rem; font-size: .84rem; color: var(--muted); }
+
+/* ============================================================
+   Equipe
+   ============================================================ */
+
+/* a foto é panorâmica e já vem recortada; limitar a largura impede que ela
+   ocupe a tela inteira e empurre o conteúdo da página para fora da primeira
+   dobra */
+.eq-foto {
+  max-width: 900px; margin: 0 auto 2.6rem; border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); box-shadow: var(--shadow-hover);
+  border: 1px solid var(--glass-edge);
+}
+.eq-foto img { display: block; width: 100%; height: auto; }
+.eq-foto figcaption { padding: .7rem 1.1rem; font-size: .85rem; color: var(--muted); border-top: 1px solid var(--glass-edge); }
+
+/* quem coordena — o cartão da coordenação é maior de propósito, porque a
+   pergunta que traz alguém a esta página quase sempre é "quem responde por
+   isso hoje?" */
+.eq-lideranca { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.1rem; margin-bottom: 2rem; }
+@media (min-width: 900px) { .eq-lideranca { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.eq-pessoa {
+  padding: 1.4rem 1.5rem;
+  border-radius: var(--radius); background: var(--glass-tint);
+  border: 1px solid var(--glass-edge); box-shadow: var(--shadow);
+}
+.eq-pessoa.destaque {
+  background: color-mix(in srgb, var(--accent) 9%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.eq-papel {
+  display: inline-block; padding: .18rem .6rem; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent-dark);
+  font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+:root[data-theme="dark"] .eq-papel { color: var(--accent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .eq-papel { color: var(--accent); } }
+.eq-nome { font-size: 1.18rem; font-weight: 700; letter-spacing: -.02em; color: var(--ink); margin-top: .7rem; }
+.eq-turma-min { font-size: .85rem; color: var(--accent); font-weight: 600; margin-top: .1rem; }
+.eq-sobre { font-size: .93rem; color: var(--muted); line-height: 1.55; margin-top: .5rem; }
+
+/* grade de nomes — 700 nomes em lista de itens dariam 700 linhas; em fichas
+   lado a lado a mesma informação cabe na tela e continua legível */
+.eq-nomes { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 1.6rem; }
+.eq-chip {
+  padding: .34rem .75rem; border-radius: 999px;
+  background: var(--soft-glass);
+  border: 1px solid var(--glass-edge);
+  font-size: .87rem; color: var(--ink); line-height: 1.35;
+}
+
+.eq-acervo { margin-top: 1.4rem; }
+article.content h3.eq-turma {
+  display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
+  padding-left: 0; margin-top: 2rem; margin-bottom: .7rem;
+  font-size: .95rem; letter-spacing: .06em; color: var(--ink);
+}
+article.content h3.eq-turma::before { display: none; }
+h3.eq-turma span {
+  text-transform: none; letter-spacing: 0; font-weight: 500;
+  font-size: .82rem; color: var(--muted);
+}
+.eq-anon { font-size: .85rem; color: var(--muted); margin: -.9rem 0 1.6rem; font-style: italic; }

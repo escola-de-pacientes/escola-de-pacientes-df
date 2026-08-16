@@ -10,7 +10,7 @@ DISCIPLINAS
 
 PRATIQUE
 
-- [SimulaPacientes](/simula-pacientes) — atenda um paciente digital com a IA que você escolher e receba a devolutiva da sua conduta
+- [SimulaPacientes](/simula-pacientes) — atenda um paciente digital com a IA que você escolher e receba um retorno sobre a sua conduta
 - [Simulações](/simulacoes) — o acervo de roteiros e checklists dos atendimentos simulados
 - [Testes](/testes)
 - [Estudo por Questões](/estudo)

@@ -1055,6 +1055,22 @@ my @NUCLEO_SHOTS = (
 # Apresenta a plataforma de pacientes digitais da Escola, que roda fora deste
 # site. Como a do Núcleo EP, é HTML direto e não markdown: tem ilustrações de
 # interface desenhadas em CSS, que o conversor de conteúdo não produz.
+#
+# TRÊS REGRAS AO EDITAR build/simula-pacientes.html. Elas vivem aqui, e não lá
+# dentro, porque comentário de HTML é publicado junto com a página — uma nota
+# de redação no meio deles fica legível para qualquer visitante.
+#
+# 1. A página é PÚBLICA e os pacientes digitais são material de prova. Nenhum
+#    exemplo pode citar um caso pelo nome, pela queixa ou pelo diagnóstico:
+#    quem lesse a página antes de atender chegaria à consulta com a resposta
+#    na mão. O paciente e o código de turma que aparecem na ilustração são
+#    inventados de propósito, e devem continuar sendo.
+# 2. Ela é escrita para quem NÃO é da casa: estudante de outra universidade,
+#    profissional da rede, alguém que chegou pelo buscador. Frase curta,
+#    palavra do dia a dia, e todo termo técnico explicado na primeira vez em
+#    que aparece. Nada de sigla solta.
+# 3. Não se escreve nada sobre quem custeia as inteligências artificiais.
+#    Decisão da coordenação, tomada em 16/08/2026.
 {
     my $p = '../';
     open my $fh, '<:encoding(UTF-8)', "$ROOT/simula-pacientes.html" or die $!;
@@ -1064,7 +1080,7 @@ my @NUCLEO_SHOTS = (
 
     write_file("$OUT/simula-pacientes/index.html", page_shell(
         title  => "SimulaPacientes — pacientes digitais com IA — $SITE",
-        desc   => "O SimulaPacientes é a plataforma de pacientes digitais da Escola de Pacientes DF: o estudante escolhe o caso e a inteligência artificial, conduz a consulta simulada e recebe uma devolutiva estruturada sobre a própria conduta clínica.",
+        desc   => "O SimulaPacientes é a plataforma de pacientes digitais da Escola de Pacientes DF: você escolhe o caso e a inteligência artificial, conduz a consulta simulada por escrito e recebe um retorno, item por item, sobre a própria conduta clínica.",
         p      => $p,
         canon  => "$SITE_URL/simula-pacientes/",
         header => header_html($p, 'simula-pacientes'),

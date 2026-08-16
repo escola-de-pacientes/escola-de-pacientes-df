@@ -41,6 +41,54 @@ my %cat_label = (
 my @group_order = ('Doenças crônicas', 'Saúde da mulher e pré-natal', 'Saúde mental e bem-estar',
                    'Infecções e urgências', 'Outros temas');
 
+# ---------------- páginas escritas em HTML ----------------
+# Algumas páginas não passam pelo conversor de markdown: elas têm retrato,
+# linha do tempo, grade de nomes ou ilustração de interface desenhada em CSS,
+# e nada disso sai de "# título" e "- item". O corpo de cada uma vive num
+# arquivo .html aqui em build/, e o gerador o encaixa no mesmo shell das
+# outras (cabeçalho, rodapé, meta tags).
+#
+# Este registro é a fonte única: dele saem a geração, a liberação do link
+# interno em clean_url, a entrada na busca e a linha no índice A–Z. Antes cada
+# página dessas era um bloco copiado, e as três primeiras ficaram fora do A–Z
+# sem ninguém notar — é o tipo de esquecimento que uma lista só não deixa
+# acontecer de novo.
+#
+# REGRAS AO EDITAR OS ARQUIVOS .html DESTA LISTA. Elas ficam aqui, e não lá
+# dentro, porque comentário de HTML é publicado junto com a página.
+#
+# 1. simula-pacientes.html é PÚBLICA e os pacientes digitais são material de
+#    prova. Nenhum exemplo pode citar um caso pelo nome, pela queixa ou pelo
+#    diagnóstico: quem lesse a página antes de atender chegaria à consulta com
+#    a resposta na mão. O paciente e o código de turma da ilustração são
+#    inventados de propósito, e devem continuar sendo.
+# 2. Ela é escrita para quem NÃO é da casa: frase curta, palavra do dia a dia
+#    e todo termo técnico explicado na primeira vez em que aparece.
+# 3. Não se escreve nada sobre quem custeia as inteligências artificiais.
+#    Decisão da coordenação, tomada em 16/08/2026.
+my @PAGINAS_HTML = (
+    { slug => 'nucleo-ep', arquivo => 'nucleo-ep.html', tema => 'theme-nucleo',
+      titulo => 'Núcleo EP — o sistema do grupo de pesquisa',
+      busca  => 'Núcleo EP — sistema do grupo de pesquisa', secao => 'A Escola',
+      desc   => 'O Núcleo EP é o sistema onde a Escola de Pacientes DF organiza projetos, prazos, responsáveis e as oportunidades acadêmicas do grupo de pesquisa. Acesso restrito aos integrantes.' },
+
+    { slug => 'simula-pacientes', arquivo => 'simula-pacientes.html', tema => 'theme-simula',
+      titulo => 'SimulaPacientes — pacientes digitais com IA',
+      busca  => 'SimulaPacientes — pacientes digitais com IA', secao => 'Simulações e Testes',
+      desc   => 'O SimulaPacientes é a plataforma de pacientes digitais da Escola de Pacientes DF: você escolhe o caso e a inteligência artificial, conduz a consulta simulada por escrito e recebe um retorno, item por item, sobre a própria conduta clínica.' },
+
+    { slug => 'dr-estevao-rolim', arquivo => 'dr-estevao-rolim.html', tema => '',
+      titulo => 'Dr. Estêvão Cubas Rolim',
+      busca  => 'Dr. Estêvão Cubas Rolim — trajetória e produção', secao => 'A Escola',
+      desc   => 'Prof. Dr. Estêvão Cubas Rolim: professor de Medicina da UnB, médico da Estratégia Saúde da Família na SES-DF, doutor em Saúde Coletiva e coordenador da Escola de Pacientes DF desde 2016.' },
+
+    { slug => 'equipe', arquivo => 'equipe.html', tema => '',
+      titulo => 'Equipe e Grupo de Pesquisa',
+      busca  => 'Equipe e Grupo de Pesquisa', secao => 'A Escola',
+      desc   => 'O grupo de pesquisa da Escola de Pacientes DF, com coordenação estudantil: quem coordena hoje, quem participa e todos os estudantes que já passaram pelo grupo desde 2016.' },
+);
+my %PAGINA_HTML = map { $_->{slug} => $_ } @PAGINAS_HTML;
+
 # menu principal curado — vitrine, não inventário
 my @NAV = (
     { label => 'A Escola', items => [
@@ -166,8 +214,8 @@ sub clean_url {
         (my $path = $u) =~ s{^/}{}; $path =~ s{[#?].*$}{};
         $path =~ s{/$}{};
         if ($path eq '' or $path eq 'home') { return $p eq '' ? './' : $p; }
-        return "$p$path/" if exists $content{$path} or $path eq 'temas' or $path eq 'az'
-                          or $path eq 'nucleo-ep' or $path eq 'simula-pacientes';
+        return "$p$path/" if exists $content{$path} or exists $PAGINA_HTML{$path}
+                          or $path eq 'temas' or $path eq 'az';
         return "http://www.escoladepacientes.com/$path";   # não migrada: aponta pro antigo
     }
     return $u;
@@ -570,8 +618,7 @@ sub write_file {
 {
     my @entries;
     push @entries, { t => 'Temas Clínicos (índice)', p => 'temas', c => 'Temas Clínicos' };
-    push @entries, { t => 'Núcleo EP — sistema do grupo de pesquisa', p => 'nucleo-ep', c => 'A Escola' };
-    push @entries, { t => 'SimulaPacientes — pacientes digitais com IA', p => 'simula-pacientes', c => 'Simulações e Testes' };
+    push @entries, { t => $_->{busca}, p => $_->{slug}, c => $_->{secao} } for @PAGINAS_HTML;
     for my $path (sort keys %content) {
         my ($top) = split m{/}, $path;
         my $cat = $page{$top} ? $cat_label{ $page{$top}{cat} } // '' : '';
@@ -724,8 +771,8 @@ HTML
     my $p = '../';
     # agrupa páginas de topo por inicial; subpáginas ficam com a mãe
     my %by_letter;
-    for my $slug (grep { !m{/} } keys %content) {
-        my $t = title_of($slug);
+    for my $slug (grep { !m{/} } keys %content, keys %PAGINA_HTML) {
+        my $t = $PAGINA_HTML{$slug} ? $PAGINA_HTML{$slug}{titulo} : title_of($slug);
         my $letter = uc substr($t =~ s/^\s+//r, 0, 1);
         $letter = '#' unless $letter =~ /\p{L}/;
         $letter =~ tr/ÁÀÂÃÉÊÍÓÔÕÚÇ/AAAAEEIOOOUC/;
@@ -743,7 +790,7 @@ HTML
         $list .= qq{</div></div>\n};
     }
     my $letters_nav = join ' · ', map { qq{<a href="#letra-$_">$_</a>} } sort keys %by_letter;
-    my $total = scalar(keys %content);
+    my $total = scalar(keys %content) + scalar(keys %PAGINA_HTML);
     my $body = <<HTML;
 <div class="page-hero"><div class="wrap">
 <nav class="breadcrumb" aria-label="Localização"><a href="$p">Início</a><span class="sep">›</span><span>Acervo</span><span class="sep">›</span><span>Índice A–Z</span></nav>
@@ -1008,85 +1055,47 @@ $dots</div>
 HTML
 }
 
-# ---------------- página do Núcleo EP ----------------
-# Capturas de tela são opcionais: cada figura só entra no site se o arquivo
-# existir em build/assets/img/. Para publicar um print, salve o PNG com um
-# dos nomes abaixo nessa pasta e rode o gerador de novo — nada mais.
+# ---------------- páginas escritas em HTML ----------------
+# Uma passada só sobre @PAGINAS_HTML (declarado lá em cima, junto do @NAV).
+# Capturas de tela do Núcleo EP são opcionais: cada figura só entra no site se
+# o arquivo existir em build/assets/img/. Para publicar um print, salve o PNG
+# com um dos nomes abaixo nessa pasta e rode o gerador de novo — nada mais.
 my @NUCLEO_SHOTS = (
     ['nucleo-minha-area.png', 'Minha área de trabalho — o que está sob a responsabilidade de cada integrante'],
     ['nucleo-dashboard.png',  'Dashboard — os indicadores do grupo e o próximo passo de cada projeto'],
     ['nucleo-cronograma.png', 'Cronograma — demandas e oportunidades acadêmicas na mesma linha do tempo'],
     ['nucleo-projetos.png',   'Projetos — agrupados por situação, com os que precisam de atenção no topo'],
 );
-{
+for my $pg (@PAGINAS_HTML) {
     my $p = '../';
-    open my $fh, '<:encoding(UTF-8)', "$ROOT/nucleo-ep.html" or die $!;
+    open my $fh, '<:encoding(UTF-8)', "$ROOT/$pg->{arquivo}" or die "$pg->{arquivo}: $!";
     local $/; my $body = <$fh>; close $fh;
 
-    my @figs = map {
-        my ($file, $cap) = @$_;
-        my $c = esc($cap);
-        qq{<figure class="shot"><img src="${p}assets/img/$file" alt="$c" loading="lazy"><figcaption>$c</figcaption></figure>};
-    } grep { -e "$ROOT/assets/img/$_->[0]" } @NUCLEO_SHOTS;
-
-    my $shots = @figs
-        ? qq{<h2>O sistema por dentro</h2>\n}
-          . qq{<p class="section-lead">Telas do Núcleo EP em uso pelo grupo.</p>\n}
-          . qq{<div class="shot-grid">\n} . join("\n", @figs) . qq{\n</div>}
-        : '';
-
-    $body =~ s/\{\{SHOTS\}\}/$shots/;
-    $body =~ s/\{\{P\}\}/$p/g;
-
-    write_file("$OUT/nucleo-ep/index.html", page_shell(
-        title  => "Núcleo EP — o sistema do grupo de pesquisa — $SITE",
-        desc   => "O Núcleo EP é o sistema onde a Escola de Pacientes DF organiza projetos, prazos, responsáveis e as oportunidades acadêmicas do grupo de pesquisa. Acesso restrito aos integrantes.",
-        p      => $p,
-        canon  => "$SITE_URL/nucleo-ep/",
-        header => header_html($p, 'nucleo-ep'),
-        body   => $body,
-        footer => footer_html($p),
-        body_class => 'theme-nucleo',
-    ));
-    $n++;
-}
-
-# ---------------- página do SimulaPacientes ----------------
-# Apresenta a plataforma de pacientes digitais da Escola, que roda fora deste
-# site. Como a do Núcleo EP, é HTML direto e não markdown: tem ilustrações de
-# interface desenhadas em CSS, que o conversor de conteúdo não produz.
-#
-# TRÊS REGRAS AO EDITAR build/simula-pacientes.html. Elas vivem aqui, e não lá
-# dentro, porque comentário de HTML é publicado junto com a página — uma nota
-# de redação no meio deles fica legível para qualquer visitante.
-#
-# 1. A página é PÚBLICA e os pacientes digitais são material de prova. Nenhum
-#    exemplo pode citar um caso pelo nome, pela queixa ou pelo diagnóstico:
-#    quem lesse a página antes de atender chegaria à consulta com a resposta
-#    na mão. O paciente e o código de turma que aparecem na ilustração são
-#    inventados de propósito, e devem continuar sendo.
-# 2. Ela é escrita para quem NÃO é da casa: estudante de outra universidade,
-#    profissional da rede, alguém que chegou pelo buscador. Frase curta,
-#    palavra do dia a dia, e todo termo técnico explicado na primeira vez em
-#    que aparece. Nada de sigla solta.
-# 3. Não se escreve nada sobre quem custeia as inteligências artificiais.
-#    Decisão da coordenação, tomada em 16/08/2026.
-{
-    my $p = '../';
-    open my $fh, '<:encoding(UTF-8)', "$ROOT/simula-pacientes.html" or die $!;
-    local $/; my $body = <$fh>; close $fh;
+    if ($pg->{slug} eq 'nucleo-ep') {
+        my @figs = map {
+            my ($file, $cap) = @$_;
+            my $c = esc($cap);
+            qq{<figure class="shot"><img src="${p}assets/img/$file" alt="$c" loading="lazy"><figcaption>$c</figcaption></figure>};
+        } grep { -e "$ROOT/assets/img/$_->[0]" } @NUCLEO_SHOTS;
+        my $shots = @figs
+            ? qq{<h2>O sistema por dentro</h2>\n}
+              . qq{<p class="section-lead">Telas do Núcleo EP em uso pelo grupo.</p>\n}
+              . qq{<div class="shot-grid">\n} . join("\n", @figs) . qq{\n</div>}
+            : '';
+        $body =~ s/\{\{SHOTS\}\}/$shots/;
+    }
 
     $body =~ s/\{\{P\}\}/$p/g;
 
-    write_file("$OUT/simula-pacientes/index.html", page_shell(
-        title  => "SimulaPacientes — pacientes digitais com IA — $SITE",
-        desc   => "O SimulaPacientes é a plataforma de pacientes digitais da Escola de Pacientes DF: você escolhe o caso e a inteligência artificial, conduz a consulta simulada por escrito e recebe um retorno, item por item, sobre a própria conduta clínica.",
+    write_file("$OUT/$pg->{slug}/index.html", page_shell(
+        title  => "$pg->{titulo} — $SITE",
+        desc   => $pg->{desc},
         p      => $p,
-        canon  => "$SITE_URL/simula-pacientes/",
-        header => header_html($p, 'simula-pacientes'),
+        canon  => "$SITE_URL/$pg->{slug}/",
+        header => header_html($p, $pg->{slug}),
         body   => $body,
         footer => footer_html($p),
-        body_class => 'theme-simula',
+        body_class => $pg->{tema},
     ));
     $n++;
 }

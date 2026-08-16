@@ -1981,30 +1981,6 @@ article.content .sp-step h3::before { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .sp-rostos-fila img:hover { transform: none; } }
 @media (max-width: 520px) { .sp-rostos-fila img { width: 58px; height: 58px; } }
-
-/* ---------- Antes e agora ---------- */
-
-.sp-cmp { display: grid; gap: .9rem; }
-.sp-cmp-row {
-  display: grid; grid-template-columns: 1fr; gap: .8rem;
-  padding: 1.2rem 1.3rem;
-  border-radius: var(--radius); background: var(--glass-tint);
-  border: 1px solid var(--glass-edge); box-shadow: var(--shadow);
-}
-@media (min-width: 860px) { .sp-cmp-row { grid-template-columns: 8.5rem minmax(0, 1fr) minmax(0, 1fr); gap: 1.4rem; align-items: start; } }
-.sp-cmp-key { font-weight: 700; letter-spacing: -.01em; color: var(--ink); font-size: .98rem; align-self: center; }
-.sp-cmp-a p, .sp-cmp-b p { font-size: .93rem; line-height: 1.55; margin-top: .4rem; }
-.sp-cmp-a p { color: var(--muted); }
-.sp-cmp-b p { color: var(--ink); }
-.sp-tag {
-  display: inline-block; padding: .12rem .5rem; border-radius: 999px;
-  font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-  background: color-mix(in srgb, var(--ink) 9%, transparent); color: var(--muted);
-}
-.sp-tag.on { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent-dark); }
-:root[data-theme="dark"] .sp-tag.on { color: var(--accent); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sp-tag.on { color: var(--accent); } }
-
 /* ---------- Ilustração do feedback ---------- */
 
 .sp-fb-wrap { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; }

@@ -27,6 +27,7 @@ estudo|Estudo por Questões|ensino|
 oficinas|Oficinas|ensino|
 ses-treinamento-mfc|SES — Treinamento MFC|ensino|
 gpt-aquarelas-para-casos-clinicos|GPT Aquarelas para Casos Clínicos|ensino|
+simula-pacientes|SimulaPacientes|pratica|
 simulacoes|Simulações|pratica|
 testes|Testes|pratica|
 dcnts|Doenças Crônicas Não Transmissíveis (DCNTs)|temas|Doenças crônicas

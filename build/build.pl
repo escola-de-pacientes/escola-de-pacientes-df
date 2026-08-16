@@ -58,7 +58,7 @@ my @NAV = (
     ]},
     { label => 'Projetos e Produtos', items => [
         ['receita-simples', 'Receita Simples'],
-        ['simulacoes', 'Simulações e Pacientes Digitais'],
+        ['simula-pacientes', 'SimulaPacientes — pacientes digitais'],
         ['prescreva-um-livro', 'Prescreva um Livro'],
         ['escola-saudavel', 'Escola Saudável'],
         ['youtube', 'Canal no YouTube'],
@@ -166,7 +166,8 @@ sub clean_url {
         (my $path = $u) =~ s{^/}{}; $path =~ s{[#?].*$}{};
         $path =~ s{/$}{};
         if ($path eq '' or $path eq 'home') { return $p eq '' ? './' : $p; }
-        return "$p$path/" if exists $content{$path} or $path eq 'temas' or $path eq 'az' or $path eq 'nucleo-ep';
+        return "$p$path/" if exists $content{$path} or $path eq 'temas' or $path eq 'az'
+                          or $path eq 'nucleo-ep' or $path eq 'simula-pacientes';
         return "http://www.escoladepacientes.com/$path";   # não migrada: aponta pro antigo
     }
     return $u;
@@ -570,6 +571,7 @@ sub write_file {
     my @entries;
     push @entries, { t => 'Temas Clínicos (índice)', p => 'temas', c => 'Temas Clínicos' };
     push @entries, { t => 'Núcleo EP — sistema do grupo de pesquisa', p => 'nucleo-ep', c => 'A Escola' };
+    push @entries, { t => 'SimulaPacientes — pacientes digitais com IA', p => 'simula-pacientes', c => 'Simulações e Testes' };
     for my $path (sort keys %content) {
         my ($top) = split m{/}, $path;
         my $cat = $page{$top} ? $cat_label{ $page{$top}{cat} } // '' : '';
@@ -1045,6 +1047,30 @@ my @NUCLEO_SHOTS = (
         body   => $body,
         footer => footer_html($p),
         body_class => 'theme-nucleo',
+    ));
+    $n++;
+}
+
+# ---------------- página do SimulaPacientes ----------------
+# Apresenta a plataforma de pacientes digitais da Escola, que roda fora deste
+# site. Como a do Núcleo EP, é HTML direto e não markdown: tem ilustrações de
+# interface desenhadas em CSS, que o conversor de conteúdo não produz.
+{
+    my $p = '../';
+    open my $fh, '<:encoding(UTF-8)', "$ROOT/simula-pacientes.html" or die $!;
+    local $/; my $body = <$fh>; close $fh;
+
+    $body =~ s/\{\{P\}\}/$p/g;
+
+    write_file("$OUT/simula-pacientes/index.html", page_shell(
+        title  => "SimulaPacientes — pacientes digitais com IA — $SITE",
+        desc   => "O SimulaPacientes é a plataforma de pacientes digitais da Escola de Pacientes DF: o estudante escolhe o caso e a inteligência artificial, conduz a consulta simulada e recebe uma devolutiva estruturada sobre a própria conduta clínica.",
+        p      => $p,
+        canon  => "$SITE_URL/simula-pacientes/",
+        header => header_html($p, 'simula-pacientes'),
+        body   => $body,
+        footer => footer_html($p),
+        body_class => 'theme-simula',
     ));
     $n++;
 }

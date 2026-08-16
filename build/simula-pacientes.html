@@ -1,0 +1,224 @@
+<!-- Corpo da página do SimulaPacientes. Montado por build.pl dentro do shell
+     padrão (cabeçalho, rodapé, meta tags).
+     Marcador substituído pelo gerador:
+       P  - caminho até a raiz do site
+
+     Cuidado ao editar: esta página é PÚBLICA e os pacientes digitais são
+     material de prova. Nenhum exemplo daqui pode citar um caso do acervo pelo
+     nome, pela queixa ou pelo diagnóstico — o estudante que lê a página antes
+     de atender chegaria à consulta com a resposta na mão. Todos os exemplos
+     abaixo são inventados para a ilustração, e é assim que devem continuar. -->
+
+<div class="page-hero"><div class="wrap">
+<nav class="breadcrumb" aria-label="Localização"><a href="{{P}}">Início</a><span class="sep">›</span><span>Simulações e Testes</span><span class="sep">›</span><span>SimulaPacientes</span></nav>
+
+<div class="sp-hero">
+  <div>
+    <p class="kicker">Pacientes digitais mediados por inteligência artificial</p>
+    <h1 class="sp-logo" style="margin-bottom:.2rem;">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+        <rect x="2.6" y="2.6" width="26.8" height="26.8" rx="8" stroke="currentColor" stroke-width="2.6"/>
+        <path d="M22.4 12.6a1.8 1.8 0 0 0-1.8-1.8H11.4a1.8 1.8 0 0 0-1.8 1.8v5.2a1.8 1.8 0 0 0 1.8 1.8h1.1v3.2l3.5-3.2h4.6a1.8 1.8 0 0 0 1.8-1.8z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
+        <path d="M12.5 15.3h1.7l1.1-2.1 1.6 3.9 1.1-1.8h1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>SimulaPacientes</span>
+    </h1>
+    <p class="lead">O SimulaPacientes é onde o estudante atende um paciente que não existe — e treina de verdade. Ele escolhe o caso, escolhe com qual inteligência artificial quer conversar, conduz a consulta por escrito e, ao encerrar, recebe uma devolutiva do que investigou, do que deixou passar e do que fez que não deveria ter feito.</p>
+    <div class="sp-actions">
+      <a class="btn btn-primary" href="https://hub-de-ll-ms.vercel.app" target="_blank" rel="noopener">Abrir o SimulaPacientes ↗</a>
+      <a class="btn btn-ghost" href="#como-funciona">Como funciona</a>
+    </div>
+    <p class="sp-note"><strong>Para atender, você precisa do código da turma.</strong> Ele é passado pelo professor em sala e destrava as inteligências artificiais pagas pela Escola — não é preciso criar conta em lugar nenhum, nem informar cartão.</p>
+  </div>
+
+  <!-- Ilustração da consulta. Desenhada em HTML/CSS. O paciente é inventado
+       para esta figura e não corresponde a nenhum caso do acervo. -->
+  <div>
+    <div class="sp-app" role="img" aria-label="Ilustração da tela de consulta do SimulaPacientes: no cabeçalho, o nome do paciente digital e a inteligência artificial escolhida; ao centro, a conversa entre o estudante e o paciente; ao pé, o campo de escrever e o botão de encerrar e ver o feedback.">
+      <div class="sp-app-top" aria-hidden="true">
+        <span class="sp-who"><span class="sp-face">AS</span><span class="t"><b>Sr. Antônio, 47 anos</b><span>consulta simulada · 15 min</span></span></span>
+        <span class="sp-ia"><span class="msym">smart_toy</span>Gemini</span>
+      </div>
+      <div class="sp-talk" aria-hidden="true">
+        <p class="sp-msg pac">Boa tarde, doutor. Vim porque ando cansado demais, qualquer esforço me deixa sem fôlego.</p>
+        <p class="sp-msg est">Há quanto tempo o senhor está se sentindo assim?</p>
+        <p class="sp-msg pac">Uns dois meses. Mas de umas semanas pra cá piorou bastante.</p>
+        <p class="sp-msg est">O senhor sente falta de ar quando se deita?</p>
+        <p class="sp-msg pac dig"><i></i><i></i><i></i></p>
+      </div>
+      <div class="sp-app-foot" aria-hidden="true">
+        <span class="sp-input">Escreva sua pergunta ao paciente…</span>
+        <span class="sp-send">Encerrar e ver feedback</span>
+      </div>
+    </div>
+    <p class="sp-note" style="text-align:center;">Ilustração da interface — paciente inventado para a figura.</p>
+  </div>
+</div>
+</div></div>
+
+<article class="content" id="conteudo">
+<div class="wrap">
+
+<!-- COMO FUNCIONA -->
+<p class="kicker" id="como-funciona">Como funciona</p>
+<h2 class="section-title">Três passos, e a consulta começa</h2>
+<p class="section-lead">Não há instalação, cadastro nem material para imprimir. O estudante abre o endereço, digita o código que o professor passou e já está atendendo.</p>
+
+<div class="sp-steps">
+  <div class="sp-step">
+    <span class="sp-num">1</span>
+    <h3>Escolha o paciente</h3>
+    <p>Pelo catálogo, lendo o tema de cada caso — ou pelo <strong>sorteio</strong>, que entrega um paciente às cegas, sem dizer do que ele se queixa até a primeira fala.</p>
+  </div>
+  <div class="sp-step">
+    <span class="sp-num">2</span>
+    <h3>Escolha a inteligência artificial</h3>
+    <p>É o estudante que decide quem vai dar voz ao paciente. O mesmo caso pode ser atendido com uma IA hoje e com outra amanhã, e a comparação entre elas é um objetivo do projeto.</p>
+  </div>
+  <div class="sp-step">
+    <span class="sp-num">3</span>
+    <h3>Conduza e receba a devolutiva</h3>
+    <p>O paciente responde em primeira pessoa e <strong>só o que for perguntado</strong> — quem não investiga, não descobre. Ao encerrar, vem o feedback item a item, com o trecho da conversa ao lado de cada um.</p>
+  </div>
+</div>
+
+<!-- O QUE MUDOU -->
+<h2>O que muda em relação ao GPT com formulário</h2>
+<p class="section-lead">Desde 2023 a Escola usa pacientes digitais: um GPT ou Gem por caso, e um formulário à parte para o checklist. Funcionou, e ensinou onde estavam os limites. O SimulaPacientes nasce desses limites.</p>
+
+<div class="sp-cmp">
+  <div class="sp-cmp-row">
+    <span class="sp-cmp-key">Quem dá voz ao paciente</span>
+    <div class="sp-cmp-a"><span class="sp-tag">Antes</span><p>Um GPT ou Gem por caso, preso a um fornecedor. Mudança de preço, de política ou de disponibilidade da empresa derrubava a atividade.</p></div>
+    <div class="sp-cmp-b"><span class="sp-tag on">Agora</span><p>O estudante escolhe entre várias inteligências artificiais. Nenhum caso pertence a uma empresa, e trocar de fornecedor não interrompe a aula.</p></div>
+  </div>
+  <div class="sp-cmp-row">
+    <span class="sp-cmp-key">Como o desempenho é lido</span>
+    <div class="sp-cmp-a"><span class="sp-tag">Antes</span><p>Checklist plano: cada item valia o mesmo. Apresentar-se ao paciente pesava tanto quanto avaliar a função renal antes de ajustar uma dose.</p></div>
+    <div class="sp-cmp-b"><span class="sp-tag on">Agora</span><p>Rubrica ponderada por criticidade, e uma segunda lista — as condutas inseguras — que <strong>desconta</strong>. Um checklist que só mede o que faltou dá nota alta a uma consulta que prejudicou o paciente.</p></div>
+  </div>
+  <div class="sp-cmp-row">
+    <span class="sp-cmp-key">Onde a atividade acontece</span>
+    <div class="sp-cmp-a"><span class="sp-tag">Antes</span><p>A conversa em um endereço, o checklist em outro, a devolutiva em um terceiro. Cada troca de aba era uma chance de a atividade se perder pelo caminho.</p></div>
+    <div class="sp-cmp-b"><span class="sp-tag on">Agora</span><p>Consulta, checklist e devolutiva no mesmo lugar, um seguido do outro, sem sair da página.</p></div>
+  </div>
+  <div class="sp-cmp-row">
+    <span class="sp-cmp-key">O que a Escola aprende</span>
+    <div class="sp-cmp-a"><span class="sp-tag">Antes</span><p>Cada dupla guardava a própria planilha. Não havia como saber, ao fim do semestre, em que ponto a turma inteira tropeçava.</p></div>
+    <div class="sp-cmp-b"><span class="sp-tag on">Agora</span><p>Um registro anonimizado por consulta mostra à coordenação onde estão as dificuldades — por tema, por competência e por período.</p></div>
+  </div>
+</div>
+
+<!-- O FEEDBACK -->
+<h2>A devolutiva é o produto</h2>
+<p class="section-lead">A conversa com o paciente é o meio; o que fica é o que vem depois dela. Ao encerrar, o estudante recebe cada item do roteiro esperado marcado como cumprido, parcial ou ausente — com o trecho da própria consulta que justifica a marcação.</p>
+
+<div class="sp-fb-wrap">
+  <!-- Ilustração da tela de feedback. Itens e percentuais inventados para a figura. -->
+  <div class="sp-fb" role="img" aria-label="Ilustração da tela de feedback: percentual de cobertura da consulta, lista de condutas marcadas como cumprida, parcial ou ausente, e as sete competências com o desempenho de cada uma — incluindo uma marcada como não avaliada neste caso.">
+    <div class="sp-fb-top" aria-hidden="true">
+      <span class="t"><b>Feedback da consulta</b><span>apoio à reflexão, não nota</span></span>
+      <span class="sp-score">72<small>%</small></span>
+    </div>
+    <div class="sp-fb-list" aria-hidden="true">
+      <p class="sp-item ok"><span class="msym">check_circle</span>Apresentar-se com nome e função</p>
+      <p class="sp-item ok"><span class="msym">check_circle</span>Investigar há quanto tempo os sintomas começaram</p>
+      <p class="sp-item mid"><span class="msym">error</span>Investigar os sinais de alarme do caso</p>
+      <p class="sp-item no"><span class="msym">cancel</span>Perguntar por dúvidas, medos e expectativas antes de encerrar</p>
+    </div>
+    <div class="sp-fb-dims" aria-hidden="true">
+      <p class="sp-dim"><span>Anamnese</span><span class="sp-bar"><i style="width:80%"></i></span><b>80%</b></p>
+      <p class="sp-dim"><span>Comunicação</span><span class="sp-bar"><i style="width:55%"></i></span><b>55%</b></p>
+      <p class="sp-dim off"><span>Exame físico</span><span class="sp-bar"><i style="width:0"></i></span><b>—</b></p>
+    </div>
+    <p class="sp-fb-leg" aria-hidden="true">— não avaliada neste caso</p>
+  </div>
+
+  <div>
+    <h3>A rubrica é a mesma, seja qual for a IA</h3>
+    <p>O roteiro esperado de cada caso é escrito pela equipe clínica e aplicado pelo próprio sistema, não pelo modelo que o estudante escolheu. Trocar de inteligência artificial muda <em>quem avalia</em>, não <em>o que é avaliado</em> — que era justamente a inconsistência apontada no artigo do grupo sobre os pacientes digitais.</p>
+
+    <h3>Sete competências, sempre as mesmas</h3>
+    <p>Todo feedback mostra as sete, na mesma ordem, para que duas consultas do mesmo estudante possam ser comparadas. A competência que aquele caso não cobra aparece como <strong>não avaliada</strong> — nunca como zero, que se leria como falha de quem atendeu.</p>
+    <div class="sp-comps">
+      <span class="sp-chip"><span class="msym">forum</span>Anamnese</span>
+      <span class="sp-chip"><span class="msym">stethoscope</span>Exame físico</span>
+      <span class="sp-chip"><span class="msym">science</span>Exames complementares</span>
+      <span class="sp-chip"><span class="msym">alt_route</span>Diagnóstico diferencial</span>
+      <span class="sp-chip"><span class="msym">medication</span>Conduta terapêutica</span>
+      <span class="sp-chip"><span class="msym">diversity_3</span>Comunicação</span>
+      <span class="sp-chip"><span class="msym">shield</span>Segurança</span>
+    </div>
+    <p class="nota">A devolutiva é apoio à reflexão, e não avaliação somativa. Ela não substitui a leitura do professor — a mediação docente continua sendo parte da atividade, como sempre foi nas simulações da Escola.</p>
+  </div>
+</div>
+
+<!-- AS DUAS PORTAS -->
+<h2>Duas portas para a mesma consulta</h2>
+<p class="section-lead">O estudante entra por onde precisa. As duas levam à mesma tela, com a mesma rubrica e a mesma devolutiva — muda o que ele sabe antes de começar.</p>
+
+<div class="grid grid-2">
+  <div class="card pillar">
+    <div class="icon"><span class="msym">menu_book</span></div>
+    <h3>Catálogo</h3>
+    <p>Escolhe o caso pelo tema, lendo o título e o resumo. É o caminho de quem quer estudar um assunto específico — a hipertensão desta semana, o pré-natal da próxima.</p>
+  </div>
+  <div class="card pillar">
+    <div class="icon"><span class="msym">shuffle</span></div>
+    <h3>Sortear paciente</h3>
+    <p>Recebe um paciente sem saber do que ele se queixa, como no ambulatório. Serve para construir o diagnóstico diferencial do zero — e por isso nem o endereço da página entrega o tema.</p>
+  </div>
+</div>
+
+<!-- ACERVO -->
+<h2>Um acervo organizado como a Atenção Primária classifica</h2>
+<p>Cada paciente digital entra em um dos capítulos da <strong>CIAP-2</strong>, a Classificação Internacional de Atenção Primária. A escolha do capítulo segue o <strong>motivo da consulta</strong>, e não o diagnóstico: alguém que procura a unidade por dor nas costas entra em Músculo-esquelético, ainda que a investigação termine em outro lugar. Etiquetar pelo diagnóstico anunciaria a resposta antes da primeira pergunta.</p>
+<p>Há uma segunda razão, de pesquisa: o e-SUS registra os atendimentos da rede em CIAP-2. Classificar assim deixa o que os estudantes treinam comparável ao que a rede de fato atende.</p>
+<p class="nota">Os capítulos sem nenhum paciente aparecem assim mesmo no catálogo, de propósito. É essa lacuna que diz à coordenação de que caso o acervo precisa em seguida.</p>
+
+<!-- COMO ACESSAR -->
+<div class="archive-band" style="margin-top:3rem;">
+  <div>
+    <h2>Como acessar</h2>
+    <p>Peça o <strong>código da turma</strong> ao professor da disciplina — ele é ditado em sala e vale para o semestre. Com o código, as inteligências artificiais ficam liberadas pela Escola: sem criar conta, sem chave, sem cartão. O código diz de qual turma é a consulta; nunca quem a fez.</p>
+  </div>
+  <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
+    <a class="btn btn-ghost" href="https://hub-de-ll-ms.vercel.app" target="_blank" rel="noopener">Abrir o SimulaPacientes ↗</a>
+    <a class="btn btn-ghost" href="{{P}}para-estudantes/">Portal do estudante</a>
+  </div>
+</div>
+
+<!-- PESQUISA -->
+<h2>O que fica registrado</h2>
+<p class="section-lead">O SimulaPacientes também é instrumento de pesquisa do grupo, e isso foi desenhado com o cuidado que o tema exige.</p>
+
+<div class="grid grid-3">
+  <div class="card pillar">
+    <div class="icon"><span class="msym">visibility_off</span></div>
+    <h3>Ninguém é identificado</h3>
+    <p>Não existe campo para nome, e-mail, matrícula ou endereço de rede — não é uma promessa de conduta, é ausência de lugar onde guardar isso.</p>
+  </div>
+  <div class="card pillar">
+    <div class="icon"><span class="msym">chat_bubble</span></div>
+    <h3>A conversa não é guardada</h3>
+    <p>O que a consulta deixa registrado é a leitura da rubrica — quais condutas apareceram e quais não —, nunca o texto do que foi escrito ao paciente.</p>
+  </div>
+  <div class="card pillar">
+    <div class="icon"><span class="msym">insights</span></div>
+    <h3>A leitura é da turma, não da pessoa</h3>
+    <p>O painel responde onde o grupo tropeça, por tema e por competência. Serve para reescrever roteiro e planejar aula — não para avaliar indivíduos.</p>
+  </div>
+</div>
+
+<p class="nota">A coleta de dados está em fase preliminar, conduzida pela própria equipe. O uso dos dados como pesquisa com estudantes depende da apreciação do protocolo pelo comitê de ética (CEP/CONEP), que corre em paralelo ao desenvolvimento.</p>
+
+<h2>Ligado a esta página</h2>
+<div class="link-grid">
+  <a class="link-card" href="{{P}}simulacoes/"><span class="lc-ico"><span class="msym">history</span></span><span class="lc-body"><b>Simulações — acervo anterior</b><small>roteiros, formulários e os GPTs de cada caso</small></span><span class="lc-arrow">→</span></a>
+  <a class="link-card" href="{{P}}para-estudantes/"><span class="lc-ico"><span class="msym">school</span></span><span class="lc-body"><b>Portal do estudante</b><small>disciplinas, prática e oportunidades</small></span><span class="lc-arrow">→</span></a>
+  <a class="link-card" href="https://doi.org/10.34117/bjdv11n12-085" target="_blank" rel="noopener"><span class="lc-ico"><span class="msym">article</span></span><span class="lc-body"><b>Da simulação presencial aos pacientes digitais</b><small>artigo do grupo · Brazilian Journal of Development</small></span><span class="lc-arrow">→</span></a>
+  <a class="link-card" href="{{P}}publicacoes/"><span class="lc-ico"><span class="msym">library_books</span></span><span class="lc-body"><b>Publicações do grupo</b><small>página do site</small></span><span class="lc-arrow">→</span></a>
+</div>
+
+</div>
+</article>

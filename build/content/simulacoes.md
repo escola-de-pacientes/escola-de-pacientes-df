@@ -1,6 +1,8 @@
 
 # Simulações
 
+> Esta página é o acervo das simulações da Escola: os roteiros, os formulários de checklist e os pacientes digitais em GPT de cada tema. A plataforma atual chama-se [SimulaPacientes](/simula-pacientes) — nela a consulta, o checklist e a devolutiva acontecem no mesmo lugar, e o estudante escolhe com qual inteligência artificial quer conversar.
+
 Atendimentos Simulados 
 
 [EMBED: YouTube Video, SIMULAÇÕES EM 4MINUTOS - EAD - PROVAS PRÁTICAS](https://www.youtube.com/embed/YcROVGm_b6w?embed_config=%7B%22enc%22:%22AXH1eznWO-oJI7OuZQi9mHDZFWQls4Y8dSHreUa16vuo8ae9U0KNc1gcVypUB68mqnzbj01E8PmpmhG663WpsepDYW-coKpxmO10xjzueNxx91HYDT80KZLML_26_OrOjf3KNuAamEowZWse3_0REWvXzsPirxcusPmhzdV38SzN5Dcn%22%7D&enablejsapi=1&errorlinks=1&vl=1)

@@ -1736,3 +1736,237 @@ footer.site .fineprint {
   font-size: .78rem; color: var(--muted);
   display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
 }
+
+/* ============================================================
+   Página do SimulaPacientes
+   ============================================================ */
+
+/* Índigo da linha de pacientes digitais — vive só nesta página e na faixa de
+   novidades da home. Os valores do modo escuro seguem a mesma exigência do
+   resto do arquivo: medidos contra o fundo (#131314) e contra o cartão
+   (#1e1f20), os dois acima de 4,5 de contraste. O --tint tem versão escura
+   própria porque ele pinta a faixa do título — sem ela, a faixa ficaria clara
+   no modo escuro e o título sumiria dentro dela (foi o que aconteceu com o
+   theme-teal). */
+body.theme-simula { --accent: #5145cd; --accent-dark: #423ab0; --tint: #ecebfb; --ink-band: #5145cd; }
+:root[data-theme="dark"] body.theme-simula { --accent: #a5a0f5; --accent-dark: #c3bffa; --tint: #1a1836; --ink-band: #3f3a9e; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body.theme-simula { --accent: #a5a0f5; --accent-dark: #c3bffa; --tint: #1a1836; --ink-band: #3f3a9e; }
+}
+
+.sp-hero { display: grid; grid-template-columns: 1fr; gap: 2.4rem; align-items: center; }
+@media (min-width: 940px) { .sp-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 3rem; } }
+.sp-hero .lead { color: var(--muted); font-size: 1.08rem; line-height: 1.6; margin-top: .9rem; }
+.sp-actions { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.6rem; }
+.sp-note { font-size: .84rem; color: var(--muted); margin-top: 1rem; }
+
+/* o traço do símbolo é currentColor, e aqui ele recebe a cor de ação da
+   página — assim o símbolo clareia junto com o resto no modo escuro, em vez
+   de ficar num índigo fixo que some contra a faixa escura do título */
+.sp-logo { display: inline-flex; align-items: center; gap: .6rem; color: var(--accent); }
+.sp-logo > span { color: var(--ink); }
+.sp-logo svg { width: 34px; height: 34px; flex: none; }
+
+/* ---------- Ilustração da consulta (paciente inventado para a figura) ---------- */
+
+.sp-app {
+  --m-bg: #ffffff; --m-head: #f7f7fb; --m-ink: #1f1e2b; --m-muted: #6b6980;
+  --m-line: rgba(31, 30, 43, .1); --m-brand: #5145cd;
+  --m-pac: #f1f0f8; --m-est: #5145cd; --m-est-ink: #ffffff;
+  display: flex; flex-direction: column;
+  background: var(--m-bg); color: var(--m-ink);
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--shadow-hover);
+  font-size: .68rem; line-height: 1.45;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.sp-app:hover { transform: translateY(-4px); }
+:root[data-theme="dark"] .sp-app { --m-bg: #191922; --m-head: #20202c; --m-ink: #f0eff5; --m-muted: #9c9ab0; --m-line: rgba(255, 255, 255, .11); --m-brand: #a5a0f5; --m-pac: #262533; --m-est: #5f57d8; --m-est-ink: #ffffff; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sp-app { --m-bg: #191922; --m-head: #20202c; --m-ink: #f0eff5; --m-muted: #9c9ab0; --m-line: rgba(255, 255, 255, .11); --m-brand: #a5a0f5; --m-pac: #262533; --m-est: #5f57d8; --m-est-ink: #ffffff; }
+}
+
+.sp-app-top { display: flex; align-items: center; gap: .6rem; padding: .6rem .75rem; background: var(--m-head); border-bottom: 1px solid var(--m-line); }
+.sp-who { display: flex; align-items: center; gap: .5rem; min-width: 0; }
+.sp-face { width: 26px; height: 26px; border-radius: 50%; flex: none; display: grid; place-items: center; background: var(--m-brand); color: #fff; font-size: .58rem; font-weight: 700; letter-spacing: .02em; }
+:root[data-theme="dark"] .sp-face { color: #17162a; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sp-face { color: #17162a; } }
+.sp-who .t { min-width: 0; }
+.sp-who .t b { display: block; font-size: .72rem; font-weight: 700; letter-spacing: -.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sp-who .t span { display: block; color: var(--m-muted); font-size: .56rem; }
+.sp-ia { margin-left: auto; flex: none; display: inline-flex; align-items: center; gap: .25rem; padding: .2rem .45rem; border: 1px solid var(--m-line); border-radius: 999px; color: var(--m-muted); font-size: .58rem; font-weight: 600; }
+.sp-ia .msym { font-size: 12px; }
+
+.sp-talk { display: flex; flex-direction: column; gap: .4rem; padding: .85rem .75rem; }
+.sp-msg { max-width: 84%; padding: .42rem .62rem; border-radius: 12px; margin: 0; }
+.sp-msg.pac { background: var(--m-pac); border-bottom-left-radius: 4px; align-self: flex-start; }
+.sp-msg.est { background: var(--m-est); color: var(--m-est-ink); border-bottom-right-radius: 4px; align-self: flex-end; }
+.sp-msg.dig { display: inline-flex; gap: .2rem; padding: .55rem .62rem; }
+.sp-msg.dig i { width: 5px; height: 5px; border-radius: 50%; background: var(--m-muted); animation: sp-blink 1.3s var(--ease) infinite; }
+.sp-msg.dig i:nth-child(2) { animation-delay: .18s; }
+.sp-msg.dig i:nth-child(3) { animation-delay: .36s; }
+@keyframes sp-blink { 0%, 60%, 100% { opacity: .28; } 30% { opacity: 1; } }
+
+.sp-app-foot { display: flex; align-items: center; gap: .5rem; padding: .6rem .75rem; border-top: 1px solid var(--m-line); }
+.sp-input { flex: 1; min-width: 0; padding: .35rem .6rem; border: 1px solid var(--m-line); border-radius: 999px; color: var(--m-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sp-send { flex: none; padding: .35rem .6rem; border-radius: 999px; background: var(--m-brand); color: #fff; font-weight: 600; font-size: .6rem; }
+:root[data-theme="dark"] .sp-send { color: #17162a; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sp-send { color: #17162a; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-app:hover { transform: none; }
+  .sp-msg.dig i { animation: none; opacity: .5; }
+}
+
+/* ---------- Os três passos ---------- */
+
+.sp-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1rem; counter-reset: sp; }
+.sp-step {
+  position: relative; padding: 1.5rem 1.4rem 1.4rem;
+  border-radius: var(--radius); background: var(--glass-tint);
+  border: 1px solid var(--glass-edge); box-shadow: var(--shadow);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.sp-step:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.sp-num {
+  display: grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 16%, var(--surface));
+  color: var(--accent); font-weight: 700; font-size: 1rem;
+  margin-bottom: .8rem;
+}
+/* h3 dentro do passo é título de cartão, e não o rótulo em caixa alta que o
+   conversor de conteúdo produz — mesma exceção que .card e .pillar já abrem */
+article.content .sp-step h3 {
+  padding-left: 0; margin-top: 0; margin-bottom: .4rem;
+  font-size: 1.1rem; letter-spacing: -.015em;
+  text-transform: none; color: var(--ink);
+}
+article.content .sp-step h3::before { display: none; }
+.sp-step p { font-size: .94rem; color: var(--muted); line-height: 1.55; }
+@media (prefers-reduced-motion: reduce) { .sp-step:hover { transform: none; } }
+
+/* ---------- Antes e agora ---------- */
+
+.sp-cmp { display: grid; gap: .9rem; }
+.sp-cmp-row {
+  display: grid; grid-template-columns: 1fr; gap: .8rem;
+  padding: 1.2rem 1.3rem;
+  border-radius: var(--radius); background: var(--glass-tint);
+  border: 1px solid var(--glass-edge); box-shadow: var(--shadow);
+}
+@media (min-width: 860px) { .sp-cmp-row { grid-template-columns: 8.5rem minmax(0, 1fr) minmax(0, 1fr); gap: 1.4rem; align-items: start; } }
+.sp-cmp-key { font-weight: 700; letter-spacing: -.01em; color: var(--ink); font-size: .98rem; align-self: center; }
+.sp-cmp-a p, .sp-cmp-b p { font-size: .93rem; line-height: 1.55; margin-top: .4rem; }
+.sp-cmp-a p { color: var(--muted); }
+.sp-cmp-b p { color: var(--ink); }
+.sp-tag {
+  display: inline-block; padding: .12rem .5rem; border-radius: 999px;
+  font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  background: color-mix(in srgb, var(--ink) 9%, transparent); color: var(--muted);
+}
+.sp-tag.on { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent-dark); }
+:root[data-theme="dark"] .sp-tag.on { color: var(--accent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sp-tag.on { color: var(--accent); } }
+
+/* ---------- Ilustração do feedback ---------- */
+
+.sp-fb-wrap { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; }
+@media (min-width: 940px) { .sp-fb-wrap { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 2.6rem; } }
+article.content .sp-fb-wrap h3:first-child { margin-top: 0; }
+
+.sp-fb {
+  --m-bg: #ffffff; --m-ink: #1f1e2b; --m-muted: #6b6980; --m-line: rgba(31, 30, 43, .1);
+  --m-track: rgba(31, 30, 43, .1); --m-brand: #5145cd;
+  --m-ok: #147a35; --m-mid: #a05c00; --m-no: #c5271d;
+  background: var(--m-bg); color: var(--m-ink);
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--glass-edge); box-shadow: var(--shadow-hover);
+  font-size: .72rem; line-height: 1.45;
+  position: sticky; top: 5.5rem;
+}
+:root[data-theme="dark"] .sp-fb { --m-bg: #191922; --m-ink: #f0eff5; --m-muted: #9c9ab0; --m-line: rgba(255, 255, 255, .11); --m-track: rgba(255, 255, 255, .13); --m-brand: #a5a0f5; --m-ok: #81c995; --m-mid: #fdd663; --m-no: #f28b82; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sp-fb { --m-bg: #191922; --m-ink: #f0eff5; --m-muted: #9c9ab0; --m-line: rgba(255, 255, 255, .11); --m-track: rgba(255, 255, 255, .13); --m-brand: #a5a0f5; --m-ok: #81c995; --m-mid: #fdd663; --m-no: #f28b82; }
+}
+@media (max-width: 939px) { .sp-fb { position: static; } }
+
+.sp-fb-top { display: flex; align-items: center; gap: .6rem; padding: .8rem .9rem; border-bottom: 1px solid var(--m-line); }
+.sp-fb-top .t { min-width: 0; }
+.sp-fb-top .t b { display: block; font-size: .82rem; font-weight: 700; letter-spacing: -.01em; }
+.sp-fb-top .t span { display: block; color: var(--m-muted); font-size: .62rem; }
+.sp-score { margin-left: auto; flex: none; font-size: 1.5rem; font-weight: 700; letter-spacing: -.03em; color: var(--m-brand); }
+.sp-score small { font-size: .8rem; font-weight: 600; }
+
+.sp-fb-list { padding: .7rem .9rem; display: grid; gap: .45rem; }
+.sp-item { display: flex; align-items: flex-start; gap: .45rem; margin: 0; }
+.sp-item .msym { font-size: 15px; flex: none; line-height: 1.25; }
+.sp-item.ok .msym { color: var(--m-ok); }
+.sp-item.mid .msym { color: var(--m-mid); }
+.sp-item.no .msym { color: var(--m-no); }
+.sp-item.no { color: var(--m-muted); }
+
+.sp-fb-dims { padding: .7rem .9rem .2rem; border-top: 1px solid var(--m-line); display: grid; gap: .5rem; }
+.sp-dim { display: grid; grid-template-columns: 7.4rem minmax(0, 1fr) 2.2rem; align-items: center; gap: .5rem; margin: 0; }
+.sp-dim > span:first-child { color: var(--m-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sp-dim b { text-align: right; font-weight: 700; }
+.sp-dim.off b, .sp-dim.off > span:first-child { color: var(--m-muted); }
+.sp-bar { height: 5px; border-radius: 3px; background: var(--m-track); overflow: hidden; }
+.sp-bar i { display: block; height: 100%; background: var(--m-brand); border-radius: 3px; }
+.sp-fb-leg { padding: .5rem .9rem .85rem; color: var(--m-muted); font-size: .62rem; margin: 0; }
+
+/* ---------- As sete competências ---------- */
+
+.sp-comps { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.1rem 0 1.4rem; }
+.sp-chip {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .4rem .8rem; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--soft-glass));
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  font-size: .86rem; font-weight: 600; color: var(--ink);
+}
+.sp-chip .msym { font-size: 16px; color: var(--accent); }
+
+/* ============================================================
+   Faixa de novidades da página inicial
+   ============================================================ */
+
+/* A faixa carrega a cor do produto anunciado, e não o azul do site: ela é uma
+   amostra da página para onde leva. Por isso a cor de ação é redefinida DENTRO
+   dela — assim o selo, a borda e os dois botões falam a mesma língua, sem que
+   nenhuma regra de botão precise ser reescrita aqui. Ao trocar a novidade,
+   troque estes dois valores. */
+.novidades {
+  --accent: #5145cd; --accent-dark: #423ab0;
+  display: grid; grid-template-columns: 1fr; gap: 1.6rem; align-items: center;
+  padding: 2rem 2.1rem;
+  border-radius: var(--radius);
+  background:
+    linear-gradient(140deg, color-mix(in srgb, var(--accent) 14%, transparent), transparent 62%),
+    var(--glass-tint-strong);
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  box-shadow: var(--shadow);
+}
+:root[data-theme="dark"] .novidades { --accent: #a5a0f5; --accent-dark: #c3bffa; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .novidades { --accent: #a5a0f5; --accent-dark: #c3bffa; }
+}
+@media (min-width: 860px) { .novidades { grid-template-columns: minmax(0, 1fr) auto; gap: 2.4rem; padding: 2.2rem 2.6rem; } }
+.nv-selo {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .25rem .7rem; border-radius: 999px;
+  background: var(--accent); color: #fff;
+  font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+.nv-selo .msym { font-size: 15px; }
+.novidades h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -.02em; margin: .8rem 0 .5rem; }
+.novidades h2 a { color: inherit; text-decoration: none; }
+.novidades h2 a:hover { text-decoration: underline; }
+.novidades p { color: var(--muted); max-width: 64ch; line-height: 1.6; }
+.nv-acoes { display: flex; gap: .7rem; flex-wrap: wrap; }
+@media (min-width: 860px) { .nv-acoes { flex-direction: column; } }
+/* no escuro a cor de ação clareia, então o texto branco do selo deixa de
+   servir — a mesma troca que o .btn-primary já faz no resto do site */
+:root[data-theme="dark"] .nv-selo { color: #17162a; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .nv-selo { color: #17162a; } }

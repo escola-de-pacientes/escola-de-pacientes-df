@@ -1,6 +1,7 @@
 window.SEARCH_INDEX = [
 {"t":"Temas Clínicos (índice)","p":"temas","c":"Temas Clínicos"},
 {"t":"Núcleo EP — sistema do grupo de pesquisa","p":"nucleo-ep","c":"A Escola"},
+{"t":"SimulaPacientes — pacientes digitais com IA","p":"simula-pacientes","c":"Simulações e Testes"},
 {"t":"Adolescentes","p":"adolescentes","c":"Temas Clínicos"},
 {"t":"Agenda 2030 — ODS 3 Saúde","p":"agenda-2030-ods-3-saude","c":"A Escola"},
 {"t":"Alimentação","p":"alimentacao","c":"Temas Clínicos"},

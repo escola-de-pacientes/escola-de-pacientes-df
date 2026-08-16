@@ -2120,31 +2120,94 @@ article.content .timeline.lista-densa li { margin-bottom: .55rem; font-size: .93
 .eq-foto img { display: block; width: 100%; height: auto; }
 .eq-foto figcaption { padding: .7rem 1.1rem; font-size: .85rem; color: var(--muted); border-top: 1px solid var(--glass-edge); }
 
-/* quem coordena — o cartão da coordenação é maior de propósito, porque a
-   pergunta que traz alguém a esta página quase sempre é "quem responde por
-   isso hoje?" */
-.eq-lideranca { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.1rem; margin-bottom: 2rem; }
-@media (min-width: 900px) { .eq-lideranca { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.eq-pessoa {
-  padding: 1.4rem 1.5rem;
-  border-radius: var(--radius); background: var(--glass-tint);
-  border: 1px solid var(--glass-edge); box-shadow: var(--shadow);
+/* ---------- Fluxo de quem responde pelo quê ----------
+   Quatro caixas lado a lado não diziam quem responde a quem: o leitor via
+   nomes e cargos, e tinha de deduzir a relação. Aqui os níveis descem em
+   degraus ligados por uma linha, e cada linha carrega o verbo que liga um ao
+   seguinte. A ligação é desenhada em CSS, e não em imagem, para acompanhar o
+   tema e o tamanho da tela.
+
+   O nome dessa figura não é organograma de cargos — é a resposta a "quem fala
+   com quem aqui?", que é a pergunta de quem chega. */
+
+.org { margin: 0 auto 2.4rem; max-width: 760px; }
+.org-nivel { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+.org-nivel.dois { grid-template-columns: minmax(0, 1fr); position: relative; }
+@media (min-width: 680px) { .org-nivel.dois { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 1.5rem; } }
+
+.org-card {
+  position: relative;
+  padding: 1.2rem 1.35rem;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--shadow);
+  display: block; text-decoration: none !important; color: inherit;
 }
-.eq-pessoa.destaque {
-  background: color-mix(in srgb, var(--accent) 9%, var(--surface));
-  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+/* os dois primeiros degraus são os que respondem pelo conjunto, e por isso
+   ganham peso: traço na cor de ação à esquerda e fundo levemente tingido */
+.org-card.direcao, .org-card.coordenacao {
+  border-left: 4px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
 }
-.eq-papel {
+.org-card.base {
+  background: var(--soft-glass);
+  border-style: dashed;
+  transition: transform .28s var(--ease), box-shadow .28s var(--ease);
+}
+.org-card.base:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+@media (prefers-reduced-motion: reduce) { .org-card.base:hover { transform: none; } }
+
+.org-papel {
   display: inline-block; padding: .18rem .6rem; border-radius: 999px;
   background: color-mix(in srgb, var(--accent) 15%, transparent);
   color: var(--accent-dark);
   font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
 }
-:root[data-theme="dark"] .eq-papel { color: var(--accent); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .eq-papel { color: var(--accent); } }
-.eq-nome { font-size: 1.18rem; font-weight: 700; letter-spacing: -.02em; color: var(--ink); margin-top: .7rem; }
-.eq-turma-min { font-size: .85rem; color: var(--accent); font-weight: 600; margin-top: .1rem; }
-.eq-sobre { font-size: .93rem; color: var(--muted); line-height: 1.55; margin-top: .5rem; }
+:root[data-theme="dark"] .org-papel { color: var(--accent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .org-papel { color: var(--accent); } }
+.org-nome { font-size: 1.16rem; font-weight: 700; letter-spacing: -.02em; color: var(--ink); margin-top: .65rem; }
+.org-onde { font-size: .85rem; color: var(--accent); font-weight: 600; margin-top: .1rem; }
+.org-faz { font-size: .93rem; color: var(--muted); line-height: 1.55; margin-top: .5rem; }
+
+/* o degrau entre dois níveis: linha vertical com o verbo no meio */
+.org-liga {
+  position: relative; height: 3.1rem;
+  display: grid; place-items: center;
+}
+.org-liga::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 2px; margin-left: -1px;
+  background: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.org-liga span {
+  position: relative;
+  padding: .2rem .7rem; border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  font-size: .78rem; font-weight: 600; color: var(--muted);
+  white-space: nowrap;
+}
+
+/* a bifurcação para os dois supervisores: um traço horizontal ligando os
+   centros das duas colunas, e um toco vertical descendo até cada cartão */
+@media (min-width: 680px) {
+  .org-nivel.dois::before {
+    content: ''; position: absolute; top: 0; left: 25%; right: 25%;
+    height: 2px; background: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .org-nivel.dois .org-card::before {
+    content: ''; position: absolute; top: -1.5rem; left: 50%;
+    width: 2px; height: 1.5rem; margin-left: -1px;
+    background: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+}
+/* no celular tudo vira uma coluna só: a bifurcação sairia torta, e a própria
+   ordem de leitura já diz que os dois estão no mesmo degrau */
+@media (max-width: 679px) {
+  .org-nivel.dois { gap: .8rem; }
+  .org-liga { height: 2.4rem; }
+}
 
 /* grade de nomes — 700 nomes em lista de itens dariam 700 linhas; em fichas
    lado a lado a mesma informação cabe na tela e continua legível */

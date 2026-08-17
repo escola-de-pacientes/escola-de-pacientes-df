@@ -82,6 +82,11 @@ my @PAGINAS_HTML = (
       busca  => 'Dr. Estêvão Cubas Rolim — trajetória e produção', secao => 'A Escola',
       desc   => 'Prof. Dr. Estêvão Cubas Rolim: professor de Medicina da UnB, médico da Estratégia Saúde da Família na SES-DF, doutor em Saúde Coletiva e coordenador da Escola de Pacientes DF desde 2016.' },
 
+    { slug => 'radar-de-congressos', arquivo => 'radar-de-congressos.html', tema => 'theme-radar',
+      titulo => 'Radar de Congressos',
+      busca  => 'Radar de Congressos — a que congresso dá para submeter', secao => 'Projetos e Produtos',
+      desc   => 'O Radar de Congressos varre as chamadas abertas, cruza cada congresso com as janelas do Edital FAPDF Participa e a rubrica de pontos, e devolve um veredito: dá para submeter, não dá, ou dá no limite.' },
+
     { slug => 'equipe', arquivo => 'equipe.html', tema => '',
       titulo => 'Equipe e Grupo de Pesquisa',
       busca  => 'Equipe e Grupo de Pesquisa', secao => 'A Escola',
@@ -107,6 +112,7 @@ my @NAV = (
     { label => 'Projetos e Produtos', items => [
         ['receita-simples', 'Receita Simples'],
         ['simula-pacientes', 'SimulaPacientes — pacientes digitais'],
+        ['radar-de-congressos', 'Radar de Congressos'],
         ['prescreva-um-livro', 'Prescreva um Livro'],
         ['escola-saudavel', 'Escola Saudável'],
         ['youtube', 'Canal no YouTube'],

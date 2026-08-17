@@ -1,0 +1,212 @@
+<!-- Corpo da página do Radar de Congressos. Montado por build.pl dentro do
+     shell padrão. Marcador: P = caminho até a raiz do site.
+     As regras de edição das páginas em HTML estão no build.pl, junto do
+     registro @PAGINAS_HTML. -->
+
+<div class="page-hero"><div class="wrap">
+<nav class="breadcrumb" aria-label="Localização"><a href="{{P}}">Início</a><span class="sep">›</span><span>Projetos e Produtos</span><span class="sep">›</span><span>Radar de Congressos</span></nav>
+
+<div class="rd-hero">
+  <div>
+    <p class="kicker">Ferramenta do grupo de pesquisa</p>
+    <h1 class="rd-titulo">Radar de <span>Congressos</span></h1>
+    <p class="lead">Todo semestre a mesma pergunta: <em>a que congresso dá para submeter com apoio da FAPDF?</em> O Radar responde. Ele varre as chamadas abertas, compara os congressos e devolve, para cada um, um veredito — dá, não dá, ou dá no limite.</p>
+    <div class="rd-acoes">
+      <a class="btn btn-primary" href="https://escola-de-pacientes.github.io/Radar-de-congressos-FAPDF-/" target="_blank" rel="noopener">Abrir o Radar ↗</a>
+      <a class="btn btn-ghost" href="#como-funciona">Como funciona</a>
+    </div>
+    <p class="rd-nota">O painel é público e é atualizado a cada varredura. Ele acompanha o <strong>Edital FAPDF Participa</strong>, que custeia a ida de pesquisadores a congressos.</p>
+  </div>
+
+  <!-- Ilustração do painel, desenhada em HTML/CSS a partir da tela real.
+       Os números são de exemplo: o painel no ar traz os da varredura atual. -->
+  <div>
+    <div class="rd-app" role="img" aria-label="Ilustração do painel do Radar: em cima, quatro indicadores — congressos comparados, quantos encaixam na janela, quantos estão no limite e quantas janelas do edital seguem abertas; embaixo, três congressos com o veredito de cada um.">
+      <div class="rd-app-top" aria-hidden="true">
+        <span class="rd-marca">Radar de Congressos FAPDF</span>
+        <span class="rd-exec">varredura de 27/07</span>
+      </div>
+      <div class="rd-kpis" aria-hidden="true">
+        <div class="rd-kpi"><b>151</b><span>congressos comparados</span></div>
+        <div class="rd-kpi"><b>10</b><span>encaixam na janela</span></div>
+        <div class="rd-kpi"><b>13</b><span>no limite</span></div>
+        <div class="rd-kpi"><b>2</b><span>janelas abertas</span></div>
+      </div>
+      <div class="rd-linhas" aria-hidden="true">
+        <div class="rd-linha">
+          <span class="t"><b>6th International Public Health Conference</b><span>Singapura · Mar 2027 · 75 pts</span></span>
+          <span class="rd-sel ok">Encaixa</span>
+        </div>
+        <div class="rd-linha">
+          <span class="t"><b>Congresso de Medicina de Família</b><span>Anaheim · Fev 2027 · 90 pts</span></span>
+          <span class="rd-sel meio">No limite</span>
+        </div>
+        <div class="rd-linha">
+          <span class="t"><b>Conferência de Saúde Global</b><span>Lima · Fev 2027 · 85 pts</span></span>
+          <span class="rd-sel nao">Aceite tarde</span>
+        </div>
+      </div>
+    </div>
+    <p class="rd-nota" style="text-align:center;">Ilustração do painel — números de uma varredura de exemplo.</p>
+  </div>
+</div>
+</div></div>
+
+<article class="content" id="conteudo">
+<div class="wrap">
+
+<!-- O PROBLEMA -->
+<p class="kicker">Por que ele existe</p>
+<h2 class="section-title">Um congresso perfeito pode ser impossível</h2>
+<p class="section-lead">A FAPDF — a fundação de apoio à pesquisa do Distrito Federal — custeia a ida de pesquisadores a congressos. O dinheiro existe, mas o caminho até ele tem duas travas que derrubam quase todo mundo, e a segunda quase ninguém enxerga a tempo.</p>
+
+<div class="grid grid-2">
+  <div class="card pillar">
+    <div class="icon"><span class="msym">calendar_month</span></div>
+    <h3>1. A janela fecha antes do evento</h3>
+    <p>As submissões ao edital acontecem em <strong>janelas</strong>, definidas pelo mês em que o congresso começa. Cada janela fecha meses antes do evento. Passou da data, aquele congresso está fora — não há recurso, só o próximo edital.</p>
+  </div>
+  <div class="card pillar">
+    <div class="icon"><span class="msym">mark_email_read</span></div>
+    <h3>2. A carta de aceite é exigida na submissão</h3>
+    <p>Não basta o congresso cair na janela: a <strong>carta que aceita o seu trabalho</strong> precisa estar em mãos na hora de submeter ao edital. Ou seja, o congresso tem que avisar que aceitou o resumo <em>antes</em> de a janela fechar — e a maioria avisa depois.</p>
+  </div>
+</div>
+
+<p class="nota">É essa segunda trava que faz o Radar existir. Um congresso pode ser o ideal para o grupo, cair na janela certa e ainda assim ser impossível, porque a resposta dele chega tarde demais. Já aconteceu: um congresso alinhado ao trabalho do grupo tinha chamada de pôsteres aberta até <strong>dois dias depois</strong> do fechamento da janela. Dois dias — e a vaga do semestre foi embora.</p>
+
+<!-- COMO FUNCIONA -->
+<p class="kicker" id="como-funciona">Como funciona</p>
+<h2 class="section-title">Dois filtros, um veredito</h2>
+<p class="section-lead">O Radar roda uma varredura, compara todos os congressos que encontra e passa cada um por duas perguntas. Universidades, sociedades científicas e redes internacionais são avaliadas no mesmo nível.</p>
+
+<div class="passos">
+  <div class="passo">
+    <span class="passo-sim azul" aria-hidden="true"><span class="msym">travel_explore</span></span>
+    <span class="passo-num" aria-hidden="true">1</span>
+    <h3>Varre as chamadas</h3>
+    <p>Reúne os congressos com chamada aberta ou prevista, de todas as áreas em que o grupo publica — atenção primária, educação médica, saúde pública, enfermagem, saúde global.</p>
+  </div>
+  <div class="passo">
+    <span class="passo-sim verde" aria-hidden="true"><span class="msym">event_available</span></span>
+    <span class="passo-num" aria-hidden="true">2</span>
+    <h3>Testa o encaixe</h3>
+    <p>Confere se o congresso cai numa janela aberta <strong>e</strong> se a carta de aceite chega antes de ela fechar. É a pergunta que separa o possível do impossível.</p>
+  </div>
+  <div class="passo">
+    <span class="passo-sim amarelo" aria-hidden="true"><span class="msym">scoreboard</span></span>
+    <span class="passo-num" aria-hidden="true">3</span>
+    <h3>Pontua pela rubrica</h3>
+    <p>Aplica a rubrica de pontos do edital a cada congresso, para mostrar quais valem mais quando é preciso escolher entre dois que encaixam.</p>
+  </div>
+</div>
+
+<!-- OS VEREDITOS -->
+<h2>O que cada veredito quer dizer</h2>
+<p class="section-lead">Toda linha do painel termina em uma destas seis palavras. Elas são o produto: dizem o que fazer com aquele congresso esta semana.</p>
+
+<div class="rd-vereditos">
+  <div class="rd-ver ok">
+    <span class="rd-sel ok">Encaixa</span>
+    <p>Cai na janela, e o aceite chega a tempo. É onde vale gastar o esforço de submeter agora.</p>
+  </div>
+  <div class="rd-ver meio">
+    <span class="rd-sel meio">No limite</span>
+    <p>Dá, mas sem folga: o aceite sai perto demais do fechamento. Serve se não houver alternativa melhor — e pede acompanhamento de perto.</p>
+  </div>
+  <div class="rd-ver nao">
+    <span class="rd-sel nao">Não encaixa</span>
+    <p>O congresso serviria, mas as datas não fecham. Em geral porque o aceite sai depois da janela.</p>
+  </div>
+  <div class="rd-ver espera">
+    <span class="rd-sel espera">Próximo edital</span>
+    <p>Bom alvo, fora de hora. Fica registrado para a próxima rodada, com o prazo já anotado.</p>
+  </div>
+  <div class="rd-ver fora">
+    <span class="rd-sel fora">Inviável para FAP</span>
+    <p>Não atende às condições do edital — por data, formato ou natureza do evento.</p>
+  </div>
+  <div class="rd-ver fora">
+    <span class="rd-sel fora">Sem FAP</span>
+    <p>Vale a pena participar, mas por outro caminho: sem depender deste edital.</p>
+  </div>
+</div>
+
+<!-- A RUBRICA -->
+<h2>Como os pontos são contados</h2>
+<p>O edital pontua cada pedido, e o Radar refaz essa conta para todos os congressos da lista. São <strong>150 pontos no máximo</strong>, repartidos em duas metades bem diferentes: uma que depende do <strong>congresso</strong>, e outra que depende de <strong>quem submete</strong>.</p>
+
+<div class="grid grid-2">
+  <div class="card pillar">
+    <div class="icon"><span class="msym">workspace_premium</span></div>
+    <h3>O congresso — até 110 pontos</h3>
+    <p>Quantas edições ele já teve, se é regional, nacional ou internacional, e em que formato o trabalho sai publicado — de um resumo de uma página a um artigo completo.</p>
+  </div>
+  <div class="card pillar">
+    <div class="icon"><span class="msym">person_check</span></div>
+    <h3>Quem submete — até 40 pontos</h3>
+    <p>Se a apresentação é pôster ou oral, e quantos artigos completos a pessoa publicou no ano anterior. É a metade que dá para melhorar antes de submeter.</p>
+  </div>
+</div>
+
+<p class="nota">Essa separação tem uma consequência prática que o painel explora numa seção própria: quando dois congressos empatam, o que decide não é o congresso — é a escolha de pedir apresentação <strong>oral</strong> em vez de pôster, e o formato de publicação aceito. São os pontos que estão na mão de quem submete.</p>
+
+<!-- O PAINEL -->
+<h2>O que você encontra no painel</h2>
+<p class="section-lead">O Radar não é uma planilha de congressos: é uma leitura da semana, com a recomendação no topo e o detalhe embaixo, para quem quiser conferir.</p>
+
+<div class="grid grid-3">
+  <div class="card pillar">
+    <div class="icon"><span class="msym">target</span></div>
+    <h3>Veredito da semana</h3>
+    <p>Um texto curto no topo com o que mudou, o que foi perdido e qual é a ação prioritária — o congresso a que submeter agora, e por quê.</p>
+  </div>
+  <div class="card pillar">
+    <div class="icon"><span class="msym">monitoring</span></div>
+    <h3>Indicadores</h3>
+    <p>Quantos congressos foram comparados, quantos encaixam, quantos estão no limite e quantos dias faltam para cada janela fechar.</p>
+  </div>
+  <div class="card pillar">
+    <div class="icon"><span class="msym">event_note</span></div>
+    <h3>Calendário de janelas</h3>
+    <p>Todas as janelas do edital, com a data de fechamento e a situação de cada uma — encerrada ou aberta, com os dias restantes.</p>
+  </div>
+  <div class="card pillar">
+    <div class="icon"><span class="msym">table_view</span></div>
+    <h3>Tabela de alvos</h3>
+    <p>Todos os congressos numa tabela só: local, data, área, edição, prazo do resumo, quando sai o aceite, pontuação e veredito.</p>
+  </div>
+  <div class="card pillar">
+    <div class="icon"><span class="msym">insights</span></div>
+    <h3>Cobertura e gráficos</h3>
+    <p>De onde vieram os congressos, por área e por continente, e a distribuição dos vereditos — para se ver o que a varredura alcançou e o que ficou de fora.</p>
+  </div>
+  <div class="card pillar">
+    <div class="icon"><span class="msym">lightbulb</span></div>
+    <h3>Estratégia de pontuação</h3>
+    <p>As alavancas que aumentam a nota do pedido, com a conta de quanto cada uma rende: o formato da publicação, a apresentação oral e os artigos do ano anterior.</p>
+  </div>
+</div>
+
+<!-- ACESSO -->
+<div class="archive-band" style="margin-top:3rem;">
+  <div>
+    <h2>Abrir o Radar</h2>
+    <p>O painel é público e não pede cadastro. Ele é mantido pelo grupo de pesquisa da Escola de Pacientes DF e atualizado a cada varredura — a data da última aparece no próprio título.</p>
+  </div>
+  <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
+    <a class="btn btn-ghost" href="https://escola-de-pacientes.github.io/Radar-de-congressos-FAPDF-/" target="_blank" rel="noopener">Abrir o Radar ↗</a>
+    <a class="btn btn-ghost" href="{{P}}congressos/">Congressos do grupo</a>
+  </div>
+</div>
+
+<h2>Ligado a esta página</h2>
+<div class="link-grid">
+  <a class="link-card" href="{{P}}congressos/"><span class="lc-ico"><span class="msym">public</span></span><span class="lc-body"><b>Congressos do grupo</b><small>onde a Escola já apresentou</small></span><span class="lc-arrow">→</span></a>
+  <a class="link-card" href="{{P}}publicacoes/"><span class="lc-ico"><span class="msym">library_books</span></span><span class="lc-body"><b>Publicações</b><small>o que o grupo já publicou</small></span><span class="lc-arrow">→</span></a>
+  <a class="link-card" href="{{P}}nucleo-ep/"><span class="lc-ico"><span class="msym">dashboard</span></span><span class="lc-body"><b>Núcleo EP</b><small>onde os prazos do grupo são acompanhados</small></span><span class="lc-arrow">→</span></a>
+  <a class="link-card" href="{{P}}equipe/"><span class="lc-ico"><span class="msym">group</span></span><span class="lc-body"><b>Equipe e grupo de pesquisa</b><small>quem mantém o Radar</small></span><span class="lc-arrow">→</span></a>
+</div>
+
+</div>
+</article>

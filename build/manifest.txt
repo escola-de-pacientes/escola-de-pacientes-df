@@ -6,6 +6,7 @@ para-pesquisadores|Pesquisadores|publicos|
 para-profissionais|Profissionais e Gestores|publicos|
 receita-simples|Receita Simples|projetos|
 prescreva-um-livro|Prescreva um Livro|projetos|
+radar-de-congressos|Radar de Congressos|projetos|
 instagram|Instagram — Luz, Câmera, Saúde|projetos|
 boas-vindas|Boas-vindas|sobre|
 dr-estevao-rolim|Dr. Estêvão Rolim|sobre|

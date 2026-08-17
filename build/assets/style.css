@@ -1903,54 +1903,56 @@ body.theme-simula { --accent: #5145cd; --accent-dark: #423ab0; --tint: #ecebfb; 
   .sp-msg.dig i { animation: none; opacity: .5; }
 }
 
-/* ---------- Os três passos, no desenho do Hub ----------
-   Símbolo redondo de traço grosso sobre cor chapada, número no canto. É a
-   linguagem visual do próprio Hub, trazida para cá de propósito: quem sai
-   desta página e abre o produto precisa reconhecer que chegou no lugar certo. */
+/* ---------- Passos numerados (SimulaPacientes e Radar) ----------
+   Símbolo redondo de traço grosso sobre cor chapada, número no canto. Nasceu
+   na página do SimulaPacientes, copiando a linguagem visual do próprio Hub
+   para que quem saísse daqui reconhecesse o produto do outro lado. Como a
+   página do Radar precisava do mesmo desenho, o componente perdeu o prefixo
+   de uma página só em vez de ser duplicado. */
 
-.sp-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1rem; }
-.sp-step {
+.passos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1rem; }
+.passo {
   position: relative; padding: 1.5rem 1.4rem 1.4rem;
   border-radius: var(--radius); background: var(--surface);
   border: 1px solid var(--glass-edge); box-shadow: var(--shadow);
   transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
-.sp-step:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.passo:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
 
-.sp-sim {
+.passo-sim {
   display: grid; place-items: center;
   width: 54px; height: 54px; border-radius: 50%;
   border: 2.5px solid var(--ink);
   margin-bottom: 1rem;
 }
-.sp-sim .msym { font-size: 26px; color: var(--ink); }
-.sp-sim.azul    { background: #a8c7fa; }
-.sp-sim.verde   { background: #81c995; }
-.sp-sim.amarelo { background: #fdd663; }
+.passo-sim .msym { font-size: 26px; color: var(--ink); }
+.passo-sim.azul    { background: #a8c7fa; }
+.passo-sim.verde   { background: #81c995; }
+.passo-sim.amarelo { background: #fdd663; }
 /* o traço e o símbolo são sempre escuros: as três cores de fundo são claras
    nos dois temas, então inverter no escuro apagaria o desenho */
-:root[data-theme="dark"] .sp-sim { border-color: #202124; }
-:root[data-theme="dark"] .sp-sim .msym { color: #202124; }
+:root[data-theme="dark"] .passo-sim { border-color: #202124; }
+:root[data-theme="dark"] .passo-sim .msym { color: #202124; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .sp-sim { border-color: #202124; }
-  :root:not([data-theme="light"]) .sp-sim .msym { color: #202124; }
+  :root:not([data-theme="light"]) .passo-sim { border-color: #202124; }
+  :root:not([data-theme="light"]) .passo-sim .msym { color: #202124; }
 }
 
-.sp-num {
+.passo-num {
   position: absolute; top: 1.1rem; right: 1.2rem;
   display: grid; place-items: center;
   width: 24px; height: 24px; border-radius: 50%;
   background: var(--bg-soft); color: var(--muted);
   font-size: .78rem; font-weight: 700;
 }
-article.content .sp-step h3 {
+article.content .passo h3 {
   padding-left: 0; margin-top: 0; margin-bottom: .4rem;
   font-size: 1.1rem; letter-spacing: -.015em;
   text-transform: none; color: var(--ink);
 }
-article.content .sp-step h3::before { display: none; }
-.sp-step p { font-size: .94rem; color: var(--muted); line-height: 1.55; }
-@media (prefers-reduced-motion: reduce) { .sp-step:hover { transform: none; } }
+article.content .passo h3::before { display: none; }
+.passo p { font-size: .94rem; color: var(--muted); line-height: 1.55; }
+@media (prefers-reduced-motion: reduce) { .passo:hover { transform: none; } }
 
 /* ---------- A fila de rostos ----------
    São os personagens do próprio Hub. Aqui eles dizem, sem texto, que cada
@@ -2231,3 +2233,94 @@ h3.eq-turma span {
   font-size: .82rem; color: var(--muted);
 }
 .eq-anon { font-size: .85rem; color: var(--muted); margin: -.9rem 0 1.6rem; font-style: italic; }
+
+/* ============================================================
+   Radar de Congressos
+   ============================================================ */
+
+/* Azul-ciano do painel: distingue a página do índigo do SimulaPacientes e do
+   azul padrão do site. Medido contra o fundo (#131314) e contra o cartão
+   (#1e1f20) no modo escuro, e contra o branco no claro — os três acima de
+   4,5. O --tint tem versão escura própria porque pinta a faixa do título. */
+body.theme-radar { --accent: #0b6e99; --accent-dark: #08567a; --tint: #e3f2fa; --ink-band: #0b6e99; }
+:root[data-theme="dark"] body.theme-radar { --accent: #4fc3f7; --accent-dark: #81d4fa; --tint: #0d2733; --ink-band: #084f6e; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) body.theme-radar { --accent: #4fc3f7; --accent-dark: #81d4fa; --tint: #0d2733; --ink-band: #084f6e; }
+}
+
+.rd-hero { display: grid; grid-template-columns: 1fr; gap: 2.4rem; align-items: center; }
+@media (min-width: 940px) { .rd-hero { grid-template-columns: minmax(0, 1fr) minmax(0, .95fr); gap: 3rem; } }
+.rd-hero .lead { color: var(--muted); font-size: 1.08rem; line-height: 1.6; margin-top: .9rem; }
+.rd-acoes { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.6rem; }
+.rd-nota { font-size: .86rem; color: var(--muted); margin-top: 1.1rem; }
+
+/* o painel destaca parte do próprio título numa caixa; a página repete o
+   gesto para que quem clica reconheça o produto do outro lado */
+.rd-titulo { letter-spacing: -.03em; }
+.rd-titulo span {
+  display: inline-block;
+  padding: 0 .35em; border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* ---------- Ilustração do painel ---------- */
+
+.rd-app {
+  --m-bg: #ffffff; --m-page: #f7f6f4; --m-ink: #16181d; --m-muted: #63697a;
+  --m-line: rgba(22, 24, 29, .12);
+  --m-ok: #1f7a4d; --m-ok-bg: #e2f4ea;
+  --m-meio: #9a6200; --m-meio-bg: #fbf0d8;
+  --m-nao: #b3352c; --m-nao-bg: #fbe6e4;
+  background: var(--m-page); color: var(--m-ink);
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--glass-edge); box-shadow: var(--shadow-hover);
+  font-size: .7rem; line-height: 1.45;
+  transition: transform .35s var(--ease);
+}
+.rd-app:hover { transform: translateY(-4px); }
+@media (prefers-reduced-motion: reduce) { .rd-app:hover { transform: none; } }
+:root[data-theme="dark"] .rd-app { --m-bg: #1b1d22; --m-page: #141519; --m-ink: #eef0f4; --m-muted: #9aa1b2; --m-line: rgba(255,255,255,.12); --m-ok: #7fd1a5; --m-ok-bg: #163024; --m-meio: #f0c26a; --m-meio-bg: #33290f; --m-nao: #f0938c; --m-nao-bg: #33191a; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .rd-app { --m-bg: #1b1d22; --m-page: #141519; --m-ink: #eef0f4; --m-muted: #9aa1b2; --m-line: rgba(255,255,255,.12); --m-ok: #7fd1a5; --m-ok-bg: #163024; --m-meio: #f0c26a; --m-meio-bg: #33290f; --m-nao: #f0938c; --m-nao-bg: #33191a; }
+}
+
+.rd-app-top { display: flex; align-items: baseline; gap: .6rem; padding: .65rem .8rem; background: var(--m-bg); border-bottom: 1px solid var(--m-line); }
+.rd-marca { font-size: .78rem; font-weight: 700; letter-spacing: -.015em; }
+.rd-exec { margin-left: auto; color: var(--m-muted); font-size: .6rem; }
+
+.rd-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .45rem; padding: .7rem .8rem; }
+.rd-kpi { background: var(--m-bg); border: 1px solid var(--m-line); border-radius: 9px; padding: .5rem .55rem; min-width: 0; }
+.rd-kpi b { display: block; font-size: 1.25rem; font-weight: 700; letter-spacing: -.03em; line-height: 1.1; }
+.rd-kpi span { display: block; color: var(--m-muted); font-size: .53rem; line-height: 1.25; margin-top: .15rem; }
+
+.rd-linhas { padding: 0 .8rem .8rem; display: grid; gap: .4rem; }
+.rd-linha { display: flex; align-items: center; gap: .5rem; background: var(--m-bg); border: 1px solid var(--m-line); border-radius: 9px; padding: .5rem .6rem; }
+.rd-linha .t { min-width: 0; flex: 1; }
+.rd-linha .t b { display: block; font-size: .67rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rd-linha .t span { display: block; color: var(--m-muted); font-size: .55rem; }
+
+/* ---------- As etiquetas de veredito ----------
+   Cor E palavra: quem não distingue verde de vermelho lê a etiqueta. É a
+   mesma exigência que o Núcleo EP já cumpre nos prazos. */
+.rd-sel {
+  flex: none; display: inline-block;
+  padding: .2rem .55rem; border-radius: 999px;
+  font-size: .68rem; font-weight: 700; letter-spacing: .02em;
+  white-space: nowrap;
+}
+.rd-app .rd-sel { font-size: .55rem; }
+.rd-sel.ok    { background: var(--m-ok-bg, #e2f4ea);   color: var(--m-ok, #1f7a4d); }
+.rd-sel.meio  { background: var(--m-meio-bg, #fbf0d8); color: var(--m-meio, #9a6200); }
+.rd-sel.nao   { background: var(--m-nao-bg, #fbe6e4);  color: var(--m-nao, #b3352c); }
+.rd-sel.espera { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent-dark); }
+.rd-sel.fora  { background: color-mix(in srgb, var(--ink) 10%, transparent); color: var(--muted); }
+:root[data-theme="dark"] .rd-sel.espera { color: var(--accent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .rd-sel.espera { color: var(--accent); } }
+
+.rd-vereditos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: .9rem; margin-bottom: 1rem; }
+.rd-ver {
+  padding: 1.1rem 1.2rem;
+  border-radius: 16px; background: var(--glass-tint);
+  border: 1px solid var(--glass-edge); box-shadow: var(--shadow);
+}
+.rd-ver p { font-size: .92rem; color: var(--muted); line-height: 1.55; margin-top: .6rem; }

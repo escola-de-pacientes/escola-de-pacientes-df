@@ -492,6 +492,10 @@ sub header_html {
 <label class="nav-toggle" for="nav-toggle" aria-label="Abrir menu"><span></span><span></span><span></span></label>
 <nav class="main" aria-label="Navegação principal">
 $nav
+<a class="btn-simula" href="https://escoladepacientes.com/simula-pacientes/" title="SimulaPacientes — pacientes digitais com inteligência artificial">
+<span class="msym" aria-hidden="true">smart_toy</span>
+<span class="btn-simula-txt">SimulaPacientes</span>
+</a>
 <a class="btn-nucleo" href="https://adm-epdf.vercel.app" target="_blank" rel="noopener" title="Núcleo EP — sistema de gestão do grupo (acesso restrito aos integrantes)">
 <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><rect x="2.8" y="2.8" width="26.4" height="26.4" rx="8" stroke="currentColor" stroke-width="3"/><path d="M9.6 16.4 L14 20.8 L22.8 11.2" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
 <span class="btn-nucleo-txt">Núcleo EP</span>

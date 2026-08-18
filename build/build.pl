@@ -13,7 +13,7 @@ use Encode qw(encode_utf8);
 my $ROOT   = dirname(__FILE__);
 my $OUT    = "$ROOT/../docs";
 my $SITE   = 'Escola de Pacientes DF';
-my $SITE_URL = 'https://escola-de-pacientes.github.io/escola-de-pacientes-df';
+my $SITE_URL = 'https://escoladepacientes.com';
 
 # ---------------- manifesto ----------------
 my (%page, @order);          # slug -> {title, cat, group}

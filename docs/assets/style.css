@@ -497,9 +497,13 @@ label.nav-toggle span { display: block; width: 20px; height: 2px; background: va
      jogava para o fim do painel, quase 1800px abaixo. Aqui ele sobe. */
   #nav-toggle:checked ~ nav.main { display: flex; flex-direction: column; }
   nav.main > .searchbox { order: 1; }
-  nav.main > .btn-nucleo { order: 2; }
-  nav.main > ul         { order: 3; }
-  nav.main > .theme-toggle { order: 4; align-self: flex-start; margin: .5rem 1.5rem 0; }
+  nav.main > .btn-simula { order: 2; }
+  nav.main > .btn-nucleo { order: 3; }
+  nav.main > ul         { order: 4; }
+  nav.main > .theme-toggle { order: 5; align-self: flex-start; margin: .5rem 1.5rem 0; }
+  /* os dois botões viram um par: espaço normal acima do primeiro,
+     espaço curto entre eles, para lerem como um bloco só */
+  nav.main > .btn-simula + .btn-nucleo { margin-top: .5rem; }
   nav.main > ul { flex-direction: column; }
   nav.main > ul > li > a { padding: .9rem 1.5rem; }
   .dropdown {
@@ -540,6 +544,63 @@ p.section-lead { color: var(--muted); font-size: 1.12rem; max-width: 62ch; margi
 .btn-ghost:hover { background: var(--g-azul-bg); border-color: var(--g-azul-bg); }
 .section-alt .btn-ghost { background: var(--glass-tint-strong); box-shadow: var(--shadow); }
 .section-alt .btn-ghost:hover { background: var(--glass-tint-strong); box-shadow: var(--shadow-hover); }
+
+/* Botão do SimulaPacientes, no cabeçalho, logo antes do Núcleo EP.
+   Mesma forma dos dois, de propósito: são os dois destinos que o visitante
+   pode querer abrir de qualquer página, sem caçar no menu. O vermelho separa
+   um do outro — este é o produto aberto a estudantes, o teal é o sistema
+   interno do grupo. Aparece só no menu do celular — ver a regra de 881px
+   logo abaixo, que explica por quê. */
+.btn-simula {
+  --sim: #b31412;
+  display: inline-flex; align-items: center; gap: .4rem; flex: none;
+  margin-left: .5rem; padding: .42rem .8rem;
+  border-radius: 999px;
+  font-size: .82rem; font-weight: 600; letter-spacing: -.005em;
+  font-family: var(--font-sans);
+  color: var(--sim); text-decoration: none !important;
+  background: color-mix(in srgb, var(--sim) 10%, var(--glass-tint-strong));
+  -webkit-backdrop-filter: blur(10px) saturate(var(--glass-sat));
+  backdrop-filter: blur(10px) saturate(var(--glass-sat));
+  border: 1px solid color-mix(in srgb, var(--sim) 28%, transparent);
+  box-shadow: inset 0 1px 0 var(--glass-rim);
+  transition: background .2s var(--ease), border-color .2s var(--ease),
+              transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.btn-simula .msym { font-size: 17px; flex: none; }
+.btn-simula:hover {
+  background: color-mix(in srgb, var(--sim) 18%, var(--glass-tint-strong));
+  border-color: color-mix(in srgb, var(--sim) 50%, transparent);
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 var(--glass-rim), 0 6px 18px color-mix(in srgb, var(--sim) 25%, transparent);
+}
+/* no escuro o vermelho puro perde legibilidade sobre o grafite */
+:root[data-theme="dark"] .btn-simula { --sim: #f28b82; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .btn-simula { --sim: #f28b82; }
+}
+/* No desktop entra como símbolo só, e a busca cede largura para caber:
+   a barra tem 1200px fixos e trabalhava com folga zero (marca 199 + menu 607
+   + Núcleo EP 111 + tema 38 + busca 150).
+   Exceção entre 881 e 1180px: ali a busca JÁ está reduzida à lupa e os itens
+   do menu já estão comprimidos pela regra acima — não sobra o que ceder, e o
+   botão empurrava a busca para fora da tela. Nessa faixa ele sai; no celular
+   volta por extenso. */
+@media (min-width: 881px) {
+  .btn-simula { padding: .42rem .5rem; margin-left: .25rem; }
+  .btn-simula-txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+@media (min-width: 881px) and (max-width: 1180px) {
+  .btn-simula { display: none; }
+}
+@media (min-width: 1181px) {
+  .searchbox input { width: 110px; }
+}
+@media (max-width: 880px) {
+  .btn-simula { margin: 1rem 1.5rem 0; padding: .7rem 1.2rem; font-size: .95rem; }
+  .btn-simula .msym { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) { .btn-simula:hover { transform: none; } }
 
 /* Botão de acesso ao sistema do grupo, no cabeçalho.
    Verde da marca do Núcleo EP, para se distinguir dos itens de navegação:
@@ -1231,6 +1292,59 @@ article.content .wrap-narrow .link-grid { grid-template-columns: repeat(auto-fil
 .audience-btns a.aud-azul:hover    { background: var(--n-azul-bg);    border-color: var(--n-azul);    color: var(--n-azul-dark); }
 .audience-btns a.aud-roxo:hover    { background: var(--n-roxo-bg);    border-color: var(--n-roxo);    color: var(--n-roxo-dark); }
 .audience-btns a.aud-laranja:hover { background: var(--n-laranja-bg); border-color: var(--n-laranja); color: var(--n-laranja-dark); }
+
+/* Chamada do SimulaPacientes, logo abaixo dos botões de público.
+   Roxo de propósito: os quatro botões acima já reservam o verde, o azul, o
+   âmbar e o vermelho, e o teal é do Núcleo EP no cabeçalho. O roxo é o que
+   sobra na paleta para dizer "isto não é mais um público, é o produto".
+   Sólido enquanto os de cima são de vidro — é assim que ele salta sem
+   precisar ser maior do que a seção comporta. */
+.hero-cta { display: flex; justify-content: center; margin-top: 1.15rem; }
+.cta-simula {
+  --sp: #9334e6;
+  display: inline-flex; align-items: center; justify-content: center; gap: .65rem;
+  padding: .92rem 1.9rem;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 1.04rem; letter-spacing: -.01em;
+  color: #fff; text-decoration: none !important;
+  background: var(--sp);
+  border: 1px solid color-mix(in srgb, var(--sp) 72%, #000);
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--sp) 30%, transparent),
+              inset 0 1px 0 rgba(255, 255, 255, .22);
+  transition: background .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+.cta-simula-l { display: inline-flex; align-items: center; gap: .5rem; }
+.cta-simula b { font-weight: 700; }
+.cta-simula .msym { font-size: 22px; }
+.cta-simula-sub { font-weight: 400; opacity: .9; }
+.cta-simula:hover {
+  background: color-mix(in srgb, var(--sp) 87%, #000);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px color-mix(in srgb, var(--sp) 42%, transparent),
+              inset 0 1px 0 rgba(255, 255, 255, .22);
+}
+.cta-simula:active { transform: scale(.98); }
+.cta-simula:focus-visible { outline: 3px solid var(--sp); outline-offset: 3px; }
+/* no escuro o roxo puro some no fundo grafite; sobe um tom, mantendo
+   o texto branco com contraste de sobra */
+:root[data-theme="dark"] .cta-simula { --sp: #9b47e9; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .cta-simula { --sp: #9b47e9; }
+}
+/* no celular vira alvo de toque de largura cheia, com o nome em cima
+   e a explicação embaixo — em uma linha só ficaria apertado */
+@media (max-width: 560px) {
+  .hero-cta { margin-top: 1rem; }
+  .cta-simula {
+    width: 100%; max-width: 400px;
+    flex-direction: column; gap: .15rem;
+    padding: .95rem 1.3rem;
+  }
+  .cta-simula .msym { font-size: 24px; }
+  .cta-simula-sub { font-size: .92rem; }
+}
+@media (prefers-reduced-motion: reduce) { .cta-simula:hover { transform: none; } }
 
 /* cards-portal na landing acompanham as cores */
 .portal.aud-verde:hover   { box-shadow: 0 8px 30px rgba(68, 131, 97, .22); }

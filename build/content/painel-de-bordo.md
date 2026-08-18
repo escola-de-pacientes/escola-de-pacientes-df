@@ -13,11 +13,22 @@ Nacionais = 6: Congresso Brasileiro de Educação Médica - COBEM 2021 (5 poster
 
 Internacionais = 2: World Congress of Public Health - WCPH 2020 (1 apresentação oral e 4 posters), European Congress of Internal Medicine – ECIM  2017 (9 posters), Congresso da Associação Latina para Análise dos Sistemas de Saúde – CALASS 2017 (2 apresentações e 2 posters), 
 
-Simulações - Atualizado em 2021-Março
+Simulações - Atualizado em 2026-Agosto
 
 SIMULAÇÕES - QUANTIDADE DISPONÍVEL ONLINE: 37
 
-SIMULAÇÕES - NÚMERO DE REALIZAÇÕES: 2042
+SIMULAÇÕES - NÚMERO DE REALIZAÇÕES: 2975
+
+CONSOLIDADO POR ORIGEM E FASE - os números são mantidos separados de propósito, para permitir análise por fase sem refazer a contagem
+
+- Internato e simulações impressas (painel de bordo diário): 1219
+- Google Forms (simulações registradas em formulários): 1431
+- Subtotal antes da fase de IA: 2650
+- Fase ChatGPT: 145 (insuficiência cardíaca 85, pré-natal 35, dengue 25)
+- Fase Gems: 180 (HAS 80, insuficiência cardíaca 80, dengue 20)
+- TOTAL HISTÓRICO ACUMULADO EM 18/08/2026: 2975
+
+Esse total de 2975 é a base inicial do SimulaHub: as consultas registradas na plataforma somam a partir dele.
 
 ORIENTAÇÕES: 1
 

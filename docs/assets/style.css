@@ -1420,6 +1420,10 @@ body[class*="theme-"] .topic-grid a:hover { background: var(--tint); box-shadow:
 .rx-mock .rx-pill.on { background: var(--accent); }
 .rx-mock .rx-foot { padding: .55rem .95rem; font-size: .66rem; color: var(--muted); }
 
+/* Só faz sentido no telão. O QR que abre a própria página é inútil para quem
+   já está nela pelo celular — ali ele só empurra o conteúdo para baixo. */
+@media (max-width: 700px) { .so-telao { display: none; } }
+
 /* linha do tempo da trajetória */
 .timeline { list-style: none; position: relative; padding-left: 1.7rem !important; }
 .timeline::before { content: ''; position: absolute; left: .45rem; top: .4rem; bottom: .4rem; width: 2px; background: var(--line); }

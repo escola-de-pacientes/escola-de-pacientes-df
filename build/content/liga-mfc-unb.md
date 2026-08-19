@@ -92,19 +92,11 @@ TESTES GUSSO - GERAIS - DISCUSSÃO DE CASO CLÍNICO
 
 - [QUESTÕES DCNTs](https://forms.gle/LsSmmidMgudHLzXU6)
 
-ChatGPT - SimulaPacientes - Insuficiência Cardíaca
+SIMULAÇÕES
 
-Simulação clínica interativa com paciente virtual para Insuficiência Ventricular Esquerda com Fração de Ejeção Preservada. Ideal para treinar condução clínica - Subjetivo, Objetivo, Avaliação e Plano.
+As simulações do grupo ficam no SimulaPacientes: escolhe-se o caso e a inteligência artificial, a consulta é conduzida por escrito e a devolutiva vem ao final.
 
-SimulaPacientes - Cardio Insuficiência Cardíaca
-
-Clique no retângulo acima ou use o link: [https://chatgpt.com/g/g-682b635113f481919d18c71d68b021c4-simulapacientes-insuficiencia-cardiaca](https://chatgpt.com/g/g-682b635113f481919d18c71d68b021c4-simulapacientes-insuficiencia-cardiaca)
-
-SIMULAÇÃO ANTIGA - GOOGLE FORMS
-
-Google forms (para fazer de dupla):
-
-- [CARDIO INSUFICIÊNCIA CARDÍACA SIMULAÇÃO-1 - TEMA: INSUFICIÊNCIA VENTRICULAR ESQUERDA COM FRAÇÃO DE EJEÇÃO NORMAL](https://forms.gle/RK1ii9demDVAgHPN9)
+- [SimulaPacientes](/simula-pacientes)
 
 DRIVE
 

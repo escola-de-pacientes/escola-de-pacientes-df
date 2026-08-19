@@ -111,7 +111,9 @@ QUESTÕES HIPERTENSÃO: [https://forms.gle/V8182BoEV9XJSv98A](https://forms.gle/
 
 Simulações
 
-[SIMULACAO HIPERTENSÃO SIMULAÇÃO-1 -TEMA: ESTRATIFICAÇÃO DO RISCO CARDIOVASCASCULAR](/simulacoes/simulacao-hipertensao-simulacao-1-tema-estratificacao-do-risco-cardiovasc)
+As simulações do grupo ficam no SimulaPacientes: escolhe-se o caso e a inteligência artificial, a consulta é conduzida por escrito e a devolutiva vem ao final.
+
+- [SimulaPacientes](/simula-pacientes)
 
 Outros links
 

@@ -124,6 +124,12 @@ Z LIVRO - PACK 2025-137 SOBREPESO OBESIDADE.pdf
 
 Z LIVRO - PACK 2025-35 PERDA DE PESO.pdf
 
+## Simulações
+
+As simulações do grupo ficam no SimulaPacientes: escolhe-se o caso e a inteligência artificial, a consulta é conduzida por escrito e a devolutiva vem ao final.
+
+- [SimulaPacientes](/simula-pacientes)
+
 ## Checklists e Orientações
 
 [EMBED: Drive, OBESIDADE - ORIENTAÇÕES V2.docx - Documentos Google.pdf](https://drive.google.com/file/d/13IgVQktga5XHjNr8N0QWLvgn2DtkWUt1/preview)

@@ -89,27 +89,9 @@ QUESTÕES INSUFICIÊNCIA CARDÍACA - [https://forms.gle/GB1rNxXvSn72Adqz7](https
 
 Simulação
 
-[‎Google GeminiMeet Gemini, Google’s AI assistant. Get help with writing, planning, brainstorming, and more. Experience the power of generative AI.](https://gemini.google.com/gem/1C9l7YIOOTfgzJe0u8QRtkLhvy7ixi3im?usp=sharing)
+As simulações do grupo ficam no SimulaPacientes: escolhe-se o caso e a inteligência artificial, a consulta é conduzida por escrito e a devolutiva vem ao final.
 
-SimulaPacientes - 
-
-Cardio Insuficiência Cardíaca
-
-GEMINI
-
-[ChatGPT - SimulaPacientes - Insuficiência CardíacaSimulação clínica interativa com paciente virtual para Insuficiência Ventricular Esquerda com Fração de Ejeção Preservada. Ideal para treinar condução clínica - Subjetivo, Objetivo, Avaliação e Plano.](http://www.google.com/url?q=http%3A%2F%2Fchatgpt.com%2Fg%2Fg-682b635113f481919d18c71d68b021c4-simulapacientes-insuficiencia-cardiaca&sa=D&sntz=1&usg=AOvVaw2NZXGsf2a-xPdzb2Xr5ZH_)
-
-Paciente Digital - GPT
-
-SimulaPacientes - Cardio Insuficiência Cardíaca
-
-Clique no retângulo acima ou use o link: [chatgpt.com/g/g-682b635113f481919d18c71d68b021c4-simulapacientes-insuficiencia-cardiaca](https://chatgpt.com/g/g-682b635113f481919d18c71d68b021c4-simulapacientes-insuficiencia-cardiaca) 
-
-Simulação antiga - Google forms
-
-- CARDIO INSUFICIÊNCIA CARDÍACA SIMULAÇÃO-1  - TEMA: INSUFICIÊNCIA VENTRICULAR ESQUERDA COM FRAÇÃO DE EJEÇÃO NORMAL -[ ](https://forms.gle/RK1ii9demDVAgHPN9)
-
-Google forms (para fazer de dupla): [https://forms.gle/RK1ii9demDVAgHPN9](https://forms.gle/RK1ii9demDVAgHPN9)
+- [SimulaPacientes](/simula-pacientes)
 
 Outros links
 

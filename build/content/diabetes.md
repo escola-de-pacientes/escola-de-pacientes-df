@@ -109,7 +109,9 @@ TESTE
 
 SIMULAÇÕES
 
-[SIMULACAO DIABETES INTOLERANCIA GASTROINTESTINAL A METF](/simulacoes/simulacao-diabetes-simulacao-1-tema-intolerancia-gastrointestinal-a-metf)
+As simulações do grupo ficam no SimulaPacientes: escolhe-se o caso e a inteligência artificial, a consulta é conduzida por escrito e a devolutiva vem ao final.
+
+- [SimulaPacientes](/simula-pacientes)
 
 OUTROS LINKS
 

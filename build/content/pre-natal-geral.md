@@ -1,13 +1,11 @@
 
 # Pré-natal  Geral
 
-[ChatGPT - SimulaPacientes - Pré-natal Baixo RiscoSimulação clínica interativa com paciente virtual para pré-natal de baixo risco. Ideal para treinar condução de anamnese, conduta clínica e classificação de risco.](https://www.google.com/url?q=https%3A%2F%2Fchatgpt.com%2Fg%2Fg-682a8886d7e0819184c8acb525ee6a44-simulapacientes-pre-natal-baixo-risco&sa=D&sntz=1&usg=AOvVaw3-hqauIgnOipq6xOOeENAW)
+SIMULAÇÕES
 
-Paciente Digital - GPT
+As simulações do grupo ficam no SimulaPacientes: escolhe-se o caso e a inteligência artificial, a consulta é conduzida por escrito e a devolutiva vem ao final.
 
-SimulaPacientes - Pré-Natal
-
-Clique no retângulo acima ou use o link:  [chatgpt.com/g/g-682a8886d7e0819184c8acb525ee6a44-simulapacientes-pre-natal-baixo-risco](https://chatgpt.com/g/g-682a8886d7e0819184c8acb525ee6a44-simulapacientes-pre-natal-baixo-risco) 
+- [SimulaPacientes](/simula-pacientes)
 
 Pra refletir ou rir – filmes e vídeos: 
 

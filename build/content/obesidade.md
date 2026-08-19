@@ -57,6 +57,63 @@ PARA NÃO TRATAR DEMAIS
 - [Z-GUSSO2019-31 PREVENÇÃO QUATERNÁRIA PRIMEIRO NÃO CAUSAR DANO](https://docs.google.com/document/d/1xx4H0atcz3WQLRTqURjTM7iUT9iNvSQs1-xU5gGTc4o/edit?usp=drive_link)
 - [Z-GUSSO2019-108 PRESCRIÇÃO NA APS](https://docs.google.com/document/d/1NFX1dbi2b9fx8mo4hseJXeTsAWoozPjIAoxPsL9fj2U/edit?usp=drive_link)
 
+## Do capítulo 176, pronto para a aula
+
+As caixas que o capítulo já traz fechadas, condensadas em tópicos. Servem de roteiro de discussão e de gabarito para corrigir conduta.
+
+QUANDO REFERENCIAR
+
+- Suspeita de obesidade secundária que exija investigação especializada
+- Obesidade ou comorbidade que precise de recurso indisponível na atenção primária
+- Indicação de cirurgia bariátrica
+- Transtorno alimentar ou sofrimento psíquico grave fora do alcance do médico de família
+
+ERROS MAIS FREQUENTES - DE QUEM ATENDE
+
+- Não pesar quem tem obesidade visível, e não oferecer ajuda para emagrecer
+- Soltar do acompanhamento clínico quem está na fila da bariátrica: a espera dura anos, e quem chega à cirurgia já tendo emagrecido tem prognóstico melhor
+
+ERROS MAIS FREQUENTES - DE QUEM ESTÁ EM TRATAMENTO
+
+- Expectativa irreal, de emagrecer muito em pouco tempo
+- Tentar emagrecer sem atividade física
+- Largar dieta e exercício depois da perda inicial
+- Desistir de tudo depois de um único deslize
+
+DICAS - REEDUCAÇÃO ALIMENTAR
+
+- Meta factível: cerca de 500 g por semana
+- Comer devagar, em quatro a cinco refeições por dia, com café da manhã
+- Trocar o prato por um menor e começar a refeição pela salada
+- Ter em casa alimento de baixa caloria e um "escape" combinado de antemão
+- Mudança gradual e permanente: dieta radical não se sustenta
+- A longo prazo não há diferença entre dieta hipocalórica e de baixíssimas calorias
+- Diário alimentar por uma semana, com horário, quantidade e qualidade
+
+DICAS - CRIANÇAS
+
+- Aleitamento materno exclusivo até os 6 meses
+- Evitar açúcar e refrigerante pelo menos no primeiro ano
+- Fruta, verdura e legume desde cedo: a criança copia o hábito do adulto
+- Quando só um filho tem obesidade, a mudança é da família inteira, não uma dieta imposta a ele
+- Sem privação total: a criança está crescendo, cortar o exagero basta
+
+DICAS - EXERCÍCIO FÍSICO
+
+- Não existe exercício ideal: o melhor é o que a pessoa gosta e consegue manter
+- Preferir baixo impacto articular - caminhada, natação, hidroginástica, musculação, dança
+- Na obesidade grau III, começar com caminhadas de menos de 10 minutos e ir subindo
+- Carga excessiva leva a lesão musculoesquelética e a desistência
+- Constrangimento de se exercitar em local público é motivo real: começar em casa
+- Pedômetro produz perda modesta, em torno de 1,3 kg
+
+PROGNÓSTICO E REGANHO DE PESO
+
+- Parte do peso volta cerca de 1 ano após a bariátrica, e pouco mais de 10% mantêm a redução por mais de 5 anos
+- O sucesso se associa à frequência das consultas e ao tempo dedicado a elas
+- Favorecem o reganho: mais calorias, alimento de alta densidade calórica, fracionar em mais de cinco refeições, bebida calórica, parar a atividade física e parar o monitoramento
+
+
 ## PACK
 
 [EMBED: Drive, Z LIVRO - PACK 2025-137 SOBREPESO OBESIDADE.pdf](https://drive.google.com/file/d/11NaJ1qqm5_jZagYA2ShpoIUJE6f9-yah/preview)

@@ -57,9 +57,9 @@ PARA NÃO TRATAR DEMAIS
 - [Z-GUSSO2019-31 PREVENÇÃO QUATERNÁRIA PRIMEIRO NÃO CAUSAR DANO](https://docs.google.com/document/d/1xx4H0atcz3WQLRTqURjTM7iUT9iNvSQs1-xU5gGTc4o/edit?usp=drive_link)
 - [Z-GUSSO2019-108 PRESCRIÇÃO NA APS](https://docs.google.com/document/d/1NFX1dbi2b9fx8mo4hseJXeTsAWoozPjIAoxPsL9fj2U/edit?usp=drive_link)
 
-## Do capítulo 176, pronto para a aula
+## Gusso 176 — tópicos principais
 
-As caixas que o capítulo já traz fechadas, condensadas em tópicos. Servem de roteiro de discussão e de gabarito para corrigir conduta.
+As caixas que o capítulo já traz fechadas, condensadas em tópicos.
 
 QUANDO REFERENCIAR
 

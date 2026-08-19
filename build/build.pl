@@ -87,6 +87,11 @@ my @PAGINAS_HTML = (
       busca  => 'Radar de Congressos — a que congresso dá para submeter', secao => 'Projetos e Produtos',
       desc   => 'O Radar de Congressos varre as chamadas abertas, cruza cada congresso com as janelas do Edital FAPDF Participa e a rubrica de pontos, e devolve um veredito: dá para submeter, não dá, ou dá no limite.' },
 
+    { slug => 'med120-plano-de-aula-obesidade', arquivo => 'med120-plano-de-aula-obesidade.html', tema => '',
+      titulo => 'MED120 — Plano de aula: Obesidade',
+      busca  => 'MED120 — Plano de aula: Obesidade', secao => 'Ensino UnB',
+      desc   => 'Plano da aula de obesidade da MED120: roteiro dos dois rounds de simulação, os assuntos na ordem dos slides, os quatro passos para aumentar a dose de tirzepatida e o treino de prescrição em folha em branco.' },
+
     { slug => 'equipe', arquivo => 'equipe.html', tema => '',
       titulo => 'Equipe e Grupo de Pesquisa',
       busca  => 'Equipe e Grupo de Pesquisa', secao => 'A Escola',

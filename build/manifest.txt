@@ -35,6 +35,7 @@ dcnts|Doenças Crônicas Não Transmissíveis (DCNTs)|temas|Doenças crônicas
 hipertensao|Hipertensão|temas|Doenças crônicas
 diabetes|Diabetes|temas|Doenças crônicas
 dislipidemia|Dislipidemia|temas|Doenças crônicas
+obesidade|Obesidade|temas|Doenças crônicas
 endocrino-hipotireoidismo|Hipotireoidismo|temas|Doenças crônicas
 dor-cronica|Dor Crônica|temas|Doenças crônicas
 tabagismo-na-aps|Tabagismo na APS|temas|Doenças crônicas

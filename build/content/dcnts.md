@@ -113,6 +113,12 @@ Google forms (para fazer de dupla):
 
 - [CARDIO INSUFICIÊNCIA CARDÍACA SIMULAÇÃO-1 - TEMA: INSUFICIÊNCIA VENTRICULAR ESQUERDA COM FRAÇÃO DE EJEÇÃO NORMAL](https://forms.gle/RK1ii9demDVAgHPN9)
 
+APROFUNDAMENTO DO TEMA
+
+O capítulo de obesidade tem aula própria, com os dois slides de tratamento, o PACK e as orientações ao paciente.
+
+- [Obesidade](/obesidade)
+
 CASOS CLÍNICOS - TRATADO MFC
 
 Para acessar esta página:

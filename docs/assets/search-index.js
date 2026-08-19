@@ -378,6 +378,7 @@ window.SEARCH_INDEX = [
 {"t":"Pós graduação UnB","p":"noticias/noticias-pos-graduacao","c":"Notícias e Mídia"},
 {"t":"VACINAS","p":"noticias/noticias-vacinas","c":"Notícias e Mídia"},
 {"t":"Vacinas COVID","p":"noticias/noticias-vacinas-covid","c":"Notícias e Mídia"},
+{"t":"Obesidade","p":"obesidade","c":"Temas Clínicos"},
 {"t":"Oficinas","p":"oficinas","c":"Ensino UnB"},
 {"t":"Oficinas","p":"oficinas/oficina-21-02-2022-20h","c":"Ensino UnB"},
 {"t":"Otite Externa","p":"otite-externa","c":"Temas Clínicos"},

@@ -5,6 +5,7 @@ window.SEARCH_INDEX = [
 {"t":"Dr. Estêvão Cubas Rolim — trajetória e produção","p":"dr-estevao-rolim","c":"A Escola"},
 {"t":"Radar de Congressos — a que congresso dá para submeter","p":"radar-de-congressos","c":"Projetos e Produtos"},
 {"t":"Plano de aula — DCNT geral e obesidade","p":"plano-de-aula-dcnt-geral-e-obesidade","c":"Ensino UnB"},
+{"t":"Plano de aula — Hipertensão","p":"plano-de-aula-hipertensao","c":"Ensino UnB"},
 {"t":"Equipe e Grupo de Pesquisa","p":"equipe","c":"A Escola"},
 {"t":"Adolescentes","p":"adolescentes","c":"Temas Clínicos"},
 {"t":"Agenda 2030 — ODS 3 Saúde","p":"agenda-2030-ods-3-saude","c":"A Escola"},

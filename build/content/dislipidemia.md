@@ -1,8 +1,6 @@
 
 # Dislipidemia
 
-Clique no link abaixo para ter acesso à pasta compartilhada:
-
 [EMBED: Drive Folder](https://drive.google.com/embeddedfolderview?id=1rC0LshpS-r-suUV-jJ35GKbqe6JXm8iF#list)
 
 [https://drive.google.com/drive/folders/1rC0LshpS-r-suUV-jJ35GKbqe6JXm8iF?usp=sharing](https://drive.google.com/drive/folders/1rC0LshpS-r-suUV-jJ35GKbqe6JXm8iF?usp=sharing)

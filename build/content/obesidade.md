@@ -1,26 +1,7 @@
 
 # Obesidade
 
-Conteúdos recomendados:
-
--
-Slides - Apresentações resumidas com os principais conceitos da aula. Servem como guia rápido para revisão dos conteúdos
-
--
-Tratado MFC - Material teórico mais completo, com links dos capítulos mais pertinentes do Tratado de  Medicina de Família e Comunidade. Aprofunda os temas abordados nos slides.
-
--
-PACK 2025 - Material teórico mais direcionado para a prática, com link dos fluxogramas de capítulos aplicáveis.
-
--
-Checklists e Orientações - Listas práticas para guiar atendimento e raciocínio clínico. Focam em padronizar condutas e evitar esquecimentos. Checklists em linguagem técnica, Orientações em linguagem popular.
-
--
-Drive - Repositório com materiais complementares (PDFs, conteúdos extras). Funciona como base de estudo ampliada.
-
 ## Slides
-
-Os dois slides de tratamento. O primeiro cobre as classes disponíveis e os critérios de indicação; o segundo é a atualização de 2026, com a prática semanal e as terapias incretínicas.
 
 [EMBED: Presentation, TRATAMENTO MEDICAMENTOSO DA OBESIDADE](https://docs.google.com/presentation/d/1gdstQ115AhYxWaujc0VkeSMA5JicDCcEUlpfVfpNHhw/embed)
 
@@ -58,8 +39,6 @@ PARA NÃO TRATAR DEMAIS
 - [Z-GUSSO2019-108 PRESCRIÇÃO NA APS](https://docs.google.com/document/d/1NFX1dbi2b9fx8mo4hseJXeTsAWoozPjIAoxPsL9fj2U/edit?usp=drive_link)
 
 ## Gusso 176 — tópicos principais
-
-As caixas que o capítulo já traz fechadas, condensadas em tópicos.
 
 QUANDO REFERENCIAR
 
@@ -113,7 +92,6 @@ PROGNÓSTICO E REGANHO DE PESO
 - O sucesso se associa à frequência das consultas e ao tempo dedicado a elas
 - Favorecem o reganho: mais calorias, alimento de alta densidade calórica, fracionar em mais de cinco refeições, bebida calórica, parar a atividade física e parar o monitoramento
 
-
 ## PACK
 
 [EMBED: Drive, Z LIVRO - PACK 2025-137 SOBREPESO OBESIDADE.pdf](https://drive.google.com/file/d/11NaJ1qqm5_jZagYA2ShpoIUJE6f9-yah/preview)
@@ -125,8 +103,6 @@ Z LIVRO - PACK 2025-137 SOBREPESO OBESIDADE.pdf
 Z LIVRO - PACK 2025-35 PERDA DE PESO.pdf
 
 ## Simulações
-
-As simulações do grupo ficam no SimulaPacientes: escolhe-se o caso e a inteligência artificial, a consulta é conduzida por escrito e a devolutiva vem ao final.
 
 - [SimulaPacientes](/simula-pacientes)
 

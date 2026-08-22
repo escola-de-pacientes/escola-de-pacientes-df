@@ -1,40 +1,6 @@
 # HIPERTENSÃO
 
-Pressão no alvo não encerra a consulta. O que decide a conduta é o risco cardiovascular:
-é dele que saem os exames a pedir, a meta a perseguir e o intervalo até a próxima revisão.
-
-Conteúdos recomendados:
-
--
-Slides - Apresentações resumidas com os principais conceitos da aula. Servem como guia rápido para revisão dos conteúdos
-
--
-Tratado MFC - Material teórico mais completo, com links dos capítulos mais pertinentes do Tratado de  Medicina de Família e Comunidade. Aprofunda os temas abordados nos slides.
-
--
-PACK 2025 - Material teórico mais direcionado para a prática, com link dos fluxogramas de capítulos aplicáveis.
-
--
-Estratificação de risco - A ferramenta, a ficha e os capítulos do PACK que sustentam a estimativa de risco cardiovascular.
-
--
-Checklists e Orientações - Listas práticas para guiar atendimento e raciocínio clínico. Focam em padronizar condutas e evitar esquecimentos. Checklists em linguagem técnica, Orientações em linguagem popular.
-
--
-Drive - Repositório com materiais complementares (PDFs, conteúdos extras). Funciona como base de estudo ampliada.
-
--
-Teste - Questões de prova para autoavaliação do conteúdo. Ajuda a identificar pontos fortes e lacunas no aprendizado.
-
--
-Simulações - Casos clínicos interativos para treinar tomada de decisão. Aproximam o estudo da prática simulada.
-
--
-Outros links para estudo - Recursos externos selecionados para aprofundamento. Incluem vídeos e sites para reflexão.
-
 ## Slides
-
-O baralho da aula, que cobre hipertensão e dislipidemia na mesma sequência.
 
 [EMBED: Presentation, UNB SFC2-3 HIPERTENSÃO E DISLIPIDEMIA](https://docs.google.com/presentation/d/1M09IOopXDEHgqH0jm8771dU2hwvZfIx70tip-TxJ_s4/embed)
 
@@ -92,10 +58,6 @@ Z LIVRO PACK-Brazil-National-2025-eBook.pdf
 
 ## Estratificação de risco cardiovascular
 
-Pressão no alvo não dispensa a estimativa de risco — é ela que define quais exames pedir,
-qual meta perseguir e de quanto em quanto tempo rever. História familiar de doença
-cardiovascular prematura e obesidade agravam o risco calculado.
-
 FERRAMENTA OFICIAL
 
 - [Calculadoras de risco — Departamento de Aterosclerose da SBC](http://sbcda.com.br/)
@@ -109,8 +71,6 @@ HIPERTENSÃO DIABETES ESTRATIFICAÇÃO V1.docx - Documentos Google.pdf
 
 ## Checklists e Orientações
 
-A técnica da medida domiciliar e o que o paciente leva para casa.
-
 [EMBED: Drive, HIPERTENSÃO HAS 1 TABELAS E ORIENTAÇÕES MRPA V16.docx.pdf](https://drive.google.com/file/d/1JkeGM1XeH6vJ3lCv_UKFU0fsFGQsnztM/preview)
 
 HIPERTENSÃO HAS 1 TABELAS E ORIENTAÇÕES MRPA V16.docx.pdf
@@ -121,16 +81,11 @@ HIPERTENSÃO 1 ORIENTAÇÕES V14.pdf
 
 ## Simulações
 
-As simulações do grupo ficam no SimulaPacientes: escolhe-se o caso e a inteligência
-artificial, a consulta é conduzida por escrito e a devolutiva vem ao final.
-
 - [Abrir a simulação de hipertensão](https://hub-de-ll-ms.vercel.app/simulacao/hipertensao-risco-cv)
 - [SimulaPacientes](/simula-pacientes)
 - [Plano de aula — Hipertensão](/plano-de-aula-hipertensao)
 
 ## Aulas ligadas a esta
-
-O risco é o mesmo; muda o órgão que ele atinge e o fator que o alimenta.
 
 - [Doenças Crônicas Não Transmissíveis (DCNTs)](/dcnts)
 - [Dislipidemia](/dislipidemia)

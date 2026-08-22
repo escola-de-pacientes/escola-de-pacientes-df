@@ -62,6 +62,21 @@ perl build/build.pl        # precisa do módulo URI::Escape
 - `[texto](url)` — link
 - `[EMBED: rótulo](url)` — arquivo do Drive, documento Google, pasta ou vídeo do YouTube embutido
 
+### QR code no fim de cada página
+
+Toda página termina com o QR que aponta para ela mesma — mostrar a tela do
+celular para a pessoa do lado é mais rápido do que ditar o endereço. **Não há
+nada a fazer para isso acontecer:** o gerador cria o `qr.png` ao lado do
+`index.html` de cada página, e o workflow instala o `qrencode` antes de rodar.
+
+Rodando o gerador na sua máquina sem o `qrencode` instalado, as páginas saem
+sem a figura — o site não quebra, e a publicação pelo GitHub continua com os
+QR no lugar. Para ver igual ao que vai ao ar: `sudo apt-get install qrencode`.
+
+As duas exceções são a página inicial, que é vitrine e tem o endereço no
+próprio nome, e a página de erro 404 — ninguém divulga um endereço que não
+existe.
+
 ### Para adicionar uma página nova
 
 1. Crie `build/content/minha-pagina.md`.

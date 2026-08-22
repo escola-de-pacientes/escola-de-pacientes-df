@@ -37,10 +37,10 @@ jobs:
       - name: Baixar o repositório
         uses: actions/checkout@v4
 
-      - name: Instalar o módulo de Perl que o gerador usa
+      - name: Instalar o que o gerador usa
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends liburi-perl
+          sudo apt-get install -y --no-install-recommends liburi-perl qrencode
 
       - name: Rodar o gerador
         run: perl build/build.pl

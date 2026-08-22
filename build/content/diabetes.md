@@ -115,7 +115,5 @@ As simulações do grupo ficam no SimulaPacientes: escolhe-se o caso e a intelig
 
 OUTROS LINKS
 
-Para acessar esta página:
 
 TESTE GUSSO - MED119 - 29-04-2026
-

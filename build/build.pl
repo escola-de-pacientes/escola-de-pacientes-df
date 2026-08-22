@@ -459,6 +459,42 @@ sub inline_fmt {
     return $line;
 }
 
+# ---------------- QR de cada página ----------------
+# Toda página termina com o QR que aponta para ela mesma. O motivo é de sala de
+# aula e de corredor: mostrar a tela do celular para a pessoa do lado é mais
+# rápido do que ditar um endereço, e quem recebe sai com a página inteira, não
+# com um print.
+#
+# O PNG é gerado no build, ao lado do index.html da própria página — por isso o
+# src é só "qr.png", sem caminho. Não existe arquivo versionado em build/: quem
+# publica é o GitHub, e o workflow instala o qrencode antes de rodar o gerador.
+# Sem qrencode na máquina, a página sai sem a figura em vez de sair quebrada —
+# mesmo trato das fotos do carrossel e dos prints do Núcleo EP.
+my $QRENCODE = do { my $w = `which qrencode 2>/dev/null` // ''; chomp $w; $w };
+sub qr_figure_html {
+    my ($url, $dir) = @_;
+    return '' unless $QRENCODE && $url && $dir;
+    make_path($dir) unless -d $dir;
+    my $png = "$dir/qr.png";
+    system($QRENCODE, '-o', $png, '-s', '8', '-m', '2', '-l', 'M', '--', $url) == 0
+        or return '';
+    my ($w, $h) = png_size($png);
+    my $dim = ($w && $h) ? qq{ width="$w" height="$h"} : '';
+    return qq{<div class="wrap"><figure class="qr-pagina">}
+         . qq{<img src="qr.png" alt="QR code que abre esta página"$dim decoding="async" loading="lazy">}
+         . qq{<figcaption>Aponte a câmera para abrir esta página</figcaption>}
+         . qq{</figure></div>};
+}
+
+# largura e altura de um PNG, lidas do cabeçalho IHDR
+sub png_size {
+    my ($f) = @_;
+    open my $fh, '<:raw', $f or return ();
+    read $fh, my $buf, 24; close $fh;
+    return () unless length($buf) == 24 && substr($buf, 12, 4) eq 'IHDR';
+    return unpack 'N2', substr($buf, 16, 8);
+}
+
 # md simplificado -> HTML
 sub md_to_html {
     my ($md, $p) = @_;
@@ -694,6 +730,9 @@ sub page_shell {
     my $head_extra = $a{head_extra} // '';
     my $body_class = $a{body_class} ? qq{ class="$a{body_class}"} : '';
     my $canon = $a{canon} // $SITE_URL;
+    # o 404 é a única página que não ganha QR: ninguém divulga um endereço que
+    # não existe
+    my $qr = qr_figure_html($a{qr_url}, $a{qr_dir});
     my $ogimg = "$SITE_URL/assets/img/og-card-v2.jpg";
     return <<HTML;
 <!DOCTYPE html>
@@ -729,6 +768,7 @@ $head_extra
 <body$body_class>
 $a{header}
 $a{body}
+$qr
 $a{footer}
 <script src="$a{p}assets/search-index.js" defer></script>
 <script src="$a{p}assets/search.js" defer></script>
@@ -877,6 +917,8 @@ HTML
         : '';
 
     write_file("$OUT/$path/index.html", page_shell(
+        qr_url => "$SITE_URL/$path/",
+        qr_dir => "$OUT/$path",
         title  => esc($title) . " — $SITE",
         desc   => esc($title) . " — material da $SITE: educação em saúde, educação permanente e formação em saúde.",
         p      => $p,
@@ -912,6 +954,8 @@ $groups_html
 </div></article>
 HTML
     write_file("$OUT/temas/index.html", page_shell(
+        qr_url => "$SITE_URL/temas/",
+        qr_dir => "$OUT/temas",
         title  => "Temas Clínicos — $SITE",
         desc   => "Índice de temas clínicos da $SITE, organizados por área.",
         p      => $p,
@@ -959,6 +1003,8 @@ $list
 </div></article>
 HTML
     write_file("$OUT/az/index.html", page_shell(
+        qr_url => "$SITE_URL/az/",
+        qr_dir => "$OUT/az",
         title  => "Índice A–Z — $SITE",
         desc   => "Índice completo de todas as páginas do acervo da $SITE.",
         p      => $p,
@@ -1245,6 +1291,8 @@ for my $pg (@PAGINAS_HTML) {
     $body =~ s/\{\{P\}\}/$p/g;
 
     write_file("$OUT/$pg->{slug}/index.html", page_shell(
+        qr_url => "$SITE_URL/$pg->{slug}/",
+        qr_dir => "$OUT/$pg->{slug}",
         title  => "$pg->{titulo} — $SITE",
         desc   => $pg->{desc},
         p      => $p,

@@ -340,6 +340,7 @@ window.SEARCH_INDEX = [
 {"t":"Qualis Saúde Coletiva","p":"ciencia-qualis-saude-coletiva","c":"Ciência"},
 {"t":"Abdome Agudo","p":"cirurgia-abdome-agudo","c":"Temas Clínicos"},
 {"t":"Coluna do Estêvão","p":"coluna-do-estevao","c":"A Escola"},
+{"t":"Sessenta anos do Curso de Medicina da UnB","p":"coluna-do-estevao/sessenta-anos-do-curso-de-medicina-da-unb","c":"Coluna do Estêvão"},
 {"t":"Comunicação Não Violenta","p":"comunicacao-nao-violenta","c":"Temas Clínicos"},
 {"t":"Congressos","p":"congressos","c":"Ciência"},
 {"t":"Contracepção","p":"contracepcao","c":"Temas Clínicos"},

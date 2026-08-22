@@ -92,6 +92,11 @@ my @PAGINAS_HTML = (
       busca  => 'Plano de aula — DCNT geral e obesidade', secao => 'Ensino UnB',
       desc   => 'Plano da aula de doenças crônicas e obesidade: os momentos do encontro, as duas rodadas de simulação e o treino de prescrição em folha em branco.' },
 
+    { slug => 'plano-de-aula-hipertensao', arquivo => 'plano-de-aula-hipertensao.html', tema => '',
+      titulo => 'Plano de aula — Hipertensão',
+      busca  => 'Plano de aula — Hipertensão', secao => 'Ensino UnB',
+      desc   => 'Plano da aula de hipertensão arterial: os momentos do encontro, as duas rodadas de simulação e o treino de estratificação de risco e prescrição em folha em branco.' },
+
     { slug => 'equipe', arquivo => 'equipe.html', tema => '',
       titulo => 'Equipe e Grupo de Pesquisa',
       busca  => 'Equipe e Grupo de Pesquisa', secao => 'A Escola',

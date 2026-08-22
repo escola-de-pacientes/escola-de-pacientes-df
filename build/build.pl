@@ -935,7 +935,8 @@ HTML
         $list .= qq{<div class="topic-group"><h2 id="letra-$l">$l</h2><div class="topic-grid">\n};
         for my $it (@items) {
             my ($slug, $t) = @$it;
-            my $extra = $children{$slug} ? ' <small>(' . scalar(@{ $children{$slug} }) . ' subpáginas)</small>' : '';
+            my $nf = $children{$slug} ? scalar(@{ $children{$slug} }) : 0;
+            my $extra = $nf ? ' <small>(' . $nf . ($nf == 1 ? ' subpágina' : ' subpáginas') . ')</small>' : '';
             $list .= qq{<a href="$p$slug/">@{[esc($t)]}$extra</a>\n};
         }
         $list .= qq{</div></div>\n};

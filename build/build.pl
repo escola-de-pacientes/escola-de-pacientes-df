@@ -247,8 +247,7 @@ sub coluna_rodape_html {
     my $nav = @viz ? qq{<nav class="cl-vizinhos" aria-label="Outros textos da coluna">\n} . join("\n", @viz) . qq{\n</nav>\n} : '';
     return <<HTML;
 <div class="cl-assina">
-<p class="cl-nome">Estêvão Cubas Rolim</p>
-<p class="cl-sub"><a href="${p}dr-estevao-rolim/">Página do autor</a><span class="sep">·</span><a href="$p$COLUNA/">Todos os textos da coluna</a></p>
+<p class="cl-sub"><a href="$p$COLUNA/">Coluna do Estêvão</a><span class="sep">·</span><a href="${p}dr-estevao-rolim/">Página do autor</a></p>
 </div>
 $nav
 HTML
@@ -440,11 +439,17 @@ sub inline_fmt {
         $t =~ s/^\s+|\s+$//g;
         $t eq '' ? '' : qq{<a href="$u"$ext>$t</a>};
     }ge;
+    # A pontuação que fecha a frase não faz parte do endereço. Sem esta
+    # separação, "Disponível em: https://exemplo.org/artigo." vira um link
+    # terminado em ponto — e o ponto acompanha o endereço até o servidor, que
+    # devolve erro. É o formato de toda referência bibliográfica do site.
     $line =~ s{(?<!["'=>])(https?://[^\s<>"')]+)}{
         my $orig = $1;
+        my $fim = '';
+        $fim = $1 if $orig =~ s/([.,;:!?]+)$//;
         my $u = clean_url($orig, $p);
         my $ext = $u =~ m{^https?://} ? ' target="_blank" rel="noopener"' : '';
-        qq{<a href="$u"$ext>$orig</a>};
+        qq{<a href="$u"$ext>$orig</a>} . $fim;
     }ge;
     return $line;
 }

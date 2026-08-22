@@ -96,10 +96,6 @@ Pressão no alvo não dispensa a estimativa de risco — é ela que define quais
 qual meta perseguir e de quanto em quanto tempo rever. História familiar de doença
 cardiovascular prematura e obesidade agravam o risco calculado.
 
-> A ferramenta mudou de mão: as diretrizes brasileiras de 2025 passaram a recomendar o
-> PREVENT no lugar do escore de risco global. Confirme qual está valendo na disciplina
-> antes de usar em prova.
-
 FERRAMENTA OFICIAL
 
 - [Calculadoras de risco — Departamento de Aterosclerose da SBC](http://sbcda.com.br/)

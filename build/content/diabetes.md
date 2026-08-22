@@ -1,7 +1,9 @@
 
 # DIABETES
 
-SLIDES
+[INDICE]
+
+## Slides
 
 [EMBED: Presentation, ZZ AULA DIABETES - DM1 DM2 COMPLICAÇÕES V6](https://docs.google.com/presentation/d/14s6VR4AqivO5poNT3AY6RxldBho6F154YgMbul-INM4/embed)
 
@@ -19,13 +21,13 @@ ZZ DIABETES 2026 Apresentação RTD MFC capacitação Glargina.pptx
 
 ZZ DIABETES 2026 Insulinizacao-na-Pratica-Clinica.pptx
 
-TRATADO MFC
+## Tratado MFC
 
 [EMBED: Document, Z-GUSSO2019-178 DM TIPOS 1 E 2](https://docs.google.com/document/d/1RtCjc3dKgGp4Kyld-MczLQzODSowyxpU5q8fMENSRhc/preview)
 
 Z-GUSSO2019-178 DM TIPOS 1 E 2
 
-PACK 2025
+## PACK 2025
 
 [EMBED: Drive, Z LIVRO - PACK 2025-138 DIABETES RASTREIO DIAGNÓSTICO.pdf](https://drive.google.com/file/d/1nYtQn0StD8tkGp40D3oYRijjjocZ1IT6/preview)
 
@@ -47,7 +49,7 @@ Z LIVRO - PACK 2025-141 DIABETES TRATAMENTO.pdf
 
 Z LIVRO - PACK 2025-142 DIABETES TRATAMENTO.pdf
 
-CHECKLIST E ORIENTAÇÕES
+## Checklists e Orientações
 
 .
 
@@ -67,18 +69,18 @@ DIABETES HIPOGLICEMIA - ORIENTAÇÕES V3.docx - Documentos Google.pdf
 
 ORIENTAÇÕES PÉ DIABÉTICO - ORIENTAÇÕES V3.docx - Documentos Google.pdf
 
-DRIVE
+## Drive
 
 [EMBED: Drive Folder](https://drive.google.com/embeddedfolderview?id=1cl8VarIiaWpTQxsibT3nW5xVNR2lqtbk#list)
 
-TESTE
+## Testes
 
 [TESTE GUSSO2019-178 DM TIPOS 1 E 2](/testes/teste-gusso2019-178-dm-tipos-1-e-2)
 
-SIMULAÇÕES
+## Simulações
 
 - [SimulaPacientes](/simula-pacientes)
 
-OUTROS LINKS
+## Outros links
 
 TESTE GUSSO - MED119 - 29-04-2026

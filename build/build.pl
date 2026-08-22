@@ -504,6 +504,42 @@ sub png_size {
     return unpack 'N2', substr($buf, 16, 8);
 }
 
+# ---------------- índice das seções ----------------
+# Âncora estável de um título de seção.
+#
+# Espelha o `slugify` de assets/toc.js DE PROPÓSITO: o sumário lateral só cria
+# `id` onde ainda não existe, então, se os dois discordassem, o índice do topo e
+# o sumário apontariam para lugares diferentes na mesma página.
+sub slug_secao {
+    my ($s) = @_;
+    $s = lc $s;
+    $s =~ tr/áàâãäéèêëíìîïóòôõöúùûüçñ/aaaaaeeeeiiiiooooouuuucn/;
+    $s =~ s/[^a-z0-9]+/-/g;
+    $s =~ s/^-+|-+$//g;
+    $s = substr($s, 0, 60);
+    return $s eq '' ? 'sec' : $s;
+}
+
+# O índice do topo: só os nomes das seções, clicáveis.
+#
+# O que existia antes era uma lista explicando o que cada seção É -- "Slides -
+# Apresentações resumidas com os principais conceitos da aula" --, trinta linhas
+# antes do primeiro material, descrevendo seções que estavam logo abaixo com o
+# nome delas. Aqui o índice não explica nada: diz o que a página tem e leva até lá.
+#
+# Sai dos próprios `##` da página, e não de uma lista escrita à mão: seção nova
+# entra no índice sozinha, e seção renomeada não deixa atalho apontando para o
+# nome antigo.
+sub indice_html {
+    my ($secoes) = @_;
+    return '' unless @$secoes;
+    my $h = qq{<nav class="indice-secoes" aria-label="Seções desta página">\n};
+    for my $s (@$secoes) {
+        $h .= qq{<a href="#$s->{slug}">} . esc($s->{titulo}) . qq{</a>\n};
+    }
+    return $h . '</nav>';
+}
+
 # md simplificado -> HTML
 sub md_to_html {
     my ($md, $p) = @_;
@@ -521,6 +557,24 @@ sub md_to_html {
         return 0 if length($k) < 40;
         return $seen{$k}++ ? 1 : 0;
     };
+
+    # As seções são levantadas ANTES de gerar o corpo: o índice fica no topo e
+    # precisa saber o que vem depois dele. Os slugs entram numa fila POR TÍTULO
+    # em vez de num contador de posição -- o laço de baixo pula linha (embed,
+    # legenda repetida, título da página) e um contador sairia de sincronia sem
+    # dar sinal, mandando o atalho para a seção errada.
+    my (@secoes, %fila, %slug_usado);
+    for my $bruta (@lines) {
+        (my $t = $bruta) =~ s/^\s+|\s+$//g;
+        next unless $t =~ /^##\s+(.+)/;
+        $t = $1;
+        my $base = slug_secao($t);
+        my ($slug, $n) = ($base, 2);
+        $slug = $base . '-' . $n++ while $slug_usado{$slug};
+        $slug_usado{$slug} = 1;
+        push @secoes, { titulo => $t, slug => $slug };
+        push @{ $fila{$t} }, $slug;
+    }
     for (my $i = 0; $i <= $#lines; $i++) {
         my $l = $lines[$i];
         $l =~ s/^\s+|\s+$//g;
@@ -568,7 +622,16 @@ sub md_to_html {
         }
         $last_embed_label = undef;
 
-        if ($l =~ /^##\s+(.+)/)  { $close_blocks->(); push @html, '<h2>' . inline_fmt($1, $p) . '</h2>'; next; }
+        # [INDICE]: o índice de atalhos, montado a partir dos `##` desta página
+        if ($l eq '[INDICE]') { $close_blocks->(); push @html, indice_html(\@secoes) if @secoes; next; }
+
+        if ($l =~ /^##\s+(.+)/)  {
+            $close_blocks->();
+            my $t = $1;
+            my $slug = ($fila{$t} && @{ $fila{$t} }) ? shift @{ $fila{$t} } : slug_secao($t);
+            push @html, qq{<h2 id="$slug">} . inline_fmt($t, $p) . '</h2>';
+            next;
+        }
         if ($l =~ /^###+\s+(.+)/){ $close_blocks->(); push @html, '<h3>' . inline_fmt($1, $p) . '</h3>'; next; }
 
         # "> texto" vira um aviso destacado (dica, ressalva, atenção)

@@ -1,6 +1,8 @@
 
 # Cardio Insuficiência cardíaca
 
+[INDICE]
+
 ## Slides
 
 [EMBED: Presentation, ZZ AULA Insuficiencia-Cardiaca-Conceito-e-Importancia-Clinica.pptx](https://docs.google.com/presentation/d/1L3MpVdPnzrslAzsTLXayukpm6xt_5DQP/embed)

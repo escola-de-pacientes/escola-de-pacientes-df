@@ -1,6 +1,8 @@
 
 # DCNTs
 
+[INDICE]
+
 ## Slides
 
 [EMBED: Presentation, ZZ DCNT - SFC2.pptx](https://docs.google.com/presentation/d/1EBrPO8NJipTMFOiM-QhfxjoyDr0116tf/embed)
@@ -59,15 +61,15 @@ Z-GUSSO2019-157 PREVENÇÃO PRIMÁRIA E SECUNDÁRIA PARA DOENÇAS CARDIOVASCULAR
 
 HIPERTENSÃO MUDANÇA DE ESTILO DE VIDA - ORIENTAÇÕES V1.docx - Documentos Google.pdf
 
-DISCUSSÃO DE CASO CLÍNICO
+## Discussão de caso clínico
 
 [https://forms.gle/LsSmmidMgudHLzXU6](https://forms.gle/LsSmmidMgudHLzXU6)
 
-SIMULAÇÕES
+## Simulações
 
 - [SimulaPacientes](/simula-pacientes)
 
-APROFUNDAMENTO DO TEMA
+## Aprofundamento do tema
 
 - [Obesidade](/obesidade)
 

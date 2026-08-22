@@ -10,6 +10,7 @@ radar-de-congressos|Radar de Congressos|projetos|
 instagram|Instagram — Luz, Câmera, Saúde|projetos|
 boas-vindas|Boas-vindas|sobre|
 dr-estevao-rolim|Dr. Estêvão Rolim|sobre|
+coluna-do-estevao|Coluna do Estêvão|sobre|
 equipe|Equipe|sobre|
 nucleo-ep|Núcleo EP|sobre|
 premios|Prêmios|sobre|

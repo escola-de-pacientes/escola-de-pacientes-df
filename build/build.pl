@@ -104,6 +104,7 @@ my @NAV = (
     { label => 'A Escola', items => [
         ['boas-vindas', 'Boas-vindas'],
         ['dr-estevao-rolim', 'Dr. Estêvão Rolim'],
+        ['coluna-do-estevao', 'Coluna do Estêvão'],
         ['equipe', 'Equipe e Grupo de Pesquisa'],
         ['nucleo-ep', 'Núcleo EP — sistema do grupo'],
         ['premios', 'Prêmios e Reconhecimentos'],
@@ -161,6 +162,117 @@ for my $f (glob "$ROOT/content2/*.md") {
     (my $path = $name) =~ s/__/\//g;
     open my $fh, '<:encoding(UTF-8)', $f or die $!;
     local $/; $content{$path} = <$fh>;
+}
+
+# ---------------- Coluna do Estêvão ----------------
+# Área autoral do coordenador: textos pessoais, reflexões, memórias e
+# posicionamentos. Cada texto é uma subpágina de coluna-do-estevao/ e o
+# próprio arquivo carrega a apresentação, em duas linhas logo abaixo do
+# título:
+#
+#     # Título do texto
+#     DATA: 2026-08-22
+#     CHAMADA: uma frase curta, que aparece na listagem
+#
+# As duas linhas saem do corpo antes de ele virar HTML — são apresentação,
+# não texto do autor. PARA PUBLICAR UM TEXTO NOVO BASTA CRIAR O ARQUIVO em
+# build/content2/coluna-do-estevao__<slug>.md: a listagem se reordena
+# sozinha, do mais recente para o mais antigo, e o texto do topo passa a
+# aparecer na página inicial. Nada aqui precisa ser editado de novo.
+my $COLUNA = 'coluna-do-estevao';
+my %coluna_meta;                     # path -> {data => 'AAAA-MM-DD', chamada => '...'}
+for my $path (grep { m{^\Q$COLUNA\E/} } keys %content) {
+    my $md = $content{$path};
+    my %m;
+    $md =~ s{^[ \t]*(DATA|CHAMADA)[ \t]*:[ \t]*(\S.*?)[ \t]*$}{ $m{lc $1} = $2; '' }gme;
+    $content{$path} = $md;
+    $coluna_meta{$path} = { data => $m{data} // '', chamada => $m{chamada} // '' };
+}
+
+my @MESES = qw(janeiro fevereiro março abril maio junho julho agosto setembro outubro novembro dezembro);
+
+sub data_extenso {
+    my ($iso) = @_;
+    return '' unless defined $iso && $iso =~ /^(\d{4})-(\d{2})-(\d{2})$/;
+    my ($ano, $mes, $dia) = ($1, $2 + 0, $3 + 0);
+    return '' if $mes < 1 || $mes > 12;
+    return "$dia de $MESES[$mes - 1] de $ano";
+}
+
+# textos da coluna, do mais recente para o mais antigo (sem data vai para o fim)
+sub coluna_posts {
+    return sort {
+        ($coluna_meta{$b}{data} || '') cmp ($coluna_meta{$a}{data} || '')
+            || lc(title_of($a)) cmp lc(title_of($b))
+    } keys %coluna_meta;
+}
+
+# listagem cronológica na página principal da coluna
+sub coluna_lista_html {
+    my ($p) = @_;
+    my @posts = coluna_posts();
+    unless (@posts) {
+        return qq{<h2 id="textos">Textos</h2>\n}
+             . qq{<p class="nota">A coluna acabou de ser aberta e o primeiro texto entra aqui assim que for publicado. Daí em diante, o mais recente fica sempre no topo.</p>};
+    }
+    my $n = scalar @posts;
+    my $itens = '';
+    for my $path (@posts) {
+        my $m     = $coluna_meta{$path};
+        my $t     = esc(title_of($path));
+        my $data  = data_extenso($m->{data});
+        my $tempo = $data ? qq{<time class="cl-data" datetime="$m->{data}">$data</time>} : '';
+        my $cham  = $m->{chamada} ? qq{<p class="cl-chamada">@{[esc($m->{chamada})]}</p>} : '';
+        $itens .= qq{<li><a class="cl-card" href="$p$path/">$tempo<h3>$t</h3>$cham}
+                . qq{<span class="cl-go">Ler o texto <span aria-hidden="true">&#8594;</span></span></a></li>\n};
+    }
+    my $rot = $n == 1 ? '1 texto publicado' : "$n textos publicados";
+    return qq{<h2 id="textos">Textos</h2>\n}
+         . qq{<p class="cl-contagem">$rot — do mais recente para o mais antigo.</p>\n}
+         . qq{<ol class="coluna-lista">\n$itens</ol>};
+}
+
+# assinatura e navegação no pé de cada texto
+sub coluna_rodape_html {
+    my ($p, $path) = @_;
+    my @posts = coluna_posts();
+    my ($i) = grep { $posts[$_] eq $path } 0 .. $#posts;
+    my @viz;
+    if (defined $i) {
+        my $novo  = $i > 0        ? $posts[$i - 1] : undef;   # a lista vai do mais recente ao mais antigo
+        my $velho = $i < $#posts  ? $posts[$i + 1] : undef;
+        push @viz, qq{<a class="cl-viz" href="$p$novo/"><small>Texto mais recente</small><b>@{[esc(title_of($novo))]}</b></a>} if $novo;
+        push @viz, qq{<a class="cl-viz" href="$p$velho/"><small>Texto anterior</small><b>@{[esc(title_of($velho))]}</b></a>} if $velho;
+    }
+    my $nav = @viz ? qq{<nav class="cl-vizinhos" aria-label="Outros textos da coluna">\n} . join("\n", @viz) . qq{\n</nav>\n} : '';
+    return <<HTML;
+<div class="cl-assina">
+<p class="cl-nome">Estêvão Cubas Rolim</p>
+<p class="cl-sub"><a href="${p}dr-estevao-rolim/">Página do autor</a><span class="sep">·</span><a href="$p$COLUNA/">Todos os textos da coluna</a></p>
+</div>
+$nav
+HTML
+}
+
+# chamada do texto mais recente, para a página inicial (vazia se não houver texto)
+sub coluna_home_html {
+    my @posts = coluna_posts();
+    return '' unless @posts;
+    my $path  = $posts[0];
+    my $m     = $coluna_meta{$path};
+    my $t     = esc(title_of($path));
+    my $data  = data_extenso($m->{data});
+    my $tempo = $data ? qq{<time datetime="$m->{data}">$data</time>} : '';
+    my $cham  = $m->{chamada} ? qq{<p>@{[esc($m->{chamada})]}</p>} : '';
+    return <<HTML;
+<div class="cl-home">
+<p class="cl-home-selo"><span class="msym" aria-hidden="true">edit_note</span>Coluna do Estêvão</p>
+<h3><a href="$path/">$t</a></h3>
+$tempo
+$cham
+<p class="cl-home-acoes"><a class="btn btn-ghost" href="$path/">Ler o texto</a> <a class="btn btn-ghost" href="$COLUNA/">Ver a coluna</a></p>
+</div>
+HTML
 }
 
 # filhos por página-mãe
@@ -637,6 +749,8 @@ sub write_file {
     for my $path (sort keys %content) {
         my ($top) = split m{/}, $path;
         my $cat = $page{$top} ? $cat_label{ $page{$top}{cat} } // '' : '';
+        # os textos da coluna aparecem na busca sob o nome dela, não sob "A Escola"
+        $cat = 'Coluna do Estêvão' if $path =~ m{^\Q$COLUNA\E/};
         my $t = title_of($path);
         push @entries, { t => $t, p => $path, c => $cat };
     }
@@ -674,8 +788,23 @@ for my $path (sort keys %content) {
         $body_html = qq{<figure class="portrait"><img src="${p}assets/img/dr-estevao.jpg" alt="Foto do Prof. Dr. Estêvão Cubas Rolim"><figcaption>Prof. Dr. Estêvão Cubas Rolim</figcaption></figure>\n} . $body_html;
     }
 
+    # a coluna tem listagem própria, cronológica — não o índice alfabético
+    if ($path eq $COLUNA) {
+        $body_html .= "\n" . coluna_lista_html($p);
+    }
+
+    # apresentação de cada texto da coluna: data e chamada no alto, assinatura no pé
+    if (my $cm = $coluna_meta{$path}) {
+        my $data  = data_extenso($cm->{data});
+        my $topo  = qq{<p class="cl-kicker"><a href="$p$COLUNA/">Coluna do Estêvão</a>};
+        $topo    .= qq{<span class="sep">·</span><time datetime="$cm->{data}">$data</time>} if $data;
+        $topo    .= qq{</p>};
+        $topo    .= qq{<p class="cl-lead">@{[esc($cm->{chamada})]}</p>} if $cm->{chamada};
+        $body_html = qq{<div class="coluna-topo">$topo</div>\n} . $body_html . coluna_rodape_html($p, $path);
+    }
+
     # lista de subpáginas ao final da página-mãe
-    if ($children{$path}) {
+    if ($children{$path} && $path ne $COLUNA) {
         my @kids = @{ $children{$path} };
         my $count = scalar @kids;
         my $items = join "\n", map {
@@ -730,6 +859,8 @@ HTML
         'para-profissionais' => 'theme-laranja',
         'boas-vindas'        => 'theme-teal',
     );
+    # a coluna inteira — página principal e cada texto — usa o mesmo tom quente
+    my $tema_pagina = ($path eq $COLUNA || $coluna_meta{$path}) ? 'theme-coluna' : ($tema{$path} // '');
     # confetes de boas-vindas 🎉
     my $extra = $path eq 'boas-vindas'
         ? qq{<script src="${p}assets/confetti.js" defer></script>}
@@ -743,7 +874,7 @@ HTML
         header => header_html($p, $top),
         body   => $body,
         footer => footer_html($p),
-        body_class => $tema{$path} // '',
+        body_class => $tema_pagina,
         head_extra => $extra,
     ));
     $n++;
@@ -1123,10 +1254,12 @@ for my $pg (@PAGINAS_HTML) {
     my $footer = footer_html('');
     my $carrossel = hero_carousel_html();
     my $grafico   = grafico_premios_html();
+    my $coluna    = coluna_home_html();
     $tpl =~ s/\{\{HEADER\}\}/$header/;
     $tpl =~ s/\{\{FOOTER\}\}/$footer/;
     $tpl =~ s/\{\{HERO_CARROSSEL\}\}/$carrossel/;
     $tpl =~ s/\{\{GRAFICO_PREMIOS\}\}/$grafico/;
+    $tpl =~ s/\{\{COLUNA_HOME\}\}/$coluna/;
     write_file("$OUT/index.html", $tpl);
     $n++;
 }

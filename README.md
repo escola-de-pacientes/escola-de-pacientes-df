@@ -19,6 +19,7 @@ build/
   assets/           # CSS, JS de busca e imagens copiados para docs/assets/
   content/          # conteúdo das páginas principais (markdown simplificado)
   content2/         # conteúdo das subpáginas (nome de arquivo usa "__" como separador de pasta)
+                    #   · coluna-do-estevao__*.md = textos da Coluna do Estêvão (ver seção própria)
 docs/               # SITE GERADO — não editar à mão
 ```
 
@@ -115,6 +116,43 @@ estiver na pasta, é ela que aparece.
 > com 2000 px de largura) e apague as versões `-800`/`-1400`/`-2000` antigas,
 > ou gere as novas. O assunto deve estar no centro — a foto é cortada para
 > preencher a faixa, que muda de altura conforme a tela.
+
+## Coluna do Estêvão
+
+Área autoral do coordenador — textos pessoais, reflexões, memórias e
+posicionamentos. Fica em `/coluna-do-estevao/`, no menu **A Escola**, ao lado
+da página pessoal do autor. Não é a área de notícias: comunicado
+institucional e notícia técnica continuam em `noticias` e `reportagens`.
+
+**Para publicar um texto novo, crie um arquivo — só isso:**
+
+```
+build/content2/coluna-do-estevao__slug-do-texto.md
+```
+
+```md
+# Título do texto
+DATA: 2026-08-22
+CHAMADA: uma frase curta, que aparece na listagem e na página inicial
+
+Primeiro parágrafo do texto…
+```
+
+As linhas `DATA:` e `CHAMADA:` são retiradas do corpo antes de ele virar
+HTML — são apresentação, não texto do autor. A partir daí tudo se ajusta
+sozinho:
+
+- a listagem da coluna se reordena, **do mais recente para o mais antigo**;
+- o texto do topo passa a aparecer na página inicial, junto do bloco
+  "Quem coordena" (enquanto não houver texto nenhum, esse bloco não aparece);
+- o texto entra na busca do site (sob o nome da coluna) e no índice A–Z;
+- cada texto ganha página própria, com data, chamada, assinatura e links
+  para o texto vizinho.
+
+Nenhum arquivo do gerador precisa ser editado para publicar. A apresentação
+da coluna está em `build/content/coluna-do-estevao.md`, e o código que monta
+a listagem, o cabeçalho e o pé de cada texto está na seção
+"Coluna do Estêvão" do `build.pl`.
 
 ## Página do Núcleo EP
 

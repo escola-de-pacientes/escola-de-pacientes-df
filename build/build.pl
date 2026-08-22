@@ -341,7 +341,16 @@ sub clean_url {
         (my $path = $u) =~ s{^/}{}; $path =~ s{[#?].*$}{};
         $path =~ s{/$}{};
         if ($path eq '' or $path eq 'home') { return $p eq '' ? './' : $p; }
-        return "$p$path/" if exists $content{$path} or exists $PAGINA_HTML{$path}
+        # As chaves de %content vêm de readdir, que entrega o nome do arquivo em
+        # BYTES; $path vem do markdown, lido com camada UTF-8, e portanto em
+        # CARACTERES. Para slug sem acento os dois são idênticos e a comparação
+        # funciona; com acento ela falhava calada, e onze páginas que existem
+        # aqui — as do banco de citações, o teste do Revalida — eram mandadas
+        # para o site antigo, que não as tem. Comparar também a forma
+        # codificada resolve sem mexer em como os arquivos são lidos.
+        my $chave = encode_utf8($path);
+        return "$p$path/" if exists $content{$path}     or exists $PAGINA_HTML{$path}
+                          or exists $content{$chave}    or exists $PAGINA_HTML{$chave}
                           or $path eq 'temas' or $path eq 'az';
         return "http://www.escoladepacientes.com/$path";   # não migrada: aponta pro antigo
     }

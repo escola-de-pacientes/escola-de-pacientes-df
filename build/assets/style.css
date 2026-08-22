@@ -2569,3 +2569,19 @@ body.theme-coluna article.content .wrap-narrow > p { font-size: 1.05rem; line-he
 article.content .cl-band h2 { margin: .5rem 0 .4rem; padding-left: 0; font-size: 1.6rem; }
 article.content .cl-band h2::before { display: none; }
 .cl-band p { color: var(--muted); line-height: 1.6; max-width: 62ch; }
+
+/* ---------- QR da própria página ----------
+   Fecha a página de tema: o aluno aponta o celular e leva o material embora.
+   Pequeno de propósito — é âncora de fim de página, não ilustração. O fundo
+   branco no img é obrigatório: no tema escuro um QR sem fundo próprio fica
+   ilegível para a câmera. */
+.qr-pagina {
+  max-width: 260px; margin: 2.4rem auto 0; text-align: center;
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--surface); border: 1px solid var(--glass-edge);
+}
+.qr-pagina img { display: block; width: 100%; height: auto; background: #fff; }
+.qr-pagina figcaption {
+  padding: .6rem .9rem; font-size: .8rem; color: var(--muted);
+  border-top: 1px solid var(--glass-edge);
+}

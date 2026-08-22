@@ -128,6 +128,7 @@ HIPERTENSÃO 1 ORIENTAÇÕES V14.pdf
 As simulações do grupo ficam no SimulaPacientes: escolhe-se o caso e a inteligência
 artificial, a consulta é conduzida por escrito e a devolutiva vem ao final.
 
+- [Abrir a simulação de hipertensão](https://hub-de-ll-ms.vercel.app/simulacao/hipertensao-risco-cv)
 - [SimulaPacientes](/simula-pacientes)
 - [Plano de aula — Hipertensão](/plano-de-aula-hipertensao)
 
@@ -176,3 +177,7 @@ HIPERTENSÃO DIRETRIZ 2025.pdf
 [EMBED: Drive, HIPERTENSÃO PCDT 2025 HIPERTENSÃO.pdf](https://drive.google.com/file/d/1KxkV9YFOipOAjcStYs7gn26Qn6Ebq5t4/preview)
 
 HIPERTENSÃO PCDT 2025 HIPERTENSÃO.pdf
+
+## Para acessar esta página
+
+[QR: Aponte a câmera para levar esta página com você](qr-pagina-hipertensao.png)

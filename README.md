@@ -61,6 +61,11 @@ perl build/build.pl        # precisa do módulo URI::Escape
 - `- item` — lista
 - `[texto](url)` — link
 - `[EMBED: rótulo](url)` — arquivo do Drive, documento Google, pasta ou vídeo do YouTube embutido
+- `[QR: legenda](arquivo.png)` — QR code no fim da página, com o arquivo em
+  `build/assets/img/`. Gere o PNG apontando para a URL da própria página, por
+  exemplo `qrencode -o build/assets/img/qr-pagina-hipertensao.png -s 12 -m 2 -l M
+  "https://escoladepacientes.com/hipertensao/"`. Se o arquivo não estiver na
+  pasta, a página sai sem a figura — nunca com imagem quebrada.
 
 ### Para adicionar uma página nova
 

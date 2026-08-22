@@ -459,6 +459,15 @@ sub inline_fmt {
     return $line;
 }
 
+# largura e altura de um PNG, lidas do cabeçalho IHDR
+sub png_size {
+    my ($f) = @_;
+    open my $fh, '<:raw', $f or return ();
+    read $fh, my $buf, 24; close $fh;
+    return () unless length($buf) == 24 && substr($buf, 12, 4) eq 'IHDR';
+    return unpack 'N2', substr($buf, 16, 8);
+}
+
 # md simplificado -> HTML
 sub md_to_html {
     my ($md, $p) = @_;
@@ -495,6 +504,24 @@ sub md_to_html {
             next if $tk eq $title_key;
         }
 
+        # QR code: [QR: legenda](arquivo.png)
+        # O arquivo mora em build/assets/img/ e SÓ entra se existir — mesmo
+        # trato das fotos do carrossel e dos prints do Núcleo EP. Sem ele a
+        # página sai sem a figura, em vez de sair com uma imagem quebrada.
+        # As dimensões saem do próprio PNG, para o navegador reservar o espaço
+        # antes de baixar a imagem.
+        if ($l =~ /^\[QR:\s*(.*?)\]\((\S+)\)$/) {
+            my ($cap, $file) = ($1, $2);
+            $close_blocks->();
+            next unless -e "$ROOT/assets/img/$file";
+            my ($w, $h) = png_size("$ROOT/assets/img/$file");
+            my $dim = ($w && $h) ? qq{ width="$w" height="$h"} : '';
+            my $c = esc($cap);
+            push @html, qq{<figure class="qr-pagina">}
+                      . qq{<img src="${p}assets/img/$file" alt="$c"$dim decoding="async" loading="lazy">}
+                      . qq{<figcaption>$c</figcaption></figure>};
+            next;
+        }
         # embed
         if ($l =~ /^\[EMBED:\s*(.*?)\]\((\S+)\)$/) {
             my ($label, $url) = ($1, $2);

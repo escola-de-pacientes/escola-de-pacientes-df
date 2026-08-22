@@ -2571,12 +2571,12 @@ article.content .cl-band h2::before { display: none; }
 .cl-band p { color: var(--muted); line-height: 1.6; max-width: 62ch; }
 
 /* ---------- QR da própria página ----------
-   Fecha a página de tema: o aluno aponta o celular e leva o material embora.
-   Pequeno de propósito — é âncora de fim de página, não ilustração. O fundo
-   branco no img é obrigatório: no tema escuro um QR sem fundo próprio fica
-   ilegível para a câmera. */
+   Fecha toda página: aponta-se a câmera e leva-se a página embora, sem ditar
+   endereço. Pequeno de propósito — é âncora de fim de página, não ilustração.
+   O fundo branco no img é obrigatório: no tema escuro um QR sem fundo próprio
+   fica ilegível para a câmera. */
 .qr-pagina {
-  max-width: 260px; margin: 2.4rem auto 0; text-align: center;
+  max-width: 200px; margin: 0 auto 3rem; text-align: center;
   border-radius: var(--radius); overflow: hidden;
   background: var(--surface); border: 1px solid var(--glass-edge);
 }

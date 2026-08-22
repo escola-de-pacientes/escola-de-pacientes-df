@@ -112,5 +112,3 @@ O capítulo de obesidade tem aula própria, com os dois slides de tratamento, o 
 - [Obesidade](/obesidade)
 
 CASOS CLÍNICOS - TRATADO MFC
-
-Para acessar esta página:

@@ -1044,6 +1044,35 @@ article.content { padding: 3rem 0 5rem; }
 article.content > .wrap-narrow > * + *,
 article.content > .wrap > * + * { margin-top: 1.05rem; }
 
+/* ---------- Índice do topo (atalhos para as seções) ----------
+   O que abria estas páginas era uma lista explicando o que cada seção É
+   ("Slides - Apresentações resumidas com os principais conceitos da aula"),
+   trinta linhas antes do primeiro material. Aqui o índice não explica: diz o
+   que a página tem e leva até lá.
+
+   Pílula, e não lista: ela ocupa duas ou três linhas no celular em vez de uma
+   tela inteira, e o polegar acerta o alvo. O `scroll-margin-top` está no h2
+   porque o cabeçalho é fixo -- sem ele o atalho para a seção esconde o próprio
+   título embaixo da barra. */
+.indice-secoes {
+  display: flex; flex-wrap: wrap; gap: .5rem;
+  margin: 0 0 2rem;
+}
+.indice-secoes a {
+  display: inline-block;
+  padding: .42rem .85rem;
+  border: 1px solid var(--line); border-radius: 999px;
+  font-size: .85rem; line-height: 1.2; color: var(--muted);
+  text-decoration: none !important;
+  transition: color .15s var(--ease), border-color .15s var(--ease),
+              background .15s var(--ease);
+}
+.indice-secoes a:hover,
+.indice-secoes a:focus-visible {
+  color: var(--accent); border-color: var(--accent); background: var(--g-azul-bg);
+}
+article.content h2[id] { scroll-margin-top: 88px; }
+
 /* ---------- Sumário lateral "Nesta página" ---------- */
 article.content .wrap-narrow,
 article.content .wrap { position: relative; }

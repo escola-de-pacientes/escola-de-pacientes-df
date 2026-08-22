@@ -60,8 +60,8 @@ Z LIVRO PACK-Brazil-National-2025-eBook.pdf
 
 FERRAMENTA OFICIAL
 
-- [Calculadoras de risco — Departamento de Aterosclerose da SBC](http://sbcda.com.br/)
-- [Escore de Risco Global — calculadora da SBC](http://departamentos.cardiol.br/sbc-da/2015/CALCULADORAER2020/index.html)
+- [Escore de Risco Global — calculadora da SBC](http://departamentos.cardiol.br/sbc-da/2015/calculadoraer2017/etapa1.html)
+- [Calculadora de risco cardiovascular — HEARTS nas Américas (OPAS)](https://www.paho.org/pt/hearts-nas-americas/calculadora-risco-cardiovascular)
 
 FICHA DE ESTRATIFICAÇÃO
 

@@ -11,13 +11,13 @@ Presented in Concurrent Seminar 17 (Communication).
 
 Institutionalizing “Receita Simples”: Implementing a Plain-Language Prescription Tool in the Federal District Health Secretariat (Brazil)
 
-Scientific Production and Organization of Educational Products in Escola de Pacientes DF: An Integrated Teaching–Service–Community Experience in Primary Health Care
+Scientific Production and Organization of Educational Products in Escola de Pacientes: An Integrated Teaching–Service–Community Experience in Primary Health Care
 
 This presentation examines a decade-long experience in organizing scientific production and educational products within Primary Health Care. The study highlights how structured workflows, student engagement, and teaching–service–community integration contributed to research dissemination, professional competency development, and educational innovation.
 
 Presented in Concurrent Seminar 52 (Industry–Education Links).
 
-[EMBED: Presentation, Scientific Production and Organization of Educational Products in Escola de Pacientes DF](https://docs.google.com/presentation/d/1jwKKJsb1E1J8jX_VMs2jNfKSx3fd2W4N/embed)
+[EMBED: Presentation, Scientific Production and Organization of Educational Products in Escola de Pacientes](https://docs.google.com/presentation/d/1jwKKJsb1E1J8jX_VMs2jNfKSx3fd2W4N/embed)
 
 SimulaPacientes: AI-Generated Digital Patients for Health Sciences Education
 

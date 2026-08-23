@@ -1,6 +1,6 @@
 # Estudantes
 
-Página de referência para estudantes de Medicina e Enfermagem envolvidos com a Escola de Pacientes DF na UnB. Aqui estão reunidos os links das disciplinas, das ferramentas de prática e das oportunidades abertas para quem quer ir além da sala de aula.
+Página de referência para estudantes de Medicina e Enfermagem envolvidos com a Escola de Pacientes na UnB. Aqui estão reunidos os links das disciplinas, das ferramentas de prática e das oportunidades abertas para quem quer ir além da sala de aula.
 
 DISCIPLINAS
 

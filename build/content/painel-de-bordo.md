@@ -28,7 +28,7 @@ CONSOLIDADO POR ORIGEM E FASE - os números são mantidos separados de propósit
 - Fase Gems: 180 (HAS 80, insuficiência cardíaca 80, dengue 20)
 - TOTAL HISTÓRICO ACUMULADO EM 18/08/2026: 2975
 
-Esse total de 2975 é a base inicial do SimulaHub: as consultas registradas na plataforma somam a partir dele.
+Esse total de 2975 é a base inicial do SimulaPacientes: as consultas registradas na plataforma somam a partir dele.
 
 ORIENTAÇÕES: 1
 

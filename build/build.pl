@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# Gerador do site estático da Escola de Pacientes DF.
+# Gerador do site estático da Escola de Pacientes.
 # Lê build/content/*.md (páginas) e build/content2/*.md (subpáginas, nome com "__"),
 # aplica o manifesto de categorias e escreve o site pronto em docs/.
 use strict; use warnings; use utf8;
@@ -13,7 +13,7 @@ use JSON::PP;                # núcleo do Perl desde a 5.14 -- nada a instalar
 
 my $ROOT   = dirname(__FILE__);
 my $OUT    = "$ROOT/../docs";
-my $SITE   = 'Escola de Pacientes DF';
+my $SITE   = 'Escola de Pacientes';
 my $SITE_URL = 'https://escoladepacientes.com';
 
 # ---------------- manifesto ----------------
@@ -71,17 +71,17 @@ my @PAGINAS_HTML = (
     { slug => 'nucleo-ep', arquivo => 'nucleo-ep.html', tema => 'theme-nucleo',
       titulo => 'Núcleo EP — o sistema do grupo de pesquisa',
       busca  => 'Núcleo EP — sistema do grupo de pesquisa', secao => 'A Escola',
-      desc   => 'O Núcleo EP é o sistema onde a Escola de Pacientes DF organiza projetos, prazos, responsáveis e as oportunidades acadêmicas do grupo de pesquisa. Acesso restrito aos integrantes.' },
+      desc   => 'O Núcleo EP é o sistema onde a Escola de Pacientes organiza projetos, prazos, responsáveis e as oportunidades acadêmicas do grupo de pesquisa. Acesso restrito aos integrantes.' },
 
     { slug => 'simula-pacientes', arquivo => 'simula-pacientes.html', tema => 'theme-simula',
       titulo => 'SimulaPacientes — pacientes digitais com IA',
       busca  => 'SimulaPacientes — pacientes digitais com IA', secao => 'Simulações e Testes',
-      desc   => 'O SimulaPacientes é a plataforma de pacientes digitais da Escola de Pacientes DF: você escolhe o caso e a inteligência artificial, conduz a consulta simulada por escrito e recebe um retorno, item por item, sobre a própria conduta clínica.' },
+      desc   => 'O SimulaPacientes é a plataforma de pacientes digitais da Escola de Pacientes: você escolhe o caso e a inteligência artificial, conduz a consulta simulada por escrito e recebe um retorno, item por item, sobre a própria conduta clínica.' },
 
     { slug => 'dr-estevao-rolim', arquivo => 'dr-estevao-rolim.html', tema => '',
       titulo => 'Dr. Estêvão Cubas Rolim',
       busca  => 'Dr. Estêvão Cubas Rolim — trajetória e produção', secao => 'A Escola',
-      desc   => 'Prof. Dr. Estêvão Cubas Rolim: professor de Medicina da UnB, médico da Estratégia Saúde da Família na SES-DF, doutor em Saúde Coletiva e coordenador da Escola de Pacientes DF desde 2016.' },
+      desc   => 'Prof. Dr. Estêvão Cubas Rolim: professor de Medicina da UnB, médico da Estratégia Saúde da Família na SES-DF, doutor em Saúde Coletiva e coordenador da Escola de Pacientes desde 2016.' },
 
     { slug => 'radar-de-congressos', arquivo => 'radar-de-congressos.html', tema => 'theme-radar',
       titulo => 'Radar de Congressos',
@@ -101,7 +101,7 @@ my @PAGINAS_HTML = (
     { slug => 'equipe', arquivo => 'equipe.html', tema => '',
       titulo => 'Equipe e Grupo de Pesquisa',
       busca  => 'Equipe e Grupo de Pesquisa', secao => 'A Escola',
-      desc   => 'O grupo de pesquisa da Escola de Pacientes DF, com coordenação estudantil: quem coordena hoje, quem participa e todos os estudantes que já passaram pelo grupo desde 2016.' },
+      desc   => 'O grupo de pesquisa da Escola de Pacientes, com coordenação estudantil: quem coordena hoje, quem participa e todos os estudantes que já passaram pelo grupo desde 2016.' },
 );
 my %PAGINA_HTML = map { $_->{slug} => $_ } @PAGINAS_HTML;
 
@@ -877,8 +877,8 @@ sub header_html {
 <header class="site">
 <div class="header-inner">
 <a class="brand" href="$home">
-<img class="brand-mark" src="${p}assets/img/logo.png" alt="Logo da Escola de Pacientes DF">
-<span class="brand-name"><strong>Escola de Pacientes</strong><span>Distrito Federal</span></span>
+<img class="brand-mark" src="${p}assets/img/logo.png" alt="Logo da Escola de Pacientes">
+<span class="brand-name"><strong>Escola de Pacientes</strong></span>
 </a>
 <input type="checkbox" id="nav-toggle" aria-hidden="true">
 <label class="nav-toggle" for="nav-toggle" aria-label="Abrir menu"><span></span><span></span><span></span></label>
@@ -911,7 +911,7 @@ sub footer_html {
 <div class="wrap">
 <div class="cols">
 <div>
-<h4>Escola de Pacientes DF</h4>
+<h4>Escola de Pacientes</h4>
 <p>Grupo de atividades acadêmicas coordenado pelo Prof. Dr. Estêvão Cubas Rolim, em atividade desde 2016 no Distrito Federal. Reúne formação em saúde, educação permanente, produção científica e integração ensino-serviço-comunidade, junto à Universidade de Brasília (UnB) e à Secretaria de Estado de Saúde do DF (SES-DF).</p>
 </div>
 <div>
@@ -946,7 +946,7 @@ sub footer_html {
 </div>
 </div>
 <div class="fineprint">
-<span>© 2016–$y Escola de Pacientes DF · Universidade de Brasília · SES-DF</span>
+<span>© 2016–$y Escola de Pacientes · Universidade de Brasília · SES-DF</span>
 <span><a href="http://www.escoladepacientes.com" target="_blank" rel="noopener">Versão anterior do site</a></span>
 </div>
 </div>
@@ -1227,7 +1227,7 @@ HTML
 <h1>Acervo completo — Índice A–Z</h1>
 </div></div>
 <article class="content" id="conteudo"><div class="wrap">
-<p class="section-lead">Todas as $total páginas do acervo da Escola de Pacientes DF. Use a busca no topo do site ou navegue por letra: $letters_nav</p>
+<p class="section-lead">Todas as $total páginas do acervo da Escola de Pacientes. Use a busca no topo do site ou navegue por letra: $letters_nav</p>
 $list
 </div></article>
 HTML
@@ -1289,7 +1289,7 @@ sub recepcao_html {
 <section class="recepcao" aria-labelledby="rc-titulo">
 <div class="rc-topo">
 <p class="rc-kicker">Que bom que você chegou</p>
-<h2 id="rc-titulo">Seja muito bem-vindo(a) à<br>Escola de Pacientes DF</h2>
+<h2 id="rc-titulo">Seja muito bem-vindo(a) à<br>Escola de Pacientes</h2>
 <p class="rc-lead">A partir de hoje você faz parte de um grupo que, desde 2016, leva educação em saúde para dentro do SUS — e que já publicou 42 trabalhos, recebeu 12 reconhecimentos e realizou 34.026 atendimentos. Nada disso aconteceu sem gente nova chegando. Agora é a sua vez.</p>
 <button type="button" class="rc-festa" id="rc-festa">Soltar os confetes de novo</button>
 </div>
@@ -1335,7 +1335,7 @@ sub grafico_premios_html {
     my %ano = premios_por_ano();
     return '' unless %ano;
 
-    my $ini = 2016;                                   # criação da Escola de Pacientes DF
+    my $ini = 2016;                                   # criação da Escola de Pacientes
     my @anos_todos = sort { $a <=> $b } keys %ano;
     my $fim = $anos_todos[-1];
     return '' if $fim < $ini;

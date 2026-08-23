@@ -8,7 +8,7 @@ Não precisa ler tudo hoje. Leia as Etapas 1 e 2, faça o que a Etapa 3 pede, e 
 
 🏛️ SOBRE O GRUPO
 
-A Escola de Pacientes DF é um grupo de atividades acadêmicas — ensino, pesquisa e extensão — ativo desde 2016, vinculado à UnB e à rede da SES-DF, sob orientação do [Prof. Dr. Estêvão Cubas Rolim](/dr-estevao-rolim). Na prática, o grupo faz duas coisas ligadas entre si: leva educação em saúde para pacientes e profissionais do SUS, e transforma essa experiência em trabalhos científicos.
+A Escola de Pacientes é um grupo de atividades acadêmicas — ensino, pesquisa e extensão — ativo desde 2016, vinculado à UnB e à rede da SES-DF, sob orientação do [Prof. Dr. Estêvão Cubas Rolim](/dr-estevao-rolim). Na prática, o grupo faz duas coisas ligadas entre si: leva educação em saúde para pacientes e profissionais do SUS, e transforma essa experiência em trabalhos científicos.
 
 Conheça a [equipe](/equipe), os [projetos](/receita-simples) e os portais por público: [Pacientes](/para-pacientes), [Estudantes](/para-estudantes), [Pesquisadores](/para-pesquisadores) e [Profissionais](/para-profissionais).
 
@@ -59,7 +59,7 @@ Esta é a única etapa que pede ação imediata. São cinco itens — os mesmos 
 
 🔑 NÚCLEO EP — PEÇA SEU ACESSO LOGO NO PRIMEIRO DIA
 
-O Núcleo EP é o sistema próprio da Escola de Pacientes DF, e é onde a sua vida no grupo acontece: os projetos, os prazos, quem é responsável por cada tarefa e as oportunidades acadêmicas abertas — editais, prêmios e congressos — ficam todos ali, em um lugar só. Ele substituiu as planilhas soltas e o **Google Classroom, que o grupo não usa mais**. Se alguém te mandar procurar tarefa no Classroom, é informação antiga.
+O Núcleo EP é o sistema próprio da Escola de Pacientes, e é onde a sua vida no grupo acontece: os projetos, os prazos, quem é responsável por cada tarefa e as oportunidades acadêmicas abertas — editais, prêmios e congressos — ficam todos ali, em um lugar só. Ele substituiu as planilhas soltas e o **Google Classroom, que o grupo não usa mais**. Se alguém te mandar procurar tarefa no Classroom, é informação antiga.
 
 Como pedir o seu acesso: **não existe cadastro público** — as contas são criadas pela coordenação, uma a uma. Então esse é um passo que depende de você dar o primeiro sinal:
 

@@ -1,6 +1,6 @@
-# Escola de Pacientes DF — site
+# Escola de Pacientes — site
 
-Site estático da **Escola de Pacientes DF**, estratégia de integração ensino-serviço-comunidade
+Site estático da **Escola de Pacientes**, estratégia de integração ensino-serviço-comunidade
 ativa desde 2016 no Distrito Federal (UnB · SES-DF), coordenada pelo Prof. Dr. Estêvão Cubas Rolim.
 
 O site é publicado pelo GitHub Pages a partir da pasta [`docs/`](docs/).

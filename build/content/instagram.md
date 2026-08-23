@@ -1,6 +1,6 @@
 # Instagram — Luz, Câmera, Saúde
 
-O Instagram é a mais nova frente de educação em saúde da Escola de Pacientes DF: vídeos curtos e imagens baseados em evidências científicas, produzidos por estudantes da UnB com apoio de inteligência artificial, para levar informação confiável de saúde ao público.
+O Instagram é a mais nova frente de educação em saúde da Escola de Pacientes: vídeos curtos e imagens baseados em evidências científicas, produzidos por estudantes da UnB com apoio de inteligência artificial, para levar informação confiável de saúde ao público.
 
 - Perfil no Instagram — @unidosnobem_estar: [https://www.instagram.com/unidosnobem_estar](https://www.instagram.com/unidosnobem_estar)
 

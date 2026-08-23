@@ -1,7 +1,7 @@
 # Os repositórios da Escola conversam entre si
 
 > **Para o agente ou a pessoa que está começando agora:** você provavelmente
-> abriu **um** repositório. Ele não vive sozinho. A Escola de Pacientes DF tem
+> abriu **um** repositório. Ele não vive sozinho. A Escola de Pacientes tem
 > seis no GitHub (`github.com/escola-de-pacientes`), e pelo menos três se
 > referenciam — endereço, acervo, promessa de tela.
 >

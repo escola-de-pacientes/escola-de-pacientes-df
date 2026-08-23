@@ -29,7 +29,7 @@ Artigos
 2025 ARTIGO: O canal YouTube da Escola de Pacientes DF como estratégia digital de educação permanente em saúde análise documental e indicadores de uso; Estêvão Cubas Rolim, Ana Carolina Monteiro Campos, Elisângela da Silva Lima, Joyce Lourenço Antero de Oliveira; Brazilian Journal of Development, ISSN: 2525-8761 - 11(12), e84839. [https://doi.org/10.34117/bjdv11n12-087](https://doi.org/10.34117/bjdv11n12-087) [https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/view/84839](https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/view/84839) 
 
 -
-2025 ARTIGO: O Banco de Citações da Escola de Pacientes DF: organização documental, gestão de referências e apoio à busca bibliográfica em um projeto extensionista; Estêvão Cubas Rolim, Joyce Lourenço Antero de Oliveira; Brazilian Journal of Development; ISSN 2525-8761; Dec 2025Brazilian Journal of Development, ISSN: 2525-8761 -  11(12):e84755;  DOI:10.34117/bjdv11n12-078 [https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/view/84755/57818](https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/view/84755/57818)  
+2025 ARTIGO: O Banco de Citações da Escola de Pacientes: organização documental, gestão de referências e apoio à busca bibliográfica em um projeto extensionista; Estêvão Cubas Rolim, Joyce Lourenço Antero de Oliveira; Brazilian Journal of Development; ISSN 2525-8761; Dec 2025Brazilian Journal of Development, ISSN: 2525-8761 -  11(12):e84755;  DOI:10.34117/bjdv11n12-078 [https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/view/84755/57818](https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/view/84755/57818)  
 
 -
 2025 ARTIGO: Grupo de pesquisa Escola de Pacientes DF configuração e dinâmica formativa; Estêvão Cubas Rolim, Ana Carolina Monteiro Campos, Elisângela da Silva Lima, Gabriela Souza Santos Ribeiro, Maria Luísa de Almeida Henriques; Brazilian Journal of Development, ISSN: 2525-8761 -  11(12), e84833. [https://doi.org/10.34117/bjdv11n12-084](https://doi.org/10.34117/bjdv11n12-084)  [https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/view/84833/57875](https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/view/84833/57875) 
@@ -249,7 +249,7 @@ Produções Online - Congressos
 Outras produções
 
 -
-2025 ABRASCAO ORAL SITE – Site Escola de Pacientes DF educação digital em saúde e evolução das ferramentas pedagógicas na era da inteligência artificial
+2025 ABRASCAO ORAL SITE – Site Escola de Pacientes educação digital em saúde e evolução das ferramentas pedagógicas na era da inteligência artificial
 
 -
 2025 ABRASCAO ORAL GPT REFERÊNCIAS – Referências clínicas na era dos GPTs busca e organização de fontes médicas institucionais por meio de inteligência artificial
@@ -261,7 +261,7 @@ Outras produções
 2025 ABRASCAO POSTER SENT-IA – Sentimento imagem e inteligência artificial aquarelas como apoio à escuta emocional na formação de estudantes em saúde
 
 -
-2019 PAINEL - Escola de Pacientes DF e a Pasta-PDF – UBS Laboratório da Planificação SES-DF e cenário de prática da Universidade de Brasília - II Seminário da Planificação da Atenção à Saúde: Desafios do SUS e a Planificação da Atenção à Saúde
+2019 PAINEL - Escola de Pacientes e a Pasta-PDF – UBS Laboratório da Planificação SES-DF e cenário de prática da Universidade de Brasília - II Seminário da Planificação da Atenção à Saúde: Desafios do SUS e a Planificação da Atenção à Saúde
 
 -
 2019 PALESTRA – “Escola de Pacientes: uma estratégia de educação em saúde” – Encontro de Medicina e Enfermagem EME 2019 

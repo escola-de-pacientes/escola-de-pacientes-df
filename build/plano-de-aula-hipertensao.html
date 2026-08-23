@@ -9,8 +9,17 @@
      3. O conteúdo das aulas NÃO se repete aqui — cada uma tem página própria,
         e aqui fica só o botão que leva até ela. Duplicar significaria manter
         as duas versões alinhadas para sempre. Por isso nenhum slide, capítulo
-        do Tratado, fluxograma do PACK ou pasta do Drive aparece nesta página:
-        tudo isso vive em /hipertensao/ e em /dislipidemia/.
+        do Tratado ou pasta do Drive aparece nesta página: tudo isso vive em
+        /hipertensao/ e em /dislipidemia/.
+
+        A ÚNICA EXCEÇÃO é o passo a passo do tratamento (bloco .pack-receita,
+        no momento 5), aberto por decisão da coordenação em 23/08/2026. O
+        motivo é de sala: o exercício da folha em branco pede três receitas "na
+        sequência do PACK", e mandar a turma abrir outra página no meio do
+        exercício quebra o exercício. É a tabela da p. 145 do PACK Brasil 2025
+        transcrita em texto, com a origem dita na própria página — não um
+        resumo nosso. QUANDO O PACK MUDAR DE EDIÇÃO, ESTE BLOCO MUDA JUNTO: é
+        conduta prescritiva publicada, e não pode envelhecer calada.
 
      É HTML, e não .md, porque precisa do QR code, que o conversor descarta.
 
@@ -32,10 +41,11 @@
 <ul class="timeline">
   <li><b>Apresentação geral.</b> Quem somos e o que a aula faz.</li>
   <li><b>O site.</b> Onde o material fica, e continua ficando depois da aula.</li>
-  <li><b>Simulações.</b> Primeira rodada, em trios.</li>
+  <li><b>Simulações — primeira rodada.</b> Pré-aula.</li>
   <li><b>Aula — Hipertensão.</b> Do diagnóstico ao tratamento.</li>
   <li><b>Aula — Risco cardiovascular.</b> Da estratificação à receita no papel.</li>
-  <li><b>Simulações extras.</b> Segunda rodada e comparação.</li>
+  <li><b>Simulações — segunda rodada.</b> Pós-aula.</li>
+  <li><b>Extra.</b> Simulações extras, feedback em sala e ideias de ajuste.</li>
 </ul>
 
 <h2>1. Apresentação geral</h2>
@@ -56,12 +66,13 @@
   <a class="link-card" href="{{P}}"><span class="lc-ico"><span class="msym">home</span></span><span class="lc-body"><b>escoladepacientes.com</b><small>o site do grupo</small></span><span class="lc-arrow">→</span></a>
 </div>
 
-<h2>3. Simulações</h2>
+<h2>3. Simulações — primeira rodada (pré-aula)</h2>
 <ul>
   <li>O que é o SimulaPacientes: paciente digital, consulta conduzida por escrito, devolutiva item a item sobre a própria conduta.</li>
   <li>Por que a consulta é escrita, e o que o retorno mostra ao final.</li>
-  <li>Código da turma, e os trios se formam.</li>
+  <li>Código da turma.</li>
   <li>Primeira rodada, quinze minutos cronometrados — o QR code no fim da página abre o caso.</li>
+  <li>O que esta rodada é: linha de base do grupo, antes da aula.</li>
 </ul>
 <div class="link-grid">
   <a class="link-card" href="{{P}}simula-pacientes/"><span class="lc-ico"><span class="msym">smart_toy</span></span><span class="lc-body"><b>SimulaPacientes</b><small>como funciona</small></span><span class="lc-arrow">→</span></a>
@@ -80,12 +91,95 @@
   <li><b>Folha em branco.</b> Três receitas na sequência do PACK, sem consultar os slides: a primeira com enalapril em dose baixa, junto do pedido de exames de estratificação; a segunda trocando para a losartana, quando aparece a tosse; a terceira somando um segundo anti-hipertensivo ao primeiro. As folhas trocam de mão e a correção é feita contra o fluxograma.</li>
 </ul>
 
-<h2>6. Simulações extras</h2>
+<!-- A sequência de tratamento, transcrita da p. 145 do PACK Brasil 2025
+     ("Hipertensão: tratamento"). É a referência aberta durante a correção da
+     folha em branco, e está aqui em texto — e não como imagem da tabela —
+     porque a página é lida no celular e projetada ao mesmo tempo, e imagem de
+     tabela não se lê em nenhum dos dois.
+
+     NÃO EDITE ESTE BLOCO DE CABEÇA. Ele é conduta prescritiva publicada: cada
+     dose, cada limite de potássio e cada contraindicação vem da tabela. Mudou
+     a edição do PACK, confira contra o PDF em /hipertensao/ e mude tudo junto,
+     inclusive a linha de origem no rodapé do bloco. -->
+<div class="pack-receita">
+  <p class="pr-origem"><span class="msym">menu_book</span><span>Passo a passo do tratamento — transcrito do <b>PACK Brasil 2025, p. 145</b> ("Hipertensão: tratamento"). O PDF completo está na <a href="{{P}}hipertensao/">página de Hipertensão</a>.</span></p>
+
+  <ol class="pr-passos">
+    <li>
+      <h3>Maneje o risco cardiovascular</h3>
+      <ul>
+        <li>Apoie para mudança (PACK p. 17) e maneje os fatores de RCV modificáveis (p. 136) por 3 meses.</li>
+        <li>Após 3 meses, se a PA não estiver controlada, adicione o passo 2.</li>
+      </ul>
+    </li>
+
+    <li>
+      <h3>Hidroclorotiazida 25mg/dia <span class="pr-ou">ou</span> enalapril 10–40mg/dia</h3>
+      <p class="pr-farmaco"><b>Hidroclorotiazida (HCTZ) 25mg/dia</b> — primeira escolha.</p>
+      <ul>
+        <li>Prescreva 25mg/dia pela manhã.</li>
+        <li>Se DM, DRC, hipertrofia de VE ou IC: inicie com enalapril no lugar da HCTZ e, se a PA não estiver controlada em 4 semanas, adicione HCTZ.</li>
+        <li>Não prescreva se gestante, gota, TFGe &lt; 30 ou doença hepática grave. Evite se história atual ou familiar de câncer de pele.</li>
+      </ul>
+      <p class="pr-farmaco"><b>Enalapril 10mg – 40mg/dia</b> — primeira escolha se DM, DRC, hipertrofia de VE ou IC.</p>
+      <ul>
+        <li>Inicie com 10mg/dia.</li>
+        <li>Se a PA não estiver controlada em 4 semanas, adicione HCTZ 25mg/dia. Se já usa enalapril 10mg/dia e HCTZ, aumente para 20mg/dia.</li>
+        <li>Se já usa enalapril 20mg/dia, aumente para 20mg cada 12 horas. Se ainda não controlada, adicione o passo 3.</li>
+        <li>Não prescreva se gestante ou amamentando, angioedema prévio, TFGe &lt; 30. Não inicie se potássio ≥ 5; pare se ≥ 5,5.</li>
+      </ul>
+      <p class="pr-ea"><b>Efeitos adversos.</b> HCTZ: tolerância diminuída à glicose, gota, alterações gastrointestinais, risco de câncer de pele. Enalapril: tosse (substitua por losartana 50–100mg/dia, p. 46), tontura. Se edema de língua, lábios ou face, ou falta de ar: pare o enalapril ou a losartana.</p>
+    </li>
+
+    <li>
+      <h3>Anlodipino 5–10mg/dia</h3>
+      <ul>
+        <li>Se a PA não estiver controlada nos passos 1 e 2 (considere anlodipino também na doença de Raynaud — discuta): inicie com 5mg à noite.</li>
+        <li>Se a PA não estiver controlada em 4 semanas, aumente para 10mg/dia. Se ainda não controlada, adicione o passo 4.</li>
+        <li>Não prescreva se IC descompensada. Se IC estável, discuta.</li>
+      </ul>
+      <p class="pr-ea"><b>Efeitos adversos.</b> Edema em tornozelo, tontura, rubor em face, dor de cabeça, fadiga.</p>
+    </li>
+
+    <li>
+      <h3>Espironolactona 25mg/dia</h3>
+      <ul>
+        <li>Se a PA não estiver controlada nos passos 1, 2 e 3 (ou medicamentos similares) em dose máxima ou tolerada: inicie 25mg/dia. Não prescreva se gestante.</li>
+        <li>Se já usa espironolactona e a PA não estiver controlada após 4 semanas, discuta ou encaminhe.</li>
+        <li>Monitore potássio (K) e TFGe antes de iniciar e após 2 semanas.</li>
+        <li>Se K ≥ 4,5 ou TFGe ≤ 45: não inicie, ou pare, e discuta — considere carvedilol (passo 5) no lugar.</li>
+      </ul>
+      <p class="pr-ea"><b>Efeitos adversos.</b> Ginecomastia.</p>
+    </li>
+
+    <li>
+      <h3>Carvedilol 6,25–25mg 12/12h <span class="pr-ou">ou</span> propranolol 40–320mg 12/12h</h3>
+      <ul>
+        <li>Se IC estável, cardiopatia isquêmica, taquiarritmia ou contraindicação à espironolactona, e a PA não estiver controlada: prescreva carvedilol 6,25mg cada 12 horas. Aumente cada 4 semanas se a PA não estiver controlada, até 25mg (se &gt; 85kg, 50mg) cada 12 horas.</li>
+        <li>Se não tem sinais de IC e tem tremor essencial, hipertireoidismo ou enxaqueca: prescreva propranolol 40mg cada 12 horas no lugar. Aumente cada 4 semanas se a PA não estiver controlada, até 320mg cada 12 horas.</li>
+        <li>Não prescreva nenhum dos dois se IC descompensada ou DPOC/asma grave. Se FC &lt; 60 antes do tratamento, discuta.</li>
+        <li>Se DPOC ou asma leve a moderada, não prescreva propranolol e discuta o uso de carvedilol ou alternativas.</li>
+      </ul>
+      <p class="pr-ea"><b>Efeitos adversos.</b> Sensação de apreensão torácica, fadiga, bradicardia, dor de cabeça, mãos e pés frios, impotência sexual, hipotensão ortostática.</p>
+    </li>
+  </ol>
+
+  <p class="pr-rodape">Reavalie o paciente com <b>PA não controlada a cada 4 semanas</b> e o paciente com <b>PA controlada a cada 6 meses</b>.</p>
+</div>
+
+<h2>6. Simulações — segunda rodada (pós-aula)</h2>
 <ul>
   <li>Formulário rápido sobre quais inteligências artificiais cada um já usa.</li>
-  <li>Segunda rodada, desta vez em duplas ou individual.</li>
+  <li>Segunda rodada, agora com a aula dada.</li>
   <li>As médias das duas rodadas lado a lado, na frente da turma.</li>
   <li>O que a diferença entre elas diz — e o que ela não diz.</li>
+</ul>
+
+<h2>7. Extra: simulações extras</h2>
+<ul>
+  <li>Quem quiser roda casos extras, no ritmo de cada um.</li>
+  <li>Feedback extra em sala, sobre o que apareceu nessas rodadas.</li>
+  <li>Ideias de ajuste: o que mudar no caso, na rubrica e na própria aula.</li>
 </ul>
 
 <h2>Abrir a simulação</h2>

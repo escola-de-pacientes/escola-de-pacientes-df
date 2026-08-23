@@ -98,6 +98,7 @@ z-ses-regulacao-sisreg|Regulação — SISREG|profissionais|
 z-ses-pse|Programa Saúde na Escola (PSE)|profissionais|
 publicacoes|Publicações|ciencia|
 congressos|Congressos|ciencia|
+simulacoes-em-numeros|Simulações em números|ciencia|
 ciencia-banco-de-citacoes|Banco de Citações|ciencia|
 ciencia-onde-buscar-referencias|Onde Buscar Referências|ciencia|
 ciencia-qualis-saude-coletiva|Qualis Saúde Coletiva|ciencia|

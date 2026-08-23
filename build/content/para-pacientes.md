@@ -1,6 +1,6 @@
 # Pacientes e Comunidade
 
-Este espaço reúne, em um só lugar, os materiais que a Escola de Pacientes DF produz para ajudar você a entender melhor sua saúde e cuidar dela no dia a dia. São vídeos, impressos e orientações escritos em linguagem simples, pensados para pacientes, familiares e para toda a comunidade do Distrito Federal.
+Este espaço reúne, em um só lugar, os materiais que a Escola de Pacientes produz para ajudar você a entender melhor sua saúde e cuidar dela no dia a dia. São vídeos, impressos e orientações escritos em linguagem simples, pensados para pacientes, familiares e para toda a comunidade do Distrito Federal.
 
 ONDE COMEÇAR
 
@@ -19,7 +19,7 @@ VÍDEOS E PODCASTS
 
 PROJETOS PARA A COMUNIDADE
 
-Além dos materiais de orientação, a Escola de Pacientes DF mantém projetos que levam saúde e educação para fora do consultório.
+Além dos materiais de orientação, a Escola de Pacientes mantém projetos que levam saúde e educação para fora do consultório.
 
 - [Escola Saudável](/escola-saudavel)
 - [Calçada de Versos e Conselhos](/calcada-de-versos-e-conselhos)

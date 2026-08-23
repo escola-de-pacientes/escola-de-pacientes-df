@@ -1,6 +1,6 @@
 # Receita Simples
 
-A Receita Simples é um modelo visual de receituário desenvolvido pela Escola de Pacientes DF e adaptado às necessidades de pessoas com doenças crônicas. Com linguagem clara, pictogramas e organização por horários, o instrumento facilita a compreensão da prescrição por pacientes e farmacêuticos, reduzindo erros de uso de medicamentos na Atenção Primária à Saúde.
+A Receita Simples é um modelo visual de receituário desenvolvido pela Escola de Pacientes e adaptado às necessidades de pessoas com doenças crônicas. Com linguagem clara, pictogramas e organização por horários, o instrumento facilita a compreensão da prescrição por pacientes e farmacêuticos, reduzindo erros de uso de medicamentos na Atenção Primária à Saúde.
 
 O projeto nasceu em 2016-2017 na UBS 2 do Itapoã (SES-DF), foi validado cientificamente pelo método Delphi com profissionais da Atenção Primária e, após anos de uso e aperfeiçoamento, foi incorporado institucionalmente pela Secretaria de Estado de Saúde do Distrito Federal.
 

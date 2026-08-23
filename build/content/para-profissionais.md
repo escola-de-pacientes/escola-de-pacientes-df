@@ -1,6 +1,6 @@
 # Profissionais e Gestores
 
-Espaço voltado a profissionais e gestores da Atenção Primária à Saúde no SUS-DF, com ferramentas clínicas, materiais de educação permanente e conteúdos de apoio à gestão desenvolvidos ou reunidos pela Escola de Pacientes DF.
+Espaço voltado a profissionais e gestores da Atenção Primária à Saúde no SUS-DF, com ferramentas clínicas, materiais de educação permanente e conteúdos de apoio à gestão desenvolvidos ou reunidos pela Escola de Pacientes.
 
 FERRAMENTAS CLÍNICAS
 

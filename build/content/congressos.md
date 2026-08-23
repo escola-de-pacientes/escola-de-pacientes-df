@@ -1,6 +1,6 @@
 # Congressos
 
-A Escola de Pacientes DF apresenta seus produtos e pesquisas em congressos nacionais e internacionais desde 2016. Abaixo, os principais eventos com participação do grupo, do mais recente ao mais antigo.
+A Escola de Pacientes apresenta seus produtos e pesquisas em congressos nacionais e internacionais desde 2016. Abaixo, os principais eventos com participação do grupo, do mais recente ao mais antigo.
 
 2026 — INTERNACIONAIS
 

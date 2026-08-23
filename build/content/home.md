@@ -1,5 +1,5 @@
 
-# Escola de Pacientes DF
+# Escola de Pacientes
 
 [Dr. Estêvão Rolim](/dr-estevao-rolim)
 
@@ -68,7 +68,7 @@ PRESCREVA UM LINK - DF1 - Médico da rede pública prescreve livros a pacientes,
 
 [DF1 | Médico da rede pública prescreve livros a pacientes, no Itapoã | GloboplayA iniciativa é do Dr. Estêvão Rolim, da unidade básica de saúde nº 3 do Itapoã. Na receita, junto com os remédios, ele prescreve também livros às crianças e adolescentes, pra estimular a leitura.](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=4&cad=rja&uact=8&ved=2ahUKEwiws6PVudrhAhUkC9QKHZzaA-QQwqsBMAN6BAgJEAQ&url=https%3A%2F%2Fgloboplay.globo.com%2Fv%2F6625089%2F&usg=AOvVaw2ApGTnGbNtw8dBtqMKgN01)
 
-Youtube - Escola de Pacientes DF - [https://www.youtube.com/channel/UCMiHRdmhduWggK_c-UYEbLQ](https://www.youtube.com/channel/UCMiHRdmhduWggK_c-UYEbLQ) 
+Youtube - Escola de Pacientes - [https://www.youtube.com/channel/UCMiHRdmhduWggK_c-UYEbLQ](https://www.youtube.com/channel/UCMiHRdmhduWggK_c-UYEbLQ) 
 
 RECEITA SIMPLES - JL1 - RECEITA SIMPLES •14 de set. de 2017  (x)
 
@@ -112,7 +112,7 @@ Receita Simples - Equipe de saúde do Itapoã desenvolve receita médica mais ac
 
 QUEM SOMOS
 
-Vídeo de Exemplo - Orientações Rinite Alérgica - Dr. Estêvão Rolim - Canal Escola de Pacientes DF
+Vídeo de Exemplo - Orientações Rinite Alérgica - Dr. Estêvão Rolim - Canal Escola de Pacientes
 
 [EMBED: YouTube Video, RINITE ALÉRGICA](https://www.youtube.com/embed/_r-6yHa4r_U?embed_config=%7B%22enc%22:%22AXH1ezmQr5lB-0I_SVk4Tc2trSKbKPZhcjG8Scv8WDnIqQazIno_7sTZu9CuHXpBO_3aSHFBYdjeIuIsL3am-cinLGt_S2RrQ9wfZcia9mmDmvXYe-ylZvDUUCukoHJkhRNpN7fvry1kHy9wPDERJIIkdtskJpjH2TJ4BLXe9O2qCkwGFWK5YYJpM6dN9434xtElF6fMA7a_uE721l3Mw5ewGYlh8S9Lw407x68AIsIgRP7GMWTRB4xSvs8AHebkBjJbcrHzc7eiapaeqTlQqoXGKIWlXg78DTJEjypbwdZkOmoL1jhs0DvlPQucXXgsKQlkFAHxOhxfuH3EEE2Lnp7HSXIW_BLrKZQw9DhbFrsXeyXmdpNaxaPKXfKYMFmSGiOT2ngR5rwpXjF6QA%3D%3D%22%7D&enablejsapi=1&errorlinks=1&vl=1)
 

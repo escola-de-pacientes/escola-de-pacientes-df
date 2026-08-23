@@ -1,7 +1,7 @@
 
 # Vídeos de Saúde nas mídias sociais
 
-Slides - Relato de Experiência Escola de Pacientes DF
+Slides - Relato de Experiência Escola de Pacientes
 
 [EMBED: Presentation, COL 2022-2 COMUNICAÇÃO DOUTORADO COMSAUDE V1.pptx](https://docs.google.com/presentation/d/1Xc6YSoV6IF0BTjrAdDE9BUPMkacgG8c_/embed)
 
@@ -13,7 +13,7 @@ Slides - DCNT, HAS, VÍDEOS, MÍDIAS (2 GRAVAÇÕES DE AULA)
 
 Comunicação em Saúde Recursos audiovisuais em saúde nas mídias sociais: potenciais e desafios v1
 
-Gravação 2022-12 - Relato de Experiência Escola de Pacientes DF
+Gravação 2022-12 - Relato de Experiência Escola de Pacientes
 
 [EMBED: YouTube Video, ZZZ AULA COMUNICAÇÃO EM SAÚDE RELATO ESCOLA DE PACIENTES](https://www.youtube.com/embed/g_WjcR9sqq8?embed_config=%7B%22enc%22:%22AXH1ezn5u8BC5_ASL0Z5TiOH_fhMO67dORv3mwCJ_oAxEkVvJSgRp_fNPuXnEDD3cBP1GF34m511XuimjKfA_2HK9FFYW0aamiyz0S5MiMepejVT_pgXAHpLhxPVFKZBMGFoZJGcW1iL4DqojCu2xgdVETsDmUI5rPB9I8Qpwrgiv8CZ%22%7D&enablejsapi=1&errorlinks=1&vl=1)
 

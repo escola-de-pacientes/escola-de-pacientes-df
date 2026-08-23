@@ -1,6 +1,6 @@
 # Pesquisadores
 
-A Escola de Pacientes DF é também um grupo de pesquisa em Saúde Coletiva, vinculado à Universidade de Brasília (UnB), coordenado pelo Prof. Dr. Estêvão Cubas Rolim. Desde 2016 reúne produção científica em torno de educação permanente, formação em saúde e integração ensino-serviço-comunidade, com foco em Atenção Primária à Saúde.
+A Escola de Pacientes é também um grupo de pesquisa em Saúde Coletiva, vinculado à Universidade de Brasília (UnB), coordenado pelo Prof. Dr. Estêvão Cubas Rolim. Desde 2016 reúne produção científica em torno de educação permanente, formação em saúde e integração ensino-serviço-comunidade, com foco em Atenção Primária à Saúde.
 
 PRODUÇÃO CIENTÍFICA
 

@@ -2614,3 +2614,29 @@ article.content .cl-band h2::before { display: none; }
   padding: .6rem .9rem; font-size: .8rem; color: var(--muted);
   border-top: 1px solid var(--glass-edge);
 }
+
+/* ============== O ESPELHO PÚBLICO DE DADOS DAS SIMULAÇÕES ==============
+   O número grande no topo existe porque a primeira pergunta de quem chega é
+   "quantas foram", e ela precisa ser respondida antes de qualquer tabela.
+
+   `.num-suprimido` é deliberadamente discreto e não vermelho: um recorte
+   protegido não é um erro nem uma falta. Pintá-lo de alerta faria a página
+   parecer estar se desculpando pela própria proteção. */
+.numeros-topo { margin: 1.6rem 0 1rem; }
+.numeros-grande {
+  font-size: clamp(2.6rem, 9vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+.numeros-legenda { margin: .3rem 0 0; color: var(--muted); font-size: .95rem; }
+.numeros-bloco { margin-top: 2rem; }
+.numeros-bloco h3 { margin: 0 0 .2rem; font-size: 1rem; }
+/* A primeira coluna destes blocos é texto, e não número: o `width: 4.5rem` que
+   `.g-tabela` aplica à primeira célula estreitaria o rótulo da conduta. */
+.numeros-bloco td:first-child { width: auto; white-space: normal; }
+.numeros-bloco td:last-child { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.num-suprimido { color: var(--muted); }
+.num-suprimido span { font-size: .78rem; opacity: .8; }

@@ -415,6 +415,7 @@ window.SEARCH_INDEX = [
 {"t":"Roteiros de Vídeos de Educação em Saúde","p":"roteiros-de-videos-de-educacao-em-saude","c":"Educação em Saúde"},
 {"t":"SES — Treinamento MFC","p":"ses-treinamento-mfc","c":"Ensino UnB"},
 {"t":"Simulações antigas (Google Forms, em dupla)","p":"simulacoes","c":"Simulações e Testes"},
+{"t":"Simulações em números","p":"simulacoes-em-numeros","c":"Ciência"},
 {"t":"DENGUE SIMULAÇÃO-1 - TEMA: DENGUE GRUPO-A","p":"simulacoes/simulacao-dengue-simulacao-1-tema-dengue-grupo-a","c":"Simulações e Testes"},
 {"t":"DIABETES SIMULAÇÃO-1 - TEMA: INTOLERÂNCIA GASTROINTESTINAL A METFORMINA","p":"simulacoes/simulacao-diabetes-simulacao-1-tema-intolerancia-gastrointestinal-a-metf","c":"Simulações e Testes"},
 {"t":"DIU SIMULAÇÃO-1 - TEMA: INSERÇÃO DE DIU","p":"simulacoes/simulacao-diu-simulacao-1-tema-insercao-de-diu","c":"Simulações e Testes"},

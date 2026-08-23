@@ -362,11 +362,14 @@ header.site.rolado {
 /* flex:none + nowrap: sem isso, na faixa em que o menu fica apertado, o
    cabeçalho espremia a marca e "Escola de Pacientes" quebrava em três linhas */
 .brand { display: flex; align-items: center; gap: .7rem; flex: none; text-decoration: none !important; }
-.brand-name strong, .brand-name span { white-space: nowrap; }
+.brand-name strong { white-space: nowrap; }
 .brand-mark { width: 38px; height: 38px; border-radius: 9px; object-fit: contain; flex: none; }
+/* Uma linha só desde 23/08/2026: o "Distrito Federal" saiu do nome, e com ele
+   a segunda linha da marca. O `flex-direction: column` fica — ele não custa
+   nada com um filho, e é o que a marca volta a ser se um dia houver subtítulo
+   de novo. */
 .brand-name { display: flex; flex-direction: column; line-height: 1.12; }
 .brand-name strong { font-size: 1.02rem; font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
-.brand-name span { font-size: .7rem; color: var(--muted); letter-spacing: .09em; text-transform: uppercase; }
 
 nav.main { display: flex; align-items: center; }
 nav.main > ul { list-style: none; display: flex; }

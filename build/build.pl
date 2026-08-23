@@ -878,7 +878,7 @@ sub header_html {
 <div class="header-inner">
 <a class="brand" href="$home">
 <img class="brand-mark" src="${p}assets/img/logo.png" alt="Logo da Escola de Pacientes">
-<span class="brand-name"><strong>Escola de Pacientes</strong><span>Distrito Federal</span></span>
+<span class="brand-name"><strong>Escola de Pacientes</strong></span>
 </a>
 <input type="checkbox" id="nav-toggle" aria-hidden="true">
 <label class="nav-toggle" for="nav-toggle" aria-label="Abrir menu"><span></span><span></span><span></span></label>

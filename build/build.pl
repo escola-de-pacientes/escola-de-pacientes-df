@@ -625,6 +625,25 @@ sub md_to_html {
         # [INDICE]: o índice de atalhos, montado a partir dos `##` desta página
         if ($l eq '[INDICE]') { $close_blocks->(); push @html, indice_html(\@secoes) if @secoes; next; }
 
+        # [SIMULAPACIENTES]: o botão grande para a plataforma atual.
+        #
+        # É o MESMO botão da página inicial (`landing.html`), e é de propósito:
+        # a página de simulações antigas precisa mandar quem chegou nela para o
+        # lugar certo, e um link igual aos outros trinta e oito da página não
+        # manda ninguém a lugar nenhum. Reaproveitar o botão da home é o que
+        # faz os dois pontos de entrada parecerem o mesmo convite.
+        if ($l eq '[SIMULAPACIENTES]') {
+            $close_blocks->();
+            my $href = clean_url('/simula-pacientes', $p);
+            push @html,
+                '<div class="hero-cta"><a class="cta-simula" href="' . $href . '">'
+              . '<span class="cta-simula-l"><span class="msym">smart_toy</span>'
+              . '<b>SimulaPacientes</b></span>'
+              . '<span class="cta-simula-sub">atenda um paciente digital</span>'
+              . '</a></div>';
+            next;
+        }
+
         if ($l =~ /^##\s+(.+)/)  {
             $close_blocks->();
             my $t = $1;

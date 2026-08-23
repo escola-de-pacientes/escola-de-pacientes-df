@@ -30,7 +30,7 @@ oficinas|Oficinas|ensino|
 ses-treinamento-mfc|SES — Treinamento MFC|ensino|
 gpt-aquarelas-para-casos-clinicos|GPT Aquarelas para Casos Clínicos|ensino|
 simula-pacientes|SimulaPacientes|pratica|
-simulacoes|Simulações|pratica|
+simulacoes|Simulações antigas (Google Forms, em dupla)|pratica|
 testes|Testes|pratica|
 dcnts|Doenças Crônicas Não Transmissíveis (DCNTs)|temas|Doenças crônicas
 hipertensao|Hipertensão|temas|Doenças crônicas

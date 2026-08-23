@@ -9,6 +9,7 @@ use File::Basename qw(dirname);
 use URI::Escape qw(uri_unescape);
 use Digest::MD5 qw(md5_hex);
 use Encode qw(encode_utf8);
+use JSON::PP;                # núcleo do Perl desde a 5.14 -- nada a instalar
 
 my $ROOT   = dirname(__FILE__);
 my $OUT    = "$ROOT/../docs";
@@ -632,6 +633,18 @@ sub md_to_html {
         # lugar certo, e um link igual aos outros trinta e oito da página não
         # manda ninguém a lugar nenhum. Reaproveitar o botão da home é o que
         # faz os dois pontos de entrada parecerem o mesmo convite.
+        # [SIMULACOES-EM-NUMEROS]: as tabelas do espelho público.
+        #
+        # Nenhum número é digitado nesta página. Eles vêm de
+        # build/assets/dados-simulacoes.json, que uma Action busca do Hub e
+        # comita -- o mesmo arranjo dos prêmios, que saem de vitrine-dados.md.
+        # Se o arquivo não existir, a página diz isso em vez de mostrar zero.
+        if ($l eq '[SIMULACOES-EM-NUMEROS]') {
+            $close_blocks->();
+            push @html, numeros_das_simulacoes_html();
+            next;
+        }
+
         if ($l eq '[SIMULAPACIENTES]') {
             $close_blocks->();
             my $href = clean_url('/simula-pacientes', $p);
@@ -709,6 +722,131 @@ sub md_to_html {
 }
 
 # ---------------- navegação ----------------
+# ---------------- o espelho público de dados das simulações ----------------
+#
+# ============== ESTA PÁGINA NÃO CALCULA NADA ==============
+# O que decide o que pode ser publicado é `src/lib/dados-publicos.ts`, no
+# repositório do Hub: piso de dez simulações, denominador suprimido junto com o
+# percentual, e supressão complementar quando esconder uma célula só permitiria
+# deduzi-la por subtração.
+#
+# Aqui só se DESENHA o que já veio protegido. É por isso que este arquivo não
+# tem nenhum `if` sobre tamanho de amostra: repetir a regra em Perl criaria uma
+# segunda implementação da mesma proteção, e duas implementações divergem -- é
+# o defeito que o Hub persegue no próprio código.
+#
+# Célula suprimida chega com `suprimida: true`, `percentual: null` e
+# `denominador: null`. A tabela mostra um traço e o motivo. Nunca há um número
+# escondido aqui para não ser exibido: ele não veio.
+# ==========================================================
+sub dados_das_simulacoes {
+    my $arq = "$ROOT/assets/dados-simulacoes.json";
+    return undef unless -e $arq;
+    open my $fh, '<:raw', $arq or return undef;
+    local $/; my $bruto = <$fh>; close $fh;
+    my $d = eval { JSON::PP->new->utf8->decode($bruto) };
+    return $d;
+}
+
+sub num_br {
+    my $n = shift;
+    return '—' unless defined $n;
+    1 while $n =~ s/^(\d+)(\d{3})/$1.$2/;
+    return $n;
+}
+
+# Uma tabela por bloco. `%opt`: rotulo da primeira coluna e se há percentual.
+sub tabela_de_celulas {
+    my ($titulo, $celulas, %opt) = @_;
+    return '' unless $celulas && @$celulas;
+    my $col = $opt{coluna} || 'Recorte';
+    my $pct = $opt{percentual} // 1;
+
+    my @linhas;
+    for my $c (@$celulas) {
+        my $rot = esc($c->{rotulo} // '');
+        if ($c->{suprimida}) {
+            my $motivo = ($c->{motivo} // '') eq 'complementar'
+                ? 'protegido junto com outro'
+                : 'menos de 10 simulações';
+            push @linhas,
+                qq{<tr><td>$rot</td>}
+              . ($pct ? qq{<td>—</td>} : '')
+              . qq{<td class="num-suprimido">— <span>$motivo</span></td></tr>};
+            next;
+        }
+        my $p = defined $c->{percentual} ? $c->{percentual} . '%' : '—';
+        my $n = num_br($c->{denominador});
+        push @linhas,
+            qq{<tr><td>$rot</td>}
+          . ($pct ? qq{<td>$p</td>} : '')
+          . qq{<td>$n</td></tr>};
+    }
+
+    my $th_pct = $pct ? '<th>Cobertura</th>' : '';
+    return qq{<div class="g-tabela numeros-bloco"><h3>} . esc($titulo) . qq{</h3>}
+         . qq{<table><thead><tr><th>} . esc($col) . qq{</th>$th_pct<th>Simulações</th></tr></thead>}
+         . qq{<tbody>} . join('', @linhas) . qq{</tbody></table></div>};
+}
+
+sub numeros_das_simulacoes_html {
+    my $d = dados_das_simulacoes();
+
+    # Sem o arquivo, a página DIZ que não tem número -- e não mostra zero.
+    # "Não consegui ler" e "não houve" são coisas diferentes, e um número
+    # institucional errado é lido como fato.
+    return q{<p class="nota">Os números ainda não foram publicados nesta versão do site. }
+         . q{Eles são atualizados automaticamente a partir do SimulaPacientes.</p>}
+      unless $d && ref $d eq 'HASH';
+
+    my $t = $d->{totais} || {};
+    my $hist = num_br($t->{baseHistorica});
+    my $hub  = defined $t->{noHub} ? num_br($t->{noHub}) : 'menos de 10';
+    my $soma = defined $t->{soma}  ? num_br($t->{soma})  : undef;
+
+    my @out;
+    push @out, qq{<div class="numeros-topo">};
+    push @out, qq{<p class="numeros-grande">} . (defined $soma ? $soma : $hist) . q{</p>};
+    push @out, defined $soma
+        ? q{<p class="numeros-legenda">atendimentos simulados desde 2016</p>}
+        : q{<p class="numeros-legenda">atendimentos simulados até a chegada do SimulaPacientes</p>};
+    push @out, qq{</div>};
+
+    push @out, qq{<p>Deste total, <strong>$hist</strong> vêm da base histórica, }
+             . qq{apurada em 18/08/2026 — simulações impressas, em formulários e em }
+             . qq{assistentes anteriores. O SimulaPacientes contribui com <strong>$hub</strong>.</p>};
+
+    push @out, tabela_de_celulas('De onde vem a base histórica',
+        $t->{composicao}, coluna => 'Origem', percentual => 0);
+    push @out, tabela_de_celulas('Por competência',       $d->{porCompetencia}, coluna => 'Competência');
+    push @out, tabela_de_celulas('Por condição clínica',  $d->{porCondicao},    coluna => 'Condição');
+    push @out, tabela_de_celulas('Por grupo clínico',     $d->{porGrupo},       coluna => 'Grupo');
+    push @out, tabela_de_celulas('Mês a mês',             $d->{porMes},         coluna => 'Mês');
+    push @out, tabela_de_celulas('O que mais escapa',     $d->{condutasQueMaisEscapam},
+        coluna => 'Conduta esperada');
+
+    if (my $s = $d->{suprimidas}) {
+        if (ref $s eq 'ARRAY' && @$s) {
+            my @itens = map { '<li>' . esc($_->{bloco}) . ': ' . $_->{quantas} . '</li>' } @$s;
+            push @out, q{<h3>O que ficou de fora, e quanto</h3>}
+                     . q{<p>Recortes pequenos não são publicados. Estes blocos esconderam células:</p>}
+                     . '<ul>' . join('', @itens) . '</ul>';
+        }
+    }
+
+    if (my $m = $d->{metodologia}) {
+        push @out, q{<h3>Como estes números são apurados</h3><p class="nota">} . esc($m) . q{</p>};
+    }
+
+    if (my $g = $d->{geradoEm}) {
+        my ($dia) = $g =~ /^(\d{4}-\d{2}-\d{2})/;
+        push @out, q{<p class="nota">Atualizado em } . esc($dia // $g)
+                 . q{. <a href="assets/dados-simulacoes.json">Baixar os dados em JSON</a>.</p>};
+    }
+
+    return join("\n", grep { length } @out);
+}
+
 sub nav_html {
     my ($p, $current_cat) = @_;
     my $h = qq{<ul>\n};

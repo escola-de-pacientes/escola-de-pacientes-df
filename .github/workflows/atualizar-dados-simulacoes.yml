@@ -1,0 +1,96 @@
+# Busca os números públicos do SimulaPacientes e os comita como dado do site.
+#
+# ============== POR QUE UM ARQUIVO COMITADO, E NÃO UMA BUSCA NO NAVEGADOR ==============
+# O site é estático e público; o Hub é privado e vive na Vercel. Uma página que
+# busca os números no navegador de quem visita fica refém de o Hub estar no ar
+# naquele segundo -- e uma página institucional que às vezes mostra os dados e
+# às vezes mostra um erro ensina o leitor a não confiar nela.
+#
+# Com o dado comitado, o site continua sendo o que sempre foi: HTML pronto,
+# servido pelo GitHub Pages, sem depender de nada em tempo de leitura. É o
+# mesmo arranjo de `build/vitrine-dados.md`, que alimenta a vitrine e o gráfico
+# de prêmios.
+#
+# ============== O QUE ESTE ARQUIVO NÃO PRECISA SABER ==============
+# Nada sobre proteção de dados. A rota de onde ele lê já devolve o agregado
+# protegido -- piso de dez simulações, denominador suprimido junto com o
+# percentual, supressão complementar. Ele copia o que veio e para aí.
+#
+# Também não precisa de segredo nenhum: a rota é pública de propósito, porque o
+# que ela devolve já é público por construção. Se um dia ela passar a exigir
+# token, este arquivo é o lugar errado para guardá-lo -- este repositório é
+# aberto.
+
+name: Atualizar os números das simulações
+
+on:
+  schedule:
+    - cron: '17 9 * * *'    # todo dia, 06h17 em Brasília
+  workflow_dispatch:        # e à mão, quando alguém quiser ver agora
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dados-simulacoes
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    name: Buscar do Hub e comitar, se mudou
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Buscar os números
+        id: buscar
+        run: |
+          set -o pipefail
+          url="https://hub-de-ll-ms.vercel.app/api/publico/estatisticas"
+
+          # -f faz o curl falhar em 4xx/5xx em vez de gravar a página de erro
+          # como se fosse dado. Já aconteceu, em outros projetos, de um HTML de
+          # "503" virar o conteúdo de um arquivo .json comitado.
+          if ! curl -fsS --max-time 60 "$url" -o novo.json; then
+            echo "O Hub não respondeu. Nada é comitado — o site continua com os"
+            echo "números da última atualização bem-sucedida."
+            exit 0
+          fi
+
+          # Conferência mínima de forma: o que veio precisa ser JSON e precisa
+          # ter a marca do espelho. Sem isto, uma resposta inesperada com 200
+          # sobrescreveria dado bom por lixo.
+          if ! python3 -c "
+          import json,sys
+          d = json.load(open('novo.json'))
+          assert d.get('versao') == 1, 'versao inesperada'
+          assert d.get('pisoAmostra') == 10, 'piso diferente de 10'
+          assert 'metodologia' in d and d['metodologia'], 'sem metodologia'
+          assert 'totais' in d, 'sem totais'
+          "; then
+            echo "A resposta não tem a forma do espelho público. Nada é comitado."
+            exit 0
+          fi
+
+          mkdir -p build/assets
+          mv novo.json build/assets/dados-simulacoes.json
+          echo "ok=1" >> "$GITHUB_OUTPUT"
+
+      - name: Comitar, se alguma coisa mudou
+        if: steps.buscar.outputs.ok == '1'
+        run: |
+          if [ -z "$(git status --porcelain build/assets/dados-simulacoes.json)" ]; then
+            echo "Os números não mudaram desde a última busca."
+            exit 0
+          fi
+
+          git config user.name  "Espelho de dados"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add build/assets/dados-simulacoes.json
+          git commit -m "Atualiza os números públicos das simulações"
+          git push
+
+          # O envio mexe em build/, então o workflow "Publicar o site" dispara
+          # sozinho e regenera docs/ com os números novos.

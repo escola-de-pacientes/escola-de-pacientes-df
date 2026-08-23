@@ -84,6 +84,7 @@ escola-saudavel|Escola Saudável|pacientes|
 calcada-de-versos-e-conselhos|Calçada de Versos e Conselhos|pacientes|
 pra-ouvir-e-refletir-podcasts|Pra Ouvir e Refletir — Podcasts|pacientes|
 pra-rir-e-refletir-videos-porta-dos-fundos|Pra Rir e Refletir — Vídeos|pacientes|
+pra-estudar-andando-podcasts|Pra Estudar Andando — Podcasts|pacientes|
 profissionais|Conteúdo Técnico|profissionais|
 profissionais-atendimento|Pasta de Atendimento|profissionais|
 profissionais-formulas|Fórmulas|profissionais|

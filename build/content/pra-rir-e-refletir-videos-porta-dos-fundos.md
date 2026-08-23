@@ -1,7 +1,7 @@
 
 # Pra rir e refletir
 
-# Vídeos - Porta dos Fundos
+## Vídeos — Porta dos Fundos
 
 ATENÇÃO! Aviso sobre os materiais audiovisuais
 
@@ -73,6 +73,12 @@ Descrição do vídeo no YouTube: “Para cada mal existe uma droga. Da ansiedad
 
 [EMBED: YouTube Video](https://www.youtube.com/embed/c2Vf1MbO2BU?embed_config=%7B%22enc%22:%22AXH1ezn_o5v2_yUu5Uap-tFzkXMoZ7j0K5eHxGOu81Iwi8DTNl4eW0MG6aBYzXFIVCnJILZcCTrFmWFZzmAjERFaY1lSt1vBaGWdDIEDKO_paxspcPfIhJBDAKhiqXG6lIUsl2r76UPJyrXyLVY4RQMXGhGQUn3_rUYHrMhQnRDlfBim%22%7D&enablejsapi=1&errorlinks=1&vl=1)
 
+Vídeo "CRIANÇAS" 
+
+Descrição do vídeo no YouTube: “Quando o cuidado com a saúde das crianças se transforma em busca constante por medicamentos, a fronteira entre prevenção, tratamento e medicalização pode ficar menos clara.”
+
+[EMBED: YouTube Video](https://www.youtube.com/embed/jVSnfKVSNEQ)
+
 Profissionais de saúde e prática clínica
 
 Vídeo "OPERAÇÃO" 
@@ -102,3 +108,8 @@ Vídeo "PENA" 
 Descrição do vídeo no YouTube: “Num tribunal aparentemente comum, as decisões do juiz revelam que nem todos são tratados da mesma forma — expondo desigualdades profundas e naturalizadas.”
 
 [EMBED: YouTube Video](https://www.youtube.com/embed/NdIqyc-jSSs?embed_config=%7B%22enc%22:%22AXH1ezkc2x9wbU-DNx3LkAUqXuEEbkMl3fRCPMLuRFIxvu3ac7E3ah5q5Fd_a4Kl6Bb1iaKOfn6ygkrnq00Aqp27amnSC5312CWDJDzK-NSgfTI5YUzCkkS9W3db38L9Wf1wuQ1EDf7wN-3q0cPEFq5uafBJg0MILXBlv9UZkWsyO6Jg%22%7D&enablejsapi=1&errorlinks=1&vl=1)
+
+## Veja também
+
+- [Pra Ouvir e Refletir — Podcasts](/pra-ouvir-e-refletir-podcasts)
+- [Pra Estudar Andando — Podcasts](/pra-estudar-andando-podcasts)

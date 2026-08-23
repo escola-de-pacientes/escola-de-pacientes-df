@@ -1138,6 +1138,9 @@ article.content li::marker { color: var(--line); }
 .embed-doc iframe { height: 520px; }
 .embed-video iframe { aspect-ratio: 16 / 9; height: auto; }
 .embed-folder iframe { height: 340px; }
+/* tocador de podcast do Spotify: 352px é a altura do tocador de programa
+   inteiro (o que traz a lista de episódios). Abaixo disso ele corta a lista. */
+.embed-audio iframe { height: 352px; }
 .embed-caption {
   display: flex; justify-content: space-between; gap: 1rem; align-items: center;
   padding: .65rem 1.1rem; font-size: .84rem; color: var(--muted);

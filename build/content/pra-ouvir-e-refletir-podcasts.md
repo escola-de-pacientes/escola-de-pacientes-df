@@ -1,7 +1,9 @@
 
 # Pra ouvir e refletir
 
-## Podcasts
+## Podcasts gerais (não médicos)
+
+São podcasts de jornalismo e de crítica sobre saúde e sociedade — não têm conteúdo clínico. Quem procura clínica médica para ouvir no trajeto está na página ao lado, [Pra Estudar Andando](/pra-estudar-andando-podcasts).
 
 ATENÇÃO! Aviso sobre os materiais audiovisuais
 
@@ -48,4 +50,4 @@ Link: X
 ## Veja também
 
 - [Pra Rir e Refletir — Vídeos](/pra-rir-e-refletir-videos-porta-dos-fundos)
-- [Pra Estudar Andando — Podcasts](/pra-estudar-andando-podcasts)
+- [Pra Estudar Andando — Podcasts médicos](/pra-estudar-andando-podcasts)

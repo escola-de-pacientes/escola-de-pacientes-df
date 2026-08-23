@@ -25,6 +25,6 @@ OPORTUNIDADES
 MATERIAL DE APOIO
 
 - [Temas Clínicos](/temas) — orientações organizadas por área
-- [Pra Estudar Andando — Podcasts](/pra-estudar-andando-podcasts) — clínica médica para ouvir no trajeto
+- [Pra Estudar Andando — Podcasts médicos](/pra-estudar-andando-podcasts) — clínica médica para ouvir no trajeto
 - [Banco de Citações](/ciencia-banco-de-citacoes) — referencial teórico para trabalhos e apresentações
 - [GPT Aquarelas para Casos Clínicos](/gpt-aquarelas-para-casos-clinicos)

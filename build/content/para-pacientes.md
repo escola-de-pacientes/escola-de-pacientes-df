@@ -15,7 +15,7 @@ VÍDEOS E PODCASTS
 
 - [Instagram — Luz, Câmera, Saúde](/instagram)
 - [Vídeos de Saúde nas Mídias Sociais](/videos-de-saude-nas-midias-sociais)
-- [Pra Ouvir e Refletir — Podcasts](/pra-ouvir-e-refletir-podcasts)
+- [Pra Ouvir e Refletir — Podcasts gerais](/pra-ouvir-e-refletir-podcasts)
 
 PROJETOS PARA A COMUNIDADE
 

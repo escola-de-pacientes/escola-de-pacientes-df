@@ -111,5 +111,5 @@ Descrição do vídeo no YouTube: “Num tribunal aparentemente comum, as decis�
 
 ## Veja também
 
-- [Pra Ouvir e Refletir — Podcasts](/pra-ouvir-e-refletir-podcasts)
-- [Pra Estudar Andando — Podcasts](/pra-estudar-andando-podcasts)
+- [Pra Ouvir e Refletir — Podcasts gerais](/pra-ouvir-e-refletir-podcasts)
+- [Pra Estudar Andando — Podcasts médicos](/pra-estudar-andando-podcasts)

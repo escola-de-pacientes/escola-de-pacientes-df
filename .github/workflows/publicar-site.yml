@@ -20,6 +20,24 @@ on:
       - '.github/workflows/publicar-site.yml'
   workflow_dispatch:        # permite disparar à mão, pelo painel do GitHub
 
+  # ============== POR QUE ISTO PRECISA EXISTIR ==============
+  # A Action dos números comita build/assets/dados-simulacoes.json, o que
+  # DEVERIA disparar o gatilho de push acima. Não dispara: o GitHub ignora, de
+  # propósito, eventos causados por um envio feito com o GITHUB_TOKEN padrão --
+  # é a trava que impede um workflow de se chamar em cascata para sempre.
+  #
+  # O resultado foi silencioso e por isso pior: em 23/08/2026 os números foram
+  # buscados e comitados com sucesso, e a página continuou dizendo que eles não
+  # tinham sido publicados. Nada falhou; a segunda etapa simplesmente não
+  # aconteceu.
+  #
+  # `workflow_run` é a saída documentada: ele observa a CONCLUSÃO do outro
+  # workflow, e não o commit que ele fez, então a trava não se aplica.
+  # ==========================================================
+  workflow_run:
+    workflows: ["Atualizar os números das simulações"]
+    types: [completed]
+
 permissions:
   contents: write           # necessário para gravar a pasta docs/ de volta
 

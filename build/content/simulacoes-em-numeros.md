@@ -35,5 +35,3 @@ Os dados desta página podem ser reutilizados livremente, com atribuição à Es
 ## Perguntas que esta página não responde
 
 Quem atendeu, quando exatamente, de qual turma, com qual nota individual. Nada disso é publicado, e não é por escolha editorial: a agregação que produz esta página não recebe esses campos.
-
-Quem coordena uma turma acompanha o desempenho dela por um painel restrito, que não é público e não alimenta esta página.

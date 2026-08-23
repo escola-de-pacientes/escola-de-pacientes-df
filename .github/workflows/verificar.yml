@@ -1,0 +1,70 @@
+# O gerador roda em todo PR, antes do merge.
+#
+# ============== POR QUE ISTO PRECISAVA EXISTIR ==============
+# O site não tinha verificação nenhuma em PR. O `build.pl` podia quebrar e a
+# descoberta acontecia DEPOIS do merge, quando a Action de publicação falhasse
+# -- com a `main` já contendo o defeito e o site no ar com a versão anterior,
+# sem que nada na página dissesse isso.
+#
+# ============== POR QUE RODAR O GERADOR INTEIRO, E NÃO SÓ `perl -c` ==============
+# `perl -c` pega erro de sintaxe. O que quebra este gerador na prática é outra
+# coisa: um marcador novo sem a sub que o desenha, um arquivo de dados com
+# forma inesperada, uma página do manifesto sem o `.md` correspondente. Tudo
+# isso compila e morre na execução.
+#
+# Rodar o gerador de verdade custa segundos e cobre os dois casos. A saída é
+# descartada: quem publica `docs/` é a Action de publicação, na `main`, e um PR
+# que gerasse `docs/` traria 463 arquivos de ruído para a revisão.
+# ===========================================================
+
+name: Verificar o gerador
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - 'build/**'
+      - '.github/workflows/verificar.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verificar-gerador-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gerar:
+    name: build.pl compila e roda
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      # As mesmas do workflow de publicação. Se divergirem, o PR passa e a
+      # publicação falha -- que é exatamente o que este workflow existe para
+      # impedir.
+      - name: Instalar o que o gerador usa
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends liburi-perl qrencode
+
+      - name: Sintaxe
+        run: perl -c build/build.pl
+
+      - name: Gerar o site inteiro
+        run: perl build/build.pl
+
+      - name: Conferir que saiu página
+        run: |
+          n=$(find docs -name index.html | wc -l)
+          echo "$n páginas geradas."
+          # O gerador pode terminar com sucesso e produzir quase nada se o
+          # manifesto for lido errado. Cem é um piso folgado: o site tem
+          # centenas de páginas e nunca encolheria a esse ponto sem intenção.
+          if [ "$n" -lt 100 ]; then
+            echo "Poucas páginas: alguma coisa não foi lida. Reprovado."
+            exit 1
+          fi

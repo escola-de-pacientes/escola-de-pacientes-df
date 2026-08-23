@@ -368,6 +368,16 @@ sub embed_html {
              . ($l ? qq{<figcaption class="embed-caption"><span>$l</span><a href="https://www.youtube.com/watch?v=$1" target="_blank" rel="noopener">Ver no YouTube ↗</a></figcaption>} : '')
              . qq{</figure>};
     }
+    # Podcast do Spotify. O endereço que se copia do aplicativo é o da página
+    # (/show/ID, às vezes com "?si=" de rastreio); o tocador mora em
+    # /embed/show/ID. A conversão fica aqui para que o arquivo de conteúdo
+    # continue guardando o endereço que a pessoa copiou, e não um segundo
+    # formato que ninguém sabe de cor.
+    if ($url =~ m{open\.spotify\.com/(?:embed/)?(show|episode|playlist|album)/([\w-]+)}) {
+        my ($kind, $id) = ($1, $2);
+        my $view = "https://open.spotify.com/$kind/$id";
+        return qq{<figure class="embed embed-audio"><iframe src="https://open.spotify.com/embed/$kind/$id" title="$l" loading="lazy" allow="clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe><figcaption class="embed-caption"><span>$l</span><a href="$view" target="_blank" rel="noopener">Abrir no Spotify ↗</a></figcaption></figure>};
+    }
     if ($url =~ m{drive\.google\.com/file/d/([\w-]+)}) {
         my $view = "https://drive.google.com/file/d/$1/view";
         return qq{<figure class="embed embed-doc"><iframe src="https://drive.google.com/file/d/$1/preview" title="$l" loading="lazy"></iframe><figcaption class="embed-caption"><span>$l</span><a href="$view" target="_blank" rel="noopener">Abrir no Drive ↗</a></figcaption></figure>};
@@ -394,6 +404,7 @@ sub embed_html {
 sub embed_key {
     my ($u) = @_;
     return "yt:$1" if $u =~ m{youtube\.com/embed/([\w-]+)};
+    return "sp:$1:$2" if $u =~ m{open\.spotify\.com/(?:embed/)?(show|episode|playlist|album)/([\w-]+)};
     return "dr:$1" if $u =~ m{drive\.google\.com/file/d/([\w-]+)};
     return "fo:$1" if $u =~ m{embeddedfolderview\?id=([\w-]+)};
     return "dc:$1" if $u =~ m{docs\.google\.com/\w+/d/([\w-]+)};
@@ -412,6 +423,7 @@ sub link_icon {
     my ($u) = @_;
     return 'assignment' if $u =~ m{forms\.gle|docs\.google\.com/forms};
     return 'play_circle' if $u =~ m{youtube\.com|youtu\.be|globoplay|tvbrasil|video};
+    return 'podcasts' if $u =~ m{spotify\.com|deezer\.com|podcast};
     return 'photo_camera' if $u =~ m{instagram\.com};
     return 'smart_toy' if $u =~ m{chatgpt\.com|chat\.openai|g\.co/gemini|gemini\.google};
     return 'description' if $u =~ m{drive\.google|docs\.google|\.pdf};

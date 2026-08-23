@@ -1,7 +1,7 @@
 
 # Pra ouvir e refletir
 
-# Podcasts
+## Podcasts
 
 ATENÇÃO! Aviso sobre os materiais audiovisuais
 
@@ -44,3 +44,8 @@ SUS
 Podcast "SUSCAST" 
 
 Link: X
+
+## Veja também
+
+- [Pra Rir e Refletir — Vídeos](/pra-rir-e-refletir-videos-porta-dos-fundos)
+- [Pra Estudar Andando — Podcasts](/pra-estudar-andando-podcasts)

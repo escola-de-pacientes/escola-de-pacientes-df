@@ -20,7 +20,7 @@
 
 | Repositório | O que é | Onde vive | Estado |
 |---|---|---|---|
-| **`HUB-de-LLMs`** | O SimulaPacientes: o hub de pacientes digitais. Next.js, é onde mora a rubrica e a avaliação. **Privado.** | `hub-de-ll-ms.vercel.app` (domínio decidido e ainda não apontado: `simulapacientes.escoladepacientes.com`) | ativo |
+| **`HUB-de-LLMs`** | O SimulaPacientes: o hub de pacientes digitais. Next.js, é onde mora a rubrica e a avaliação. **Privado.** | `simulapacientes.escoladepacientes.com` (o `hub-de-ll-ms.vercel.app` continua respondendo) | ativo |
 | **`escola-de-pacientes-df`** | O site institucional. Conteúdo estático gerado de `build/` para `docs/`. **Público.** | `escoladepacientes.com` | ativo |
 | **`adm-epdf`** | Núcleo EP — o sistema interno de gestão do grupo. **Privado.** | `adm-epdf.vercel.app` | ativo |
 | **`Radar-de-congressos-FAPDF-`** | Radar de congressos. Público. | — | periférico |
@@ -45,8 +45,11 @@ SimulaPacientes. Algumas ainda apontam para os **Custom GPTs antigos** no
 site prometendo uma simulação que não existe mais. O site é público e indexado;
 o Hub é privado. Quem chega pelo site é o estudante.
 
-> Se você **apontar `simulapacientes.escoladepacientes.com`** para o Hub, as páginas do
-> site que citam o endereço antigo precisam ser revistas na mesma leva.
+> **O domínio próprio está no ar** — conferido pela coordenação em 23/08/2026.
+> O endereço da Vercel continua respondendo, e é o que a Action do site usa para
+> buscar os números: trocá-lo por elegância, sem poder testar, arriscaria parar a
+> atualização da página pública em silêncio. A troca é fácil e deve ser feita
+> quando alguém puder conferir o resultado.
 
 ### O acervo do site NÃO é o acervo do Hub
 

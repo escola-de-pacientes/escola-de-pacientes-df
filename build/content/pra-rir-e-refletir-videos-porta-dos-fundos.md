@@ -75,7 +75,7 @@ Descrição do vídeo no YouTube: “Para cada mal existe uma droga. Da ansiedad
 
 Vídeo "CRIANÇAS" 
 
-Descrição: “Quando o cuidado com a saúde das crianças se transforma em busca constante por medicamentos, a fronteira entre prevenção, tratamento e medicalização pode ficar menos clara.”
+Descrição do vídeo no YouTube: “Quando o cuidado com a saúde das crianças se transforma em busca constante por medicamentos, a fronteira entre prevenção, tratamento e medicalização pode ficar menos clara.”
 
 [EMBED: YouTube Video](https://www.youtube.com/embed/jVSnfKVSNEQ)
 

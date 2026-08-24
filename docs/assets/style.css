@@ -462,7 +462,7 @@ li:hover > .dropdown, li:focus-within > .dropdown { display: block; }
    inteiro cabe, mas apertado. Antes ele sumia aos 980px e, entre 980 e
    1100px, aparecia colidindo com a logo. Aqui ele encolhe em vez de sumir. */
 @media (min-width: 881px) and (max-width: 1180px) {
-  nav.main > ul > li > a { padding-left: .42rem; padding-right: .42rem; font-size: .84rem; }
+  nav.main > ul > li > a { padding-left: .34rem; padding-right: .34rem; font-size: .84rem; }
   .searchbox { margin-left: .2rem; }
   .searchbox input { width: 40px; padding-left: 1.95rem; padding-right: .35rem; }
   .searchbox input:focus { width: 200px; }
@@ -589,15 +589,37 @@ p.section-lead { color: var(--muted); font-size: 1.12rem; max-width: 62ch; margi
    do menu já estão comprimidos pela regra acima — não sobra o que ceder, e o
    botão empurrava a busca para fora da tela. Nessa faixa ele sai; no celular
    volta por extenso. */
-@media (min-width: 881px) {
+/* Mesma faixa e mesmo comportamento do .btn-nucleo, por decisão da
+   coordenação em 23/08/2026: o robô sozinho não diz o que o botão faz, e o
+   SimulaPacientes é o produto que a Escola quer que se reconheça no topo de
+   qualquer página. Antes o nome ficava escondido em toda tela larga, e entre
+   881 e 1180px o botão inteiro sumia — o único lugar do site onde o
+   SimulaPacientes não se anunciava era justo o cabeçalho. Agora ele só se
+   reduz ao símbolo na mesma faixa estreita em que o Núcleo EP se reduz. */
+/* Os vinte pixels em que o menu de desktop já apareceu mas o botão ainda não
+   cabe. Abaixo de 881px quem manda é o menu sanfona, e lá o botão aparece por
+   extenso — ninguém fica sem ele; some só nesta réstia. Espremer a busca até
+   caber aqui sairia mais caro do que o botão vale em 19px de tela. */
+@media (min-width: 881px) and (max-width: 899px) {
+  .btn-simula { display: none; }
+}
+@media (min-width: 881px) and (max-width: 1240px) {
   .btn-simula { padding: .42rem .5rem; margin-left: .25rem; }
   .btn-simula-txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 }
-@media (min-width: 881px) and (max-width: 1180px) {
-  .btn-simula { display: none; }
-}
 @media (min-width: 1181px) {
   .searchbox input { width: 110px; }
+}
+/* Faixa apertada: os dois botões já estão por extenso (a partir de 1241px) mas
+   a tela ainda é de notebook. Sem isto o cabeçalho estoura e a busca sai pela
+   direita — 1280px é a largura de tela mais comum entre os alunos, e era
+   justamente ali que quebrava. O campo de busca encolhe, não some: a lupa e o
+   atalho continuam funcionando, e ele volta ao tamanho cheio acima de 1380px. */
+@media (min-width: 1241px) and (max-width: 1380px) {
+  .searchbox input { width: 58px; }
+  .searchbox input:focus { width: 200px; }   /* mesmo gesto da faixa de baixo */
+  .btn-simula, .btn-nucleo { padding-left: .6rem; padding-right: .6rem; }
+  nav.main > ul > li > a { padding-left: .5rem; padding-right: .5rem; }
 }
 @media (max-width: 880px) {
   .btn-simula { margin: 1rem 1.5rem 0; padding: .7rem 1.2rem; font-size: .95rem; }
@@ -2106,6 +2128,88 @@ article.content .passo h3 {
 article.content .passo h3::before { display: none; }
 .passo p { font-size: .94rem; color: var(--muted); line-height: 1.55; }
 @media (prefers-reduced-motion: reduce) { .passo:hover { transform: none; } }
+
+/* ---------- O passo a passo do PACK ----------
+   Usado no plano de aula de hipertensão, ao lado do exercício da folha em
+   branco. A tabela do PACK é larga e densa; projetada, não se lê. Aqui ela
+   vira uma pilha vertical numerada, que cabe na largura do celular sem rolagem
+   lateral e continua legível a três metros do projetor.
+
+   O bloco é deliberadamente pesado — borda, fundo próprio, número em círculo.
+   Ele carrega conduta prescritiva citada de uma fonte, e precisa se destacar
+   do texto do plano, que é roteiro de aula. Confundir os dois seria ruim nos
+   dois sentidos. */
+
+.pack-receita {
+  margin: 1.6rem 0;
+  padding: 1.3rem 1.4rem 1rem;
+  border: 1px solid var(--glass-edge);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.pr-origem {
+  display: flex; align-items: flex-start; gap: .5rem;
+  margin: 0 0 1.1rem;
+  font-size: .86rem; line-height: 1.5; color: var(--muted);
+}
+.pr-origem .msym { font-size: 20px; color: var(--accent); flex: none; }
+.pr-origem b { color: var(--ink); }
+
+.pr-passos { list-style: none; margin: 0; padding: 0; counter-reset: pr; }
+.pr-passos > li {
+  counter-increment: pr;
+  position: relative;
+  padding: 0 0 1.1rem 2.9rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 1px solid var(--glass-edge);
+}
+.pr-passos > li:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+.pr-passos > li::before {
+  content: counter(pr);
+  position: absolute; left: 0; top: 0;
+  display: grid; place-items: center;
+  width: 2rem; height: 2rem; border-radius: 50%;
+  background: var(--accent); color: var(--surface);
+  font-size: .92rem; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+
+/* o h3 do acervo ganha um traço à esquerda; aqui o número já faz esse papel */
+article.content .pr-passos h3 {
+  padding-left: 0; margin: .15rem 0 .5rem;
+  font-size: 1.02rem; letter-spacing: -.01em;
+  text-transform: none; color: var(--ink);
+}
+article.content .pr-passos h3::before { display: none; }
+.pr-ou { color: var(--muted); font-weight: 400; }
+
+.pack-receita ul { margin: .3rem 0 .5rem; padding-left: 1.1rem; }
+article.content .pack-receita li { font-size: .92rem; line-height: 1.55; margin: .3rem 0; }
+
+.pr-farmaco { margin: .7rem 0 .1rem; font-size: .93rem; color: var(--ink); }
+.pr-farmaco:first-of-type { margin-top: .2rem; }
+
+.pr-ea {
+  margin: .6rem 0 0; padding-top: .5rem;
+  border-top: 1px dashed var(--glass-edge);
+  font-size: .84rem; line-height: 1.5; color: var(--muted);
+}
+
+.pr-rodape {
+  margin: 1.2rem 0 0; padding: .7rem .9rem;
+  border-radius: calc(var(--radius) / 2);
+  background: var(--bg-soft);
+  font-size: .88rem; line-height: 1.5; text-align: center; color: var(--muted);
+}
+.pr-rodape b { color: var(--ink); }
+
+@media (max-width: 560px) {
+  .pack-receita { padding: 1.1rem 1rem .9rem; }
+  .pr-passos > li { padding-left: 2.4rem; }
+  .pr-passos > li::before { width: 1.7rem; height: 1.7rem; font-size: .82rem; }
+}
 
 /* ---------- A fila de rostos ----------
    São os personagens do próprio Hub. Aqui eles dizem, sem texto, que cada

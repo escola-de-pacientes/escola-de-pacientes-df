@@ -14,6 +14,9 @@
       // a recepção de boas-vindas é faixa de acolhimento, não seção de
       // conteúdo — no sumário ela só atrapalharia
       if (h.closest && h.closest('.recepcao')) return false;
+      // os passos do PACK são um bloco só, não seções da página: cinco nomes
+      // de medicamento com dose no sumário afogariam os sete momentos da aula
+      if (h.closest && h.closest('.pack-receita')) return false;
       return true;
     }
   );

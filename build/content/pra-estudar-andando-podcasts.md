@@ -1,8 +1,8 @@
-# Pra Estudar Andando — Podcasts
+# Pra Estudar Andando — Podcasts médicos
 
 Uma lista curta de podcasts que valem o trajeto: o ônibus para o estágio, a caminhada até a unidade de saúde, a fila do bandejão, a louça depois do almoço. Não substituem leitura nem aula — servem para manter o assunto girando na cabeça no tempo que já ia embora de qualquer jeito.
 
-É a companhia das outras duas páginas de acervo audiovisual da Escola: **Pra Rir e Refletir**, com os vídeos de humor usados para problematizar a prática, e **Pra Ouvir e Refletir**, com os podcasts de crítica sobre saúde e sociedade. Esta aqui é a de estudar: conteúdo clínico, para ouvir andando.
+São **podcasts médicos**: conteúdo clínico, de quem atende para quem atende. É o que separa esta página da **Pra Ouvir e Refletir**, que reúne podcasts gerais — jornalismo e crítica sobre saúde e sociedade, sem conteúdo clínico —, e da **Pra Rir e Refletir**, com os vídeos de humor usados para problematizar a prática.
 
 > Os podcasts indicados são produções de terceiros. A Escola de Pacientes não participa da produção e não responde pelo conteúdo dos episódios. A indicação pede a mesma leitura crítica de qualquer outra fonte, e nenhum episódio substitui protocolo, diretriz ou a orientação do preceptor.
 
@@ -18,7 +18,7 @@ Canal no YouTube: [Tá de Clinicagem no YouTube](https://www.youtube.com/@tadecl
 
 ## Veja também
 
-- [Pra Ouvir e Refletir — Podcasts](/pra-ouvir-e-refletir-podcasts)
+- [Pra Ouvir e Refletir — Podcasts gerais](/pra-ouvir-e-refletir-podcasts)
 - [Pra Rir e Refletir — Vídeos](/pra-rir-e-refletir-videos-porta-dos-fundos)
 
 ## Onde continuar

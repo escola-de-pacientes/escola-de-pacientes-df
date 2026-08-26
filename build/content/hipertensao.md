@@ -8,6 +8,10 @@
 
 UNB SFC2-3 HIPERTENSÃO E DISLIPIDEMIA
 
+[EMBED: Presentation, AULA Hipertensão na APS — diagnóstico, diferenciais, exames e tratamento v3](https://docs.google.com/presentation/d/1Ew8GU1RlWn6CWQ9wAuhfKIbCN0KIUmnBvO6Hq2bLk1w/embed)
+
+AULA Hipertensão na APS — diagnóstico, diferenciais, exames e tratamento v3
+
 ## Tratado MFC
 
 CAPÍTULO DO TEMA

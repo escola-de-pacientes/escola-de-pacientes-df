@@ -127,6 +127,8 @@ MATERIAL DE REFERÊNCIA - GERAL
 
 ## Outros links
 
+- [Sala de Situação — Hipertensão Arterial no Distrito Federal (InfoSaúde/SES-DF)](https://info.saude.df.gov.br/sala-de-situacao/painel-infosaude-causas-de-atendimento-hipertensao-arterial-internacoes/)
+
 [EMBED: Drive, HIPERTENSÃO DIRETRIZ 2025.pdf](https://drive.google.com/file/d/1LrjQnZEFY6qvD8WqeOMBoQtY4JzIrO8d/preview)
 
 HIPERTENSÃO DIRETRIZ 2025.pdf

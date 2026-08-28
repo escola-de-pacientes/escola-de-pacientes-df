@@ -60,6 +60,7 @@ QUESTÕES INSUFICIÊNCIA CARDÍACA - [https://forms.gle/GB1rNxXvSn72Adqz7](https
 ## Simulação
 
 - [SimulaPacientes](/simula-pacientes)
+- [Plano de aula — Insuficiência cardíaca](/plano-de-aula-insuficiencia-cardiaca)
 
 ## Outros links
 

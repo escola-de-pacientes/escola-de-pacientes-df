@@ -12,6 +12,10 @@ UNB SFC2-3 HIPERTENSÃO E DISLIPIDEMIA
 
 AULA Hipertensão na APS — diagnóstico, diferenciais, exames e tratamento v3
 
+[EMBED: Presentation, ZZ AULA HIPERTENSÃO REVISÃO v2](https://docs.google.com/presentation/d/1_Ynk0JY6-AmjEx6oKhrrnYGC2eN4k-ZGnVtYVZP-rxw/embed)
+
+ZZ AULA HIPERTENSÃO REVISÃO v2 — revisão de 10 minutos, usada na abertura da aula de diabetes 1
+
 ## Tratado MFC
 
 CAPÍTULO DO TEMA

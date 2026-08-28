@@ -195,6 +195,63 @@ arquivo. A lista fica em `@NUCLEO_SHOTS`, no `build.pl`.
 > Antes de publicar um print, confira que não há nome de pessoa, e-mail ou
 > título de projeto que o grupo prefira não tornar público.
 
+## Simulações em números
+
+A página `/simulacoes-em-numeros/` é o espelho público dos dados das simulações.
+Ela **não calcula nada**: lê `build/assets/dados-simulacoes.json`, que uma Action
+busca do Hub todo dia, e desenha o que já veio protegido (piso de dez simulações,
+supressão complementar). Quem decide o que pode ser publicado é o Hub.
+
+O bloco "De onde vêm as simulações" é uma **rosca com a tabela ao lado**, na mesma
+figura. A tabela fica visível, não escondida num `details`: quem lê cor vê a
+proporção de relance, quem precisa do número exato o tem na mesma linha.
+
+- **O SimulaPacientes é sempre a primeira linha e a primeira fatia.** É ordenação
+  de apresentação, feita em `composicao_ordenada`: o Hub manda as origens na ordem
+  em que a Escola as usou, e nessa ordem a única origem viva cai na última linha.
+  Nenhum número muda de lugar junto.
+- **O bloco não é um cartão.** O `.grafico` de vidro é da vitrine da home; aqui a
+  página é um documento, e a figura usa o mesmo `h3` em caixa alta com traço e a
+  mesma tabela sem moldura dos blocos vizinhos. O anel fica à direita e a tabela à
+  esquerda, encostada na margem do texto, para a coluna "Origem" nascer no mesmo
+  ponto que "Competência" e "Condição". No celular o anel volta para cima.
+- **As cores estão em `--pz-1` a `--pz-6`, no `style.css`**, e são os pastéis
+  Google que o site já usa: azul, verde, roxo, amarelo, vermelho. `--pz-1` é
+  `--g-azul` sem mudar um dígito e `--pz-5` é `--g-vermelho`; verde e amarelo
+  estão um degrau adiante do token, porque o original era claro ou escuro demais
+  para virar marca de gráfico. No tema escuro o azul é o mesmo `#4a90e2` das
+  barras do gráfico de prêmios.
+- As cores acompanham a *posição* da fatia no anel, não o rótulo, e **a ordem foi
+  conferida**: cada par de fatias vizinhas continua distinguível por quem enxerga
+  cor de outro jeito (pior par: ΔE 18,6 no claro, 8,8 no escuro). Azul e roxo não
+  podem se encostar; verde e vermelho também não. **Reordenar sem refazer a
+  conferência desfaz a propriedade.** `--pz-1` é sempre o SimulaPacientes.
+- Acima de cinco origens, a cauda vira uma fatia cinza ("Outras origens"), mas
+  continua nomeada linha a linha na tabela, recuada sob ela.
+
+### O gráfico de evolução, e por que ele ainda não aparece
+
+Existe um gráfico de colunas, "Evolução do SimulaPacientes", que **só aparece
+quando há pelo menos dois períodos publicados**. Hoje o Hub publica um mês só
+(`2026-08`), então a tabela "Mês a mês" continua no lugar dele. Assim que o
+segundo mês entrar no JSON, o gráfico aparece sozinho — não há nada a fazer aqui.
+
+Sobre **agrupar por semana**: o gerador já sabe desenhar isso. Se o JSON trouxer
+um bloco `porSemana` (rótulos no formato `2026-W35`), é ele que vira gráfico, e o
+`porMes` continua como tabela. Mas a decisão **não é desta página**, por dois
+motivos:
+
+1. O site não fatia mês em semana, e não deve: o recorte tem que sair do Hub já
+   protegido, com o mesmo piso de dez e a mesma supressão complementar. Repetir
+   essa regra em Perl criaria uma segunda implementação da mesma proteção.
+2. A própria página promete, em "O que estes números são, e o que não são", que
+   **o tempo aparece só em mês** — porque dia e hora, numa turma que simula na
+   noite de terça, diriam quem estava na sala. Semana anda nessa direção. Publicar
+   semana exige rever essa promessa e o texto da metodologia, no Hub e aqui.
+
+Ou seja: a semana está pronta para ser desenhada, e falta decidir se ela deve ser
+publicada. Enquanto não for, nada muda no site.
+
 ## Origem do conteúdo
 
 Conteúdo migrado do site original em Google Sites (escoladepacientes.com) em julho de 2026.

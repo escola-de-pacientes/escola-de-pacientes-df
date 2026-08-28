@@ -943,19 +943,27 @@ sub grafico_pizza_composicao_html {
     my $lbl   = esc(join '; ', @alt);
     my $tot   = num_br($total);
 
+    # ============== POR QUE ISTO NÃO É UM CARTÃO ==============
+    # O `.grafico` do site é vidro: fundo translúcido, borda, sombra. Ele existe
+    # para a vitrine da home, onde tudo é cartão. Aqui não: esta página é um
+    # documento, e todo bloco vizinho -- competência, condição, grupo -- é um
+    # rótulo em caixa alta com um traço e uma tabela sem moldura. Um cartão no
+    # meio disso não parece um gráfico da página; parece um gráfico colado nela.
+    #
+    # Então a figura usa o MESMO `h3` dos outros blocos (que ganha o traço e a
+    # caixa alta de `article.content h3` sozinho) e a mesma tabela sem moldura.
+    # O que a rosca acrescenta é a cor -- não uma caixa.
     return <<HTML;
-<figure class="grafico pz-figura numeros-bloco">
-<figcaption>
-<p class="g-titulo">$t</p>
-<p class="g-sub">Quanto cada origem representa dos $tot atendimentos simulados.$nota</p>
-</figcaption>
+<figure class="pz-figura numeros-bloco">
+<h3>$t</h3>
+<p class="numeros-sub">Quanto cada origem representa dos $tot atendimentos simulados.$nota</p>
 <div class="pz-corpo">
 <svg class="pz-svg" viewBox="0 0 200 200" role="img" aria-label="Rosca das origens: $lbl.">
 <g transform="rotate(-90 100 100)">
 $arcos
 </g>
-<text class="pz-centro-n" x="100" y="98">$tot</text>
-<text class="pz-centro-l" x="100" y="119">simulações</text>
+<text class="pz-centro-n" x="100" y="97">$tot</text>
+<text class="pz-centro-l" x="100" y="118">simulações</text>
 </svg>
 <div class="g-tabela pz-tabela">
 <table>
@@ -1070,12 +1078,12 @@ sub grafico_evolucao_html {
     my $trs     = join "\n", @linhas;
     my $cab     = $por eq 'semana' ? 'Semana' : 'Mês';
 
+    # Mesma decisão da rosca: rótulo em caixa alta e traço, como os blocos
+    # vizinhos, em vez do cartão de vidro da vitrine.
     return <<HTML;
-<figure class="grafico numeros-bloco">
-<figcaption>
-<p class="g-titulo">Evolução do SimulaPacientes</p>
-<p class="g-sub">Simulações por $por, desde a entrada do SimulaPacientes.$ressalva</p>
-</figcaption>
+<figure class="numeros-bloco evo-figura">
+<h3>Evolução do SimulaPacientes</h3>
+<p class="numeros-sub">Simulações por $por, desde a entrada do SimulaPacientes.$ressalva</p>
 <div class="g-plot" role="list" aria-label="Simulações do SimulaPacientes por $por">
 $colunas
 </div>

@@ -2752,62 +2752,85 @@ article.content .cl-band h2::before { display: none; }
 .num-suprimido span { font-size: .78rem; opacity: .8; }
 
 /* ============== A ROSCA DAS ORIGENS ==============
-   Cinco cores fixas, na ordem em que as fatias entram no anel. A ordem foi
-   escolhida e conferida: cada par de fatias VIZINHAS continua distinguível por
-   quem enxerga cor de outro jeito -- e é por vizinhança que uma rosca se lê,
-   porque cada fatia só encosta em duas outras. Trocar a ordem sem refazer a
-   conferência desfaz justamente isso.
+   São os pastéis Google que o site já usa -- azul, verde, roxo, amarelo,
+   vermelho -- e não uma paleta de fora. Dois deles são o token da casa sem
+   mudar um dígito (`--g-azul`, `--g-vermelho`); os outros são o mesmo tom um
+   degrau adiante, porque o original era claro ou escuro demais para virar
+   marca de gráfico sobre o fundo desta página.
+
+   A ORDEM não é enfeite. Cada par de fatias VIZINHAS foi conferido para seguir
+   distinguível por quem enxerga cor de outro jeito -- e é por vizinhança que
+   uma rosca se lê, porque cada fatia só encosta em duas outras. Azul e roxo,
+   por exemplo, não podem se encostar; verde e vermelho também não. Trocar a
+   ordem sem refazer a conferência desfaz justamente isso.
 
    `--pz-1` é o azul da casa, e é sempre a primeira fatia: o SimulaPacientes.
    `--pz-6` é o cinza da cauda ("Outras origens"), que só aparece se um dia
    houver mais de cinco origens.
 
    As cores escuras não são as claras clareadas: são degraus escolhidos para o
-   fundo escuro, cada um com contraste suficiente contra ele. */
+   fundo escuro, cada um com contraste suficiente contra ele. O azul escuro é o
+   mesmo `#4a90e2` que as barras do gráfico de prêmios já usam. */
 :root {
-  --pz-1: #1a73e8;   /* azul da casa — SimulaPacientes */
-  --pz-2: #eb6834;   /* laranja */
-  --pz-3: #1baf7a;   /* verde-água */
-  --pz-4: #eda100;   /* âmbar */
-  --pz-5: #e87ba4;   /* magenta */
+  --pz-1: #1a73e8;   /* --g-azul, o azul da casa — SimulaPacientes */
+  --pz-2: #1e8e3e;   /* verde, um degrau acima de --g-verde */
+  --pz-3: #9334e6;   /* roxo */
+  --pz-4: #eda100;   /* amarelo, um degrau abaixo de --g-amarelo */
+  --pz-5: #d93025;   /* --g-vermelho */
   --pz-6: #8a8f98;   /* cinza da cauda */
-  --pz-fundo: var(--bg);
 }
 :root[data-theme="dark"] {
-  --pz-1: #4a90e2; --pz-2: #d95926; --pz-3: #199e70;
-  --pz-4: #c98500; --pz-5: #d55181; --pz-6: #8f959e;
+  --pz-1: #4a90e2; --pz-2: #1b8238; --pz-3: #9c56e8;
+  --pz-4: #c58500; --pz-5: #d72f25; --pz-6: #8f959e;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --pz-1: #4a90e2; --pz-2: #d95926; --pz-3: #199e70;
-    --pz-4: #c98500; --pz-5: #d55181; --pz-6: #8f959e;
+    --pz-1: #4a90e2; --pz-2: #1b8238; --pz-3: #9c56e8;
+    --pz-4: #c58500; --pz-5: #d72f25; --pz-6: #8f959e;
   }
 }
 
-.pz-corpo {
-  display: flex; align-items: center; gap: 1.8rem;
-  margin-top: 1.4rem; flex-wrap: wrap;
+/* A linha de apoio dos blocos com gráfico: o texto que o rótulo em caixa alta
+   não cabe dizer. Fica em cor de apoio, no corpo do texto da página — não é um
+   subtítulo de cartão. */
+.numeros-sub {
+  margin: .1rem 0 0; color: var(--muted);
+  font-size: .92rem; line-height: 1.55;
 }
-.pz-svg { width: 210px; height: 210px; flex: none; }
-/* O vão entre duas fatias é feito pelo tracejado, na cor do fundo — não por um
-   contorno em volta de cada fatia. Contorno acrescenta tinta que não é dado. */
+.pz-figura, .evo-figura { margin: 0; }
+
+/* O anel fica à DIREITA e a tabela à esquerda, encostada na margem do texto —
+   assim a coluna "Origem" nasce no mesmo ponto que "Competência", "Condição" e
+   "Grupo", nos blocos de baixo. Com o anel à esquerda, a tabela inteira ficava
+   deslocada para dentro e quebrava a prumada da página.
+   (`row-reverse` inverte só o desenho: no HTML o gráfico continua vindo antes
+   da sua tabela.) */
+.pz-corpo {
+  display: flex; flex-direction: row-reverse; align-items: center;
+  gap: 2.2rem; margin-top: 1.2rem; flex-wrap: wrap-reverse;
+}
+.pz-svg { width: 196px; height: 196px; flex: none; }
+/* Anel fino, como o resto do site: o dado é o comprimento do arco, não a
+   espessura dele. O vão entre duas fatias é feito pelo tracejado, na cor do
+   fundo — não por um contorno em volta de cada fatia, que acrescentaria tinta
+   que não é dado. */
 .pz-fatia {
   fill: none;
   stroke: var(--pz);
-  stroke-width: 26;
+  stroke-width: 21;
   transition: stroke-width .2s var(--ease);
 }
-.pz-fatia:hover { stroke-width: 30; }
+.pz-fatia:hover { stroke-width: 25; }
 /* O número no meio do anel responde à primeira pergunta de quem chega — quantas
    foram — sem obrigar a somar as fatias. */
 .pz-centro-n {
   text-anchor: middle; fill: var(--ink);
-  font-family: var(--font-sans); font-size: 30px; font-weight: 700;
-  font-variant-numeric: tabular-nums;
+  font-family: var(--font-sans); font-size: 29px; font-weight: 700;
+  letter-spacing: -.02em; font-variant-numeric: tabular-nums;
 }
 .pz-centro-l {
   text-anchor: middle; fill: var(--muted);
-  font-family: var(--font-text); font-size: 12.5px;
+  font-family: var(--font-text); font-size: 12px;
 }
 
 /* A tabela é a versão em texto do anel, e fica ao lado dele, visível: quem
@@ -2837,8 +2860,9 @@ article.content .cl-band h2::before { display: none; }
 .pz-chave-vazia { background: none; border: 1px dashed var(--glass-edge); }
 
 @media (max-width: 640px) {
-  .pz-corpo { gap: 1.1rem; justify-content: center; }
-  .pz-svg { width: 172px; height: 172px; }
+  /* Numa tela estreita não há prumada a manter: o anel volta para cima. */
+  .pz-corpo { flex-direction: column; gap: 1.2rem; align-items: center; }
+  .pz-svg { width: 168px; height: 168px; }
   .pz-tabela { flex-basis: 100%; }
   /* Numa tela estreita o cabeçalho pode quebrar em duas linhas: mantê-lo
      inteiro empurraria a coluna "Simulações" para fora da tela. Os NÚMEROS
@@ -2852,13 +2876,13 @@ article.content .cl-band h2::before { display: none; }
 /* Período protegido no gráfico de evolução: um talho hachurado, baixo e sem
    número. Não é uma coluna de valor pequeno — é a marca de que ali não há
    número para mostrar. */
-.grafico .g-col-prot .g-bar {
+.evo-figura .g-col-prot .g-bar {
   height: 10%;
   background: repeating-linear-gradient(
     45deg, var(--glass-edge) 0 3px, transparent 3px 6px);
   border-radius: 4px 4px 0 0;
 }
-.grafico .g-col-prot .g-val { color: var(--muted); }
+.evo-figura .g-col-prot .g-val { color: var(--muted); }
 
 /* As origens somadas na fatia cinza continuam nomeadas, uma por linha, recuadas
    sob ela: a soma é do anel, não da tabela. */

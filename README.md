@@ -210,12 +210,22 @@ proporção de relance, quem precisa do número exato o tem na mesma linha.
   de apresentação, feita em `composicao_ordenada`: o Hub manda as origens na ordem
   em que a Escola as usou, e nessa ordem a única origem viva cai na última linha.
   Nenhum número muda de lugar junto.
-- **As cores estão em `--pz-1` a `--pz-6`, no `style.css`**, e acompanham a
-  *posição* da fatia no anel, não o rótulo. A ordem foi conferida para que duas
-  fatias vizinhas continuem distinguíveis por quem enxerga cor de outro jeito — e é
-  por vizinhança que uma rosca se lê. **Reordenar as cores sem refazer essa
-  conferência desfaz a propriedade.** `--pz-1` é o azul da casa, e é sempre o
-  SimulaPacientes.
+- **O bloco não é um cartão.** O `.grafico` de vidro é da vitrine da home; aqui a
+  página é um documento, e a figura usa o mesmo `h3` em caixa alta com traço e a
+  mesma tabela sem moldura dos blocos vizinhos. O anel fica à direita e a tabela à
+  esquerda, encostada na margem do texto, para a coluna "Origem" nascer no mesmo
+  ponto que "Competência" e "Condição". No celular o anel volta para cima.
+- **As cores estão em `--pz-1` a `--pz-6`, no `style.css`**, e são os pastéis
+  Google que o site já usa: azul, verde, roxo, amarelo, vermelho. `--pz-1` é
+  `--g-azul` sem mudar um dígito e `--pz-5` é `--g-vermelho`; verde e amarelo
+  estão um degrau adiante do token, porque o original era claro ou escuro demais
+  para virar marca de gráfico. No tema escuro o azul é o mesmo `#4a90e2` das
+  barras do gráfico de prêmios.
+- As cores acompanham a *posição* da fatia no anel, não o rótulo, e **a ordem foi
+  conferida**: cada par de fatias vizinhas continua distinguível por quem enxerga
+  cor de outro jeito (pior par: ΔE 18,6 no claro, 8,8 no escuro). Azul e roxo não
+  podem se encostar; verde e vermelho também não. **Reordenar sem refazer a
+  conferência desfaz a propriedade.** `--pz-1` é sempre o SimulaPacientes.
 - Acima de cinco origens, a cauda vira uma fatia cinza ("Outras origens"), mas
   continua nomeada linha a linha na tabela, recuada sob ela.
 

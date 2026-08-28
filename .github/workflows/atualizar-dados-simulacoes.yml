@@ -24,6 +24,10 @@
 name: Atualizar os números das simulações
 
 on:
+  push:
+    branches: [main]       # temporário: força uma busca após corrigir a API
+    paths:
+      - '.github/workflows/atualizar-dados-simulacoes.yml'
   schedule:
     - cron: '17 9 * * *'    # todo dia, 06h17 em Brasília
   workflow_dispatch:        # e à mão, quando alguém quiser ver agora

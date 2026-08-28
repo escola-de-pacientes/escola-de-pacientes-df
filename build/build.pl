@@ -801,6 +801,305 @@ sub tabela_de_celulas {
          . qq{<tbody>} . join('', @linhas) . qq{</tbody></table></div>};
 }
 
+# ---------------- a composição das origens, em rosca ----------------
+#
+# ============== POR QUE SIMULAPACIENTES VEM PRIMEIRO ==============
+# A ordem das linhas é APRESENTAÇÃO, não dado. O Hub manda as origens na ordem
+# em que a Escola as usou -- impressas, formulários, ChatGPT, Gems,
+# SimulaPacientes -- e nessa ordem a única origem viva, a que ainda cresce
+# todo dia, cai na última linha, depois de quatro que não mudam mais.
+#
+# Ela sobe para a primeira. As outras mantêm entre si a ordem que veio do Hub.
+# Nenhum número se move junto: cada linha continua com o rótulo e o
+# denominador que o Hub publicou.
+sub composicao_ordenada {
+    my ($celulas) = @_;
+    return [] unless $celulas && ref $celulas eq 'ARRAY';
+    my $eh_sp = sub { ($_[0]->{rotulo} // '') =~ /simula\s*pacientes/i };
+    return [ (grep { $eh_sp->($_) } @$celulas), (grep { !$eh_sp->($_) } @$celulas) ];
+}
+
+sub pct_br {
+    my ($v) = @_;
+    my $s = sprintf('%.1f', $v);
+    $s =~ s/\./,/;
+    return "$s%";
+}
+
+# ============== AS CORES DA ROSCA ==============
+# Cinco lugares fixos (`--pz-1` a `--pz-5` no style.css), na ordem em que as
+# fatias entram no anel, mais um cinza (`--pz-6`) para a cauda. A ordem não é
+# enfeite: ela foi escolhida para que duas fatias VIZINHAS continuem
+# distinguíveis por quem não enxerga cor como a maioria -- e é por vizinhança
+# que uma rosca é lida, porque cada fatia só encosta em duas outras.
+#
+# Por isso o lugar da cor acompanha a POSIÇÃO no anel, e não o rótulo: mudar a
+# ordem sem mudar as cores desfaria exatamente a propriedade que foi verificada.
+# O SimulaPacientes, que é a fatia que o leitor vem procurar, fica sempre na
+# primeira posição -- e portanto sempre no azul da casa.
+#
+# Acima de cinco origens a cauda vira "Outras origens", no cinza. Inventar uma
+# sexta cor produziria um tom que ninguém separa dos outros cinco; a tabela ao
+# lado continua nomeando cada origem, uma a uma, então nada se perde.
+sub pizza_fatias {
+    my ($celulas) = @_;
+    my (@plot, @fora);
+    for my $c (@$celulas) {
+        if ($c->{suprimida} || !defined $c->{denominador}) { push @fora, $c; next; }
+        push @plot, { %$c };
+    }
+    if (@plot > 5) {
+        my @cauda = splice @plot, 5;
+        my $soma = 0; $soma += $_->{denominador} for @cauda;
+        push @plot, { rotulo => 'Outras origens', denominador => $soma, slot => 6,
+                      cauda => \@cauda };
+    }
+    my $i = 0;
+    $_->{slot} //= ++$i for @plot;
+    return (\@plot, \@fora);
+}
+
+# A rosca e a tabela são a MESMA figura: a tabela é a versão em texto do que o
+# anel mostra, e fica visível, não escondida num `details`. Quem lê cor vê a
+# proporção de relance; quem precisa do número exato tem o número exato ao
+# lado, na mesma linha da chave colorida.
+sub grafico_pizza_composicao_html {
+    my ($celulas, $titulo) = @_;
+    return '' unless $celulas && @$celulas;
+
+    my ($plot, $fora) = pizza_fatias($celulas);
+
+    # Uma fatia só não é parte-todo: é um número. Nesse caso a tabela de sempre
+    # já diz tudo o que há para dizer.
+    return tabela_de_celulas($titulo, $celulas, coluna => 'Origem', percentual => 0)
+        if @$plot < 2;
+
+    my $total = 0; $total += $_->{denominador} for @$plot;
+    return tabela_de_celulas($titulo, $celulas, coluna => 'Origem', percentual => 0)
+        unless $total > 0;
+
+    my $CIRC = 439.82;   # 2 · π · 70, o raio do anel no viewBox
+    my $VAO  = 3;        # o vão que separa duas fatias, na cor do fundo
+
+    my $pos = 0;
+    my (@arcos, @linhas, @alt);
+    for my $c (@$plot) {
+        my $slot  = $c->{slot};
+        my $frac  = $c->{denominador} / $total;
+        my $arco  = $frac * $CIRC;
+        my $traco = $arco - $VAO; $traco = 0.6 if $traco < 0.6;
+        my $off   = -$pos;
+        $pos += $arco;
+
+        my $rot = esc($c->{rotulo} // '');
+        my $n   = num_br($c->{denominador});
+        my $pct = pct_br($frac * 100);
+
+        push @arcos, sprintf(
+            q{<circle class="pz-fatia" style="--pz: var(--pz-%d)" cx="100" cy="100" r="70" }
+          . q{stroke-dasharray="%.2f %.2f" stroke-dashoffset="%.2f">}
+          . q{<title>%s: %s simulações, %s do total</title></circle>},
+            $slot, $traco, $CIRC - $traco, $off, $rot, $n, $pct);
+
+        push @linhas,
+            qq{<tr><td><span class="pz-rot"><span class="pz-chave" style="--pz: var(--pz-$slot)" aria-hidden="true"></span>$rot</span></td>}
+          . qq{<td>$pct</td><td>$n</td></tr>};
+
+        # A cauda é uma fatia só no anel, mas continua sendo várias origens na
+        # tabela: cada uma com o seu nome e o seu número, recuadas sob ela.
+        # Somar origens para caber na paleta é decisão de desenho -- deixar de
+        # dizer quais elas são seria outra coisa.
+        for my $f (@{ $c->{cauda} || [] }) {
+            push @linhas,
+                qq{<tr class="pz-cauda"><td><span class="pz-rot"><span class="pz-chave" style="--pz: var(--pz-$slot)" aria-hidden="true"></span>}
+              . esc($f->{rotulo} // '') . qq{</span></td><td>}
+              . pct_br($f->{denominador} / $total * 100)
+              . qq{</td><td>@{[ num_br($f->{denominador}) ]}</td></tr>};
+        }
+
+        push @alt, "$rot, $pct";
+    }
+
+    # Recorte protegido não vira fatia: ele não tem número. Continua na tabela,
+    # dizendo por que não tem.
+    for my $c (@$fora) {
+        my $rot = esc($c->{rotulo} // '');
+        my $motivo = ($c->{motivo} // '') eq 'complementar'
+            ? 'protegido junto com outro'
+            : 'menos de 10 simulações';
+        push @linhas,
+            qq{<tr><td><span class="pz-rot"><span class="pz-chave pz-chave-vazia" aria-hidden="true"></span>$rot</span></td>}
+          . qq{<td>—</td><td class="num-suprimido">— <span>$motivo</span></td></tr>};
+    }
+
+    my $nota = @$fora
+        ? ' ' . (@$fora == 1 ? 'Uma origem ficou' : scalar(@$fora) . ' origens ficaram')
+          . ' fora do anel, por ser recorte protegido — a tabela diz quais.'
+        : '';
+
+    my $t     = esc($titulo);
+    my $arcos = join "\n", @arcos;
+    my $trs   = join "\n", @linhas;
+    my $lbl   = esc(join '; ', @alt);
+    my $tot   = num_br($total);
+
+    # ============== POR QUE ISTO NÃO É UM CARTÃO ==============
+    # O `.grafico` do site é vidro: fundo translúcido, borda, sombra. Ele existe
+    # para a vitrine da home, onde tudo é cartão. Aqui não: esta página é um
+    # documento, e todo bloco vizinho -- competência, condição, grupo -- é um
+    # rótulo em caixa alta com um traço e uma tabela sem moldura. Um cartão no
+    # meio disso não parece um gráfico da página; parece um gráfico colado nela.
+    #
+    # Então a figura usa o MESMO `h3` dos outros blocos (que ganha o traço e a
+    # caixa alta de `article.content h3` sozinho) e a mesma tabela sem moldura.
+    # O que a rosca acrescenta é a cor -- não uma caixa.
+    return <<HTML;
+<figure class="pz-figura numeros-bloco">
+<h3>$t</h3>
+<p class="numeros-sub">Quanto cada origem representa dos $tot atendimentos simulados.$nota</p>
+<div class="pz-corpo">
+<svg class="pz-svg" viewBox="0 0 200 200" role="img" aria-label="Rosca das origens: $lbl.">
+<g transform="rotate(-90 100 100)">
+$arcos
+</g>
+<text class="pz-centro-n" x="100" y="97">$tot</text>
+<text class="pz-centro-l" x="100" y="118">simulações</text>
+</svg>
+<div class="g-tabela pz-tabela">
+<table>
+<thead><tr><th scope="col">Origem</th><th scope="col">Do total</th><th scope="col">Simulações</th></tr></thead>
+<tbody>
+$trs
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+HTML
+}
+
+# ---------------- a evolução do SimulaPacientes ----------------
+#
+# ============== POR QUE SEMANA NÃO É DECISÃO DESTA PÁGINA ==============
+# Agrupar por semana é mais fino do que agrupar por mês, e "mais fino" aqui não
+# é detalhe de desenho: a própria página promete, em "O que estes números são",
+# que o tempo aparece só em mês -- porque dia e hora, numa turma que simula na
+# noite de terça, diriam quem estava na sala. Semana anda na direção disso.
+#
+# Então esta função NÃO fatia mês em semana. Ela desenha a série temporal que o
+# Hub tiver publicado: usa `porSemana` se ela existir no espelho, e `porMes` se
+# não. Enquanto o Hub mandar só meses, é mês que aparece -- e o dia em que a
+# semana for uma decisão tomada lá (com o mesmo piso de dez, com a supressão
+# complementar, e com o texto da metodologia atualizado junto), o gráfico passa
+# a ser semanal sozinho, sem tocar neste arquivo.
+sub serie_temporal_das_simulacoes {
+    my ($d) = @_;
+    for my $chave (qw(porSemana porMes)) {
+        my $serie = $d->{$chave};
+        next unless $serie && ref $serie eq 'ARRAY' && @$serie;
+        # Um ponto só não é evolução: é um número, e a tabela já o mostra.
+        my $publicados = grep { !$_->{suprimida} && defined $_->{denominador} } @$serie;
+        next if $publicados < 2;
+        return ($chave, $serie);
+    }
+    return ();
+}
+
+sub rotulo_periodo {
+    my ($r) = @_;
+    my @MES = qw(jan fev mar abr mai jun jul ago set out nov dez);
+    if ($r =~ /^(\d{4})-W(\d{1,2})$/i)  { return 'sem. ' . (0 + $2) . '/' . substr($1, 2, 2); }
+    if ($r =~ /^(\d{4})-(\d{2})$/ && $2 >= 1 && $2 <= 12) {
+        return $MES[$2 - 1] . '/' . substr($1, 2, 2);
+    }
+    return $r;
+}
+
+sub grafico_evolucao_html {
+    my ($d, $no_hub) = @_;
+    my ($chave, $serie) = serie_temporal_das_simulacoes($d);
+    return '' unless $chave;
+
+    my $por = $chave eq 'porSemana' ? 'semana' : 'mês';
+    my $max = 1;
+    my $soma = 0;
+    for my $p (@$serie) {
+        next if $p->{suprimida} || !defined $p->{denominador};
+        $max  = $p->{denominador} if $p->{denominador} > $max;
+        $soma += $p->{denominador};
+    }
+
+    my (@colunas, @linhas);
+    for my $p (@$serie) {
+        my $bruto = $p->{rotulo} // '';
+        my $rot   = esc(rotulo_periodo($bruto));
+        my $orig  = esc($bruto);
+
+        if ($p->{suprimida}) {
+            my $motivo = ($p->{motivo} // '') eq 'complementar'
+                ? 'protegido junto com outro recorte'
+                : 'menos de 10 simulações';
+            push @colunas,
+                qq{<div class="g-col g-col-prot" data-v="prot" tabindex="0" role="listitem" }
+              . qq{aria-label="$rot: recorte protegido, $motivo">}
+              . qq{<span class="g-tip">Recorte protegido: $motivo</span>}
+              . qq{<span class="g-val" aria-hidden="true">—</span>}
+              . qq{<div class="g-bar"></div>}
+              . qq{<span class="g-ano" aria-hidden="true">$rot</span></div>};
+            push @linhas,
+                qq{<tr><td>$orig</td><td class="num-suprimido">— <span>$motivo</span></td></tr>};
+            next;
+        }
+
+        my $n   = $p->{denominador} // 0;
+        my $h   = sprintf('%.1f', $n / $max * 100);
+        my $sim = $n == 1 ? '1 simulação' : "$n simulações";
+        my $cob = defined $p->{percentual}
+            ? "<span>Cobertura de avaliação: $p->{percentual}%</span>" : '';
+        push @colunas,
+            qq{<div class="g-col" data-v="$n" tabindex="0" role="listitem" aria-label="$rot: $sim">}
+          . qq{<span class="g-tip"><b>$rot</b>$cob</span>}
+          . qq{<span class="g-val" aria-hidden="true">$n</span>}
+          . qq{<div class="g-bar" style="--h:$h%"></div>}
+          . qq{<span class="g-ano" aria-hidden="true">$rot</span></div>};
+        push @linhas, qq{<tr><td>$orig</td><td>@{[ num_br($n) ]}</td></tr>};
+    }
+
+    # O espelho publica o recorte por período só das simulações que passaram
+    # pela avaliação por competência -- que são menos do que o total do
+    # SimulaPacientes. Dizer "simulações por mês" sem dizer isso faria o leitor
+    # somar as colunas e achar que o total da página está errado.
+    my $ressalva = (defined $no_hub && $soma && $soma != $no_hub)
+        ? " As colunas somam @{[ num_br($soma) ]} das @{[ num_br($no_hub) ]} simulações do SimulaPacientes:"
+          . ' o recorte por período cobre as que passaram pela avaliação por competência.'
+        : '';
+
+    my $colunas = join "\n", @colunas;
+    my $trs     = join "\n", @linhas;
+    my $cab     = $por eq 'semana' ? 'Semana' : 'Mês';
+
+    # Mesma decisão da rosca: rótulo em caixa alta e traço, como os blocos
+    # vizinhos, em vez do cartão de vidro da vitrine.
+    return <<HTML;
+<figure class="numeros-bloco evo-figura">
+<h3>Evolução do SimulaPacientes</h3>
+<p class="numeros-sub">Simulações por $por, desde a entrada do SimulaPacientes.$ressalva</p>
+<div class="g-plot" role="list" aria-label="Simulações do SimulaPacientes por $por">
+$colunas
+</div>
+<details class="g-tabela">
+<summary>Ver a série completa em texto</summary>
+<table>
+<thead><tr><th scope="col">$cab</th><th scope="col">Simulações</th></tr></thead>
+<tbody>
+$trs
+</tbody>
+</table>
+</details>
+</figure>
+HTML
+}
+
 sub numeros_das_simulacoes_html {
     my $d = dados_das_simulacoes();
 
@@ -828,12 +1127,20 @@ sub numeros_das_simulacoes_html {
              . qq{apurada em 18/08/2026 — simulações impressas, em formulários e em }
              . qq{assistentes anteriores. O SimulaPacientes contribui com <strong>$hub</strong>.</p>};
 
-    push @out, tabela_de_celulas('De onde vem a base histórica',
-        $t->{composicao}, coluna => 'Origem', percentual => 0);
+    push @out, grafico_pizza_composicao_html(
+        composicao_ordenada($t->{composicao}), 'De onde vêm as simulações');
     push @out, tabela_de_celulas('Por competência',       $d->{porCompetencia}, coluna => 'Competência');
     push @out, tabela_de_celulas('Por condição clínica',  $d->{porCondicao},    coluna => 'Condição');
     push @out, tabela_de_celulas('Por grupo clínico',     $d->{porGrupo},       coluna => 'Grupo');
-    push @out, tabela_de_celulas('Mês a mês',             $d->{porMes},         coluna => 'Mês');
+
+    # A evolução vira gráfico quando há série para desenhar; enquanto houver um
+    # período só, a tabela de sempre continua no lugar dela.
+    my ($chave_evo) = serie_temporal_das_simulacoes($d);
+    my $evolucao = grafico_evolucao_html($d, $t->{noHub});
+    push @out, $evolucao if $evolucao;
+    push @out, tabela_de_celulas('Mês a mês', $d->{porMes}, coluna => 'Mês')
+        unless $evolucao && $chave_evo eq 'porMes';
+
     push @out, tabela_de_celulas('O que mais escapa',     $d->{condutasQueMaisEscapam},
         coluna => 'Conduta esperada');
 

@@ -828,7 +828,7 @@ sub numeros_das_simulacoes_html {
              . qq{apurada em 18/08/2026 — simulações impressas, em formulários e em }
              . qq{assistentes anteriores. O SimulaPacientes contribui com <strong>$hub</strong>.</p>};
 
-    push @out, tabela_de_celulas('De onde vem a base histórica',
+    push @out, tabela_de_celulas('De onde vêm as simulações',
         $t->{composicao}, coluna => 'Origem', percentual => 0);
     push @out, tabela_de_celulas('Por competência',       $d->{porCompetencia}, coluna => 'Competência');
     push @out, tabela_de_celulas('Por condição clínica',  $d->{porCondicao},    coluna => 'Condição');

@@ -21,6 +21,9 @@ diagnostico-situacional|Diagnóstico Situacional|sobre|
 painel-de-bordo|Painel de Bordo|sobre|
 agenda-2030-ods-3-saude|Agenda 2030 — ODS 3 Saúde|sobre|
 unb-med5-sfc2|UnB MED5 — SFC 2|ensino|
+plano-de-aula-diabetes-aula-1|Plano de aula — Diabetes: DM aula 1|ensino|
+plano-de-aula-diabetes-aula-2|Plano de aula — Diabetes: DM aula 2|ensino|
+plano-de-aula-insuficiencia-cardiaca|Plano de aula — Insuficiência Cardíaca|ensino|
 unb-med9-internato-1|UnB MED9 — Internato 1|ensino|
 unb-med12-internato-2|UnB MED12 — Internato 2|ensino|
 liga-mfc-unb|Liga MFC UnB|ensino|

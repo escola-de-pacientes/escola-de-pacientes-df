@@ -88,8 +88,8 @@ ORIENTAÇÕES PÉ DIABÉTICO - ORIENTAÇÕES V3.docx - Documentos Google.pdf
 ## Simulações
 
 - [SimulaPacientes](/simula-pacientes)
-- [Plano de aula — Diabetes (aula 1)](/plano-de-aula-diabetes-1)
-- [Plano de aula — Diabetes (aula 2)](/plano-de-aula-diabetes-2)
+- [Plano de aula — Diabetes: DM aula 1](/plano-de-aula-diabetes-aula-1)
+- [Plano de aula — Diabetes: DM aula 2](/plano-de-aula-diabetes-aula-2)
 
 ## Outros links
 

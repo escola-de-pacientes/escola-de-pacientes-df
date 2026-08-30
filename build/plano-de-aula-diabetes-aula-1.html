@@ -36,9 +36,18 @@
      anterior, simulação, slides — nesta ordem, com estes ícones, em todas as
      páginas de plano. É o que se abre com a turma esperando.
 
-     O botão de simulação aponta para /simula-pacientes/ porque esta aula ainda
-     não tem caso próprio no hub. Quando tiver, troque o href pelo link direto
-     do caso.
+     O BOTÃO DE SIMULAÇÃO ABRE O HUB JÁ NO CAPÍTULO DESTA AULA
+     (https://hub-de-ll-ms.vercel.app/catalogo/endocrino-metabolico-e-nutricional).
+     Antes ele levava a /simula-pacientes/, que explica o que é uma simulação —
+     e a turma caía numa página de apresentação quando o que precisava era
+     entrar num caso. O catálogo do hub filtrado por endócrino/metabólico põe na tela só os
+     pacientes que interessam à aula do dia, sem ninguém ditar "agora clique no
+     disco tal".
+
+     ⚠️ O endereço por capítulo é NOVO no hub. Ele só responde depois que a
+     branch `claude/catalogo-por-area` do repositório HUB-de-LLMs entrar na
+     `main` — até lá devolve 404, e o href correto provisório é
+     https://hub-de-ll-ms.vercel.app/catalogo (o acervo inteiro).
 
      Os dois botões que abrem o Drive dependem de o arquivo estar como
      "qualquer pessoa com o link pode ver" — conferido em 30/08/2026. -->
@@ -48,10 +57,10 @@
     <span class="pa-txt"><b>Relembrando a aula anterior</b><small>hipertensão em 10 minutos</small></span>
     <span class="pa-seta">↗</span>
   </a>
-  <a class="pa-btn" href="{{P}}simula-pacientes/">
+  <a class="pa-btn" href="https://hub-de-ll-ms.vercel.app/catalogo/endocrino-metabolico-e-nutricional" target="_blank" rel="noopener">
     <span class="pa-ico"><span class="msym">smart_toy</span></span>
-    <span class="pa-txt"><b>Simulações</b><small>o caso do dia</small></span>
-    <span class="pa-seta">→</span>
+    <span class="pa-txt"><b>Simulação pré-aula</b><small>catálogo endócrino-metabólico no hub</small></span>
+    <span class="pa-seta">↗</span>
   </a>
   <a class="pa-btn" href="https://docs.google.com/presentation/d/14s6VR4AqivO5poNT3AY6RxldBho6F154YgMbul-INM4/edit" target="_blank" rel="noopener">
     <span class="pa-ico"><span class="msym">slideshow</span></span>
@@ -63,6 +72,7 @@
 <h2>Os momentos da aula</h2>
 <ul class="timeline">
   <li><b>Revisão — Hipertensão.</b> Diagnóstico, exames, fármacos e metas.</li>
+  <li><b>Simulação pré-aula.</b> O caso antes do conteúdo.</li>
   <li><b>Abertura.</b> Objetivos e organização do encontro.</li>
   <li><b>Aula — Diabetes geral.</b> Conceitos, tipos e diagnóstico.</li>
   <li><b>DM1 e DM2.</b> Diferenças que mudam o raciocínio clínico.</li>
@@ -76,20 +86,31 @@
   <a class="link-card" href="https://docs.google.com/presentation/d/1_Ynk0JY6-AmjEx6oKhrrnYGC2eN4k-ZGnVtYVZP-rxw/edit" target="_blank" rel="noopener"><span class="lc-ico"><span class="msym">history</span></span><span class="lc-body"><b>Revisão — Hipertensão</b><small>abrir os slides de revisão</small></span><span class="lc-arrow">↗</span></a>
 </div>
 
-<h2>2. Abertura</h2>
+<h2>2. Simulação pré-aula</h2>
+<p>Quinze minutos cronometrados, <b>antes de qualquer slide</b>. O botão abre o catálogo do hub já no capítulo desta aula: o estudante escolhe o paciente ali, sem procurar no acervo inteiro.</p>
+<ul>
+  <li>Consulta conduzida por escrito, com devolutiva item a item ao final.</li>
+  <li>É a linha de base do grupo — o que a turma faz <b>antes</b> de ver o conteúdo.</li>
+  <li>O que ficou sem resposta aqui é o que a aula vem responder.</li>
+</ul>
+<div class="link-grid">
+  <a class="link-card" href="https://hub-de-ll-ms.vercel.app/catalogo/endocrino-metabolico-e-nutricional" target="_blank" rel="noopener"><span class="lc-ico"><span class="msym">smart_toy</span></span><span class="lc-body"><b>Simulação pré-aula</b><small>catálogo endócrino-metabólico no hub</small></span><span class="lc-arrow">↗</span></a>
+</div>
+
+<h2>3. Abertura</h2>
 <ul>
   <li>Visão geral do diabetes, DM1, DM2 e complicações.</li>
   <li>Como acompanhar os slides em sala e voltar ao material depois.</li>
   <li>Onde ficam o PACK, o Tratado MFC, os checklists e os materiais complementares.</li>
 </ul>
 
-<h2>3. Aula — Diabetes geral</h2>
+<h2>4. Aula — Diabetes geral</h2>
 <p>DM1, DM2 e complicações.</p>
 <div class="link-grid">
   <a class="link-card" href="https://docs.google.com/presentation/d/14s6VR4AqivO5poNT3AY6RxldBho6F154YgMbul-INM4/edit" target="_blank" rel="noopener"><span class="lc-ico"><span class="msym">slideshow</span></span><span class="lc-body"><b>Slides — DM aula 1</b><small>abrir a apresentação</small></span><span class="lc-arrow">↗</span></a>
 </div>
 
-<h2>4. Eixos da aula</h2>
+<h2>5. Eixos da aula</h2>
 <ul>
   <li><b>Conceitos essenciais.</b> O que é diabetes e como a hiperglicemia se apresenta.</li>
   <li><b>DM1 e DM2.</b> Mecanismos, apresentação e diferenças clínicas.</li>
@@ -97,13 +118,13 @@
   <li><b>Complicações.</b> Eventos agudos, complicações crônicas e cuidados de rotina.</li>
 </ul>
 
-<h2>5. Material de apoio</h2>
+<h2>6. Material de apoio</h2>
 <div class="link-grid">
   <a class="link-card" href="{{P}}diabetes/"><span class="lc-ico"><span class="msym">glucose</span></span><span class="lc-body"><b>Diabetes</b><small>slides, Tratado, PACK e orientações</small></span><span class="lc-arrow">→</span></a>
   <a class="link-card" href="{{P}}simula-pacientes/"><span class="lc-ico"><span class="msym">smart_toy</span></span><span class="lc-body"><b>SimulaPacientes</b><small>casos para praticar o raciocínio clínico</small></span><span class="lc-arrow">→</span></a>
 </div>
 
-<h2>6. Fechamento</h2>
+<h2>7. Fechamento</h2>
 <ul>
   <li>Retomada dos conceitos que sustentam as escolhas terapêuticas.</li>
   <li>Dúvidas que precisam estar resolvidas antes da aula 2.</li>

@@ -1187,7 +1187,7 @@ article.content li::marker { color: var(--line); }
    principal. */
 
 .plano-atalhos {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(288px, 100%), 1fr));
   gap: .9rem; margin: 0 0 2.2rem;
   /* 288px é medido, não estimado: é a largura em que os três botões cabem numa
      linha só e ainda se leem do fundo da sala. Um botão que só se lê de perto
@@ -1200,7 +1200,11 @@ article.content li::marker { color: var(--line); }
    container SEMPRE que a barra tiver quatro botões, e tire quando voltar a
    três. */
 .plano-atalhos.pa-duplo {
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  /* O min() é o que impede a coluna de ficar mais larga que a tela. Sem ele,
+     o minmax exige 380px mesmo num celular de 390px, e a barra empurrava a
+     página inteira 10px para fora da viewport — rolagem lateral no aparelho
+     de quem abre o plano em sala. */
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
 }
 .pa-btn {
   display: flex; align-items: center; gap: 1rem;
@@ -1226,15 +1230,45 @@ article.content li::marker { color: var(--line); }
 .pa-seta { flex: none; color: var(--accent); font-weight: 500; font-size: 1.1rem; transition: transform .3s var(--ease); }
 .pa-btn:hover .pa-seta { transform: translateX(4px); }
 
+/* No celular a barra CRESCE, não encolhe.
+   É onde a turma abre a aula, e boa parte de quem usa este site — na UBS, na
+   sala, em casa — lê de longe, com o braço esticado. Então aqui o botão fica
+   maior que no desktop, e não menor:
+
+   · alvo de toque de 96px de altura, mais que o dobro do mínimo de 44px, para
+     quem erra o dedo;
+   · título em 1.25rem e subtítulo em 1rem — o subtítulo deixa de ser letra
+     miúda e passa a corpo de texto, porque é ele que diz o que o botão abre
+     ("hipertensão em 10 minutos") e é a informação que decide o toque;
+   · fundo sólido em vez do vidro translúcido, e uma faixa da cor de destaque
+     à esquerda: no vidro sobre fundo claro a borda de 1px some, e um botão
+     que não parece botão não é tocado;
+   · seta maior, porque é ela que diz "isto leva a outro lugar".
+
+   Se for mexer aqui, mexa para cima. Reduzir qualquer um destes números tira
+   da frente exatamente quem mais precisa deles. */
 @media (max-width: 560px) {
-  .plano-atalhos { gap: .7rem; margin-bottom: 1.7rem; }
-  .pa-btn { padding: 1.05rem 1.1rem; gap: .85rem; }
-  .pa-ico { width: 46px; height: 46px; border-radius: 13px; }
-  .pa-ico .msym { font-size: 25px; }
-  .pa-txt b { font-size: 1rem; }
+  .plano-atalhos { gap: .85rem; margin-bottom: 1.9rem; }
+  .pa-btn {
+    min-height: 96px;
+    padding: 1.15rem 1.15rem 1.15rem .95rem;
+    gap: .8rem;
+    background: var(--surface);
+    border-left: 6px solid var(--accent);
+  }
+  .pa-ico { width: 54px; height: 54px; border-radius: 16px; }
+  .pa-ico .msym { font-size: 32px; }
+  .pa-txt b { font-size: 1.25rem; line-height: 1.3; }
+  .pa-txt small { font-size: 1rem; line-height: 1.45; margin-top: .3rem; color: var(--ink); opacity: .78; }
+  .pa-seta { font-size: 1.5rem; }
 }
+
+/* No toque não existe hover: o retorno de que o dedo acertou tem de vir do
+   :active, senão o botão parece morto entre o toque e a página abrir. */
+.pa-btn:active { transform: scale(.985); background: var(--glass-tint-strong); }
+
 @media (prefers-reduced-motion: reduce) {
-  .pa-btn:hover { transform: none; }
+  .pa-btn:hover, .pa-btn:active { transform: none; }
   .pa-btn:hover .pa-seta { transform: none; }
 }
 

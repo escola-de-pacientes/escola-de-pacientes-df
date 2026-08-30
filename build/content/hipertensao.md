@@ -12,6 +12,14 @@ UNB SFC2-3 HIPERTENSÃO E DISLIPIDEMIA
 
 AULA Hipertensão na APS — diagnóstico, diferenciais, exames e tratamento v3
 
+[EMBED: Presentation, ZZ AULA HIPERTENSÃO REVISÃO v2](https://docs.google.com/presentation/d/1_Ynk0JY6-AmjEx6oKhrrnYGC2eN4k-ZGnVtYVZP-rxw/embed)
+
+ZZ AULA HIPERTENSÃO REVISÃO v2 — revisão de 10 minutos, usada na abertura da aula de diabetes 1
+
+[EMBED: Presentation, ZZ AULA HIPERTENSÃO RECEITAS PASSO A PASSO v1](https://docs.google.com/presentation/d/1llbrBu7-3oiTS9Cy3SHMdI3bAHh6iy3p-r1_uXmY-R4/embed)
+
+ZZ AULA HIPERTENSÃO RECEITAS PASSO A PASSO v1 — as mesmas receitas que estão dentro da aula de Conceitos Gerais, soltas para imprimir ou projetar sem abrir a aula inteira. Numeração dos passos conforme o PACK Brasil 2025, p. 145: o passo 1 é o manejo do risco cardiovascular, e a hidroclorotiazida é o passo 2.
+
 ## Tratado MFC
 
 CAPÍTULO DO TEMA

@@ -130,6 +130,7 @@ header.site,
 .embed,
 .seal,
 .link-card,
+.pa-btn,
 .media-card,
 .book-card,
 .paper-card,
@@ -151,6 +152,7 @@ header.site::before,
 .embed::before,
 .seal::before,
 .link-card::before,
+.pa-btn::before,
 .media-card::before,
 .book-card::before,
 .paper-card::before,
@@ -175,6 +177,7 @@ header.site::before,
 .embed,
 .seal,
 .link-card,
+.pa-btn,
 .media-card,
 .book-card,
 .paper-card,
@@ -192,6 +195,7 @@ header.site::before,
 .quote:hover,
 .embed:hover,
 .link-card:hover,
+.pa-btn:hover,
 .media-card:hover,
 .book-card:hover,
 .paper-card:hover,
@@ -1169,6 +1173,70 @@ article.content li::marker { color: var(--line); }
   border-top: 1px solid var(--glass-edge); background: var(--soft-glass);
 }
 .embed-caption a { white-space: nowrap; font-weight: 600; }
+
+/* ---------- Atalhos do plano de aula ----------
+   A primeira coisa que aparece em TODA página de plano de aula (DCNT, HAS, DM
+   1 e 2, ICC): dois a quatro botões grandes com o que o professor abre em
+   sala. Sempre na mesma ordem — relembrar a aula anterior, simulação, slides —
+   para que a mão vá ao mesmo lugar em qualquer uma das aulas da sequência.
+
+   São deliberadamente maiores que o .link-card do resto da página: a página é
+   projetada no telão e aberta no celular ao mesmo tempo, e estes são os únicos
+   links clicados COM A TURMA ESPERANDO. Os demais links continuam .link-card,
+   dentro do momento a que pertencem — se tudo virasse botão grande, nada seria
+   principal. */
+
+.plano-atalhos {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  gap: .9rem; margin: 0 0 2.2rem;
+  /* 288px é medido, não estimado: é a largura em que os três botões cabem numa
+     linha só e ainda se leem do fundo da sala. Um botão que só se lê de perto
+     não serve para telão. */
+}
+
+/* Quatro botões — o caso do plano de hipertensão, que tem duas aulas no mesmo
+   encontro. Sem esta classe o auto-fit acomodaria três e deixaria o quarto
+   órfão embaixo; com ela a barra vira 2x2, equilibrada. Ponha .pa-duplo no
+   container SEMPRE que a barra tiver quatro botões, e tire quando voltar a
+   três. */
+.plano-atalhos.pa-duplo {
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+}
+.pa-btn {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.35rem 1.35rem;
+  background: var(--soft-glass); border-radius: var(--radius);
+  text-decoration: none !important; color: var(--ink);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);
+}
+.pa-btn:hover { transform: translateY(-3px); background: var(--glass-tint-strong); }
+.pa-ico {
+  flex: none; width: 54px; height: 54px; border-radius: 16px;
+  background: var(--surface); display: grid; place-items: center;
+  box-shadow: var(--shadow);
+}
+.pa-ico .msym { font-size: 30px; color: var(--accent); }
+.pa-btn:hover .pa-ico { background: var(--g-azul-bg); }
+.pa-txt { flex: 1; min-width: 0; }
+.pa-txt b {
+  display: block; font-family: var(--font-sans);
+  font-size: 1.1rem; font-weight: 600; line-height: 1.25; letter-spacing: -.01em;
+}
+.pa-txt small { display: block; font-size: .82rem; line-height: 1.4; color: var(--muted); margin-top: .22rem; }
+.pa-seta { flex: none; color: var(--accent); font-weight: 500; font-size: 1.1rem; transition: transform .3s var(--ease); }
+.pa-btn:hover .pa-seta { transform: translateX(4px); }
+
+@media (max-width: 560px) {
+  .plano-atalhos { gap: .7rem; margin-bottom: 1.7rem; }
+  .pa-btn { padding: 1.05rem 1.1rem; gap: .85rem; }
+  .pa-ico { width: 46px; height: 46px; border-radius: 13px; }
+  .pa-ico .msym { font-size: 25px; }
+  .pa-txt b { font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pa-btn:hover { transform: none; }
+  .pa-btn:hover .pa-seta { transform: none; }
+}
 
 /* cards de link nas páginas de conteúdo */
 .link-grid {

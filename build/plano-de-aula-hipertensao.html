@@ -37,6 +37,42 @@
 <article class="content" id="conteudo">
 <div class="wrap">
 
+<!-- Os atalhos grandes da aula, antes de qualquer texto: relembrar a aula
+     anterior, simulação, slides — nesta ordem, com estes ícones. É o que se
+     abre com a turma esperando, e por isso vem antes do roteiro.
+
+     A barra existe hoje nas páginas de plano escritas em HTML (esta e a irmã).
+     As de DM 1, DM 2 e ICC são markdown, e o conversor escapa HTML cru — elas
+     só ganham a barra quando forem convertidas para HTML, mantendo os mesmos
+     endereços. Enquanto isso, a ordem dos atalhos lá é a mesma, em links.
+
+     A sequência das aulas é DCNT → HAS → DM 1 → DM 2 → ICC. Daí o primeiro
+     botão apontar para /dcnts/. Quando existir um deck de REVISÃO da aula de
+     DCNT — como os que DM 1, DM 2 e ICC já usam —, é só trocar o href por ele:
+     o resto do botão continua igual. -->
+<div class="plano-atalhos pa-duplo">
+  <a class="pa-btn" href="{{P}}dcnts/">
+    <span class="pa-ico"><span class="msym">history</span></span>
+    <span class="pa-txt"><b>Relembrando a aula anterior</b><small>DCNT e obesidade, o encontro que veio antes</small></span>
+    <span class="pa-seta">→</span>
+  </a>
+  <a class="pa-btn" href="https://hub-de-ll-ms.vercel.app/simulacao/hipertensao-risco-cv" target="_blank" rel="noopener">
+    <span class="pa-ico"><span class="msym">smart_toy</span></span>
+    <span class="pa-txt"><b>Simulações</b><small>abrir o caso do dia no SimulaPacientes</small></span>
+    <span class="pa-seta">↗</span>
+  </a>
+  <a class="pa-btn" href="{{P}}hipertensao/">
+    <span class="pa-ico"><span class="msym">slideshow</span></span>
+    <span class="pa-txt"><b>Slides — Hipertensão</b><small>do diagnóstico ao tratamento</small></span>
+    <span class="pa-seta">→</span>
+  </a>
+  <a class="pa-btn" href="{{P}}dislipidemia/">
+    <span class="pa-ico"><span class="msym">slideshow</span></span>
+    <span class="pa-txt"><b>Slides — Risco cardiovascular</b><small>a segunda aula do encontro</small></span>
+    <span class="pa-seta">→</span>
+  </a>
+</div>
+
 <h2>Os momentos da aula</h2>
 <ul class="timeline">
   <li><b>Apresentação geral.</b> Quem somos e o que a aula faz.</li>
@@ -123,7 +159,15 @@
      NÃO EDITE ESTE BLOCO DE CABEÇA. Ele é conduta prescritiva publicada: cada
      dose, cada limite de potássio e cada contraindicação vem da tabela. Mudou
      a edição do PACK, confira contra o PDF em /hipertensao/ e mude tudo junto,
-     inclusive a linha de origem no rodapé do bloco. -->
+     inclusive a linha de origem no rodapé do bloco.
+
+     A NUMERAÇÃO DOS PASSOS É A DO PACK, e não a dos slides. Aqui o passo 1 é o
+     manejo do risco cardiovascular e a hidroclorotiazida é o passo 2 — como na
+     p. 145. O deck "ZZ AULA HIPERTENSÃO CONCEITOS GERAIS V2" ainda numera a
+     partir da hidroclorotiazida, um a menos em cada passo; a coordenação
+     decidiu em 29/08/2026 que a numeração do PACK é a que vale, e o deck é que
+     será renumerado. Até lá, quem projetar os dois no mesmo dia precisa saber
+     que a sequência de fármacos é idêntica e só o rótulo do passo difere. -->
 <div class="pack-receita">
   <p class="pr-origem"><span class="msym">menu_book</span><span>Passo a passo do tratamento — transcrito do <b>PACK Brasil 2025, p. 145</b> ("Hipertensão: tratamento"). O PDF completo está na <a href="{{P}}hipertensao/">página de Hipertensão</a>.</span></p>
 

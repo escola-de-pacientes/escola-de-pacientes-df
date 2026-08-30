@@ -13,6 +13,14 @@ ZZ AULA DIABETES - DM1 DM2 COMPLICAÇÕES V6
 
 ZZ AULA DIABETES - TRATAMENTO V1
 
+[EMBED: Presentation, ZZ AULA DIABETES DM GERAL REVISÃO v1](https://docs.google.com/presentation/d/1gYUSes9cDBb_bRO68lo5sOZJ0GKxtz6f4FXbDJP-snU/embed)
+
+ZZ AULA DIABETES DM GERAL REVISÃO v1 — revisão de 15 minutos da aula 1, usada na abertura da aula 2
+
+[EMBED: Presentation, ZZ AULA DIABETES TRATAMENTO REVISÃO v1](https://docs.google.com/presentation/d/1J8PS9SeshJjCJRFB2v-BKw3i93wqhSauvoLZqfPKxqE/embed)
+
+ZZ AULA DIABETES TRATAMENTO REVISÃO v1 — revisão de 15 minutos da aula 2, usada na abertura da aula de insuficiência cardíaca
+
 [EMBED: Presentation, ZZ DIABETES 2026 Apresentação RTD MFC capacitação Glargina.pptx](https://docs.google.com/presentation/d/1cX37wDFj5ntCg0cICdeALbIzZEk1OWsP/embed)
 
 ZZ DIABETES 2026 Apresentação RTD MFC capacitação Glargina.pptx
@@ -80,6 +88,8 @@ ORIENTAÇÕES PÉ DIABÉTICO - ORIENTAÇÕES V3.docx - Documentos Google.pdf
 ## Simulações
 
 - [SimulaPacientes](/simula-pacientes)
+- [Plano de aula — Diabetes: DM aula 1](/plano-de-aula-diabetes-aula-1)
+- [Plano de aula — Diabetes: DM aula 2](/plano-de-aula-diabetes-aula-2)
 
 ## Outros links
 

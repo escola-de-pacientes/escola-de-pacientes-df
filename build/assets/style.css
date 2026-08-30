@@ -977,7 +977,12 @@ p.section-lead { color: var(--muted); font-size: 1.12rem; max-width: 62ch; margi
 .g-col:nth-last-child(-n+2):hover .g-tip, .g-col:nth-last-child(-n+2):focus-visible .g-tip { transform: translateX(0) translateY(0); }
 
 /* alternativa em texto — o gráfico nunca é a única via para o dado */
-.g-tabela { margin-top: 1.2rem; font-size: .86rem; }
+/* A tabela rola DENTRO da própria caixa, e não empurra a página.
+   Sem isto, no celular ela transbordava 84px em 320px de tela: a página
+   inteira ganhava rolagem lateral, e o texto de todas as outras seções saía
+   do enquadramento junto. Defeito antigo, encontrado ao medir a página em
+   emulação de aparelho. */
+.g-tabela { margin-top: 1.2rem; font-size: .86rem; overflow-x: auto; }
 .g-tabela summary { cursor: pointer; color: var(--accent); font-weight: 500; }
 .g-tabela table { width: 100%; border-collapse: collapse; margin-top: .8rem; }
 .g-tabela th, .g-tabela td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--glass-edge); }
@@ -1297,6 +1302,20 @@ article.content .wrap-narrow .link-grid { grid-template-columns: repeat(auto-fil
 .link-card .lc-body small { display: block; font-size: .72rem; color: var(--muted); margin-top: .15rem; }
 .link-card .lc-arrow { flex: none; color: var(--accent); font-weight: 500; transition: transform .3s var(--ease); }
 .link-card:hover .lc-arrow { transform: translateX(4px); }
+
+/* No celular o card também cresce, pela mesma razão da barra de atalhos: o
+   subtítulo em 11,5px é onde se diz o que o link abre, e é lido de longe.
+   Aqui o aumento é menor que o da barra de propósito — o card continua sendo
+   o link secundário da página, e a diferença entre os dois é o que faz a
+   barra parecer a principal. */
+@media (max-width: 560px) {
+  .link-card { padding: 1.1rem 1.15rem; gap: 1rem; }
+  .link-card .lc-ico { width: 46px; height: 46px; border-radius: 14px; }
+  .lc-ico .msym { font-size: 26px; }
+  .link-card .lc-body b { font-size: 1.05rem; }
+  .link-card .lc-body small { font-size: .9rem; line-height: 1.4; margin-top: .22rem; }
+  .link-card .lc-arrow { font-size: 1.2rem; }
+}
 
 /* lista de páginas-filhas / índice */
 .childlist { list-style: none; padding: 0 !important; }

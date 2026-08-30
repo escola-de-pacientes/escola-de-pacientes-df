@@ -2000,7 +2000,25 @@ body.theme-simula { --accent: #5145cd; --accent-dark: #423ab0; --tint: #ecebfb; 
 .sp-hero { display: grid; grid-template-columns: 1fr; gap: 2.4rem; align-items: center; }
 @media (min-width: 940px) { .sp-hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 3rem; } }
 .sp-hero .lead { color: var(--muted); font-size: 1.08rem; line-height: 1.6; margin-top: .9rem; }
-.sp-actions { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1.6rem; }
+/* ---------- Os botões do topo ----------
+   O motivo da página é abrir o SimulaPacientes, e o botão disputava a linha
+   com o "Como funciona" como se os dois valessem o mesmo. Agora são duas
+   linhas: o primário sozinho, maior que o .btn padrão e centralizado na
+   coluna; o secundário embaixo, menor, para quem ainda quer ler antes. */
+.sp-actions {
+  display: flex; flex-direction: column; align-items: center;
+  gap: .8rem; margin-top: 1.8rem;
+}
+.sp-actions .sp-abrir {
+  /* O padding e o corpo encolhem junto com a tela: no celular o rótulo
+     inteiro precisa caber sem estourar a largura da coluna. */
+  padding: 1.1rem clamp(1.4rem, 7vw, 2.8rem);
+  font-size: clamp(1.05rem, 3.6vw, 1.18rem); font-weight: 600;
+  max-width: 100%; text-align: center;
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 32%, transparent);
+}
+.sp-actions .sp-abrir:hover { box-shadow: 0 9px 26px color-mix(in srgb, var(--accent) 40%, transparent); }
+.sp-actions .sp-como { padding: .6rem 1.5rem; font-size: .95rem; }
 .sp-note { font-size: .84rem; color: var(--muted); margin-top: 1rem; }
 
 /* ---------- O código da turma ----------

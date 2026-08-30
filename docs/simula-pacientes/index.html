@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
-<link rel="stylesheet" href="../assets/style.css?v=7cd9eba1">
+<link rel="stylesheet" href="../assets/style.css?v=e8661b1b">
 <link rel="icon" href="../assets/img/logo.png">
 
 </head>
@@ -139,9 +139,15 @@
       <span>SimulaPacientes</span>
     </h1>
     <p class="lead">No SimulaPacientes você atende um paciente que não existe — e treina de verdade. Você escolhe o caso, escolhe com qual inteligência artificial quer conversar e conduz a consulta por escrito, como faria no consultório. No fim, recebe um retorno do que perguntou, do que deixou passar e do que fez que não deveria.</p>
+    <!-- O botão vai DIRETO ao catálogo, e não à inicial do SimulaPacientes:
+         a inicial de lá explica a mesma coisa que esta página acaba de
+         explicar, e quem clicou aqui já decidiu. Ele fica sozinho na primeira
+         linha, centralizado e maior que os botões do resto do site; o "Como
+         funciona" desce para a linha de baixo, porque é a saída de quem ainda
+         não decidiu. -->
     <div class="sp-actions">
-      <a class="btn btn-primary" href="https://hub-de-ll-ms.vercel.app" target="_blank" rel="noopener">Abrir o SimulaPacientes ↗</a>
-      <a class="btn btn-ghost" href="#como-funciona">Como funciona</a>
+      <a class="btn btn-primary sp-abrir" href="https://simulapacientes.escoladepacientes.com/catalogo" target="_blank" rel="noopener">Abrir o SimulaPacientes ↗</a>
+      <a class="btn btn-ghost sp-como" href="#como-funciona">Como funciona</a>
     </div>
 
     <!-- O código da turma é a única coisa que a pessoa precisa TER antes de
@@ -368,7 +374,7 @@
     <p>Peça o <strong>código da turma</strong> ao professor da disciplina. Ele é passado em sala, vale para o semestre e é tudo de que você precisa: com o código, as inteligências artificiais ficam liberadas e você já pode atender. O código diz de qual turma é a consulta — nunca quem a fez. Ele pode ser de uma turma, de um grupo ou de uma dupla, e é por ele que o professor acompanha o desempenho.</p>
   </div>
   <div style="display:flex; gap:.7rem; flex-wrap:wrap;">
-    <a class="btn btn-ghost" href="https://hub-de-ll-ms.vercel.app" target="_blank" rel="noopener">Abrir o SimulaPacientes ↗</a>
+    <a class="btn btn-ghost" href="https://simulapacientes.escoladepacientes.com/catalogo" target="_blank" rel="noopener">Abrir o SimulaPacientes ↗</a>
     <a class="btn btn-ghost" href="../para-estudantes/">Portal do estudante</a>
   </div>
 </div>
@@ -454,7 +460,7 @@
 </div>
 </footer>
 
-<script src="../assets/search-index.js?v=edf2cef3" defer></script>
+<script src="../assets/search-index.js?v=1da1f3c2" defer></script>
 <script src="../assets/search.js?v=9bbb5a57" defer></script>
 <script src="../assets/reveal.js?v=c3bcce80" defer></script>
 <script src="../assets/theme.js?v=22e323d5" defer></script>

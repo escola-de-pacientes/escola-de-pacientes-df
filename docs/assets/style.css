@@ -3028,3 +3028,239 @@ article.content .cl-band h2::before { display: none; }
 .pz-cauda td:first-child { padding-left: 1.7rem; color: var(--muted); }
 .pz-cauda .pz-rot { color: var(--muted); }
 .pz-cauda .pz-chave { opacity: .55; }
+
+
+/* ============== FEEDBACK DOS EX-INTEGRANTES ==============
+   Página de dados, não página de depoimentos: os indicadores, a leitura das
+   tendências e o ciclo ocupam o corpo. As falas literais são um bloco final
+   independente e podem sair sem alterar nada acima. */
+.fx-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .9rem;
+  margin: 1.4rem 0 1.2rem;
+}
+.fx-kpi {
+  min-width: 0;
+  padding: 1.25rem 1.3rem;
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius-sm);
+  background: var(--glass-tint);
+}
+.fx-kpi .msym { display: block; color: var(--accent); font-size: 1.45rem; margin-bottom: .7rem; }
+.fx-kpi b {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(1.7rem, 5vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: -.04em;
+  font-variant-numeric: tabular-nums;
+}
+.fx-kpi small { display: block; margin-top: .45rem; color: var(--muted); line-height: 1.35; }
+
+.fx-painel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);
+  gap: .9rem;
+  align-items: stretch;
+  margin: 1.2rem 0 2.2rem;
+}
+.fx-grafico,
+.fx-motivo {
+  margin: 0;
+  padding: 1.35rem 1.45rem;
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius-sm);
+  background: var(--glass-tint);
+}
+article.content .fx-grafico h3,
+article.content .fx-secao h3 {
+  margin: 0 0 .25rem;
+  padding-left: 0;
+}
+article.content .fx-grafico h3::before,
+article.content .fx-secao h3::before { display: none; }
+.fx-grafico figcaption p { margin: 0; color: var(--muted); font-size: .9rem; }
+.fx-grafico-corpo {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+.fx-anel {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 154px;
+  width: 154px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) var(--fx-max), var(--line) 0);
+}
+.fx-anel::before {
+  content: "";
+  position: absolute;
+  inset: 25px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--glass-edge);
+}
+.fx-anel > span { position: relative; z-index: 1; text-align: center; }
+.fx-anel b { display: block; font-size: 1.65rem; line-height: 1; letter-spacing: -.04em; }
+.fx-anel small { display: block; margin-top: .3rem; color: var(--muted); font-size: .7rem; }
+.fx-legenda { flex: 1; list-style: none; padding: 0 !important; margin: 0; display: grid; gap: .7rem; }
+.fx-legenda li { display: grid; grid-template-columns: 10px 1fr auto; align-items: center; gap: .55rem; margin: 0 !important; }
+.fx-legenda i { width: 10px; height: 10px; border-radius: 50%; }
+.fx-cor-max { background: var(--accent); }
+.fx-cor-outras { background: var(--line-forte, var(--line)); }
+.fx-legenda b { font-size: .86rem; font-weight: 600; }
+.fx-legenda span { color: var(--muted); font-size: .86rem; font-variant-numeric: tabular-nums; }
+
+.fx-motivo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fx-motivo .msym { color: var(--accent); font-size: 1.8rem; margin-bottom: .8rem; }
+.fx-motivo small { color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+.fx-motivo b { display: block; margin-top: .45rem; font-size: 1.2rem; line-height: 1.3; }
+.fx-motivo p { margin: .8rem 0 0; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+
+.fx-tendencias {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .9rem;
+  margin: .9rem 0 2.3rem;
+}
+.fx-tendencias > div {
+  padding: 1.15rem 1.2rem;
+  border-top: 3px solid var(--accent);
+  background: var(--glass-tint);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+.fx-tendencias .msym { display: block; color: var(--accent); font-size: 1.35rem; margin-bottom: .6rem; }
+.fx-tendencias b { display: block; font-size: .96rem; line-height: 1.35; }
+.fx-tendencias p { margin: .5rem 0 0; color: var(--muted); font-size: .86rem; line-height: 1.55; }
+
+.fx-secao { margin: 2.25rem 0; }
+.fx-ajuda { color: var(--muted); font-size: .85rem; line-height: 1.5; margin: .3rem 0 1rem; }
+
+.fx-forcas { list-style: none; padding: 0 !important; margin: 0; display: grid; gap: .8rem; }
+.fx-forcas li {
+  display: grid;
+  grid-template-columns: minmax(170px, 1fr) minmax(130px, 1.4fr) 5.5rem;
+  align-items: center;
+  gap: .8rem;
+  margin: 0 !important;
+}
+.fx-forca-rotulo { font-size: .9rem; }
+.fx-forca-trilho { height: 9px; overflow: hidden; border-radius: 999px; background: var(--line); }
+.fx-forca-trilho i {
+  display: block;
+  width: var(--fx-largura);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+.fx-forcas b { color: var(--muted); font-size: .8rem; text-align: right; }
+
+.fx-melhorias {
+  list-style: none;
+  padding: 0 !important;
+  margin: .9rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+}
+.fx-melhorias li {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  min-height: 68px;
+  margin: 0 !important;
+  padding: .95rem 1rem;
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius-sm);
+  background: var(--glass-tint);
+}
+.fx-melhorias .msym { flex: none; color: var(--accent); font-size: 1.35rem; }
+.fx-melhorias span:last-child { font-size: .9rem; line-height: 1.4; }
+
+.fx-ciclo {
+  list-style: none;
+  counter-reset: none;
+  padding: 0 !important;
+  margin: 1rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.3rem;
+}
+.fx-ciclo li {
+  position: relative;
+  min-height: 115px;
+  margin: 0 !important;
+  padding: 1rem;
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius-sm);
+  background: var(--glass-tint);
+}
+.fx-ciclo li:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  left: calc(100% + .35rem);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-weight: 700;
+}
+.fx-ciclo li > span {
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-bottom: .7rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: .76rem;
+  font-weight: 700;
+}
+.fx-ciclo b { font-size: .86rem; line-height: 1.35; }
+
+.fx-depoimentos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .9rem;
+  margin-top: 1rem;
+}
+.fx-depoimentos blockquote {
+  margin: 0;
+  padding: 1.25rem 1.3rem;
+  border: 1px solid var(--glass-edge);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--glass-tint);
+}
+.fx-depoimentos blockquote p { margin: 0; color: var(--ink); font-size: .95rem; line-height: 1.6; }
+
+@media (max-width: 760px) {
+  .fx-kpis,
+  .fx-tendencias,
+  .fx-depoimentos { grid-template-columns: 1fr; }
+  .fx-painel { grid-template-columns: 1fr; }
+  .fx-melhorias { grid-template-columns: 1fr; }
+  .fx-ciclo { grid-template-columns: 1fr; gap: .7rem; }
+  .fx-ciclo li { min-height: 0; display: flex; align-items: center; gap: .75rem; }
+  .fx-ciclo li > span { margin: 0; flex: none; }
+  .fx-ciclo li:not(:last-child)::after {
+    content: "↓";
+    left: 1.4rem;
+    top: calc(100% + .33rem);
+    transform: none;
+  }
+}
+@media (max-width: 500px) {
+  .fx-grafico-corpo { align-items: flex-start; flex-direction: column; }
+  .fx-forcas li { grid-template-columns: 1fr 4.5rem; gap: .4rem .7rem; }
+  .fx-forca-trilho { grid-column: 1 / -1; grid-row: 2; }
+}

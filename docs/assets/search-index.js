@@ -363,6 +363,7 @@ window.SEARCH_INDEX = [
 {"t":"Escabiose","p":"escabiose","c":"Temas Clínicos"},
 {"t":"Escola Saudável","p":"escola-saudavel","c":"Educação em Saúde"},
 {"t":"Estudo por Questões","p":"estudo","c":"Ensino UnB"},
+{"t":"Feedback de ex-integrantes","p":"feedback-ex-integrantes","c":"A Escola"},
 {"t":"Geriatria — Queda do Idoso","p":"geriatria-queda-idoso","c":"Temas Clínicos"},
 {"t":"GPT Aquarelas para Casos Clínicos","p":"gpt-aquarelas-para-casos-clinicos","c":"Ensino UnB"},
 {"t":"Hipertensão","p":"hipertensao","c":"Temas Clínicos"},

@@ -12,6 +12,7 @@ boas-vindas|Boas-vindas|sobre|
 dr-estevao-rolim|Dr. Estêvão Rolim|sobre|
 coluna-do-estevao|Coluna do Estêvão|sobre|
 equipe|Equipe|sobre|
+feedback-ex-integrantes|Feedback de ex-integrantes|sobre|
 nucleo-ep|Núcleo EP|sobre|
 premios|Prêmios|sobre|
 icase-2026|ICASE 2026|sobre|

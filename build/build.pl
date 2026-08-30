@@ -127,6 +127,7 @@ my @NAV = (
         ['dr-estevao-rolim', 'Dr. Estêvão Rolim'],
         ['coluna-do-estevao', 'Coluna do Estêvão'],
         ['equipe', 'Equipe e Grupo de Pesquisa'],
+        ['feedback-ex-integrantes', 'Feedback de ex-integrantes'],
         ['nucleo-ep', 'Núcleo EP — sistema do grupo'],
         ['premios', 'Prêmios e Reconhecimentos'],
         ['reportagens', 'Na Mídia'],
@@ -666,6 +667,21 @@ sub md_to_html {
         # [INDICE]: o índice de atalhos, montado a partir dos `##` desta página
         if ($l eq '[INDICE]') { $close_blocks->(); push @html, indice_html(\@secoes) if @secoes; next; }
 
+        # Os dois marcadores abaixo pertencem à página pública da avaliação
+        # dos ex-integrantes. O primeiro desenha indicadores, gráficos e
+        # tendências; o segundo contém SOMENTE as citações literais e fica no
+        # fim da página. Assim, retirar os depoimentos não toca nos dados.
+        if ($l eq '[FEEDBACK-EX-INTEGRANTES]') {
+            $close_blocks->();
+            push @html, feedback_ex_integrantes_html();
+            next;
+        }
+        if ($l eq '[DEPOIMENTOS-EX-INTEGRANTES]') {
+            $close_blocks->();
+            push @html, depoimentos_ex_integrantes_html();
+            next;
+        }
+
         # [SIMULAPACIENTES]: o botão grande para a plataforma atual.
         #
         # É o MESMO botão da página inicial (`landing.html`), e é de propósito:
@@ -759,6 +775,134 @@ sub md_to_html {
     # um h3 seguido de outro h3 é um título de grupo legítimo e é mantido
     pop @html while @html && $html[-1] =~ /^<h3>/;
     return join "\n", @html;
+}
+
+# ---------------- feedback público dos ex-integrantes ----------------
+#
+# A planilha original não atravessa o site. O arquivo abaixo é uma fotografia
+# curada e contém apenas os campos que a página pode publicar. Indicadores,
+# gráficos e citações leem a MESMA fonte; não há número duplicado no HTML.
+sub dados_dos_ex_integrantes {
+    my $arq = "$ROOT/assets/feedback-ex-integrantes.json";
+    return undef unless -e $arq;
+    open my $fh, '<:raw', $arq or return undef;
+    local $/; my $bruto = <$fh>; close $fh;
+    my $d = eval { JSON::PP->new->utf8->decode($bruto) };
+    return $d;
+}
+
+sub feedback_ex_integrantes_html {
+    my $d = dados_dos_ex_integrantes();
+    return q{<p class="nota">Os dados agregados ainda não foram publicados nesta versão do site.</p>}
+        unless $d && ref $d eq 'HASH';
+
+    my $n = 0 + ($d->{avaliacoes} // 0);
+    my $e = $d->{escalaExperiencia} || {};
+    my $media = 0 + ($e->{media} // 0);
+    my $media_br = "$media"; $media_br =~ s/\./,/;
+    my $max = 0 + ($e->{notaMaximaPercentual} // 0);
+    $max = 0 if $max < 0; $max = 100 if $max > 100;
+    my $outras = 100 - $max;
+    my $motivo = esc($d->{principalMotivoSaida} // 'Não informado');
+
+    my @out;
+    push @out, qq{<div class="fx-kpis" aria-label="Indicadores principais">}
+      . qq{<div class="fx-kpi"><span class="msym" aria-hidden="true">groups</span><b>$n</b><small>ex-integrantes avaliaram</small></div>}
+      . qq{<div class="fx-kpi"><span class="msym" aria-hidden="true">star</span><b>$max%</b><small>deram a nota máxima</small></div>}
+      . qq{<div class="fx-kpi"><span class="msym" aria-hidden="true">monitoring</span><b>$media_br / 5</b><small>avaliação média</small></div>}
+      . qq{</div>};
+
+    push @out, qq{<div class="fx-painel">}
+      . qq{<figure class="fx-grafico"><figcaption><h3>Avaliação da experiência</h3>}
+      . qq{<p>Concentração das respostas no topo da escala.</p></figcaption>}
+      . qq{<div class="fx-grafico-corpo">}
+      . qq{<div class="fx-anel" style="--fx-max: $max%" role="img" }
+      . qq{aria-label="$max% das avaliações deram a nota máxima; $outras% deram outras notas.">}
+      . qq{<span><b>$max%</b><small>nota máxima</small></span></div>}
+      . qq{<ul class="fx-legenda"><li><i class="fx-cor-max"></i><b>Nota máxima</b><span>$max%</span></li>}
+      . qq{<li><i class="fx-cor-outras"></i><b>Outras notas</b><span>$outras%</span></li></ul>}
+      . qq{</div></figure>}
+      . qq{<div class="fx-motivo"><span class="msym" aria-hidden="true">event_busy</span>}
+      . qq{<small>Principal motivo de saída</small><b>$motivo</b>}
+      . qq{<p>A saída aparece associada à conciliação da agenda acadêmica, não à avaliação global da experiência.</p></div>}
+      . qq{</div>};
+
+    push @out, q{<h3>Tendências observadas</h3><div class="fx-tendencias">}
+      . qq{<div><span class="msym" aria-hidden="true">trending_up</span><b>Experiência muito positiva</b><p>Média de $media_br em 5 e $max% de notas máximas.</p></div>}
+      . q{<div><span class="msym" aria-hidden="true">school</span><b>Mentoria e oportunidades andam juntas</b><p>Orientação, organização e oportunidades científicas aparecem na faixa mais alta da síntese.</p></div>}
+      . q{<div><span class="msym" aria-hidden="true">balance</span><b>Permanência depende da carga acadêmica</b><p>O principal motivo de saída foi a dificuldade de conciliar o grupo com outras atividades.</p></div>}
+      . q{</div>};
+
+    my $fortes = $d->{pontosFortes};
+    if ($fortes && ref $fortes eq 'ARRAY' && @$fortes) {
+        my @linhas;
+        for my $p (@$fortes) {
+            my $cat = esc($p->{categoria} // '');
+            my $freq = lc($p->{frequencia} // '');
+            my ($rot, $largura) = $freq eq 'alta' ? ('Alta', '100%')
+                                : $freq eq 'moderada' ? ('Moderada', '66.666%')
+                                : ('Baixa', '33.333%');
+            push @linhas, qq{<li><span class="fx-forca-rotulo">$cat</span>}
+              . qq{<span class="fx-forca-trilho" aria-hidden="true"><i style="--fx-largura:$largura"></i></span>}
+              . qq{<b>$rot</b></li>};
+        }
+        push @out, q{<div class="fx-secao"><h3>Pontos fortes identificados</h3>}
+          . q{<p class="fx-ajuda">Síntese qualitativa das menções — os níveis não representam percentuais.</p>}
+          . q{<ul class="fx-forcas">} . join('', @linhas) . q{</ul></div>};
+    }
+
+    my $melhorias = $d->{melhorias};
+    if ($melhorias && ref $melhorias eq 'ARRAY' && @$melhorias) {
+        my @itens;
+        my @icones = qw(mark_chat_unread task_alt person_pin account_tree);
+        for my $i (0 .. $#$melhorias) {
+            my $t = esc($melhorias->[$i] // '');
+            my $icone = $icones[$i] // 'tune';
+            push @itens, qq{<li><span class="msym" aria-hidden="true">$icone</span><span>$t</span></li>};
+        }
+        push @out, q{<div class="fx-secao"><h3>Oportunidades de melhoria</h3>}
+          . q{<ul class="fx-melhorias">} . join('', @itens) . q{</ul></div>};
+    }
+
+    my $ciclo = $d->{ciclo};
+    if ($ciclo && ref $ciclo eq 'ARRAY' && @$ciclo) {
+        my @etapas;
+        for my $i (0 .. $#$ciclo) {
+            my $t = esc($ciclo->[$i] // '');
+            push @etapas, qq{<li><span>} . ($i + 1) . qq{</span><b>$t</b></li>};
+        }
+        push @out, q{<div class="fx-secao"><h3>Ciclo de melhoria</h3>}
+          . q{<ol class="fx-ciclo">} . join('', @etapas) . q{</ol></div>};
+    }
+
+    if (my $m = $d->{metodologia}) {
+        push @out, q{<h3>Como estes resultados foram preparados</h3><p class="nota">}
+          . esc($m) . q{</p>};
+    }
+    if (my $data = $d->{atualizadoEm}) {
+        push @out, q{<p class="nota">Síntese atualizada em } . esc($data) . q{.</p>};
+    }
+
+    return join("\n", @out);
+}
+
+# O bloco literal é deliberadamente uma função e um marcador separados.
+# Para removê-lo, basta apagar a seção final do markdown OU esvaziar
+# depoimentosIlustrativos no JSON; indicadores e gráficos permanecem iguais.
+sub depoimentos_ex_integrantes_html {
+    my $d = dados_dos_ex_integrantes();
+    return '' unless $d && ref $d eq 'HASH';
+    my $falas = $d->{depoimentosIlustrativos};
+    return '' unless $falas && ref $falas eq 'ARRAY' && @$falas;
+
+    my @cards = map {
+        my $t = esc($_ // '');
+        qq{<blockquote><p>&ldquo;$t&rdquo;</p></blockquote>}
+    } @$falas;
+
+    return q{<p class="fx-ajuda">Trechos literais apresentados sem atribuição pessoal, apenas como ilustração qualitativa dos resultados.</p>}
+         . q{<div class="fx-depoimentos" data-conteudo-opcional="depoimentos">}
+         . join('', @cards) . q{</div>};
 }
 
 # ---------------- navegação ----------------

@@ -62,6 +62,12 @@ perl build/build.pl        # precisa do módulo URI::Escape
 - `[texto](url)` — link
 - `[EMBED: rótulo](url)` — arquivo do Drive, documento Google, pasta ou vídeo do YouTube embutido
 
+### Links de conteúdo nos planos de aula
+
+Em cada bloco **“Aula — tema clínico”**, o primeiro cartão deve abrir a página do tema no site e ser identificado como **“conteúdo completo”**. Essa página reúne slides, Tratado MFC, PACK, checklists e orientações.
+
+Atalhos diretos para apresentações vêm depois e devem deixar claro que são o recorte mínimo — por exemplo: **“sem tempo? veja pelo menos os slides”**. Arquivos avulsos de orientação pertencem à página do tema clínico, não ao plano de aula; assim, o plano organiza o encontro e o acervo clínico continua centralizado em um só lugar.
+
 ### QR code no fim de cada página
 
 Toda página termina com o QR que aponta para ela mesma — mostrar a tela do

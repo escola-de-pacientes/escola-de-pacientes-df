@@ -61,6 +61,12 @@ Z LIVRO - PACK 2025-142 DIABETES TRATAMENTO.pdf
 
 .
 
+[EMBED: Drive, DIABETES INSULINA - ORIENTAÇÕES V4.docx - Documentos Google.pdf](https://drive.google.com/file/d/1V75aJMb-UmrfCQrNLQ2jYlsp-Jn1aFPs/preview)
+
+DIABETES INSULINA - ORIENTAÇÕES V4.docx - Documentos Google.pdf
+
+.
+
 [EMBED: Drive, DIABETES VO 1 TABELAS DE ORIENTAÇÕES V12.docx.pdf](https://drive.google.com/file/d/15j4Yb1jOn4c0fdXwt6tZEKT6_L-uqppH/preview)
 
 DIABETES VO 1 TABELAS DE ORIENTAÇÕES V12.docx.pdf

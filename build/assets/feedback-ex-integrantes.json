@@ -1,0 +1,50 @@
+{
+  "versao": 1,
+  "atualizadoEm": "2026-08-30",
+  "titulo": "Feedback de ex-integrantes",
+  "publico": "Ex-integrantes do grupo de pesquisa Escola de Pacientes",
+  "avaliacoes": 9,
+  "escalaExperiencia": {
+    "minimo": 1,
+    "maximo": 5,
+    "media": 4.9,
+    "notaMaximaPercentual": 89
+  },
+  "principalMotivoSaida": "Conciliação com atividades acadêmicas",
+  "pontosFortes": [
+    {
+      "categoria": "Orientação e mentoria",
+      "frequencia": "alta"
+    },
+    {
+      "categoria": "Organização e planejamento",
+      "frequencia": "alta"
+    },
+    {
+      "categoria": "Oportunidades científicas",
+      "frequencia": "alta"
+    },
+    {
+      "categoria": "Trabalho colaborativo",
+      "frequencia": "moderada"
+    }
+  ],
+  "melhorias": [
+    "Reduzir o excesso de mensagens",
+    "Tornar as tarefas mais objetivas",
+    "Melhorar a definição de responsáveis",
+    "Criar fluxos de acompanhamento"
+  ],
+  "ciclo": [
+    "Feedback dos participantes",
+    "Análise dos dados anonimizados",
+    "Ajustes no funcionamento do grupo",
+    "Nova avaliação"
+  ],
+  "depoimentosIlustrativos": [
+    "A orientação foi fundamental para iniciar na escrita científica.",
+    "Consegui minha primeira publicação internacional.",
+    "O grupo oferece muitas oportunidades para quem está começando."
+  ],
+  "metodologia": "Síntese agregada de avaliação realizada com ex-integrantes do grupo de pesquisa. Nomes, e-mails, datas e horários de resposta não integram este arquivo. Os depoimentos literais são apresentados ao final, sem atribuição pessoal, apenas como exemplos ilustrativos."
+}

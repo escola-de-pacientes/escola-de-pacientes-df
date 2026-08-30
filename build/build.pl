@@ -8,7 +8,7 @@ use File::Path qw(make_path);
 use File::Basename qw(dirname);
 use URI::Escape qw(uri_unescape);
 use Digest::MD5 qw(md5_hex);
-use Encode qw(encode_utf8);
+use Encode qw(encode_utf8 decode_utf8);
 use JSON::PP;                # núcleo do Perl desde a 5.14 -- nada a instalar
 
 my $ROOT   = dirname(__FILE__);
@@ -358,6 +358,19 @@ sub clean_url {
     return $u;
 }
 
+# Os nomes de arquivo vindos do glob chegam em BYTES, e o HTML é escrito em
+# camada UTF-8: escrever esses bytes direto os codifica de novo, e o link sai
+# com "Ã§Ã£o" no lugar de "ção" — endereço que não existe no disco. É o mesmo
+# descompasso descrito lá em cima, no link_href, resolvido do mesmo jeito: no
+# ponto de uso, sem mexer em como os arquivos são lidos. Idempotente, porque a
+# mesma função recebe títulos que já vêm em caracteres, do manifesto.
+sub em_caracteres {
+    my ($s) = @_;
+    return $s if !defined $s or utf8::is_utf8($s);
+    my $c = eval { decode_utf8($s, Encode::FB_CROAK()) };
+    return defined $c ? $c : $s;
+}
+
 sub embed_html {
     my ($label, $url) = @_;
     $label =~ s/^(?:Drive|Document|Presentation|Spreadsheet|YouTube Video)\s*,\s*//i;
@@ -653,7 +666,7 @@ sub md_to_html {
         # Se o arquivo não existir, a página diz isso em vez de mostrar zero.
         if ($l eq '[SIMULACOES-EM-NUMEROS]') {
             $close_blocks->();
-            push @html, numeros_das_simulacoes_html();
+            push @html, numeros_das_simulacoes_html($p);
             next;
         }
 
@@ -1101,6 +1114,8 @@ HTML
 }
 
 sub numeros_das_simulacoes_html {
+    my ($p) = @_;
+    $p = '' unless defined $p;
     my $d = dados_das_simulacoes();
 
     # Sem o arquivo, a página DIZ que não tem número -- e não mostra zero.
@@ -1160,7 +1175,7 @@ sub numeros_das_simulacoes_html {
     if (my $g = $d->{geradoEm}) {
         my ($dia) = $g =~ /^(\d{4}-\d{2}-\d{2})/;
         push @out, q{<p class="nota">Atualizado em } . esc($dia // $g)
-                 . q{. <a href="assets/dados-simulacoes.json">Baixar os dados em JSON</a>.</p>};
+                 . qq{. <a href="${p}assets/dados-simulacoes.json">Baixar os dados em JSON</a>.</p>};
     }
 
     return join("\n", grep { length } @out);
@@ -1406,8 +1421,9 @@ for my $path (sort keys %content) {
         my @kids = @{ $children{$path} };
         my $count = scalar @kids;
         my $items = join "\n", map {
-            my $t = esc(title_of($_));
-            qq{<li data-t="\L$t\E"><a href="$p$_/">$t</a></li>}
+            my $t    = esc(em_caracteres(title_of($_)));
+            my $slug = em_caracteres($_);
+            qq{<li data-t="\L$t\E"><a href="$p$slug/">$t</a></li>}
         } sort { lc(title_of($a)) cmp lc(title_of($b)) } @kids;
         my $filter = '';
         my $script = '';

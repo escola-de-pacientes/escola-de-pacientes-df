@@ -98,6 +98,21 @@ my @PAGINAS_HTML = (
       busca  => 'Plano de aula — Hipertensão', secao => 'Ensino UnB',
       desc   => 'Plano da aula de hipertensão arterial: os momentos do encontro, as duas rodadas de simulação e o treino de estratificação de risco e prescrição em folha em branco.' },
 
+    { slug => 'plano-de-aula-diabetes-aula-1', arquivo => 'plano-de-aula-diabetes-aula-1.html', tema => '',
+      titulo => 'Plano de aula — Diabetes: DM aula 1',
+      busca  => 'Plano de aula — Diabetes: DM aula 1', secao => 'Ensino UnB',
+      desc   => 'Plano da primeira aula de diabetes: a revisão de hipertensão que abre o encontro, e a aula do conceito ao diagnóstico, tipos e complicações.' },
+
+    { slug => 'plano-de-aula-diabetes-aula-2', arquivo => 'plano-de-aula-diabetes-aula-2.html', tema => '',
+      titulo => 'Plano de aula — Diabetes: DM aula 2',
+      busca  => 'Plano de aula — Diabetes: DM aula 2', secao => 'Ensino UnB',
+      desc   => 'Plano da segunda aula de diabetes: tratamento, medicamentos orais, insulina e a receita montada passo a passo.' },
+
+    { slug => 'plano-de-aula-insuficiencia-cardiaca', arquivo => 'plano-de-aula-insuficiencia-cardiaca.html', tema => '',
+      titulo => 'Plano de aula — Insuficiência Cardíaca',
+      busca  => 'Plano de aula — Insuficiência Cardíaca', secao => 'Ensino UnB',
+      desc   => 'Plano da aula que fecha a sequência das doenças crônicas: conceito, classificação, diagnóstico, tratamento e atualizações.' },
+
     { slug => 'equipe', arquivo => 'equipe.html', tema => '',
       titulo => 'Equipe e Grupo de Pesquisa',
       busca  => 'Equipe e Grupo de Pesquisa', secao => 'A Escola',

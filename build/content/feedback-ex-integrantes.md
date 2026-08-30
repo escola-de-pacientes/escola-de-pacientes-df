@@ -12,9 +12,9 @@ A Escola de Pacientes utiliza ciclos de avaliação para aprimorar a orientaçã
 
 ## O que estes dados são, e o que não são
 
-> Esta página apresenta uma síntese agregada da avaliação de ex-integrantes do grupo de pesquisa. Ela não reúne avaliações de estudantes que realizaram simulações clínicas — esses dados ficam na página **Simulações em números**.
+> Esta página apresenta uma síntese agregada da avaliação de ex-integrantes do grupo de pesquisa. Ela não reúne avaliações de estudantes que realizaram simulações clínicas — esses dados ficam na página [Simulações em números](/simulacoes-em-numeros/).
 
-> Nomes, e-mails, datas e horários de resposta não são publicados. Os depoimentos aparecem sem atribuição pessoal, e o arquivo aberto contém somente a síntese usada nesta página.
+> Nomes, e-mails, datas e horários de resposta não são publicados. O arquivo aberto contém somente a síntese usada nesta página.
 
 ## Como os resultados são utilizados
 
@@ -27,3 +27,7 @@ Os dados agregados desta página podem ser reutilizados com atribuição à Esco
 > Escola de Pacientes. *Feedback de ex-integrantes*. Brasília: UnB, 2026. Disponível em escoladepacientes.com/feedback-ex-integrantes.
 
 [Baixar os dados agregados em JSON](/assets/feedback-ex-integrantes.json)
+
+## Depoimentos ilustrativos
+
+[DEPOIMENTOS-EX-INTEGRANTES]

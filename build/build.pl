@@ -98,9 +98,6 @@ my @PAGINAS_HTML = (
       busca  => 'Plano de aula — Hipertensão', secao => 'Ensino UnB',
       desc   => 'Plano da aula de hipertensão arterial: os momentos do encontro, as duas rodadas de simulação e o treino de estratificação de risco e prescrição em folha em branco.' },
 
-
-
-
     { slug => 'equipe', arquivo => 'equipe.html', tema => '',
       titulo => 'Equipe e Grupo de Pesquisa',
       busca  => 'Equipe e Grupo de Pesquisa', secao => 'A Escola',

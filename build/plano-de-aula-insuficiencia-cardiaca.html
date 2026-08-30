@@ -36,9 +36,18 @@
      anterior, simulação, slides — nesta ordem, com estes ícones, em todas as
      páginas de plano. É o que se abre com a turma esperando.
 
-     O botão de simulação aponta para /simula-pacientes/ porque esta aula ainda
-     não tem caso próprio no hub. Quando tiver, troque o href pelo link direto
-     do caso.
+     O BOTÃO DE SIMULAÇÃO ABRE O HUB JÁ NO CAPÍTULO DESTA AULA
+     (https://hub-de-ll-ms.vercel.app/catalogo/circulatorio).
+     Antes ele levava a /simula-pacientes/, que explica o que é uma simulação —
+     e a turma caía numa página de apresentação quando o que precisava era
+     entrar num caso. O catálogo do hub filtrado por circulatório põe na tela só os
+     pacientes que interessam à aula do dia, sem ninguém ditar "agora clique no
+     disco tal".
+
+     ⚠️ O endereço por capítulo é NOVO no hub. Ele só responde depois que a
+     branch `claude/catalogo-por-area` do repositório HUB-de-LLMs entrar na
+     `main` — até lá devolve 404, e o href correto provisório é
+     https://hub-de-ll-ms.vercel.app/catalogo (o acervo inteiro).
 
      Os dois botões que abrem o Drive dependem de o arquivo estar como
      "qualquer pessoa com o link pode ver" — conferido em 30/08/2026. -->
@@ -48,10 +57,10 @@
     <span class="pa-txt"><b>Relembrando a aula anterior</b><small>diabetes 2 em 15 minutos</small></span>
     <span class="pa-seta">↗</span>
   </a>
-  <a class="pa-btn" href="{{P}}simula-pacientes/">
+  <a class="pa-btn" href="https://hub-de-ll-ms.vercel.app/catalogo/circulatorio" target="_blank" rel="noopener">
     <span class="pa-ico"><span class="msym">smart_toy</span></span>
-    <span class="pa-txt"><b>Simulações</b><small>o caso do dia</small></span>
-    <span class="pa-seta">→</span>
+    <span class="pa-txt"><b>Simulação pré-aula</b><small>catálogo circulatório no hub</small></span>
+    <span class="pa-seta">↗</span>
   </a>
   <a class="pa-btn" href="https://docs.google.com/presentation/d/1L3MpVdPnzrslAzsTLXayukpm6xt_5DQP/edit" target="_blank" rel="noopener">
     <span class="pa-ico"><span class="msym">slideshow</span></span>
@@ -63,6 +72,7 @@
 <h2>Os momentos da aula</h2>
 <ul class="timeline">
   <li><b>Revisão — DM aula 2.</b> Tratamento e prescrição.</li>
+  <li><b>Simulação pré-aula.</b> O caso antes do conteúdo.</li>
   <li><b>Conceito.</b> O que é insuficiência cardíaca e por que importa.</li>
   <li><b>Classificação e função.</b> Como organizar o quadro clínico.</li>
   <li><b>Diagnóstico.</b> Suspeita, confirmação e avaliação inicial.</li>
@@ -75,26 +85,37 @@
   <a class="link-card" href="https://docs.google.com/presentation/d/1J8PS9SeshJjCJRFB2v-BKw3i93wqhSauvoLZqfPKxqE/edit" target="_blank" rel="noopener"><span class="lc-ico"><span class="msym">history</span></span><span class="lc-body"><b>Revisão — DM aula 2</b><small>abrir os slides de revisão</small></span><span class="lc-arrow">↗</span></a>
 </div>
 
-<h2>2. Aula — Insuficiência Cardíaca</h2>
+<h2>2. Simulação pré-aula</h2>
+<p>Quinze minutos cronometrados, <b>antes de qualquer slide</b>. O botão abre o catálogo do hub já no capítulo desta aula: o estudante escolhe o paciente ali, sem procurar no acervo inteiro.</p>
+<ul>
+  <li>Consulta conduzida por escrito, com devolutiva item a item ao final.</li>
+  <li>É a linha de base do grupo — o que a turma faz <b>antes</b> de ver o conteúdo.</li>
+  <li>O capítulo circulatório do acervo tem o caso de insuficiência cardíaca — a senhora que volta com o ecocardiograma.</li>
+</ul>
+<div class="link-grid">
+  <a class="link-card" href="https://hub-de-ll-ms.vercel.app/catalogo/circulatorio" target="_blank" rel="noopener"><span class="lc-ico"><span class="msym">smart_toy</span></span><span class="lc-body"><b>Simulação pré-aula</b><small>catálogo circulatório no hub</small></span><span class="lc-arrow">↗</span></a>
+</div>
+
+<h2>3. Aula — Insuficiência Cardíaca</h2>
 <div class="link-grid">
   <a class="link-card" href="https://docs.google.com/presentation/d/1L3MpVdPnzrslAzsTLXayukpm6xt_5DQP/edit" target="_blank" rel="noopener"><span class="lc-ico"><span class="msym">slideshow</span></span><span class="lc-body"><b>Slides — Insuficiência Cardíaca</b><small>abrir a apresentação</small></span><span class="lc-arrow">↗</span></a>
 </div>
 
-<h2>3. Conceito, classificação e função</h2>
+<h2>4. Conceito, classificação e função</h2>
 <ul>
   <li>Importância clínica e lugar da ICC no cuidado longitudinal.</li>
   <li>Classificações que organizam sintomas, função e prognóstico.</li>
   <li>Conexão entre o quadro clínico e as decisões seguintes.</li>
 </ul>
 
-<h2>4. Diagnóstico</h2>
+<h2>5. Diagnóstico</h2>
 <ul>
   <li>Quando suspeitar.</li>
   <li>Como reunir história, exame e exames complementares.</li>
   <li>O que precisa ser definido antes de iniciar ou ajustar o tratamento.</li>
 </ul>
 
-<h2>5. Tratamento e atualizações</h2>
+<h2>6. Tratamento e atualizações</h2>
 <ul>
   <li>Objetivos do tratamento e acompanhamento.</li>
   <li>Condutas centrais e pontos de segurança.</li>
@@ -104,7 +125,7 @@
   <a class="link-card" href="{{P}}cardio-insuficiencia-cardiaca/"><span class="lc-ico"><span class="msym">cardiology</span></span><span class="lc-body"><b>Insuficiência Cardíaca</b><small>slides das aulas 1 e 2, PACK, Tratado e orientações</small></span><span class="lc-arrow">→</span></a>
 </div>
 
-<h2>6. Fechamento</h2>
+<h2>7. Fechamento</h2>
 <ul>
   <li>Retomada do percurso: conceito, classificação, diagnóstico e tratamento.</li>
   <li>Dúvidas e pontos que exigem revisão individual.</li>

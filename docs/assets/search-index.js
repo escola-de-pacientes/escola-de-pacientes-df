@@ -1,5 +1,6 @@
 window.SEARCH_INDEX = [
 {"t":"Temas Clínicos (índice)","p":"temas","c":"Temas Clínicos"},
+{"t":"Versos e Conselhos — da graduação para a graduação","p":"versos-e-conselhos","c":"Ensino UnB"},
 {"t":"Núcleo EP — sistema do grupo de pesquisa","p":"nucleo-ep","c":"A Escola"},
 {"t":"SimulaPacientes — pacientes digitais com IA","p":"simula-pacientes","c":"Simulações e Testes"},
 {"t":"Dr. Estêvão Cubas Rolim — trajetória e produção","p":"dr-estevao-rolim","c":"A Escola"},
@@ -18,7 +19,7 @@ window.SEARCH_INDEX = [
 {"t":"Assédio Sexual","p":"assedio-sexual","c":"Temas Clínicos"},
 {"t":"Boas-vindas","p":"boas-vindas","c":"A Escola"},
 {"t":"Bolsas","p":"bolsas","c":"Ensino UnB"},
-{"t":"Calçada de Versos e Conselhos","p":"calcada-de-versos-e-conselhos","c":"Educação em Saúde"},
+{"t":"Calçada de Versos e Conselhos","p":"calcada-de-versos-e-conselhos","c":"Ensino UnB"},
 {"t":"Infarto do Miocárdio","p":"cardio-infarto-do-miocardio","c":"Temas Clínicos"},
 {"t":"Insuficiência Cardíaca","p":"cardio-insuficiencia-cardiaca","c":"Temas Clínicos"},
 {"t":"Caxumba","p":"caxumba","c":"Temas Clínicos"},

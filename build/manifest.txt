@@ -82,7 +82,7 @@ impressos-de-educacao-em-saude|Impressos de Educação em Saúde|pacientes|
 videos-de-saude-nas-midias-sociais|Vídeos de Saúde nas Mídias Sociais|pacientes|
 roteiros-de-videos-de-educacao-em-saude|Roteiros de Vídeos de Educação em Saúde|pacientes|
 escola-saudavel|Escola Saudável|pacientes|
-calcada-de-versos-e-conselhos|Calçada de Versos e Conselhos|pacientes|
+calcada-de-versos-e-conselhos|Calçada de Versos e Conselhos|ensino|
 pra-ouvir-e-refletir-podcasts|Pra Ouvir e Refletir — Podcasts gerais (não médicos)|pacientes|
 pra-rir-e-refletir-videos-porta-dos-fundos|Pra Rir e Refletir — Vídeos|pacientes|
 pra-estudar-andando-podcasts|Pra Estudar Andando — Podcasts médicos|pacientes|

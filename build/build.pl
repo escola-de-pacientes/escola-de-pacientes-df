@@ -6,6 +6,7 @@ use strict; use warnings; use utf8;
 use open ':std', ':encoding(UTF-8)';
 use File::Path qw(make_path);
 use File::Basename qw(dirname);
+use Cwd qw(abs_path);
 use URI::Escape qw(uri_unescape);
 use Digest::MD5 qw(md5_hex);
 use Encode qw(encode_utf8 decode_utf8);
@@ -68,6 +69,9 @@ my @group_order = ('Doenças crônicas', 'Saúde da mulher e pré-natal', 'Saúd
 # 3. Não se escreve nada sobre quem custeia as inteligências artificiais.
 #    Decisão da coordenação, tomada em 16/08/2026.
 my @PAGINAS_HTML = (
+    { slug => 'versos-e-conselhos', arquivo => 'versos-e-conselhos.html', tema => '',
+      titulo => 'Versos e Conselhos', busca => 'Versos e Conselhos — da graduação para a graduação',
+      secao => 'Ensino UnB', desc => 'Conselhos de estudantes para estudantes de Medicina. Palavras, músicas e aprendizados das turmas anteriores para acompanhar toda a graduação.' },
     { slug => 'nucleo-ep', arquivo => 'nucleo-ep.html', tema => 'theme-nucleo',
       titulo => 'Núcleo EP — o sistema do grupo de pesquisa',
       busca  => 'Núcleo EP — sistema do grupo de pesquisa', secao => 'A Escola',
@@ -2011,6 +2015,12 @@ for my $pg (@PAGINAS_HTML) {
         $body =~ s/\{\{SHOTS\}\}/$shots/;
     }
 
+    if ($pg->{slug} eq 'versos-e-conselhos') {
+        my $module = abs_path("$ROOT/versos-conselhos.pl");
+        require $module;
+        my $versos = VersosConselhos::render($ROOT);
+        $body =~ s/\{\{VERSOS_CONSELHOS\}\}/$versos/;
+    }
     $body =~ s/\{\{P\}\}/$p/g;
 
     write_file("$OUT/$pg->{slug}/index.html", page_shell(
@@ -2024,6 +2034,8 @@ for my $pg (@PAGINAS_HTML) {
         body   => $body,
         footer => footer_html($p),
         body_class => $pg->{tema},
+        head_extra => $pg->{slug} eq 'versos-e-conselhos'
+          ? qq{<link rel="stylesheet" href="${p}assets/versos-conselhos.css"><script src="${p}assets/versos-conselhos.js" defer></script>} : '',
     ));
     $n++;
 }

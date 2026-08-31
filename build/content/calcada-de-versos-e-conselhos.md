@@ -1,6 +1,7 @@
-
 # Calçada de Versos e Conselhos
 
-[EMBED: Document, - CALÇADA DE VERSOS E CONSELHOS - 2022-5 MAIO DIA21.docx](https://docs.google.com/document/d/1JWIgMxsG2Gp_-_bT9n1Od1Rp9TVvpgPe/preview)
+A Calçada continua em **Versos e Conselhos**: conselhos de estudantes para estudantes, agora para toda a graduação em Medicina.
 
-- CALÇADA DE VERSOS E CONSELHOS - 2022-5 MAIO DIA21.docx
+- [Conheça Versos e Conselhos](/versos-e-conselhos) — explore os registros das turmas anteriores e deixe suas palavras para quem vem depois.
+
+O acervo do Internato de Medicina Social foi organizado em cartões de leitura, preservando as assinaturas, os anonimatos e os pós-escritos.

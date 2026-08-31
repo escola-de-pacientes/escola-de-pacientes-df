@@ -2,6 +2,10 @@
 
 Página de referência para estudantes de Medicina e Enfermagem envolvidos com a Escola de Pacientes na UnB. Aqui estão reunidos os links das disciplinas, das ferramentas de prática e das oportunidades abertas para quem quer ir além da sala de aula.
 
+DA GRADUAÇÃO PARA A GRADUAÇÃO
+
+- [Versos e Conselhos](/versos-e-conselhos) — palavras de colegas das turmas anteriores para acompanhar toda a caminhada. Leia e deixe sua contribuição.
+
 DISCIPLINAS
 
 - [UnB MED5 — SFC 2](/unb-med5-sfc2)

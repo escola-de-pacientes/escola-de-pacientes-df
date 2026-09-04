@@ -705,6 +705,20 @@ sub md_to_html {
             next;
         }
 
+        # [SIMULACOES-TREINAMENTO]: quanto se treinou, e em quê. Sem nota.
+        if ($l eq '[SIMULACOES-TREINAMENTO]') {
+            $close_blocks->();
+            push @html, treinamento_html();
+            next;
+        }
+
+        # [SIMULACOES-ACERVO]: os casos publicados e a bibliografia da rubrica.
+        if ($l eq '[SIMULACOES-ACERVO]') {
+            $close_blocks->();
+            push @html, acervo_e_referencias_html();
+            next;
+        }
+
         if ($l eq '[SIMULAPACIENTES]') {
             $close_blocks->();
             my $href = clean_url('/simula-pacientes', $p);
@@ -1274,6 +1288,171 @@ $trs
 </details>
 </figure>
 HTML
+}
+
+# ---------------- o treinamento: quanto, e em quê ----------------
+#
+# ============== ESTA PARTE NÃO TEM NOTA, E É O PEDIDO ==============
+# 04/09/2026, coordenação: "quantos rounds foram feitos e de quais matérias, e
+# os números gerais de simulação -- sem dar desempenho nem nada".
+#
+# O resto da página publica cobertura. Este bloco publica QUANTIDADE, e o
+# desenho garante isso do outro lado: o Hub manda `treinamento` com células do
+# tipo `Contagem`, que não tem campo de percentual nenhum. Não há o que
+# esconder aqui porque não há o que veio.
+#
+# A supressão é a mesma do resto: célula abaixo de dez simulações chega sem
+# número, e a linha diz por quê. Nenhum `if` de tamanho de amostra mora neste
+# arquivo -- ver o cabeçalho de `dados_das_simulacoes`.
+sub tabela_de_contagens {
+    my ($titulo, $contagens, %opt) = @_;
+    return '' unless $contagens && ref $contagens eq 'ARRAY' && @$contagens;
+    my $col = $opt{coluna} || 'Recorte';
+
+    my @linhas;
+    for my $c (@$contagens) {
+        my $rot = esc($c->{rotulo} // '');
+        if ($c->{suprimida}) {
+            my $motivo = ($c->{motivo} // '') eq 'complementar'
+                ? 'protegido junto com outro'
+                : 'menos de 10 simulações';
+            push @linhas,
+                qq{<tr><td>$rot</td><td class="num-suprimido">— <span>$motivo</span></td></tr>};
+            next;
+        }
+        push @linhas, qq{<tr><td>$rot</td><td>@{[ num_br($c->{simulacoes}) ]}</td></tr>};
+    }
+
+    my $sub = $opt{sub} ? qq{<p class="numeros-sub">} . esc($opt{sub}) . q{</p>} : '';
+    return qq{<div class="g-tabela numeros-bloco"><h3>} . esc($titulo) . qq{</h3>$sub}
+         . qq{<table><thead><tr><th scope="col">} . esc($col)
+         . qq{</th><th scope="col">Simulações</th></tr></thead>}
+         . qq{<tbody>} . join('', @linhas) . qq{</tbody></table></div>};
+}
+
+sub treinamento_html {
+    my $d = dados_das_simulacoes();
+    my $t = $d && ref $d eq 'HASH' ? $d->{treinamento} : undef;
+
+    # O espelho antigo não tem este bloco. Enquanto a Action não buscar um novo,
+    # a página diz isso -- em vez de mostrar tabela vazia, que se lê como
+    # "ninguém treinou".
+    return q{<p class="nota">Os números de treinamento entram na próxima }
+         . q{atualização automática, buscada do SimulaPacientes.</p>}
+      unless $t && ref $t eq 'HASH';
+
+    my @out;
+
+    # A ressalva do teto de leitura vem ANTES das tabelas, e não depois: quem
+    # somar as linhas e comparar com o total geral precisa saber disso na hora
+    # de somar, não depois de estranhar.
+    push @out, q{<p class="nota">Estes recortes cobrem as simulações mais }
+             . q{recentes lidas do banco, e não o acervo inteiro: somar as }
+             . q{linhas pode dar menos que o total geral acima.</p>}
+        if $t->{parcial};
+
+    push @out, tabela_de_contagens('Rodadas por capítulo da CIAP-2', $t->{porCapitulo},
+        coluna => 'Capítulo',
+        sub    => 'Em que matéria se treinou. Quantidade apenas — esta parte não '
+                . 'publica nota nem cobertura.');
+    push @out, tabela_de_contagens('Rodadas por simulação', $t->{porCaso},
+        coluna => 'Simulação',
+        sub    => 'Quantas vezes cada paciente digital foi atendido.');
+
+    return join("\n", grep { length } @out);
+}
+
+# ---------------- o acervo e a bibliografia ----------------
+#
+# ============== ⚠️ O TÍTULO ESCONDE O DIAGNÓSTICO ==============
+# "Febre e dor no corpo há dois dias" não diz *dengue* de propósito: descobrir é
+# a tarefa do estudante. Esta página é PÚBLICA e indexada, e é por onde ele
+# chega -- então o que ela publica do acervo é título, capítulo e tamanho da
+# rubrica, nunca o diagnóstico nem a condição.
+#
+# E a bibliografia diz em QUANTOS casos cada documento é usado, nunca em quais:
+# "Protocolo da Hanseníase → Manchas e caroços na pele" responderia o gabarito
+# de um caso em uma linha. O par não existe no arquivo que esta página lê --
+# ver `acervo-publico.ts`, no repositório do Hub, e a varredura que o prova em
+# `verificar:publicos`.
+sub acervo_html {
+    my ($acervo) = @_;
+    return '' unless $acervo && ref $acervo eq 'ARRAY' && @$acervo;
+
+    my @linhas;
+    for my $c (@$acervo) {
+        push @linhas,
+            qq{<tr><td>} . esc($c->{titulo} // '') . qq{</td>}
+          . qq{<td>} . esc($c->{capitulo} // '') . qq{</td>}
+          . qq{<td>@{[ num_br($c->{itens}) ]}</td>}
+          . qq{<td>@{[ num_br($c->{duracaoMin}) ]} min</td></tr>};
+    }
+    my $n = scalar @$acervo;
+
+    return qq{<div class="g-tabela numeros-bloco"><h3>Os casos do acervo</h3>}
+         . qq{<p class="numeros-sub">$n simulações publicadas. O título é o que o }
+         . qq{estudante vê ao escolher: ele esconde o diagnóstico de propósito, }
+         . qq{porque descobrir é a tarefa.</p>}
+         . qq{<table><thead><tr><th scope="col">Simulação</th>}
+         . qq{<th scope="col">Capítulo da CIAP-2</th>}
+         . qq{<th scope="col">Itens da rubrica</th>}
+         . qq{<th scope="col">Duração</th></tr></thead>}
+         . qq{<tbody>} . join('', @linhas) . qq{</tbody></table></div>};
+}
+
+sub referencias_html {
+    my ($ref) = @_;
+    return '' unless $ref && ref $ref eq 'HASH';
+    my $docs = $ref->{documentos};
+    return '' unless $docs && ref $docs eq 'ARRAY' && @$docs;
+
+    my @linhas;
+    for my $r (@$docs) {
+        my $nome = esc($r->{nome} // '');
+        $nome = qq{<a href="} . esc($r->{portal}) . qq{" rel="noopener">$nome</a>}
+            if $r->{portal};
+        my $casos = $r->{casos} // 0;
+        push @linhas,
+            qq{<tr><td>$nome<br><span class="ref-quem">}
+          . esc($r->{instituicao} // '') . qq{</span></td>}
+          . qq{<td>} . esc($r->{edicao} // '') . qq{</td>}
+          . qq{<td>} . esc($r->{tipo} // '') . qq{</td>}
+          . qq{<td>@{[ num_br($r->{itens}) ]}</td>}
+          . qq{<td>$casos</td></tr>};
+    }
+
+    my $metodo = $ref->{itensDoMetodoInterno};
+    my $nota_metodo = $metodo
+        ? qq{ Outros @{[ num_br($metodo) ]} itens se apoiam no padrão }
+        . qq{metodológico da própria Escola, que não é bibliografia externa e por }
+        . qq{isso não aparece na lista.}
+        : '';
+
+    return qq{<div class="g-tabela numeros-bloco"><h3>A bibliografia da rubrica</h3>}
+         . qq{<p class="numeros-sub">Cada item cobrado se apoia num documento, e a }
+         . qq{regra da Escola é que quem dá ponto é instituição brasileira. A ordem }
+         . qq{é a da fila de revisão: quanto mais itens dependem de um documento, }
+         . qq{mais a edição nova dele pede releitura.$nota_metodo</p>}
+         . qq{<table><thead><tr><th scope="col">Documento</th>}
+         . qq{<th scope="col">Edição</th><th scope="col">Tipo</th>}
+         . qq{<th scope="col">Itens</th><th scope="col">Casos</th></tr></thead>}
+         . qq{<tbody>} . join('', @linhas) . qq{</tbody></table>}
+         . qq{<p class="nota">Um item pode citar dois documentos e conta nos dois — }
+         . qq{se qualquer um mudar, aquele item precisa ser relido. Por isso a coluna }
+         . qq{de itens soma mais que o total do acervo. A coluna "Casos" diz em }
+         . qq{quantas simulações o documento é usado, e não em quais: o par }
+         . qq{documento-simulação entregaria o diagnóstico que o título esconde.</p>}
+         . qq{</div>};
+}
+
+sub acervo_e_referencias_html {
+    my $d = dados_das_simulacoes();
+    return q{<p class="nota">O acervo e a bibliografia entram na próxima }
+         . q{atualização automática, buscada do SimulaPacientes.</p>}
+      unless $d && ref $d eq 'HASH' && $d->{acervo};
+
+    return join("\n", grep { length }
+        acervo_html($d->{acervo}), referencias_html($d->{referencias}));
 }
 
 sub numeros_das_simulacoes_html {

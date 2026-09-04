@@ -2890,6 +2890,11 @@ article.content .cl-band h2::before { display: none; }
 .num-suprimido { color: var(--muted); }
 .num-suprimido span { font-size: .78rem; opacity: .8; }
 
+/* Quem assina o documento, sob o nome dele, na tabela da bibliografia.
+   Discreto de propósito: a linha é lida pelo NOME, e a instituição é o que
+   responde "posso confiar?" depois de o olho ter parado ali. */
+.ref-quem { color: var(--muted); font-size: .82rem; }
+
 /* ============== A ROSCA DAS ORIGENS ==============
    São os pastéis Google que o site já usa -- azul, verde, roxo, amarelo,
    vermelho -- e não uma paleta de fora. Dois deles são o token da casa sem

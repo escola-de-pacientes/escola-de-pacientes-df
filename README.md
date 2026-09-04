@@ -235,6 +235,40 @@ proporção de relance, quem precisa do número exato o tem na mesma linha.
 - Acima de cinco origens, a cauda vira uma fatia cinza ("Outras origens"), mas
   continua nomeada linha a linha na tabela, recuada sob ela.
 
+### O treinamento, o acervo e a bibliografia
+
+Três blocos entraram em 04/09/2026, a pedido da coordenação, e vêm do mesmo JSON:
+
+- `[SIMULACOES-TREINAMENTO]` — **quantidade, e nenhuma nota.** Quantas rodadas
+  por capítulo da CIAP-2 e por paciente digital. O pedido foi *"sem dar
+  desempenho nem nada"*, e a garantia não é de redação: o Hub manda essas
+  células no tipo `Contagem`, que **não tem campo de percentual**. Não há o que
+  esconder aqui porque não há o que veio.
+- `[SIMULACOES-ACERVO]` — os casos publicados (título, capítulo, tamanho da
+  rubrica, duração) e a **bibliografia** que sustenta os itens, ordenada pela
+  fila de revisão: quanto mais itens dependem de um documento, mais a edição
+  nova dele pede releitura.
+
+> ⚠️ **O título esconde o diagnóstico, e esta página é pública e indexada.**
+> "Febre e dor no corpo há dois dias" não diz *dengue* porque descobrir é a
+> tarefa do estudante. Por isso o acervo sai **sem diagnóstico e sem condição
+> clínica**, e a bibliografia diz em **quantas** simulações cada documento é
+> usado, **nunca em quais** — o par documento↔simulação responderia o gabarito
+> de um caso em uma linha. Quem carrega essa regra é `acervo-publico.ts`, no
+> Hub, e `verificar:publicos` varre o acervo real para provar que nada vazou.
+
+> **A lista publicada é de doutrina.** Protocolos, diretrizes, manuais, notas
+> técnicas e normas. Os documentos internos da Escola (o padrão metodológico e
+> os rascunhos de 2019 do acervo) ficam de fora da lista por dois motivos que
+> apontam para o mesmo lugar: moram num Drive restrito, onde o leitor não pode
+> conferir nada, e foram batizados por quem já sabia o gabarito — um deles traz
+> o diagnóstico no próprio nome. **Quantos** itens dependem deles continua
+> publicado; o número era a informação, o nome do rascunho não.
+
+Enquanto a Action não buscar um espelho com esses blocos, os dois marcadores
+dizem que os números entram na próxima atualização — não mostram tabela vazia,
+que se leria como "ninguém treinou".
+
 ### O gráfico de evolução, e por que ele ainda não aparece
 
 Existe um gráfico de colunas, "Evolução do SimulaPacientes", que **só aparece

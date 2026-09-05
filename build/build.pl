@@ -5,6 +5,7 @@
 use strict; use warnings; use utf8;
 use open ':std', ':encoding(UTF-8)';
 use File::Path qw(make_path);
+use File::Find qw(find finddepth);
 use File::Basename qw(dirname);
 use Cwd qw(abs_path);
 use URI::Escape qw(uri_unescape);
@@ -14,6 +15,24 @@ use JSON::PP;                # núcleo do Perl desde a 5.14 -- nada a instalar
 
 my $ROOT   = dirname(__FILE__);
 my $OUT    = "$ROOT/../docs";
+
+# ============== O QUE ESTA RODADA ESCREVEU ==============
+# Este gerador só CRIA e SOBRESCREVE -- nunca apagou nada. O efeito é silencioso
+# e público: tirar um .md de build/content/ some com o link, e a página continua
+# no ar, indexável, sem fonte nenhuma no repositório. Em 05/09/2026 havia
+# dezoito assim -- dezesseis do banco de citações, uma de testes e uma do
+# z-ses-df -- publicadas com conteúdo que a Escola já tinha removido.
+#
+# A varredura do fim do arquivo resolve isso, e o registro é aqui: cada escrita
+# anota o caminho, e o que sobrar em docs/ sem ter sido escrito nesta rodada é
+# página órfã. Os caminhos são guardados RELATIVOS a docs/, que é o que a
+# varredura enxerga.
+my %ESCRITO;
+sub registrar {
+    my ($p) = @_;
+    $p =~ s{^\Q$OUT\E/}{};
+    $ESCRITO{$p} = 1;
+}
 my $SITE   = 'Escola de Pacientes';
 my $SITE_URL = 'https://escoladepacientes.com';
 
@@ -533,6 +552,7 @@ sub qr_figure_html {
     my $png = "$dir/qr.png";
     system($QRENCODE, '-o', $png, '-s', '8', '-m', '2', '-l', 'M', '--', $url) == 0
         or return '';
+    registrar($png);
     my ($w, $h) = png_size($png);
     my $dim = ($w && $h) ? qq{ width="$w" height="$h"} : '';
     return qq{<div class="wrap"><figure class="qr-pagina">}
@@ -1692,6 +1712,7 @@ sub write_file {
     make_path(dirname($path));
     open my $fh, '>:encoding(UTF-8)', $path or die "$path: $!";
     print $fh $data; close $fh;
+    registrar($path);
 }
 
 # ---------------- índice de busca ----------------
@@ -2245,6 +2266,7 @@ sub copy_raw {
     open my $out, '>:raw', $dst or die "$dst: $!";
     local $/; print {$out} <$in>;
     close $in; close $out;
+    registrar($dst);
 }
 for my $a (glob "$ROOT/assets/*") {
     next if -d $a;
@@ -2266,5 +2288,66 @@ write_file("$OUT/404.html", page_shell(
     body   => qq{<div class="page-hero"><div class="wrap-narrow"><h1>Página não encontrada</h1></div></div><article class="content" id="conteudo"><div class="wrap-narrow"><p>O endereço acessado não existe neste site. <a href="/escola-de-pacientes-df/">Voltar ao início</a>.</p></div></article>},
     footer => footer_html('/escola-de-pacientes-df/'),
 ));
+
+# ============== PÁGINA TIRADA DO build/ TEM DE SAIR DO SITE ==============
+# Até 05/09/2026 este gerador nunca apagou nada, e o efeito estava no ar:
+# dezoito páginas publicadas cuja fonte já não existia em build/content*. Quem
+# tira um .md tira o link, e a página continua servida e indexável -- dizendo
+# uma coisa que a Escola já tinha decidido não dizer mais.
+#
+# A varredura roda NO FIM, e é por isso que ela é segura: se o gerador morrer
+# no meio, ela não acontece, e docs/ continua sendo o site que estava no ar. É
+# o contrário de limpar docs/ no começo, que deixaria o site pela metade a cada
+# geração interrompida.
+#
+# ⚠️ O PISO É A TRAVA. Uma rodada que escreveu pouco não é uma rodada que
+# apagou muito: é uma rodada quebrada. Abaixo do piso a varredura não roda, e
+# nenhum arquivo é removido.
+#
+# ⚠️ O CNAME NÃO É GERADO, E É O DOMÍNIO. `docs/CNAME` (escoladepacientes.com)
+# não sai de build/ nenhum -- ele sobrevive desde 2026 só porque nada limpava a
+# pasta. Removê-lo tira o site do ar. Ele fica na lista do que se mantém, e
+# quem acrescentar arquivo à mão em docs/ tem de acrescentá-lo aqui também.
+#
+# ⚠️ SEM QRENCODE, OS QR EXISTENTES FICAM. Rodando na máquina de alguém que não
+# tem a ferramenta, nenhum qr.png é escrito -- e varrê-los apagaria centenas de
+# figuras boas. O workflow de publicação instala o qrencode, então lá eles são
+# reescritos e a varredura vale para eles também.
+# ========================================================================
+{
+    my %MANTER = ('CNAME' => 1);
+    my $PISO = 300;
+    my $escritos = scalar keys %ESCRITO;
+
+    if ($escritos < $PISO) {
+        print "Varredura NÃO roda: $escritos arquivos escritos, piso de $PISO.\n";
+        print "Uma rodada curta é rodada quebrada, e rodada quebrada não apaga nada.\n";
+    } else {
+        my @orfaos;
+        find(sub {
+            return unless -f $_;
+            my $rel = $File::Find::name;
+            $rel =~ s{^\Q$OUT\E/}{};
+            return if $ESCRITO{$rel} or $MANTER{$rel};
+            return if !$QRENCODE && $rel =~ m{(?:^|/)qr\.png$};
+            push @orfaos, $rel;
+        }, $OUT);
+
+        for my $o (sort @orfaos) {
+            unlink "$OUT/$o" or warn "não consegui remover $o: $!";
+        }
+        # Diretório que ficou vazio some junto; `rmdir` recusa o que ainda tem
+        # arquivo, então não é preciso conferir antes.
+        finddepth(sub { rmdir $File::Find::name if -d $File::Find::name }, $OUT);
+
+        if (@orfaos) {
+            printf "Varredura: %d arquivo(s) sem fonte em build/, removido(s):\n",
+                scalar @orfaos;
+            print "  - $_\n" for sort @orfaos;
+        } else {
+            print "Varredura: nada em docs/ sem fonte em build/.\n";
+        }
+    }
+}
 
 print "OK: $n páginas geradas em docs/\n";

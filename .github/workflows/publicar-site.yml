@@ -50,6 +50,16 @@ jobs:
   gerar:
     name: Gerar docs/ a partir de build/
     runs-on: ubuntu-latest
+    # ============== `completed` NÃO QUER DIZER `success` ==============
+    # `workflow_run: types: [completed]` dispara também quando o outro workflow
+    # FALHA ou é cancelado -- e aí não há número novo nenhum para publicar. Era
+    # uma geração inteira rodando para descobrir que `docs/` já estava igual.
+    #
+    # A condição só pesa no caminho do `workflow_run`: `push` e
+    # `workflow_dispatch` não têm `event.workflow_run`, e continuam passando.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Baixar o repositório
@@ -63,21 +73,59 @@ jobs:
       - name: Rodar o gerador
         run: perl build/build.pl
 
+      # ============== A `main` PODE ANDAR DURANTE A GERAÇÃO ==============
+      # O `concurrency` acima impede duas gerações ao mesmo tempo -- e só isso.
+      # Ele não sabe de merge de PR nem do commit dos números, que acontecem por
+      # fora e avançam a `main` entre o checkout e o envio. Quando isso
+      # acontecia, o `git push` era recusado e a execução ficava VERMELHA com o
+      # site desatualizado: foi a falha de 30/08/2026.
+      #
+      # ⚠️ A saída NÃO é `git pull --rebase`. Reaplicar o commit de `docs/` sobre
+      # uma ponta nova publicaria um `docs/` gerado a partir do `build/` ANTIGO
+      # -- e, pior, com aparência de sucesso. O que a página mostraria não seria
+      # o que o repositório diz.
+      #
+      # A saída é REFAZER: voltar à ponta nova, rodar o gerador de novo e
+      # comitar o que sair dela. `docs/` é gerado, então descartá-lo não perde
+      # trabalho de ninguém -- é a diferença entre um arquivo derivado e um
+      # arquivo escrito.
+      #
+      # Três tentativas: se a `main` andar três vezes seguidas durante uma
+      # geração de segundos, o problema não é corrida, é outra coisa, e aí a
+      # execução tem de ficar vermelha mesmo.
+      # ===================================================================
       - name: Publicar, se alguma coisa mudou
         run: |
-          if [ -z "$(git status --porcelain docs)" ]; then
-            echo "A pasta docs/ já está igual ao que o gerador produz. Nada a publicar."
-            exit 0
-          fi
-
-          echo "Mudanças encontradas:"
-          git status --short docs | head -20
-
           git config user.name  "Gerador do site"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs
-          git commit -m "Regenera docs/ a partir de build/ ($GITHUB_SHA)"
 
-          # este envio mexe só em docs/, e o gatilho acima só observa build/,
-          # então não dispara o processo de novo
-          git push
+          for tentativa in 1 2 3; do
+            if [ -z "$(git status --porcelain docs)" ]; then
+              echo "A pasta docs/ já está igual ao que o gerador produz. Nada a publicar."
+              exit 0
+            fi
+
+            echo "Mudanças encontradas:"
+            git status --short docs | head -20
+
+            git add docs
+            git commit -q -m "Regenera docs/ a partir de build/ ($GITHUB_SHA)"
+
+            # este envio mexe só em docs/, e o gatilho acima só observa build/,
+            # então não dispara o processo de novo
+            if git push; then
+              echo "Publicado na tentativa $tentativa."
+              exit 0
+            fi
+
+            echo "::warning::A main andou durante a geração. Refazendo o site"
+            echo "::warning::sobre a ponta nova (tentativa $tentativa de 3)."
+            git fetch origin main
+            git reset --hard origin/main
+            perl build/build.pl
+          done
+
+          echo "::error::Três tentativas e a main continuou andando a cada uma."
+          echo "::error::Isso não é corrida de segundos: confira o que está"
+          echo "::error::empurrando para a main e dispare este workflow de novo."
+          exit 1

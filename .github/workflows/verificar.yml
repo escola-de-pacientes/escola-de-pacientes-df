@@ -25,7 +25,7 @@ on:
     branches: [main]
     paths:
       - 'build/**'
-      - '.github/workflows/verificar.yml'
+      - '.github/workflows/**'
 
 permissions:
   contents: read
@@ -68,3 +68,99 @@ jobs:
             echo "Poucas páginas: alguma coisa não foi lida. Reprovado."
             exit 1
           fi
+
+      # ============== AS TRAVAS DA PUBLICAÇÃO CONTINUAM LÁ ==============
+      # Duas falhas silenciosas já aconteceram neste repositório: em 23/08/2026
+      # os números foram comitados e a página não foi regenerada (nada falhou),
+      # e em 30/08/2026 a `main` andou durante a geração e o envio foi recusado.
+      #
+      # As correções das duas são LINHAS DENTRO DE WORKFLOW, e workflow não tem
+      # teste que rode sozinho: some uma linha e nada quebra hoje -- quebra na
+      # próxima corrida, semanas depois, com o site desatualizado e a aba
+      # Actions verde. Este passo é o que impede a linha de sumir sem ninguém
+      # ver.
+      #
+      # Ele lê o TEXTO dos workflows de propósito: o que se quer provar é que a
+      # decisão continua escrita ali, não que ela funcione -- funcionar só se
+      # prova com a `main` andando de verdade.
+      # =================================================================
+      - name: As travas da publicação continuam lá
+        run: |
+          python3 - <<'PY'
+          import sys
+          import yaml
+
+          falhas = []
+
+          def checar(condicao, mensagem):
+              print(f"{'  ok  ' if condicao else 'FALHA '} {mensagem}")
+              if not condicao:
+                  falhas.append(mensagem)
+
+          publicar = yaml.safe_load(open(".github/workflows/publicar-site.yml"))
+          texto_publicar = open(".github/workflows/publicar-site.yml").read()
+          job = publicar["jobs"]["gerar"]
+
+          # `completed` inclui falha e cancelamento. Sem esta condição, uma
+          # atualização de números que falhou dispara uma geração inteira.
+          condicao = str(job.get("if", ""))
+          checar(
+              "workflow_run.conclusion" in condicao and "success" in condicao,
+              "a publicação só segue quando a atualização dos números DEU CERTO",
+          )
+
+          passo = [p for p in job["steps"] if p["name"].startswith("Publicar")][0]
+          corpo = passo["run"]
+
+          # A correção de 30/08: quando o envio é recusado, o site é REFEITO
+          # sobre a ponta nova. Reaplicar o commit por rebase publicaria um
+          # docs/ gerado a partir do build/ antigo -- com cara de sucesso.
+          checar(
+              "git reset --hard origin/main" in corpo
+              and "perl build/build.pl" in corpo,
+              "envio recusado REFAZ o site sobre a ponta nova da main",
+          )
+          checar(
+              "pull --rebase" not in corpo,
+              "  e não reaplica o docs/ velho por rebase, que publicaria o build/ antigo",
+          )
+          checar(
+              "exit 1" in corpo,
+              "  e desiste em vermelho, em vez de tentar para sempre",
+          )
+
+          atualizar = yaml.safe_load(
+              open(".github/workflows/atualizar-dados-simulacoes.yml")
+          )
+          passos = atualizar["jobs"]["atualizar"]["steps"]
+          idade = [p for p in passos if "envelhecer" in p["name"]]
+          checar(
+              len(idade) == 1,
+              "a atualização dos números confere a IDADE do que está no ar",
+          )
+          if idade:
+              # `always()` porque os passos anteriores saem com 0 sem comitar
+              # quando o Hub não responde: é justamente esse caso que precisa
+              # ser visto.
+              checar(
+                  str(idade[0].get("if", "")).strip() == "always()",
+                  "  e confere mesmo quando a busca não trouxe nada",
+              )
+              limite = [
+                  linha
+                  for linha in idade[0]["run"].splitlines()
+                  if "LIMITE_DE_DIAS" in linha and "=" in linha
+              ]
+              valor = int(limite[0].split("=")[1].strip()) if limite else -1
+              checar(
+                  0 < valor <= 7,
+                  f"  com um limite de dias que cabe num cron diário (leu: {valor})",
+              )
+
+          if falhas:
+              print("")
+              print(f"{len(falhas)} trava(s) de publicação sumiram.")
+              sys.exit(1)
+          print("")
+          print("As travas da publicação estão no lugar.")
+          PY

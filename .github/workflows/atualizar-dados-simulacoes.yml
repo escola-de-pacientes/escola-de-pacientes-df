@@ -53,9 +53,14 @@ jobs:
           # -f faz o curl falhar em 4xx/5xx em vez de gravar a página de erro
           # como se fosse dado. Já aconteceu, em outros projetos, de um HTML de
           # "503" virar o conteúdo de um arquivo .json comitado.
-          if ! curl -fsS --max-time 60 "$url" -o novo.json; then
-            echo "O Hub não respondeu. Nada é comitado — o site continua com os"
-            echo "números da última atualização bem-sucedida."
+          # `--retry` cobre o soluço: a Vercel devolvendo 502 por dois segundos
+          # não é o Hub fora do ar, e não vale acordar ninguém por isso. O que
+          # vale é o passo "Os números não podem envelhecer calados", no fim
+          # deste arquivo: ele separa o soluço da queda.
+          if ! curl -fsS --max-time 60 --retry 3 --retry-delay 5 \
+                  --retry-all-errors "$url" -o novo.json; then
+            echo "::warning::O Hub não respondeu. Nada é comitado — o site"
+            echo "::warning::continua com os números da última atualização."
             exit 0
           fi
 
@@ -70,7 +75,8 @@ jobs:
           assert 'metodologia' in d and d['metodologia'], 'sem metodologia'
           assert 'totais' in d, 'sem totais'
           "; then
-            echo "A resposta não tem a forma do espelho público. Nada é comitado."
+            echo "::warning::A resposta não tem a forma do espelho público."
+            echo "::warning::Nada é comitado."
             exit 0
           fi
 
@@ -97,3 +103,58 @@ jobs:
 
           # O envio mexe em build/, então o workflow "Publicar o site" dispara
           # sozinho e regenera docs/ com os números novos.
+
+      # ============== UMA EXECUÇÃO VERDE NÃO PODE ESCONDER NÚMERO VELHO ======
+      # Os dois `exit 0` acima estão certos quanto ao DADO: Hub fora do ar ou
+      # resposta estranha não podem sobrescrever número bom por lixo. Mas eles
+      # deixavam a execução VERDE, e verde quer dizer "está tudo certo" para
+      # quem olha a aba Actions -- inclusive quando o site está mostrando o
+      # número da semana passada.
+      #
+      # `docs/RUNBOOK-ENDERECOS.md`, no Hub, já tinha escrito o risco com todas
+      # as letras: *"a Action falha com cuidado: o site fica com os números da
+      # última atualização e ninguém é avisado"*. Este passo é quem avisa.
+      #
+      # A conta não é do relógio da execução: é do `geradoEm` que o próprio Hub
+      # carimbou no arquivo comitado. Ele responde à pergunta certa -- *quantos
+      # dias o site está mostrando este número?* --, e continua respondendo
+      # mesmo que a Action fique dias sem rodar.
+      #
+      # ⚠️ TRÊS DIAS, e não um. O cron é diário: reprovar no primeiro tropeço
+      # ensinaria todo mundo a ignorar o e-mail, que é o modo mais eficiente de
+      # transformar um alarme em ruído. Três dias é queda, não soluço.
+      # ======================================================================
+      - name: Os números não podem envelhecer calados
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import datetime, json, sys
+
+          LIMITE_DE_DIAS = 3
+          caminho = "build/assets/dados-simulacoes.json"
+
+          try:
+              dados = json.load(open(caminho))
+          except Exception as erro:
+              print(f"::error::Não consegui ler {caminho}: {erro}")
+              sys.exit(1)
+
+          carimbo = dados.get("geradoEm")
+          if not carimbo:
+              print("::error::O arquivo não tem `geradoEm` — sem ele não dá para")
+              print("::error::saber há quanto tempo o site mostra este número.")
+              sys.exit(1)
+
+          gerado = datetime.datetime.fromisoformat(carimbo.replace("Z", "+00:00"))
+          idade = datetime.datetime.now(datetime.timezone.utc) - gerado
+          dias = idade.total_seconds() / 86400
+
+          print(f"O número no ar foi gerado em {carimbo} ({dias:.1f} dias atrás).")
+
+          if dias > LIMITE_DE_DIAS:
+              print(f"::error::O site está mostrando um número de {dias:.1f} dias")
+              print("::error::atrás. O Hub não respondeu, ou respondeu fora de")
+              print("::error::forma, nas últimas execuções. Confira")
+              print("::error::https://hub-de-ll-ms.vercel.app/api/publico/estatisticas")
+              sys.exit(1)
+          PY

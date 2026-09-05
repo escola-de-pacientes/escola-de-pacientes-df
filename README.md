@@ -48,6 +48,23 @@ mantendo os nomes, e rode o gerador novamente. As fotos do topo da home ficam na
 Se quiser ver o resultado antes de enviar, pode rodar `perl build/build.pl`
 localmente — só não envie a `docs/` gerada junto; deixe o GitHub cuidar dela.
 
+### O que a publicação faz quando alguma coisa dá errado
+
+Duas falhas silenciosas já aconteceram, e as duas correções vivem dentro dos
+workflows. `Verificar o gerador` confere, em todo PR, que elas continuam lá:
+
+| Situação | O que acontece |
+|---|---|
+| **A `main` anda enquanto o site está sendo gerado** (merge de PR, commit dos números) | o envio é recusado, e a publicação **refaz o site sobre a ponta nova** — até três vezes. Não reaplica a `docs/` velha: ela teria sido gerada a partir de um `build/` que já não é o do repositório |
+| **A atualização dos números falha** | a publicação não roda. `completed` não quer dizer `success` |
+| **O Hub não responde, ou responde fora de forma** | nada é comitado, e o site fica com os números da última atualização boa — mas a execução **avisa**. Passados três dias sem número novo, ela fica vermelha: uma execução verde não pode esconder um número velho |
+
+⚠️ A `main` **não tem proteção de branch**. Ela não pode ter enquanto a
+publicação empurrar `docs/` direto para ela — exigir PR quebraria a publicação
+no mesmo dia. A ordem para resolver isso é: primeiro migrar o Pages para
+publicação por artefato (que acaba com os commits de `docs/`), e só então
+proteger a `main` exigindo PR e o check `Verificar o gerador`.
+
 ### Rodar o gerador localmente (opcional)
 
 ```sh

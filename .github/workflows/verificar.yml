@@ -69,6 +69,27 @@ jobs:
             exit 1
           fi
 
+      # ============== O DOMÍNIO SOBREVIVE À GERAÇÃO ==============
+      # `docs/CNAME` guarda `escoladepacientes.com` e NÃO é gerado por nada em
+      # `build/` -- ele existe desde 2026 e sobrevivia só porque o gerador nunca
+      # apagava nada. Desde 05/09/2026 o gerador varre `docs/`, e o CNAME está na
+      # lista do que se mantém.
+      #
+      # Se essa lista quebrar, o efeito não é uma página errada: é o site inteiro
+      # fora do ar no próximo push, porque o Pages perde o domínio. Este passo
+      # roda DEPOIS da geração, que é o único momento em que a pergunta faz
+      # sentido.
+      # ==========================================================
+      - name: O domínio sobrevive à geração
+        run: |
+          if [ ! -f docs/CNAME ]; then
+            echo "docs/CNAME sumiu depois de rodar o gerador."
+            echo "Ele é o domínio, não é gerado por build/, e sem ele a"
+            echo "publicação seguinte tira o site do ar."
+            exit 1
+          fi
+          echo "docs/CNAME continua lá: $(cat docs/CNAME)"
+
       # ============== AS TRAVAS DA PUBLICAÇÃO CONTINUAM LÁ ==============
       # Duas falhas silenciosas já aconteceram neste repositório: em 23/08/2026
       # os números foram comitados e a página não foi regenerada (nada falhou),

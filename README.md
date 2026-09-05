@@ -48,6 +48,27 @@ mantendo os nomes, e rode o gerador novamente. As fotos do topo da home ficam na
 Se quiser ver o resultado antes de enviar, pode rodar `perl build/build.pl`
 localmente — só não envie a `docs/` gerada junto; deixe o GitHub cuidar dela.
 
+### Tirar uma página do `build/` tira ela do site
+
+Até 05/09/2026 o gerador só criava e sobrescrevia: quem removesse um `.md` de
+`build/content/` removia o link, e a página continuava publicada e indexável,
+sem fonte nenhuma no repositório. Hoje o gerador **varre `docs/` no fim** e
+remove o que ele não escreveu naquela rodada.
+
+Três coisas que a varredura respeita, e que estão comentadas em `build.pl`:
+
+- **no fim, nunca no começo** — se o gerador morrer no meio, nada é removido e o
+  site continua sendo o que estava no ar;
+- **piso de arquivos** — rodada que escreveu pouco é rodada quebrada, e rodada
+  quebrada não apaga nada;
+- **`docs/CNAME` fica sempre** — é o domínio, não é gerado por `build/` nenhum, e
+  removê-lo tiraria o site do ar. `Verificar o gerador` confere que ele
+  sobreviveu à geração.
+
+> Rodando o gerador na sua máquina **sem `qrencode`**, os `qr.png` que já existem
+> são preservados — senão a varredura apagaria centenas de figuras boas que
+> aquela rodada não teve como escrever.
+
 ### O que a publicação faz quando alguma coisa dá errado
 
 Duas falhas silenciosas já aconteceram, e as duas correções vivem dentro dos

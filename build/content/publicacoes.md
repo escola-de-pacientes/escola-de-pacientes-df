@@ -1,7 +1,7 @@
 
 # Publicações 
 
-Atualizado em 2026/Abril
+Atualizado em 2026/Setembro
 
 Google Scholar - Dr. Estêvão Rolim: [https://bit.ly/3dbt0QT](https://bit.ly/3dbt0QT) 
 
@@ -20,7 +20,7 @@ Livros
 Artigos
 
 -
-2026 ARTIGO: Institucionalização da receita simples na atenção primária à saúde: da validação por Delphi à incorporação institucional na SES-DF; Estêvão Cubas-Rolim, Ana Carolina Monteiro Campos, João Lucas Soares Ramos, Miguel Cardoso Pereira Silva, Maria Luísa de Almeida Henriques, Joyce Lourenço Antero de Oliveira, Elisângela da Silva Lima, Letícia Gomes Leão; RECIMA21 – Revista Científica Multidisciplinar, ISSN: 2675-6218 - v.7, n.4, e747519. https://doi.org/10.47820/recima21.v7i4.7519 [https://recima21.com.br/index.php/recima21/article/view/7519](https://recima21.com.br/index.php/recima21/article/view/7519) 
+2026 ARTIGO: Institucionalização da receita simples na atenção primária à saúde: da validação por Delphi à incorporação institucional na SES-DF; Estêvão Cubas-Rolim, Ana Carolina Monteiro Campos, João Lucas Soares Ramos, Miguel Cardoso Pereira Silva, Maria Luísa de Almeida Henriques, Joyce Lourenço Antero de Oliveira, Elisângela da Silva Lima, Letícia Gomes Leão; RECIMA21 – Revista Científica Multidisciplinar, ISSN: 2675-6218 - v.7, n.4, e747519. https://doi.org/10.47820/recima21.v7i4.7519 [https://recima21.com.br/index.php/recima21/article/view/7519](https://recima21.com.br/index.php/recima21/article/view/7519)
 
 -
 2025 ARTIGO: Site da Escola de Pacientes DF estratégia digital de formação em saúde educação permanente e integração ensino serviço comunidade; Estêvão Cubas Rolim, Miguel Cardoso Pereira Silva, Lucas Oliveira da Silva, João Lucas Soares Ramos, Maria Luísa de Almeida Henriques;  Brazilian Journal of Development, ISSN: 2525-8761 - 11(12), e84838. [https://doi.org/10.34117/bjdv11n12-086](https://doi.org/10.34117/bjdv11n12-086) [https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/view/84838](https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/view/84838) 
@@ -145,19 +145,19 @@ Capítulos de livros
 Produções Online - Congressos
 
 -
-2026 APRESENTAÇÃO ORAL COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO – “CLINICAL SIMULATION WITH DIGITAL PATIENTS: USING CHATGPT IN HEALTH EDUCATION” – Estêvão Cubas-Rolim; Gabriela Souza Santos Ribeiro; Elisângela da Silva Lima; Miguel Cardoso; Joyce Lourenço Antero de Oliveira; Lucas Oliveira da Silva; Juliana Coutinho Cabidelli; Lucas Carvalho Souza Esum – EUROPEAN CONGRESS OF INTERNAL MEDICINE (ECIM) 2026, VIENA  ￼
+2026 APRESENTAÇÃO EM PÔSTER COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO – “CLINICAL SIMULATION WITH DIGITAL PATIENTS: USING CHATGPT IN HEALTH EDUCATION” – Estêvão Cubas-Rolim; Gabriela Souza Santos Ribeiro; Elisângela da Silva Lima; Miguel Cardoso; Joyce Lourenço Antero de Oliveira; Lucas Oliveira da Silva; Juliana Coutinho Cabidell; Lucas Carvalho Souza Teles – EUROPEAN CONGRESS OF INTERNAL MEDICINE (ECIM) 2026, VIENA, ÁUSTRIA, 25 A 28 DE MARÇO
 
 -
-2026 APRESENTAÇÃO ORAL COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO – “HEALTH AND AI RESEARCH GROUP: STRUCTURE, CHALLENGES, AND TEACHING PRACTICES” – Estêvão Cubas-Rolim; Gabriela Souza Santos Ribeiro; Elisângela da Silva Lima; Miguel Cardoso; Joyce Lourenço Antero de Oliveira; Lucas Oliveira da Silva; Juliana Coutinho Cabidelli; Lucas Carvalho Souza Esum – EUROPEAN CONGRESS OF INTERNAL MEDICINE (ECIM) 2026, VIENA  ￼
+2026 APRESENTAÇÃO EM PÔSTER COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO – “ESCOLA DE PACIENTES HEALTH AND AI RESEARCH GROUP: STRUCTURE, CHALLENGES, AND TEACHING PRACTICES” – Estêvão Cubas-Rolim; Gabriela Souza Santos Ribeiro; Elisângela da Silva Lima; Miguel Cardoso; Joyce Lourenço Antero de Oliveira; Lucas Oliveira da Silva; Juliana Coutinho Cabidelli; Lucas Carvalho Souza Esum – EUROPEAN CONGRESS OF INTERNAL MEDICINE (ECIM) 2026, VIENA, ÁUSTRIA, 25 A 28 DE MARÇO
 
 -
-2026 APRESENTAÇÃO EM PÔSTER COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO – “ESCOLA DE PACIENTES WEBSITE: A PROPOSAL FOR DIGITAL HEALTH EDUCATION” – Estêvão Cubas-Rolim; Gabriela Souza Santos Ribeiro; Elisângela da Silva Lima; Miguel Cardoso; Joyce Lourenço Antero de Oliveira; Lucas Oliveira da Silva; Juliana Coutinho Cabidelli; Lucas Carvalho Souza Esum – EUROPEAN CONGRESS OF INTERNAL MEDICINE (ECIM) 2026, VIENA  ￼
+2026 APRESENTAÇÃO EM PÔSTER COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO – “ESCOLA DE PACIENTES WEBSITE: A PROPOSAL FOR DIGITAL HEALTH EDUCATION” – Estêvão Cubas-Rolim; Gabriela Souza Santos Ribeiro; Elisângela da Silva Lima; Miguel Cardoso; Joyce Lourenço Antero de Oliveira; Lucas Oliveira da Silva; Juliana Coutinho Cabidelli; Lucas Carvalho Souza Esum – EUROPEAN CONGRESS OF INTERNAL MEDICINE (ECIM) 2026, VIENA, ÁUSTRIA, 25 A 28 DE MARÇO
 
 -
-2026 APRESENTAÇÃO EM PÔSTER COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO – “MEDICAL REFERENCES GPT: ORGANIZING AND ACCESSING CLINICAL GUIDELINES” – Estêvão Cubas-Rolim; Gabriela Souza Santos Ribeiro; Elisângela da Silva Lima; Miguel Cardoso; Joyce Lourenço Antero de Oliveira; Lucas Oliveira da Silva; Juliana Coutinho Cabidelli; Lucas Carvalho Souza Esum – EUROPEAN CONGRESS OF INTERNAL MEDICINE (ECIM) 2026, VIENA  ￼
+2026 APRESENTAÇÃO EM PÔSTER COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO – “MEDICAL REFERENCES GPT: ORGANIZING AND ACCESSING CLINICAL GUIDELINES” – Estêvão Cubas-Rolim; Gabriela Souza Santos Ribeiro; Elisângela da Silva Lima; Miguel Cardoso; Joyce Lourenço Antero de Oliveira; Lucas Oliveira da Silva; Juliana Coutinho Cabidelli; Lucas Carvalho Souza Teles – EUROPEAN CONGRESS OF INTERNAL MEDICINE (ECIM) 2026, VIENA, ÁUSTRIA, 25 A 28 DE MARÇO
 
 -
-2026 APRESENTAÇÃO EM PÔSTER COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO – “CLINICAL SIMULATIONS AND LEARNING CURVES: PROFILE OF SUPERVISORS IN HEALTH EDUCATION” – Estêvão Cubas-Rolim; Gabriela Souza Santos Ribeiro; Elisângela da Silva Lima; Miguel Cardoso; Joyce Lourenço Antero de Oliveira; Lucas Oliveira da Silva; Juliana Coutinho Cabidelli; Lucas Carvalho Souza Esum – EUROPEAN CONGRESS OF INTERNAL MEDICINE (ECIM) 2026, VIENA
+2026 APRESENTAÇÃO EM PÔSTER COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO – “CLINICAL SIMULATIONS AND LEARNING CURVES: PROFILE OF SUPERVISORS IN HEALTH EDUCATION” – Estêvão Cubas-Rolim; Gabriela Souza Santos Ribeiro; Elisângela da Silva Lima; Miguel Cardoso; Joyce Lourenço Antero de Oliveira; Lucas Oliveira da Silva; Juliana Coutinho Cabidelli; Lucas Carvalho Souza Esum – EUROPEAN CONGRESS OF INTERNAL MEDICINE (ECIM) 2026, VIENA, ÁUSTRIA, 25 A 28 DE MARÇO
 
 -
 2025 APRESENTAÇÃO ORAL COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO – “SITE ESCOLA DE PACIENTES DF: EDUCAÇÃO DIGITAL EM SAÚDE E EVOLUÇÃO DAS FERRAMENTAS PEDAGÓGICAS NA ERA DA INTELIGÊNCIA ARTIFICIAL” – Emillen Cristina Pessoa de Sousa; Letícia Abreu Coelho; Laryssa Kellye Pereira Soares Sousa; Victor Gabriel Portil de Sousa Ferreira; Lucas Gabriel Marques Ferreira; Paulo Gustavo Moreira; Henry Pereira Alves; Lucas Carvalho de Souza Esum; Estêvão Cubas Rolim – 14º CONGRESSO BRASILEIRO DE SAÚDE COLETIVA – ABRASCO
@@ -247,6 +247,9 @@ Produções Online - Congressos
 2017 POSTER COM RESUMO PUBLICADO EM ANAIS DE CONGRESSO - Geração de dados na UBS2 Itapoã DF – Cultura de serviço - ESTÊVÃO CUBAS ROLIM; JÉSSICA LUCENA WOLFF ;; ANA CLARA DE SOUSA NUNES; ARTUR BURLE GONÇALVES; ARTUR BURLE GONÇALVES; ANTÔNIO CARLOS PEREIRA LEITE KOTOVICZ -  14o CONGRESSO BRASILEIRO DE MEDICINA DE FAMÍLIA E COMUNIDADE – CBMFC – CURITIBA – DEZEMBRO 2017 - [http://https://proceedings.galoa.com.br/cbmfc]() 
 
 Outras produções
+
+-
+2026 TRABALHO APROVADO PARA APRESENTAÇÃO COMO PÔSTER — Produção científica e organização de produtos educacionais na Escola de Pacientes DF: experiência de integração entre ensino, serviço e comunidade na atenção primária à saúde. Miguel Cardoso Pereira Silva; Estêvão Cubas-Rolim; João Lucas Soares Ramos; Joyce Lourenço Antero Oliveira; Elisângela Silva Lima; Beatriz Silva Leandro; Maria Luísa Almeida Henriques; Ana Carolina Monteiro Campos. 43º Congresso SOCERJ, Rio de Janeiro, 7 e 8 de maio de 2026. Certificado de aprovação emitido em 8 de maio de 2026.
 
 -
 2025 ABRASCAO ORAL SITE – Site Escola de Pacientes educação digital em saúde e evolução das ferramentas pedagógicas na era da inteligência artificial

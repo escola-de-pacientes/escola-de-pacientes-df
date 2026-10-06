@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
 <link rel="stylesheet" href="../../assets/style.css?v=03f3ea41">
 <link rel="icon" href="../../assets/img/logo.png">
-<link rel="stylesheet" href="../../assets/revisao.css?v=093f6128"><script src="../../assets/revisao.js?v=8622302c" defer></script>
+<link rel="stylesheet" href="../../assets/revisao.css?v=e0e5d089"><script src="../../assets/revisao.js?v=214ffd0c" defer></script>
 </head>
 <body class="theme-revisao rv-cor-ambar">
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -140,7 +140,7 @@
 <p class="rv-kicker"><span class="msym" aria-hidden="true">route</span>Revisão guiada</p>
 <h1>Dislipidemia</h1>
 <p class="rv-lead">Do essencial ao aprofundado, em etapas. Comece pela que cabe no seu tempo agora.</p>
-<div class="rv-hero-acoes"><a class="btn btn-primary" href="#etapa-1">Começar a revisão</a><a class="btn btn-ghost" href="../../dislipidemia/"><span class="msym" aria-hidden="true">inventory_2</span> Acervo completo do tema</a></div>
+<div class="rv-hero-acoes"><a class="btn btn-primary" href="#etapa-1">Começar a revisão</a><button class="btn btn-ghost rv-tour-abre" type="button"><span class="msym" aria-hidden="true">help</span> Como funciona esta página</button><a class="btn btn-ghost" href="../../dislipidemia/"><span class="msym" aria-hidden="true">inventory_2</span> Acervo completo do tema</a></div>
 </div>
 <div class="rv-hero-arte" aria-hidden="true"><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-hero-ico msym">labs</span></div>
 </div>
@@ -255,6 +255,10 @@
 </div>
 </div></section>
 </main>
+<script type="application/json" id="rv-tour-passos">[{"alvo":".rv-hero-txt","texto":"Esta página reúne o material de Dislipidemia numa ordem pensada para estudar: do mais rápido ao mais aprofundado. Em poucos passos, mostro como ela funciona.","titulo":"Bem-vindo à revisão guiada"},{"alvo":".rv-trilha","texto":"Esta barra fica sempre no alto da tela. Ela mostra em que parte você está e quanto da página já percorreu. Clique numa etapa para ir direto até ela.","titulo":"A trilha das etapas"},{"alvo":"#novidade","texto":"Um artigo científico recente sobre Dislipidemia. Não é por onde você precisa começar: serve para saber o que está mudando. O texto completo abre na janela logo abaixo do título, e os botões levam ao artigo original e ao resumo no PubMed.","titulo":"Novidade: o que a pesquisa trouxe de novo"},{"alvo":"#etapa-1","texto":"Um vídeo curto e um podcast com o essencial da doença. Se só dá para estudar alguns minutos agora, fique nesta etapa: ela já cobre o principal.","titulo":"Etapa 1 — se você tem pouco tempo"},{"alvo":"#etapa-2","texto":"Os protocolos do Ministério da Saúde, os capítulos de referência e as aulas que orientam a consulta e o tratamento. Cada linha é uma janela: clique nela para abrir o documento aqui mesmo, sem sair da página.","titulo":"Etapa 2 — como conduzir o paciente"},{"alvo":"#etapa-3 .rv-abas","texto":"Cada aba é uma área: fisiologia, farmacologia, semiologia, diretrizes, saúde pública. Escolha uma e vá até onde a curiosidade levar.","titulo":"Etapa 3 — para se aprofundar"},{"alvo":".rv-concluir","texto":"No fim de cada etapa há este botão. Marcar como concluída acende a etapa na trilha, e o progresso fica salvo neste navegador.","titulo":"Marque o que já estudou"},{"alvo":".rv-fim-card","texto":"Volte ao SimulaPacientes e atenda o paciente de novo. É o jeito mais honesto de saber se o conteúdo ficou.","titulo":"Depois de revisar"},{"alvo":".rv-tour-fab","texto":"Este botão fica no canto da tela e reabre o tutorial a qualquer momento.","titulo":"Sempre que precisar"}]</script>
+<button class="rv-tour-fab rv-tour-abre" type="button" aria-label="Tutorial: como funciona esta página"><span class="msym" aria-hidden="true">help</span><span class="rv-fab-txt">Tutorial</span></button>
+<div class="rv-tour-convite" hidden role="status"><b>Primeira vez aqui?</b> Veja em poucos passos como esta página funciona.<span class="rv-convite-acoes"><button class="rv-tour-abre" type="button">Ver tutorial</button><button class="rv-convite-fecha" type="button" aria-label="Dispensar">Agora não</button></span></div>
+
 </div>
 
 <div class="wrap"><figure class="qr-pagina"><img src="qr.png" alt="QR code que abre esta página" width="296" height="296" decoding="async" loading="lazy"><figcaption>Aponte a câmera para abrir esta página</figcaption></figure></div>

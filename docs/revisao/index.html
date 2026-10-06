@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
 <link rel="stylesheet" href="../assets/style.css?v=03f3ea41">
 <link rel="icon" href="../assets/img/logo.png">
-<link rel="stylesheet" href="../assets/revisao.css?v=093f6128"><script src="../assets/revisao.js?v=8622302c" defer></script>
+<link rel="stylesheet" href="../assets/revisao.css?v=e0e5d089"><script src="../assets/revisao.js?v=214ffd0c" defer></script>
 </head>
 <body class="theme-revisao rv-cor-azul">
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -140,6 +140,7 @@
 <p class="rv-kicker"><span class="msym" aria-hidden="true">route</span>Estude por doença</p>
 <h1>Revisão por doença</h1>
 <p class="rv-lead">Para cada doença, uma revisão em etapas: o que acabou de sair na pesquisa, o essencial para quem tem pouco tempo, os protocolos para conduzir o paciente e o aprofundamento por área.</p>
+<div class="rv-hero-acoes"><button class="btn btn-ghost rv-tour-abre" type="button"><span class="msym" aria-hidden="true">help</span> Como funciona</button></div>
 </div>
 <div class="rv-hero-arte" aria-hidden="true"><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-hero-ico msym">route</span></div>
 </div>
@@ -166,6 +167,10 @@
 <a class="rv-link rv-link-acervo rv-reveal" href="../temas/"><span class="rv-l-ico" aria-hidden="true"><span class="msym">inventory_2</span></span><span class="rv-l-txt"><b>Acervo de temas clínicos</b><small>todas as doenças e temas, com slides, capítulos, orientações e pastas do Drive</small></span><span class="rv-l-seta" aria-hidden="true">→</span></a>
 </div></section>
 </main>
+<script type="application/json" id="rv-tour-passos">[{"alvo":".rv-hero-txt","texto":"Cada doença dos pacientes digitais tem uma revisão guiada, pensada para quem acabou de atender e quer revisar o que errou.","titulo":"Revisão por doença"},{"alvo":".rv-passos","texto":"Primeiro a Novidade, um artigo recente de pesquisa. Depois três etapas: o essencial para quem tem pouco tempo, a conduta com o paciente e o aprofundamento por área.","titulo":"Toda revisão tem a mesma ordem"},{"alvo":".rv-cartoes","texto":"Clique numa doença para abrir a revisão. Lá dentro, o botão “Como funciona esta página” mostra cada parte em detalhe.","titulo":"Escolha a doença"},{"alvo":".rv-link-acervo","texto":"Os slides, capítulos, orientações e pastas do Drive de todos os temas continuam no acervo de temas clínicos.","titulo":"O acervo continua aqui"},{"alvo":".rv-tour-fab","texto":"Este botão fica no canto da tela e reabre o tutorial a qualquer momento.","titulo":"Sempre que precisar"}]</script>
+<button class="rv-tour-fab rv-tour-abre" type="button" aria-label="Tutorial: como funciona esta página"><span class="msym" aria-hidden="true">help</span><span class="rv-fab-txt">Tutorial</span></button>
+<div class="rv-tour-convite" hidden role="status"><b>Primeira vez aqui?</b> Veja em poucos passos como esta página funciona.<span class="rv-convite-acoes"><button class="rv-tour-abre" type="button">Ver tutorial</button><button class="rv-convite-fecha" type="button" aria-label="Dispensar">Agora não</button></span></div>
+
 </div>
 
 <div class="wrap"><figure class="qr-pagina"><img src="qr.png" alt="QR code que abre esta página" width="264" height="264" decoding="async" loading="lazy"><figcaption>Aponte a câmera para abrir esta página</figcaption></figure></div>

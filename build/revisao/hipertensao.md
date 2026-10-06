@@ -10,10 +10,10 @@ Material reunido pelo grupo na pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO
 EPDF / 6.HAS" e no acervo do site (/hipertensao/).
 
 ## Novidade
-Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
-público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
-" | drive: <ID do arquivo>" ao fim da linha abaixo.
-- artigo | https://doi.org/10.1056/NEJMoa2504068 | Multifaceted Strategies for Hypertension Control in Low-Income Patients | N Engl J Med · abril de 2026 | pubmed: 41950472
+Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
+"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVIDADES" do Drive, e abre
+numa janela da página pelo campo "drive:".
+- artigo | https://doi.org/10.1056/NEJMoa2504068 | Multifaceted Strategies for Hypertension Control in Low-Income Patients | N Engl J Med · abril de 2026 | pubmed: 41950472 | drive: 1m_s91A-FwCL0bicS9_C7X3jVIMqn5zr-
 
 ## Etapa 1
 - video | https://youtube.com/shorts/Ss8d3fh1z7A | O que mudou na Diretriz Brasileira de Hipertensão 2025 | YouTube Shorts | formato: vertical

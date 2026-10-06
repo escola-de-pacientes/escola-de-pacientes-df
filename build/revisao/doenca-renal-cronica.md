@@ -13,10 +13,10 @@ Dois arquivos daquela pasta estão vazios no Drive (0 bytes) e ficaram de fora:
 "KDIGO-2024-CKD-Guideline.PDF" e "20230418_Relatorio_PCDT_..._CP_11.PDF".
 
 ## Novidade
-Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
-público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
-" | drive: <ID do arquivo>" ao fim da linha abaixo.
-- artigo | https://doi.org/10.1093/eurheartj/ehae613 | Cardiovascular outcomes with semaglutide by severity of chronic kidney disease in type 2 diabetes: the FLOW trial | Eur Heart J · março de 2025 | pubmed: 39211948
+Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
+"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVIDADES" do Drive, e abre
+numa janela da página pelo campo "drive:".
+- artigo | https://doi.org/10.1093/eurheartj/ehae613 | Cardiovascular outcomes with semaglutide by severity of chronic kidney disease in type 2 diabetes: the FLOW trial | Eur Heart J · março de 2025 | pubmed: 39211948 | drive: 1uZ1Nd2bMlZ-TEhBIOaPJrQQapfiAcNmc
 
 ## Etapa 1
 - video | https://www.youtube.com/watch?v=xdloeuKIhkQ | O que é doença renal crônica? | YouTube

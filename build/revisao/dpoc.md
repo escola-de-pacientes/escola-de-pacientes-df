@@ -10,10 +10,10 @@ EPDF / Pneumologia / DPOC" e em pastas de apoio do grupo. Não há página de
 tema antiga para esta doença, por isso o ACERVO fica em branco.
 
 ## Novidade
-Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
-público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
-" | drive: <ID do arquivo>" ao fim da linha abaixo.
-- artigo | https://doi.org/10.1093/ajrccm/aamag226 | Astegolimab for chronic obstructive pulmonary disease with frequent exacerbations: pooled analysis of the ALIENTO and ARNASA trials | Am J Respir Crit Care Med · setembro de 2026 | pubmed: 42148875
+Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
+"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVIDADES" do Drive, e abre
+numa janela da página pelo campo "drive:".
+- artigo | https://doi.org/10.1093/ajrccm/aamag226 | Astegolimab for chronic obstructive pulmonary disease with frequent exacerbations: pooled analysis of the ALIENTO and ARNASA trials | Am J Respir Crit Care Med · setembro de 2026 | pubmed: 42148875 | drive: 1tVS-9IjTG6WHu2wLM7eGYaWVYiru9Wq3
 
 ## Etapa 1
 - video | https://www.youtube.com/watch?v=OcvXedVZ0Bw | DPOC: enfisema pulmonar vs. bronquite crônica | YouTube

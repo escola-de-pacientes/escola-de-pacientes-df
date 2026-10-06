@@ -10,10 +10,10 @@ EPDF / 1.Dengue" (inclusive o documento "Links legais") e no acervo do site
 (/dengue/).
 
 ## Novidade
-Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
-público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
-" | drive: <ID do arquivo>" ao fim da linha abaixo.
-- artigo | https://doi.org/10.1016/j.lana.2025.101309 | Dengue virus genetic diversity in unvaccinated and vaccinated dengue-infected individuals: an observational analysis of the Butantan-DV phase 3 trial in Brazil | Lancet Reg Health Am · novembro de 2025 | pubmed: 41403717
+Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
+"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVIDADES" do Drive, e abre
+numa janela da página pelo campo "drive:".
+- artigo | https://doi.org/10.1016/j.lana.2025.101309 | Dengue virus genetic diversity in unvaccinated and vaccinated dengue-infected individuals: an observational analysis of the Butantan-DV phase 3 trial in Brazil | Lancet Reg Health Am · novembro de 2025 | pubmed: 41403717 | drive: 1njcR6XzTGv-iaD6CLV5YLvmLGlwpOZij
 
 ## Etapa 1
 - video | https://youtu.be/NWvkpEg1TN0 | Sintomas da dengue | Drauzio Varella

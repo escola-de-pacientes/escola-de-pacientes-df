@@ -2589,7 +2589,7 @@ sub rv_novidade_html {
         my $pubmed = $it->{pubmed}
             ? qq{<a class="btn btn-ghost" href="https://pubmed.ncbi.nlm.nih.gov/$it->{pubmed}/" target="_blank" rel="noopener">Resumo no PubMed ↗</a>} : '';
         my $janela = $it->{drive}
-            ? rv_janela_html({ tipo => 'drive', id => $it->{drive}, titulo => $it->{titulo}, fonte => $it->{fonte} }, 1) : '';
+            ? rv_janela_html({ tipo => 'drive', id => $it->{drive}, titulo => 'Texto completo do artigo', fonte => 'versão de acesso aberto do PubMed Central' }, 1) : '';
         $h .= qq{<article class="rv-nv rv-reveal">}
             . qq{<div class="rv-nv-topo"><span class="rv-selo"><span class="rv-pulso" aria-hidden="true"></span>Novidade</span>}
             . qq{<span class="rv-nv-diz">Saiu na pesquisa — um estudo recente sobre esta doença</span></div>}

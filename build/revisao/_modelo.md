@@ -34,6 +34,9 @@ Tipos:
   artigo  — só na Novidade: endereço do artigo (DOI) e extras
             "pubmed: <número>" e "drive: <ID do PDF no Drive>". Com o drive,
             o artigo completo abre numa janela dentro da página.
+            Só artigo de ACESSO ABERTO no PubMed Central. O PDF é gerado por
+            ferramentas/novidade-pdf/ (EB Garamond, preto, estilo PubMed) e
+            vai para a pasta "SEÇÃO NOVIDADES" do Drive.
 
 Extras são "chave: valor", ex.: "duracao: 6 min".
 

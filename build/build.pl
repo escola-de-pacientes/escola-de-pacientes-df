@@ -2657,6 +2657,70 @@ sub rv_faixa_acervo_html {
          . qq{<span class="rv-faixa-seta" aria-hidden="true">→</span></a>};
 }
 
+# ---------------- tutorial guiado ----------------
+# Pedido da coordenação (06/10/2026): quem chega precisa entender a página —
+# que a Novidade é um artigo atual, que a Etapa 1 é para quem tem pouco tempo,
+# e assim por diante. O botão "Como funciona esta página" (no topo) e o botão
+# flutuante "?" (em toda a página) abrem um passo a passo que rola até cada
+# parte, acende só ela e explica para que serve.
+#
+# Os textos ficam AQUI, e não no revisao.js, pelo mesmo motivo de toda a
+# moldura: o gerador é o único lugar que diz o que a página é. O script só
+# lê a lista (um <script type="application/json">) e conduz. Passo cujo alvo
+# não existe na página (uma revisão sem Novidade, por exemplo) é pulado.
+sub rv_tour_html {
+    my (@passos) = @_;
+    my $json = JSON::PP->new->utf8(0)->canonical->encode(
+        [ map { { alvo => $_->[0], titulo => $_->[1], texto => $_->[2] } } @passos ]);
+    $json =~ s{</}{<\\/}g;     # nenhum "</script>" escapa de dentro do JSON
+    return qq{<script type="application/json" id="rv-tour-passos">$json</script>\n}
+         . qq{<button class="rv-tour-fab rv-tour-abre" type="button" aria-label="Tutorial: como funciona esta página">}
+         . qq{<span class="msym" aria-hidden="true">help</span><span class="rv-fab-txt">Tutorial</span></button>\n}
+         . qq{<div class="rv-tour-convite" hidden role="status"><b>Primeira vez aqui?</b> Veja em poucos passos como esta página funciona.}
+         . qq{<span class="rv-convite-acoes"><button class="rv-tour-abre" type="button">Ver tutorial</button>}
+         . qq{<button class="rv-convite-fecha" type="button" aria-label="Dispensar">Agora não</button></span></div>\n};
+}
+
+sub rv_tour_passos_doenca {
+    my ($r) = @_;
+    my $d = $r->{curto};
+    return (
+        ['.rv-hero-txt', 'Bem-vindo à revisão guiada',
+         "Esta página reúne o material de $d numa ordem pensada para estudar: do mais rápido ao mais aprofundado. Em poucos passos, mostro como ela funciona."],
+        ['.rv-trilha', 'A trilha das etapas',
+         'Esta barra fica sempre no alto da tela. Ela mostra em que parte você está e quanto da página já percorreu. Clique numa etapa para ir direto até ela.'],
+        ['#novidade', 'Novidade: o que a pesquisa trouxe de novo',
+         "Um artigo científico recente sobre $d. Não é por onde você precisa começar: serve para saber o que está mudando. O texto completo abre na janela logo abaixo do título, e os botões levam ao artigo original e ao resumo no PubMed."],
+        ['#etapa-1', 'Etapa 1 — se você tem pouco tempo',
+         'Um vídeo curto e um podcast com o essencial da doença. Se só dá para estudar alguns minutos agora, fique nesta etapa: ela já cobre o principal.'],
+        ['#etapa-2', 'Etapa 2 — como conduzir o paciente',
+         'Os protocolos do Ministério da Saúde, os capítulos de referência e as aulas que orientam a consulta e o tratamento. Cada linha é uma janela: clique nela para abrir o documento aqui mesmo, sem sair da página.'],
+        ['#etapa-3 .rv-abas', 'Etapa 3 — para se aprofundar',
+         'Cada aba é uma área: fisiologia, farmacologia, semiologia, diretrizes, saúde pública. Escolha uma e vá até onde a curiosidade levar.'],
+        ['.rv-concluir', 'Marque o que já estudou',
+         'No fim de cada etapa há este botão. Marcar como concluída acende a etapa na trilha, e o progresso fica salvo neste navegador.'],
+        ['.rv-fim-card', 'Depois de revisar',
+         'Volte ao SimulaPacientes e atenda o paciente de novo. É o jeito mais honesto de saber se o conteúdo ficou.'],
+        ['.rv-tour-fab', 'Sempre que precisar',
+         'Este botão fica no canto da tela e reabre o tutorial a qualquer momento.'],
+    );
+}
+
+sub rv_tour_passos_indice {
+    return (
+        ['.rv-hero-txt', 'Revisão por doença',
+         'Cada doença dos pacientes digitais tem uma revisão guiada, pensada para quem acabou de atender e quer revisar o que errou.'],
+        ['.rv-passos', 'Toda revisão tem a mesma ordem',
+         'Primeiro a Novidade, um artigo recente de pesquisa. Depois três etapas: o essencial para quem tem pouco tempo, a conduta com o paciente e o aprofundamento por área.'],
+        ['.rv-cartoes', 'Escolha a doença',
+         'Clique numa doença para abrir a revisão. Lá dentro, o botão “Como funciona esta página” mostra cada parte em detalhe.'],
+        ['.rv-link-acervo', 'O acervo continua aqui',
+         'Os slides, capítulos, orientações e pastas do Drive de todos os temas continuam no acervo de temas clínicos.'],
+        ['.rv-tour-fab', 'Sempre que precisar',
+         'Este botão fica no canto da tela e reabre o tutorial a qualquer momento.'],
+    );
+}
+
 sub rv_pagina_html {
     my ($r, $p) = @_;
     my $t = esc($r->{titulo});
@@ -2678,6 +2742,7 @@ sub rv_pagina_html {
     my $acervo_fim = $r->{acervo}
         ? qq{<a class="btn btn-ghost" href="$p$r->{acervo}/">Ver o acervo completo do tema</a>} : '';
 
+    my $tour = rv_tour_html(rv_tour_passos_doenca($r));
     return <<HTML;
 <div class="rv" data-revisao="$r->{slug}">
 <header class="rv-hero">
@@ -2689,7 +2754,7 @@ sub rv_pagina_html {
 <p class="rv-kicker"><span class="msym" aria-hidden="true">route</span>Revisão guiada</p>
 <h1>$t</h1>
 <p class="rv-lead">Do essencial ao aprofundado, em etapas. Comece pela que cabe no seu tempo agora.</p>
-<div class="rv-hero-acoes"><a class="btn btn-primary" href="#etapa-1">Começar a revisão</a>$acervo_btn</div>
+<div class="rv-hero-acoes"><a class="btn btn-primary" href="#etapa-1">Começar a revisão</a><button class="btn btn-ghost rv-tour-abre" type="button"><span class="msym" aria-hidden="true">help</span> Como funciona esta página</button>$acervo_btn</div>
 </div>
 <div class="rv-hero-arte" aria-hidden="true"><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-hero-ico msym">$r->{icone}</span></div>
 </div>
@@ -2721,6 +2786,7 @@ $novidade$etapas
 $outras
 </div></section>
 </main>
+$tour
 </div>
 HTML
 }
@@ -2728,6 +2794,7 @@ HTML
 sub rv_indice_html {
     my ($p) = @_;
     my $cartoes = join "\n", map { rv_cartao_html($_, $p) } @REVISOES;
+    my $tour = rv_tour_html(rv_tour_passos_indice());
     return <<HTML;
 <div class="rv rv-indice">
 <header class="rv-hero">
@@ -2739,6 +2806,7 @@ sub rv_indice_html {
 <p class="rv-kicker"><span class="msym" aria-hidden="true">route</span>Estude por doença</p>
 <h1>Revisão por doença</h1>
 <p class="rv-lead">Para cada doença, uma revisão em etapas: o que acabou de sair na pesquisa, o essencial para quem tem pouco tempo, os protocolos para conduzir o paciente e o aprofundamento por área.</p>
+<div class="rv-hero-acoes"><button class="btn btn-ghost rv-tour-abre" type="button"><span class="msym" aria-hidden="true">help</span> Como funciona</button></div>
 </div>
 <div class="rv-hero-arte" aria-hidden="true"><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-hero-ico msym">route</span></div>
 </div>
@@ -2758,6 +2826,7 @@ $cartoes
 <a class="rv-link rv-link-acervo rv-reveal" href="${p}temas/"><span class="rv-l-ico" aria-hidden="true"><span class="msym">inventory_2</span></span><span class="rv-l-txt"><b>Acervo de temas clínicos</b><small>todas as doenças e temas, com slides, capítulos, orientações e pastas do Drive</small></span><span class="rv-l-seta" aria-hidden="true">→</span></a>
 </div></section>
 </main>
+$tour
 </div>
 HTML
 }

@@ -10,7 +10,10 @@ Material reunido pelo grupo na pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO
 EPDF / 6.HAS" e no acervo do site (/hipertensao/).
 
 ## Novidade
-- artigo | https://doi.org/10.1056/NEJMoa2507109 | Efficacy and Safety of Baxdrostat in Uncontrolled and Resistant Hypertension | N Engl J Med · agosto de 2025 · estudo BaxHTN | pubmed: 40888730
+Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
+público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
+" | drive: <ID do arquivo>" ao fim da linha abaixo.
+- artigo | https://doi.org/10.1056/NEJMoa2504068 | Multifaceted Strategies for Hypertension Control in Low-Income Patients | N Engl J Med · abril de 2026 | pubmed: 41950472
 
 ## Etapa 1
 - video | https://youtube.com/shorts/Ss8d3fh1z7A | O que mudou na Diretriz Brasileira de Hipertensão 2025 | YouTube Shorts | formato: vertical

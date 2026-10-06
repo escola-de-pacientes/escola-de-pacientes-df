@@ -11,7 +11,10 @@ material abaixo veio de pastas de apoio do grupo, do acervo do site
 (/cardio-infarto-do-miocardio/) e de busca.
 
 ## Novidade
-- artigo | https://doi.org/10.1056/NEJMoa2504735 | Beta-Blockers after Myocardial Infarction without Reduced Ejection Fraction | N Engl J Med · agosto de 2025 · estudo REBOOT | pubmed: 40888702
+Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
+público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
+" | drive: <ID do arquivo>" ao fim da linha abaixo.
+- artigo | https://doi.org/10.1093/eurheartj/ehaf514 | Aspirin, cardiovascular events, and major bleeding in older adults: extended follow-up of the ASPREE trial | Eur Heart J · novembro de 2025 | pubmed: 40796244
 
 ## Etapa 1
 - video | https://www.youtube.com/watch?v=2lRkQ0seKPg | Infarto (ataque cardíaco) | Drauzio Varella

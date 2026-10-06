@@ -10,7 +10,10 @@ EPDF / Pneumologia / DPOC" e em pastas de apoio do grupo. Não há página de
 tema antiga para esta doença, por isso o ACERVO fica em branco.
 
 ## Novidade
-- artigo | https://doi.org/10.1056/NEJMoa2413181 | Mepolizumab to Prevent Exacerbations of COPD with an Eosinophilic Phenotype | N Engl J Med · maio de 2025 · estudo MATINEE | pubmed: 40305712
+Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
+público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
+" | drive: <ID do arquivo>" ao fim da linha abaixo.
+- artigo | https://doi.org/10.1093/ajrccm/aamag226 | Astegolimab for chronic obstructive pulmonary disease with frequent exacerbations: pooled analysis of the ALIENTO and ARNASA trials | Am J Respir Crit Care Med · setembro de 2026 | pubmed: 42148875
 
 ## Etapa 1
 - video | https://www.youtube.com/watch?v=OcvXedVZ0Bw | DPOC: enfisema pulmonar vs. bronquite crônica | YouTube

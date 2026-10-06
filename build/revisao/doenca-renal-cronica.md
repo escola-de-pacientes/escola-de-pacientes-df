@@ -13,7 +13,10 @@ Dois arquivos daquela pasta estão vazios no Drive (0 bytes) e ficaram de fora:
 "KDIGO-2024-CKD-Guideline.PDF" e "20230418_Relatorio_PCDT_..._CP_11.PDF".
 
 ## Novidade
-- artigo | https://doi.org/10.1056/NEJMoa2604625 | Finerenone in Persons with Chronic Kidney Disease without Diabetes | N Engl J Med · junho de 2026 | pubmed: 42246672
+Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
+público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
+" | drive: <ID do arquivo>" ao fim da linha abaixo.
+- artigo | https://doi.org/10.1093/eurheartj/ehae613 | Cardiovascular outcomes with semaglutide by severity of chronic kidney disease in type 2 diabetes: the FLOW trial | Eur Heart J · março de 2025 | pubmed: 39211948
 
 ## Etapa 1
 - video | https://www.youtube.com/watch?v=xdloeuKIhkQ | O que é doença renal crônica? | YouTube

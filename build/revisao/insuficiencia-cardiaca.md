@@ -10,7 +10,10 @@ EPDF / Cardiologia / Insuficiência Cardíaca", em pastas de apoio do grupo e no
 acervo do site (/cardio-insuficiencia-cardiaca/).
 
 ## Novidade
-- artigo | https://doi.org/10.1056/NEJMoa2415471 | Digitoxin in Patients with Heart Failure and Reduced Ejection Fraction | N Engl J Med · agosto de 2025 · estudo DIGIT-HF | pubmed: 40879434
+Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
+público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
+" | drive: <ID do arquivo>" ao fim da linha abaixo.
+- artigo | https://doi.org/10.1093/eurheartj/ehaf655 | Vericiguat and mortality in heart failure and reduced ejection fraction: the VICTOR trial | Eur Heart J · fevereiro de 2026 | pubmed: 40884032
 
 ## Etapa 1
 - video | https://www.youtube.com/watch?v=TJhguf9JBZk | Doenças cardíacas crônicas | Drauzio Varella

@@ -10,7 +10,10 @@ EPDF / 1.Dengue" (inclusive o documento "Links legais") e no acervo do site
 (/dengue/).
 
 ## Novidade
-- artigo | https://doi.org/10.1038/s41591-026-04255-3 | Long-term efficacy and safety of the single-dose tetravalent Butantan dengue vaccine | Nature Medicine · março de 2026 · vacina Butantan-DV | pubmed: 41781546
+Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
+público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
+" | drive: <ID do arquivo>" ao fim da linha abaixo.
+- artigo | https://doi.org/10.1016/j.lana.2025.101309 | Dengue virus genetic diversity in unvaccinated and vaccinated dengue-infected individuals: an observational analysis of the Butantan-DV phase 3 trial in Brazil | Lancet Reg Health Am · novembro de 2025 | pubmed: 41403717
 
 ## Etapa 1
 - video | https://youtu.be/NWvkpEg1TN0 | Sintomas da dengue | Drauzio Varella

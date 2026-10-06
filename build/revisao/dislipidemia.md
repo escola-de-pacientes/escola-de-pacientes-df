@@ -10,7 +10,10 @@ EPDF / 3.Dislipidemia" (inclusive o documento "Links para Dislipidemia") e no
 acervo do site (/dislipidemia/).
 
 ## Novidade
-- artigo | https://doi.org/10.1056/NEJMoa2514428 | Evolocumab in Patients without a Previous Myocardial Infarction or Stroke | N Engl J Med · novembro de 2025 · estudo VESALIUS-CV | pubmed: 41211925
+Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
+público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
+" | drive: <ID do arquivo>" ao fim da linha abaixo.
+- artigo | https://doi.org/10.1093/eurheartj/ehaf685 | Inclisiran-based treatment strategy in hypercholesterolaemia: the VICTORION-difference trial | Eur Heart J · 2026 | pubmed: 40884558
 
 ## Etapa 1
 - video | https://www.youtube.com/watch?v=0Mjci1jQ3hw | Dislipidemia: para entender de forma básica | YouTube | duracao: 6 min

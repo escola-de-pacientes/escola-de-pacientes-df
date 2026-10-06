@@ -10,7 +10,10 @@ Material reunido pelo grupo na pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO
 EPDF / 2.Diabetes" e no acervo do site (/diabetes/).
 
 ## Novidade
-- artigo | https://doi.org/10.1056/NEJMoa2505928 | Cardiovascular Outcomes with Tirzepatide versus Dulaglutide in Type 2 Diabetes | N Engl J Med · dezembro de 2025 · estudo SURPASS-CVOT | pubmed: 41406444
+Artigo de acesso aberto (PubMed Central), para que o texto completo possa ficar
+público numa janela do Drive. Quando o PDF estiver na pasta da doença, acrescente
+" | drive: <ID do arquivo>" ao fim da linha abaixo.
+- artigo | https://doi.org/10.1136/bmj-2024-081820 | Dapagliflozin plus calorie restriction for remission of type 2 diabetes: multicentre, double blind, randomised, placebo controlled trial | BMJ · janeiro de 2025 | pubmed: 39843169
 
 ## Etapa 1
 - video | https://www.youtube.com/watch?v=V_KhsJe4vnc | O que é diabetes? | Drauzio Varella

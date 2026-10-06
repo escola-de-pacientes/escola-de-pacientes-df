@@ -1,0 +1,55 @@
+{
+   "descricao" : "Revisões guiadas por doença da Escola de Pacientes. Para o link do fim da simulação, use urlDaSimulacao.",
+   "parametroDeOrigem" : "origem=simulapacientes",
+   "revisoes" : [
+      {
+         "slug" : "hipertensao",
+         "titulo" : "Hipertensão arterial",
+         "url" : "https://escoladepacientes.com/revisao/hipertensao/",
+         "urlDaSimulacao" : "https://escoladepacientes.com/revisao/hipertensao/?origem=simulapacientes"
+      },
+      {
+         "slug" : "diabetes",
+         "titulo" : "Diabetes mellitus tipo 2",
+         "url" : "https://escoladepacientes.com/revisao/diabetes/",
+         "urlDaSimulacao" : "https://escoladepacientes.com/revisao/diabetes/?origem=simulapacientes"
+      },
+      {
+         "slug" : "dislipidemia",
+         "titulo" : "Dislipidemia",
+         "url" : "https://escoladepacientes.com/revisao/dislipidemia/",
+         "urlDaSimulacao" : "https://escoladepacientes.com/revisao/dislipidemia/?origem=simulapacientes"
+      },
+      {
+         "slug" : "dengue",
+         "titulo" : "Dengue",
+         "url" : "https://escoladepacientes.com/revisao/dengue/",
+         "urlDaSimulacao" : "https://escoladepacientes.com/revisao/dengue/?origem=simulapacientes"
+      },
+      {
+         "slug" : "doenca-renal-cronica",
+         "titulo" : "Doença renal crônica",
+         "url" : "https://escoladepacientes.com/revisao/doenca-renal-cronica/",
+         "urlDaSimulacao" : "https://escoladepacientes.com/revisao/doenca-renal-cronica/?origem=simulapacientes"
+      },
+      {
+         "slug" : "doenca-arterial-coronariana",
+         "titulo" : "Doença arterial coronariana",
+         "url" : "https://escoladepacientes.com/revisao/doenca-arterial-coronariana/",
+         "urlDaSimulacao" : "https://escoladepacientes.com/revisao/doenca-arterial-coronariana/?origem=simulapacientes"
+      },
+      {
+         "slug" : "insuficiencia-cardiaca",
+         "titulo" : "Insuficiência cardíaca",
+         "url" : "https://escoladepacientes.com/revisao/insuficiencia-cardiaca/",
+         "urlDaSimulacao" : "https://escoladepacientes.com/revisao/insuficiencia-cardiaca/?origem=simulapacientes"
+      },
+      {
+         "slug" : "dpoc",
+         "titulo" : "Doença pulmonar obstrutiva crônica (DPOC)",
+         "url" : "https://escoladepacientes.com/revisao/dpoc/",
+         "urlDaSimulacao" : "https://escoladepacientes.com/revisao/dpoc/?origem=simulapacientes"
+      }
+   ],
+   "versao" : 1
+}

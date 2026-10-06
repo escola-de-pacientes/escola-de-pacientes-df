@@ -401,3 +401,108 @@ html.rv-anim .rv-reveal.in { opacity: 1; transform: none; }
   .rv *, .rv *::before, .rv *::after { animation: none !important; transition: none !important; }
   html.rv-anim .rv-reveal { opacity: 1; transform: none; }
 }
+
+/* ============================================================
+   Tutorial guiado — botão "Como funciona esta página", botão
+   flutuante "?", convite da primeira visita e o passo a passo.
+   Tudo só aparece com script (html.rv-js): sem ele não há
+   tutorial, e a página continua inteira.
+   ============================================================ */
+.rv-tour-abre, .rv-tour-fab, .rv-tour-convite { display: none !important; }
+html.rv-js .rv-hero-acoes .rv-tour-abre { display: inline-flex !important; }
+html.rv-js .rv-tour-fab { display: inline-flex !important; }
+html.rv-js .rv-tour-convite:not([hidden]) { display: block !important; }
+html.rv-js .rv-tour-convite .rv-tour-abre { display: inline-flex !important; }
+.rv-hero-acoes button.btn { font: inherit; font-weight: 500; cursor: pointer; }
+
+/* botão flutuante */
+.rv-tour-fab {
+  position: fixed; right: 20px; bottom: 20px; z-index: 45;
+  align-items: center; gap: .4rem; cursor: pointer;
+  padding: .7rem 1.05rem .7rem .8rem; border-radius: 999px; border: 0;
+  font: inherit; font-size: .9rem; font-weight: 600;
+  color: #fff; background: var(--rv);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--rv) 40%, transparent), 0 2px 6px rgba(0, 0, 0, .18);
+  transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), box-shadow .25s var(--ease);
+}
+.rv-tour-fab .msym { font-size: 22px; }
+.rv-tour-fab:hover { transform: translateY(-2px) scale(1.04); }
+.rv-tour-fab:focus-visible { outline: 3px solid color-mix(in srgb, var(--rv) 45%, transparent); outline-offset: 3px; }
+:root[data-theme="dark"] .rv-tour-fab { color: #131314; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .rv-tour-fab { color: #131314; } }
+@media (max-width: 560px) {
+  .rv-tour-fab { right: 14px; bottom: 14px; padding: .75rem; }
+  .rv-fab-txt { display: none; }
+}
+
+/* convite da primeira visita */
+.rv-tour-convite {
+  position: fixed; right: 20px; bottom: 82px; z-index: 46; max-width: 300px;
+  padding: .9rem 1rem; border-radius: 16px; font-size: .9rem; line-height: 1.45;
+  color: var(--ink); background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--rv) 35%, transparent);
+  box-shadow: var(--glass-shadow-hover);
+  animation: rv-convite .5s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+.rv-tour-convite::after {
+  content: ''; position: absolute; right: 34px; bottom: -8px; width: 14px; height: 14px; rotate: 45deg;
+  background: var(--surface); border-right: 1px solid color-mix(in srgb, var(--rv) 35%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--rv) 35%, transparent);
+}
+.rv-tour-convite b { display: block; font-family: var(--font-sans); color: var(--rv-dark); }
+.rv-convite-acoes { display: flex; gap: .5rem; margin-top: .7rem; }
+.rv-convite-acoes button {
+  font: inherit; font-size: .84rem; font-weight: 600; cursor: pointer;
+  padding: .45rem .85rem; border-radius: 999px; border: 1px solid transparent;
+}
+.rv-convite-acoes .rv-tour-abre { color: #fff; background: var(--rv); }
+:root[data-theme="dark"] .rv-convite-acoes .rv-tour-abre { color: #131314; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .rv-convite-acoes .rv-tour-abre { color: #131314; } }
+.rv-convite-fecha { color: var(--muted); background: transparent; border-color: var(--line) !important; }
+@keyframes rv-convite { from { opacity: 0; transform: translateY(12px) scale(.96); } to { opacity: 1; transform: none; } }
+@media (max-width: 560px) { .rv-tour-convite { right: 14px; left: 14px; bottom: 76px; max-width: none; } }
+
+/* o passo a passo */
+.rv-tour { position: fixed; inset: 0; z-index: 100; }
+.rv-tour[hidden] { display: none; }
+.rv-tour-luz {
+  position: fixed; border-radius: 18px; pointer-events: none;
+  box-shadow: 0 0 0 9999px rgba(15, 18, 25, .62), 0 0 0 3px var(--rv), 0 0 32px 6px color-mix(in srgb, var(--rv) 45%, transparent);
+  transition: top .45s var(--ease), left .45s var(--ease), width .45s var(--ease), height .45s var(--ease);
+}
+.rv-tour-cartao {
+  position: fixed; width: min(380px, calc(100vw - 32px));
+  padding: 1.15rem 1.2rem 1rem; border-radius: 20px;
+  color: var(--ink); background: var(--surface);
+  border: 1px solid color-mix(in srgb, var(--rv) 30%, transparent);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+  transition: top .45s var(--ease), left .45s var(--ease);
+  outline: none;
+}
+.rv-tour-troca .rv-tour-cartao h2, .rv-tour-troca .rv-tour-cartao #rv-tour-x { animation: rv-sobe .4s var(--ease) both; }
+.rv-tour-conta { font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--rv); margin: 0 0 .3rem; }
+.rv-tour-cartao h2 { font-size: 1.15rem; line-height: 1.25; letter-spacing: -.01em; margin: 0 0 .45rem; }
+.rv-tour-cartao #rv-tour-x { font-size: .93rem; line-height: 1.55; color: var(--muted); margin: 0; }
+.rv-tour-pontos { display: flex; gap: 5px; margin: .9rem 0 .8rem; }
+.rv-tour-pontos span { width: 7px; height: 7px; border-radius: 999px; background: var(--line); transition: all .3s var(--ease); }
+.rv-tour-pontos span.feito { background: color-mix(in srgb, var(--rv) 45%, transparent); }
+.rv-tour-pontos span.ativo { width: 20px; background: var(--rv); }
+.rv-tour-botoes { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.rv-tour-botoes > span { display: flex; gap: .45rem; }
+.rv-tour-botoes button {
+  font: inherit; font-size: .86rem; font-weight: 600; cursor: pointer;
+  padding: .5rem .95rem; border-radius: 999px; border: 1px solid var(--line);
+  color: var(--ink); background: transparent;
+}
+.rv-tour-botoes button:disabled { opacity: .4; cursor: default; }
+.rv-tour-botoes .rv-tour-vai { color: #fff; background: var(--rv); border-color: var(--rv); }
+:root[data-theme="dark"] .rv-tour-botoes .rv-tour-vai { color: #131314; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .rv-tour-botoes .rv-tour-vai { color: #131314; } }
+.rv-tour-botoes .rv-tour-sai { border: 0; padding-left: 0; color: var(--muted); font-weight: 500; }
+.rv-tour-botoes button:focus-visible { outline: 2px solid var(--rv); outline-offset: 2px; }
+.rv-tour-cartao.rv-tour-baixo { left: 12px !important; right: 12px; bottom: 12px; top: auto !important; width: auto; }
+.rv-tour-cartao.rv-tour-cima { left: 12px !important; right: 12px; top: 12px !important; bottom: auto; width: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .rv-tour-luz, .rv-tour-cartao { transition: none; }
+  .rv-tour-convite, .rv-tour-troca .rv-tour-cartao h2, .rv-tour-troca .rv-tour-cartao #rv-tour-x { animation: none; }
+}

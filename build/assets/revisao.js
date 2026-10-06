@@ -8,6 +8,7 @@
   var raiz = document.querySelector('.rv');
   if (!raiz) return;
   var slug = raiz.getAttribute('data-revisao') || 'indice';
+  doc.classList.add('rv-js');      // o que só faz sentido com script (o tutorial) aparece a partir daqui
 
   function guarda(chave, valor) { try { localStorage.setItem(chave, valor); } catch (e) {} }
   function le(chave) { try { return localStorage.getItem(chave); } catch (e) { return null; } }
@@ -196,5 +197,176 @@
         } catch (e) {}
       }
     }
+  }
+
+  // ---------- tutorial guiado ----------
+  // Os passos vêm do gerador (#rv-tour-passos): alvo, título e texto. Aqui só
+  // se conduz: rolar até o alvo, acender ele (o resto da tela escurece) e
+  // mostrar o cartão. Passo cujo alvo não existe é pulado. Esc fecha; setas
+  // avançam e voltam; o foco volta para o botão que abriu.
+  var fonte = document.getElementById('rv-tour-passos');
+  if (fonte) {
+    var passos = [];
+    try { passos = JSON.parse(fonte.textContent); } catch (e) {}
+    passos = passos.filter(function (p) { return document.querySelector(p.alvo); });
+    var tela, luz, cartao, atual = 0, quemAbriu = null, alvoAtual = null;
+
+    function montar() {
+      tela = document.createElement('div');
+      tela.className = 'rv-tour';
+      tela.innerHTML =
+        '<div class="rv-tour-luz" aria-hidden="true"></div>' +
+        '<div class="rv-tour-cartao" role="dialog" aria-modal="true" aria-labelledby="rv-tour-t" aria-describedby="rv-tour-x" tabindex="-1">' +
+          '<p class="rv-tour-conta"></p>' +
+          '<h2 id="rv-tour-t"></h2><p id="rv-tour-x"></p>' +
+          '<div class="rv-tour-pontos" aria-hidden="true"></div>' +
+          '<div class="rv-tour-botoes">' +
+            '<button type="button" class="rv-tour-sai">Sair do tutorial</button>' +
+            '<span><button type="button" class="rv-tour-volta">Anterior</button>' +
+            '<button type="button" class="rv-tour-vai">Próximo</button></span>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(tela);
+      luz = tela.querySelector('.rv-tour-luz');
+      cartao = tela.querySelector('.rv-tour-cartao');
+      tela.querySelector('.rv-tour-sai').addEventListener('click', fechar);
+      tela.querySelector('.rv-tour-volta').addEventListener('click', function () { ir(atual - 1); });
+      tela.querySelector('.rv-tour-vai').addEventListener('click', function () {
+        if (atual >= passos.length - 1) fechar(); else ir(atual + 1);
+      });
+      tela.addEventListener('click', function (ev) { if (ev.target === tela) fechar(); });
+    }
+
+    // altura do que fica preso no alto da tela (cabeçalho e trilha)
+    function topoFixo() {
+      var h = 0;
+      ['header.site', '.rv-trilha'].forEach(function (sel) {
+        var el = document.querySelector(sel);
+        if (el) { var r = el.getBoundingClientRect(); if (r.top <= 1) h = Math.max(h, r.bottom); }
+      });
+      return h;
+    }
+
+    function posicionar() {
+      if (!alvoAtual || !tela) return;
+      var r = alvoAtual.getBoundingClientRect();
+      var vh = window.innerHeight, vw = window.innerWidth, m = 8;
+      var fixo = alvoAtual.closest('.rv-trilha, .rv-tour-fab, header.site') ? 0 : topoFixo();
+      var topo = Math.max(r.top - m, fixo + 4);
+      // alvo mais alto que a tela: acende só o começo dele e deixa espaço pro cartão
+      var fundo = Math.min(r.bottom + m, topo + vh * 0.42, vh - 8);
+      if (r.height + 2 * m < vh * 0.42) fundo = Math.min(r.bottom + m, vh - 8);
+      var esq = Math.max(r.left - m, 6), dir = Math.min(r.right + m, vw - 6);
+      luz.style.top = topo + 'px'; luz.style.left = esq + 'px';
+      luz.style.width = Math.max(dir - esq, 0) + 'px'; luz.style.height = Math.max(fundo - topo, 0) + 'px';
+
+      var c = cartao.getBoundingClientRect(), cw = c.width, ch = c.height, y, x;
+      if (vw < 640) {
+        // celular: o cartão ocupa a largura e fica na metade da tela oposta
+        // à parte acesa, para nunca cobrir o que está sendo explicado
+        var emBaixo = (topo + fundo) / 2 < vh / 2;
+        cartao.classList.toggle('rv-tour-baixo', emBaixo);
+        cartao.classList.toggle('rv-tour-cima', !emBaixo);
+        cartao.style.top = ''; cartao.style.left = '';
+        return;
+      }
+      cartao.classList.remove('rv-tour-baixo', 'rv-tour-cima');
+      if (fundo + 14 + ch < vh) y = fundo + 14;
+      else if (topo - 14 - ch > fixo) y = topo - 14 - ch;
+      else y = vh - ch - 16;
+      x = Math.min(Math.max(esq, 16), vw - cw - 16);
+      cartao.style.top = y + 'px'; cartao.style.left = x + 'px';
+    }
+
+    function ir(n) {
+      if (n < 0 || n >= passos.length) return;
+      atual = n;
+      var p = passos[n];
+      alvoAtual = document.querySelector(p.alvo);
+      tela.querySelector('.rv-tour-conta').textContent = 'Passo ' + (n + 1) + ' de ' + passos.length;
+      tela.querySelector('#rv-tour-t').textContent = p.titulo;
+      tela.querySelector('#rv-tour-x').textContent = p.texto;
+      tela.querySelector('.rv-tour-pontos').innerHTML = passos.map(function (_, i) {
+        return '<span' + (i === n ? ' class="ativo"' : i < n ? ' class="feito"' : '') + '></span>';
+      }).join('');
+      tela.querySelector('.rv-tour-volta').disabled = n === 0;
+      tela.querySelector('.rv-tour-vai').textContent = n === passos.length - 1 ? 'Concluir' : 'Próximo';
+      // o alvo pode estar escondido pela animação de entrada
+      alvoAtual.classList.add('in');
+      alvoAtual.querySelectorAll('.rv-reveal').forEach(function (el) { el.classList.add('in'); });
+      var fixo = alvoAtual.closest('.rv-trilha, .rv-tour-fab, header.site');
+      if (!fixo) {
+        var r = alvoAtual.getBoundingClientRect();
+        var alturaFixa = 64 + ((document.querySelector('.rv-trilha') || {}).offsetHeight || 0);
+        var alvoY = window.scrollY + r.top - alturaFixa - 24;
+        if (r.height < window.innerHeight * 0.4) alvoY = window.scrollY + r.top - window.innerHeight * 0.22;
+        window.scrollTo({ top: Math.max(0, alvoY), behavior: calmo ? 'auto' : 'smooth' });
+      }
+      tela.classList.remove('rv-tour-troca'); void tela.offsetWidth; tela.classList.add('rv-tour-troca');
+      posicionar();
+      setTimeout(posicionar, calmo ? 0 : 450);
+      setTimeout(posicionar, calmo ? 0 : 900);
+      cartao.focus({ preventScroll: true });
+    }
+
+    function abrir(ev) {
+      if (!passos.length) return;
+      quemAbriu = ev && ev.currentTarget;
+      if (!tela) montar();
+      fecharConvite();
+      tela.hidden = false;
+      doc.classList.add('rv-tour-aberto');
+      ir(0);
+      window.addEventListener('scroll', posicionar, { passive: true });
+      window.addEventListener('resize', posicionar, { passive: true });
+      document.addEventListener('keydown', teclas);
+    }
+
+    function fechar() {
+      if (!tela) return;
+      tela.hidden = true;
+      doc.classList.remove('rv-tour-aberto');
+      window.removeEventListener('scroll', posicionar);
+      window.removeEventListener('resize', posicionar);
+      document.removeEventListener('keydown', teclas);
+      guarda('rv:tutorial-visto', '1');
+      if (quemAbriu && quemAbriu.focus) quemAbriu.focus({ preventScroll: true });
+    }
+
+    function teclas(ev) {
+      if (ev.key === 'Escape') { ev.preventDefault(); fechar(); }
+      else if (ev.key === 'ArrowRight') { ev.preventDefault(); if (atual < passos.length - 1) ir(atual + 1); }
+      else if (ev.key === 'ArrowLeft') { ev.preventDefault(); ir(atual - 1); }
+      else if (ev.key === 'Tab') {                       // o foco não sai do cartão
+        var f = Array.prototype.filter.call(cartao.querySelectorAll('button'), function (b) { return !b.disabled; });
+        if (!f.length) return;
+        var i = f.indexOf(document.activeElement);
+        if (ev.shiftKey && (i <= 0)) { ev.preventDefault(); f[f.length - 1].focus(); }
+        else if (!ev.shiftKey && i === f.length - 1) { ev.preventDefault(); f[0].focus(); }
+      }
+    }
+
+    // convite na primeira visita a qualquer revisão: um balão perto do botão
+    // flutuante, que some sozinho. Não abre o tutorial por conta própria —
+    // quem veio só buscar um PDF não pode ser interrompido.
+    var convite = document.querySelector('.rv-tour-convite');
+    var timerConvite;
+    function fecharConvite() {
+      if (!convite || convite.hidden) return;
+      convite.hidden = true;
+      clearTimeout(timerConvite);
+      guarda('rv:tutorial-visto', '1');
+    }
+    if (convite && passos.length && le('rv:tutorial-visto') !== '1') {
+      setTimeout(function () {
+        convite.hidden = false;
+        timerConvite = setTimeout(fecharConvite, 12000);
+      }, 1400);
+      convite.querySelector('.rv-convite-fecha').addEventListener('click', fecharConvite);
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll('.rv-tour-abre'), function (b) {
+      b.addEventListener('click', abrir);
+    });
   }
 })();

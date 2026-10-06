@@ -17,6 +17,8 @@ build/
   nucleo-ep.html    # template da página do Núcleo EP (sistema de gestão do grupo)
   vitrine-dados.md  # dados curados da vitrine (publicações, prêmios, reportagens, trajetória)
   revisao/          # uma revisão guiada por doença (/revisao/<slug>/) — ver seção própria
+ferramentas/
+  novidade-pdf/     # gera o PDF do artigo da Novidade (não é publicado no site)
   assets/           # CSS, JS de busca e imagens copiados para docs/assets/
   content/          # conteúdo das páginas principais (markdown simplificado)
   content2/         # conteúdo das subpáginas (nome de arquivo usa "__" como separador de pasta)
@@ -214,6 +216,42 @@ não entende para a geração com o número da linha.
 > do SimulaPacientes.** A página é pública, e o par caso → doença entregaria o
 > gabarito.
 
+### O tutorial: "Como funciona esta página"
+
+Pedido da coordenação (06/10/2026): quem chega precisa entender a página sem
+ninguém explicar — que a Novidade é um artigo atual, que a Etapa 1 é para quem
+tem pouco tempo, e assim por diante. Toda revisão, e o índice `/revisao/`, têm:
+
+- o botão **"Como funciona esta página"** no topo e o botão flutuante
+  **"Tutorial"** no canto da tela, que abrem um passo a passo: a página rola até
+  cada parte, só ela fica acesa, e um cartão explica para que ela serve (9
+  passos na revisão, 5 no índice). Setas do teclado avançam e voltam; Esc fecha;
+- um **convite** na primeira visita ("Primeira vez aqui?"), perto do botão
+  flutuante. Ele **não abre o tutorial sozinho** — quem veio só buscar um PDF não
+  pode ser interrompido — e não volta depois de dispensado ou visto (fica
+  guardado no navegador, valendo para todas as revisões).
+
+Os textos de cada passo ficam no `build.pl` (`rv_tour_passos_doenca` e
+`rv_tour_passos_indice`), não no JavaScript: são moldura, como o nome das
+etapas. Cada passo aponta para um seletor da página; passo cujo alvo não existe
+(uma revisão sem Novidade, por exemplo) é pulado sozinho. Sem JavaScript, os
+botões do tutorial nem aparecem.
+
+### A Novidade: o artigo e o PDF
+
+- **Só artigo de acesso aberto no PubMed Central.** O texto completo fica
+  público numa janela do site, e artigo pago (NEJM, Lancet, Nature Medicine
+  fechados) não pode. Os primeiros escolhidos eram pagos e foram trocados em
+  06/10/2026 por estudos de 2025–2026 de acesso aberto.
+- **O PDF fica no Drive**, na pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF /
+  SEÇÃO NOVIDADES" (pública por link). Na revisão, ele entra pelo campo
+  `drive:` da linha `- artigo`, e a janela "Texto completo do artigo" aparece
+  aberta logo abaixo do título.
+- **PDFs novos seguem o padrão de [`ferramentas/novidade-pdf/`](ferramentas/novidade-pdf/README.md)**:
+  EB Garamond, texto 100% preto e formatação semelhante à ficha do PubMed. Os
+  oito publicados em 06/10/2026 foram feitos antes desse padrão (fonte sem
+  serifa, cinzas e azul) e, por decisão da coordenação, **ficam como estão**.
+
 ### Ligar o SimulaPacientes às revisões
 
 O site já está pronto; o que falta é do lado do Hub, que é privado. O gerador
@@ -247,6 +285,14 @@ caber sem empurrar a busca para fora da tela: acima de 1380px o cabeçalho usa a
 1360px; até 1420px o nome ao lado da logo sai (a logo traz o nome escrito); e
 até 1599px o item aparece como "Revisões". Conferido de 375 a 1940px, sem
 rolagem horizontal. As regras estão no fim do `style.css`.
+
+### Histórico das revisões
+
+| Data | O que mudou |
+|---|---|
+| 06/10/2026 | Oito revisões publicadas (Hipertensão, Diabetes tipo 2, Dislipidemia, Dengue, DRC, DAC, IC, DPOC), índice `/revisao/`, item no menu, bloco na página inicial, link em Estudantes, faixa nas páginas de tema antigas e `revisoes.json` para o Hub — PR #29 |
+| 06/10/2026 | Novidade trocada por artigos de acesso aberto; PDFs na pasta SEÇÃO NOVIDADES do Drive, ligados pelo campo `drive:` — PR #29 |
+| 06/10/2026 | Tutorial guiado em todas as revisões e no índice; padrão novo dos PDFs da Novidade (EB Garamond, preto, estilo PubMed) em `ferramentas/novidade-pdf/` |
 
 ## Coluna do Estêvão
 

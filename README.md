@@ -105,7 +105,19 @@ perl build/build.pl        # precisa do módulo URI::Escape
 
 ### Links de conteúdo nos planos de aula
 
-Em cada bloco **“Aula — tema clínico”**, o primeiro cartão deve abrir a página do tema no site e ser identificado como **“conteúdo completo”**. Essa página reúne slides, Tratado MFC, PACK, checklists e orientações.
+Em cada bloco **“Aula — tema clínico”**, o primeiro cartão deve abrir a página do tema no site. Quando o tema tem **revisão guiada** (`/revisao/<doença>/`), é ela a página do tema: o cartão aponta para lá e se chama **“— revisão guiada”**. Temas sem revisão continuam com o cartão **“conteúdo completo”** apontando para a página do tema, que reúne slides, Tratado MFC, PACK, checklists e orientações.
+
+> **Link para tema com revisão vai para a revisão.** Desde 06/10/2026 o gerador
+> troca sozinho, no conteúdo em markdown, todo link para uma página de tema que
+> tem revisão (`/hipertensao`, `/diabetes`, `/dislipidemia`, `/dengue`,
+> `/cardio-infarto-do-miocardio`, `/cardio-insuficiencia-cardiaca`) pelo link da
+> revisão; o índice de Temas Clínicos também. A página antiga virou o **acervo
+> completo** — é assim que aparece na busca e no A–Z — e se chega nela pelo botão
+> "Acervo completo do tema" da revisão. Para linkar o acervo de propósito (um
+> slide, um PDF que só existe lá), termine o link com `#acervo`:
+> `[slides](/hipertensao#acervo)`. Nas páginas escritas em HTML a troca não é
+> automática: os cartões dos planos de aula foram trocados à mão, e os botões
+> “Slides — …” e o link do PDF do PACK continuam no acervo, que é onde eles estão.
 
 Atalhos diretos para apresentações vêm depois e devem deixar claro que são o recorte mínimo — por exemplo: **“sem tempo? veja pelo menos os slides”**. Arquivos avulsos de orientação pertencem à página do tema clínico, não ao plano de aula; assim, o plano organiza o encontro e o acervo clínico continua centralizado em um só lugar.
 
@@ -292,7 +304,8 @@ rolagem horizontal. As regras estão no fim do `style.css`.
 |---|---|
 | 06/10/2026 | Oito revisões publicadas (Hipertensão, Diabetes tipo 2, Dislipidemia, Dengue, DRC, DAC, IC, DPOC), índice `/revisao/`, item no menu, bloco na página inicial, link em Estudantes, faixa nas páginas de tema antigas e `revisoes.json` para o Hub — PR #29 |
 | 06/10/2026 | Novidade trocada por artigos de acesso aberto; PDFs na pasta SEÇÃO NOVIDADES do Drive, ligados pelo campo `drive:` — PR #29 |
-| 06/10/2026 | Tutorial guiado em todas as revisões e no índice; padrão novo dos PDFs da Novidade (EB Garamond, preto, estilo PubMed) em `ferramentas/novidade-pdf/` |
+| 06/10/2026 | Tutorial guiado em todas as revisões e no índice; padrão novo dos PDFs da Novidade (EB Garamond, preto, estilo PubMed) em `ferramentas/novidade-pdf/` — PR #30 |
+| 06/10/2026 | Links para os temas com revisão (SFC 2, planos de aula, índice de Temas Clínicos, páginas de tema) passam a abrir a revisão; a página antiga aparece como "acervo completo" na busca e no A–Z |
 
 ## Coluna do Estêvão
 

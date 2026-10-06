@@ -552,6 +552,15 @@ sub clean_url {
         # para o site antigo, que não as tem. Comparar também a forma
         # codificada resolve sem mexer em como os arquivos são lidos.
         my $chave = encode_utf8($path);
+        # Tema que ganhou revisão guiada: o link vai para a revisão, que é a
+        # página do tema agora; a antiga virou o acervo e se chega nela pelo
+        # botão "Acervo completo do tema". Pedido da coordenação (06/10/2026),
+        # depois de ver a página do SFC 2 mandando para as páginas antigas.
+        # Quem quiser o acervo de propósito termina o link com "#acervo".
+        if (my $rv = $REVISAO_DO_ACERVO{$path}) {
+            return "${p}$path/" if $u =~ /#acervo\b/;
+            return "${p}revisao/$rv->{slug}/";
+        }
         return "$p$path/" if exists $content{$path}     or exists $PAGINA_HTML{$path}
                           or exists $content{$chave}    or exists $PAGINA_HTML{$chave}
                           or $path eq 'temas' or $path eq 'az' or $path eq 'revisao'
@@ -1902,6 +1911,7 @@ sub write_file {
         # os textos da coluna aparecem na busca sob o nome dela, não sob "A Escola"
         $cat = 'Coluna do Estêvão' if $path =~ m{^\Q$COLUNA\E/};
         my $t = title_of($path);
+        $t .= ' — acervo completo' if $REVISAO_DO_ACERVO{$path};
         push @entries, { t => $t, p => $path, c => $cat };
     }
     my $json = join ",\n", map {
@@ -2046,7 +2056,11 @@ HTML
     for my $g (@group_order) {
         my @slugs = grep { $page{$_}{cat} eq 'temas' && $page{$_}{group} eq $g } @order;
         next unless @slugs;
-        my $items = join "\n", map { qq{<a href="$p$_/">$page{$_}{title}</a>} }
+        my $items = join "\n", map {
+            my $rv = $REVISAO_DO_ACERVO{$_};
+            $rv ? qq{<a href="${p}revisao/$rv->{slug}/">$page{$_}{title} <small>· revisão guiada</small></a>}
+                : qq{<a href="$p$_/">$page{$_}{title}</a>}
+        }
                     sort { lc($page{$a}{title}) cmp lc($page{$b}{title}) } @slugs;
         $groups_html .= qq{<div class="topic-group"><h2>$g</h2><div class="topic-grid">\n$items\n</div></div>\n};
     }
@@ -2080,6 +2094,7 @@ HTML
     my %by_letter;
     for my $slug (grep { !m{/} } keys %content, keys %PAGINA_HTML) {
         my $t = $PAGINA_HTML{$slug} ? $PAGINA_HTML{$slug}{titulo} : title_of($slug);
+        $t .= ' — acervo completo' if $REVISAO_DO_ACERVO{$slug};
         my $letter = uc substr($t =~ s/^\s+//r, 0, 1);
         $letter = '#' unless $letter =~ /\p{L}/;
         $letter =~ tr/ÁÀÂÃÉÊÍÓÔÕÚÇ/AAAAEEIOOOUC/;

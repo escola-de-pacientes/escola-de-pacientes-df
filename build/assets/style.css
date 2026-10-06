@@ -3269,3 +3269,143 @@ article.content .fx-secao h3::before { display: none; }
   .fx-forcas li { grid-template-columns: 1fr 4.5rem; gap: .4rem .7rem; }
   .fx-forca-trilho { grid-column: 1 / -1; grid-row: 2; }
 }
+
+/* ============================================================
+   Revisão por doença — o que aparece FORA das páginas de revisão
+   (menu, cartões da home, faixa nas páginas de tema). O resto do
+   desenho mora em assets/revisao.css, que só essas páginas carregam.
+   ============================================================ */
+
+/* Uma cor por doença. A cor acompanha a doença em todo lugar em que ela
+   aparece — cartão, faixa, página —, para a pessoa reconhecer de longe. */
+.rv-cor-vermelho { --rv: #d93025; --rv-dark: #a50e0e; --rv-bg: #fce8e6; }
+.rv-cor-azul     { --rv: #1a73e8; --rv-dark: #174ea6; --rv-bg: #e8f0fe; }
+.rv-cor-ambar    { --rv: #b06000; --rv-dark: #8a4a00; --rv-bg: #fef2e0; }
+.rv-cor-verde    { --rv: #188038; --rv-dark: #0d652d; --rv-bg: #e6f4ea; }
+.rv-cor-roxo     { --rv: #8430ce; --rv-dark: #681da8; --rv-bg: #f3e8fd; }
+.rv-cor-rosa     { --rv: #c2185b; --rv-dark: #880e4f; --rv-bg: #fce4ec; }
+.rv-cor-teal     { --rv: #00796b; --rv-dark: #00574b; --rv-bg: #e0f2f1; }
+.rv-cor-indigo   { --rv: #3949ab; --rv-dark: #283593; --rv-bg: #e8eaf6; }
+:root[data-theme="dark"] .rv-cor-vermelho { --rv: #f28b82; --rv-dark: #f6aea9; --rv-bg: #3a1f1e; }
+:root[data-theme="dark"] .rv-cor-azul     { --rv: #8ab4f8; --rv-dark: #aecbfa; --rv-bg: #1f2a3a; }
+:root[data-theme="dark"] .rv-cor-ambar    { --rv: #fdd663; --rv-dark: #fde293; --rv-bg: #332b16; }
+:root[data-theme="dark"] .rv-cor-verde    { --rv: #81c995; --rv-dark: #a8dab5; --rv-bg: #1f2e22; }
+:root[data-theme="dark"] .rv-cor-roxo     { --rv: #d7aefb; --rv-dark: #e9d2fd; --rv-bg: #2d2238; }
+:root[data-theme="dark"] .rv-cor-rosa     { --rv: #f48fb1; --rv-dark: #f8bbd0; --rv-bg: #3a1f2a; }
+:root[data-theme="dark"] .rv-cor-teal     { --rv: #80cbc4; --rv-dark: #b2dfdb; --rv-bg: #1a2e2c; }
+:root[data-theme="dark"] .rv-cor-indigo   { --rv: #9fa8da; --rv-dark: #c5cae9; --rv-bg: #22253a; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .rv-cor-vermelho { --rv: #f28b82; --rv-dark: #f6aea9; --rv-bg: #3a1f1e; }
+  :root:not([data-theme="light"]) .rv-cor-azul     { --rv: #8ab4f8; --rv-dark: #aecbfa; --rv-bg: #1f2a3a; }
+  :root:not([data-theme="light"]) .rv-cor-ambar    { --rv: #fdd663; --rv-dark: #fde293; --rv-bg: #332b16; }
+  :root:not([data-theme="light"]) .rv-cor-verde    { --rv: #81c995; --rv-dark: #a8dab5; --rv-bg: #1f2e22; }
+  :root:not([data-theme="light"]) .rv-cor-roxo     { --rv: #d7aefb; --rv-dark: #e9d2fd; --rv-bg: #2d2238; }
+  :root:not([data-theme="light"]) .rv-cor-rosa     { --rv: #f48fb1; --rv-dark: #f8bbd0; --rv-bg: #3a1f2a; }
+  :root:not([data-theme="light"]) .rv-cor-teal     { --rv: #80cbc4; --rv-dark: #b2dfdb; --rv-bg: #1a2e2c; }
+  :root:not([data-theme="light"]) .rv-cor-indigo   { --rv: #9fa8da; --rv-dark: #c5cae9; --rv-bg: #22253a; }
+}
+
+/* O item do menu que abre o site. É o único com ícone e fundo: a coordenação
+   pediu que as revisões ficassem à vista, e um item igual aos outros cinco
+   seria só mais um. */
+nav.main > ul > li.nav-destaque > a { gap: .35rem; }
+nav.main > ul > li.nav-destaque > a .msym { font-size: 18px; color: var(--accent); }
+nav.main > ul > li.nav-destaque > a::before {
+  content: ''; position: absolute; inset: .85rem .2rem; z-index: -1;
+  border-radius: 999px; background: var(--g-azul-bg);
+  transition: background .2s var(--ease);
+}
+nav.main > ul > li.nav-destaque > a:hover::before,
+nav.main > ul > li.nav-destaque > a[aria-current="page"]::before { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+nav.main > ul > li.nav-destaque > a { position: relative; isolation: isolate; padding-left: .95rem; padding-right: .95rem; }
+.nav-d-curto { display: none; }
+/* Nas faixas em que o cabeçalho já era justo (ver as faixas do menu, mais
+   acima), o item entra sem ícone e com o nome curto, e os vizinhos cedem um
+   pouco de respiro: um sexto item não pode empurrar a busca para fora da tela.
+   Conferido de 881 a 1920px, de 20 em 20, sem rolagem horizontal. */
+@media (min-width: 881px) and (max-width: 1380px) {
+  .nav-d-longo { display: none; }
+  .nav-d-curto { display: inline; }
+  nav.main > ul > li.nav-destaque > a .msym { display: none; }
+  nav.main > ul > li.nav-destaque > a { padding-left: .6rem; padding-right: .6rem; }
+  nav.main > ul > li.nav-destaque > a::before { inset: .9rem .05rem; }
+}
+/* O cabeçalho não tinha folga nenhuma: em toda largura o menu ocupava os
+   1200px do contêiner até o último pixel. O sexto item precisa de espaço de
+   verdade, e ele sai de dois lugares:
+   - em tela larga, o cabeçalho passa a usar até 1360px (o conteúdo da página
+     continua em 1200px, centralizado embaixo dele);
+   - em tela de notebook e tablet deitado, o nome ao lado da logo sai — a logo
+     fica, e ela já traz o nome escrito. */
+@media (min-width: 1381px) {
+  .header-inner { max-width: 1360px; }
+}
+/* o nome longo do item só a partir de 1600px; abaixo, "Revisões" com ícone */
+@media (min-width: 1381px) and (max-width: 1599px) {
+  .nav-d-longo { display: none; }
+  .nav-d-curto { display: inline; }
+}
+@media (min-width: 881px) and (max-width: 1380px) {
+  .header-inner { max-width: none; }
+}
+@media (min-width: 881px) and (max-width: 1420px) {
+  .brand-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+@media (max-width: 880px) {
+  nav.main > ul > li.nav-destaque > a::before { inset: .35rem 1rem; }
+}
+
+/* cartão de uma revisão — home, índice /revisao/ e fim de cada revisão */
+.rv-cartoes { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: .9rem; }
+.rv-cartao {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: flex; align-items: center; gap: .85rem;
+  padding: 1rem 1.1rem; border-radius: 18px;
+  background: var(--glass-tint-strong); border: 1px solid var(--glass-edge);
+  box-shadow: var(--shadow); color: var(--ink); text-decoration: none !important;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+}
+.rv-cartao::after {
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0;
+  background: radial-gradient(120% 90% at 0% 0%, var(--rv-bg), transparent 70%);
+  transition: opacity .3s var(--ease);
+}
+.rv-cartao:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); border-color: color-mix(in srgb, var(--rv) 45%, transparent); }
+.rv-cartao:hover::after { opacity: 1; }
+.rv-c-ico {
+  flex: none; width: 46px; height: 46px; border-radius: 14px;
+  display: grid; place-items: center; background: var(--rv-bg); color: var(--rv);
+  transition: transform .4s cubic-bezier(.34, 1.56, .64, 1);
+}
+.rv-c-ico .msym { font-size: 26px; }
+.rv-cartao:hover .rv-c-ico { transform: rotate(-8deg) scale(1.08); }
+.rv-c-txt { flex: 1; min-width: 0; }
+.rv-c-txt b { display: block; font-family: var(--font-sans); font-weight: 500; font-size: .98rem; line-height: 1.25; }
+.rv-c-txt small { display: block; color: var(--muted); font-size: .75rem; margin-top: .15rem; }
+.rv-c-nv {
+  display: inline-block; margin-left: .45rem; vertical-align: 1px;
+  font-size: .6rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--rv); background: var(--rv-bg); padding: .08rem .42rem; border-radius: 999px;
+}
+.rv-c-seta { color: var(--rv); font-weight: 500; transition: transform .3s var(--ease); }
+.rv-cartao:hover .rv-c-seta { transform: translateX(4px); }
+.rv-home .rv-cartoes { margin-top: .4rem; }
+
+/* faixa no alto da página de tema antiga, que passa a ser o acervo */
+.rv-faixa {
+  display: flex; align-items: center; gap: 1rem;
+  margin: 0 0 2rem; padding: 1rem 1.2rem; border-radius: 18px;
+  background: linear-gradient(120deg, var(--rv-bg), var(--glass-tint-strong) 75%);
+  border: 1px solid color-mix(in srgb, var(--rv) 35%, transparent);
+  box-shadow: var(--shadow); color: var(--ink); text-decoration: none !important;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.rv-faixa:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.rv-faixa-ico { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--rv); color: #fff; }
+:root[data-theme="dark"] .rv-faixa-ico { color: #131314; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .rv-faixa-ico { color: #131314; } }
+.rv-faixa-txt { flex: 1; min-width: 0; }
+.rv-faixa-txt b { display: block; font-family: var(--font-sans); font-weight: 500; color: var(--rv-dark); }
+.rv-faixa-txt small { display: block; color: var(--muted); font-size: .84rem; line-height: 1.45; margin-top: .15rem; }
+.rv-faixa-seta { color: var(--rv); font-size: 1.2rem; transition: transform .3s var(--ease); }
+.rv-faixa:hover .rv-faixa-seta { transform: translateX(4px); }

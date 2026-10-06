@@ -16,6 +16,7 @@ build/
   landing.html      # template da página inicial (vitrine institucional)
   nucleo-ep.html    # template da página do Núcleo EP (sistema de gestão do grupo)
   vitrine-dados.md  # dados curados da vitrine (publicações, prêmios, reportagens, trajetória)
+  revisao/          # uma revisão guiada por doença (/revisao/<slug>/) — ver seção própria
   assets/           # CSS, JS de busca e imagens copiados para docs/assets/
   content/          # conteúdo das páginas principais (markdown simplificado)
   content2/         # conteúdo das subpáginas (nome de arquivo usa "__" como separador de pasta)
@@ -175,6 +176,77 @@ estiver na pasta, é ela que aparece.
 > com 2000 px de largura) e apague as versões `-800`/`-1400`/`-2000` antigas,
 > ou gere as novas. O assunto deve estar no centro — a foto é cortada para
 > preencher a faixa, que muda de altura conforme a tela.
+
+## Revisão por doença
+
+Uma página por doença em `/revisao/<doença>/`, com índice em `/revisao/`. É o
+destino do link que o SimulaPacientes vai mostrar ao fim de uma simulação com
+resultado insatisfatório: o estudante cai no conteúdo da doença do paciente que
+acabou de atender.
+
+A página segue sempre a mesma linha de raciocínio:
+
+| Bloco | O que tem |
+|---|---|
+| **Novidade** (no topo) | um artigo recente de pesquisa sobre a doença |
+| **Etapa 1 — pouco tempo** | vídeo curto e podcast |
+| **Etapa 2 — abordagem e terapêutica** | protocolos nacionais e capítulos em janelas do Drive, e vídeos mais longos |
+| **Etapa 3 — aprofundamento** | abas por área: farmacologia, semiologia, fisiopatologia, diretrizes, saúde pública… |
+
+**Não há texto próprio sobre a doença** — decisão da coordenação (06/10/2026).
+A página aponta para o material (protocolo, capítulo, aula, vídeo) e não o
+resume. O texto que aparece é só a moldura, igual em todas as doenças.
+
+**Para criar ou editar uma revisão, mexa só em `build/revisao/<slug>.md`.** O
+formato está explicado em [`build/revisao/_modelo.md`](build/revisao/_modelo.md):
+uma linha por item, `- tipo | endereço | título | fonte`. O menu, a busca, o
+índice A–Z, o bloco da página inicial e a faixa no alto da página de tema antiga
+(`ACERVO:`) se ajustam sozinhos. O gerador lê o arquivo com rigor: item que ele
+não entende para a geração com o número da linha.
+
+> ⚠️ **Janela do Drive só abre se o arquivo estiver como "qualquer pessoa com o
+> link pode ver".** A pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF" já está
+> assim, e o que entra nela herda. Arquivo de outra pasta precisa ser conferido —
+> é o erro que aparece hoje em `/neuro-ave-derrame/`, onde a pasta embutida
+> não existe mais e a janela mostra um 404 do Google.
+
+> ⚠️ **Nunca coloque numa revisão roteiro, checklist de correção ou nome de caso
+> do SimulaPacientes.** A página é pública, e o par caso → doença entregaria o
+> gabarito.
+
+### Ligar o SimulaPacientes às revisões
+
+O site já está pronto; o que falta é do lado do Hub, que é privado. O gerador
+publica `https://escoladepacientes.com/revisao/revisoes.json` com o endereço de
+cada revisão:
+
+```json
+{ "slug": "dengue",
+  "url": "https://escoladepacientes.com/revisao/dengue/",
+  "urlDaSimulacao": "https://escoladepacientes.com/revisao/dengue/?origem=simulapacientes" }
+```
+
+- O Hub guarda, **só lá**, qual caso leva a qual `slug`.
+- No fim de uma simulação com resultado insatisfatório, ele mostra um link para
+  `urlDaSimulacao`. Com `?origem=simulapacientes`, a página abre com a faixa
+  "Você veio do SimulaPacientes" e um botão de volta.
+- Opcional: `&volta=<endereço>` troca o destino desse botão. Só endereços
+  `https://simulapacientes.escoladepacientes.com/...` ou
+  `https://hub-de-ll-ms.vercel.app/...` são aceitos; qualquer outro é ignorado,
+  para a página não virar um redirecionador aberto com a cara da Escola.
+- Os slugs de hoje: `hipertensao`, `diabetes`, `dislipidemia`, `dengue`,
+  `doenca-renal-cronica`, `doenca-arterial-coronariana`,
+  `insuficiencia-cardiaca`, `dpoc`. **Renomear um arquivo muda o endereço** e
+  quebra o link do Hub.
+
+### Por que o cabeçalho mudou junto
+
+O menu ganhou um sexto item, "Revisão por doença", e o cabeçalho não tinha
+folga nenhuma — o menu ocupava os 1200px do contêiner até o último pixel. Para
+caber sem empurrar a busca para fora da tela: acima de 1380px o cabeçalho usa até
+1360px; até 1420px o nome ao lado da logo sai (a logo traz o nome escrito); e
+até 1599px o item aparece como "Revisões". Conferido de 375 a 1940px, sem
+rolagem horizontal. As regras estão no fim do `style.css`.
 
 ## Coluna do Estêvão
 

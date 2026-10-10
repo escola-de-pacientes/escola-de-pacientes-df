@@ -9,20 +9,20 @@ Material reunido pelo grupo na pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO
 EPDF / 1.Dengue" (inclusive o documento "Links legais") e no acervo do site
 (/dengue/).
 
-## Novidade
+## Novo na pesquisa
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
-"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVIDADES" do Drive, e abre
+"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
 - artigo | https://doi.org/10.1016/j.lana.2025.101309 | Dengue virus genetic diversity in unvaccinated and vaccinated dengue-infected individuals: an observational analysis of the Butantan-DV phase 3 trial in Brazil | Lancet Reg Health Am · novembro de 2025 | pubmed: 41403717 | drive: 1njcR6XzTGv-iaD6CLV5YLvmLGlwpOZij
 
-## Etapa 1
+## Passo 1
 - video | https://youtu.be/NWvkpEg1TN0 | Sintomas da dengue | Drauzio Varella
 - video | https://youtu.be/yn2Ii2kPoZo | Fases da dengue | Drauzio Varella
 - podcast | https://open.spotify.com/episode/2rWHMy0ungIWAB03tsr0dq | TdC 97: Dengue | Tá de Clinicagem
 - drive | 1alp17o4RcKEYvfPrnTS2R6k1aYbGaa7U | Sintomas da dengue — card | Infográfico
 - drive | 1ocjkMgetGCb9j4u85VLeCdqgDayPEDDu | Infográfico da dengue | Secom UnB · 2025
 
-## Etapa 2
+## Passo 2
 - drive | 1ICQSMUtYsGIhDjpLCar7LBU0M4_iVasR | Dengue: diagnóstico e manejo clínico — adulto e criança | Ministério da Saúde
 - drive | 1E55MWjbStFuZfGLsaW3H8r7CjMwgW8uO | Cartaz: suspeita de dengue e classificação de risco | Ministério da Saúde
 - doc | 1l1ViYI9sDn0_Y4gwa1pvpAZu5Ycm0aCImbZRMKBMTBo | Dengue | Tratado de Medicina de Família e Comunidade · Gusso, 2019 · cap. 257
@@ -33,7 +33,7 @@ numa janela da página pelo campo "drive:".
 - video | https://youtu.be/1K3zLLhSknI | Dengue — aula 3 | FreeMedEducation
 - video | https://youtu.be/i3l_-Lbu8ew | Dengue e arboviroses | Drauzio Varella
 
-## Etapa 3
+## Passo 3
 ### Infectologia
 - drive | 1GVZKMtYds5OSyMtWqOoUDoMRgPLJcvAj | Dengue — CDC Yellow Book | Centers for Disease Control and Prevention
 - link | https://www.cdc.gov/dengue/index.html | Dengue — página do CDC | CDC

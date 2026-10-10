@@ -1,7 +1,7 @@
-# PDF da Novidade
+# PDF do "Novo na pesquisa"
 
 Gera o PDF do artigo que abre no topo de cada revisão por doença
-(`/revisao/<doença>/`, bloco **Novidade**). Esta pasta **não é publicada** no
+(`/revisao/<doença>/`, bloco **Novo na pesquisa**). Esta pasta **não é publicada** no
 site: o gerador só lê `build/`.
 
 ## O padrão (pedido da coordenação, 06/10/2026)
@@ -41,17 +41,17 @@ site: o gerador só lê `build/`.
 3. Rode, dando o PMID, o slug da revisão e o nome da doença:
 
    ```sh
-   python3 ferramentas/novidade-pdf/gerar_pdf.py \
+   python3 ferramentas/novo-na-pesquisa-pdf/gerar_pdf.py \
        --texto texto.json --metadados meta.json \
        --doenca 41403717 dengue "Dengue" \
        --saida pdfs/
    ```
 
-   O arquivo sai como `NOVIDADE - Dengue - dengue.pdf`. `--doenca` pode se
+   O arquivo sai como `NOVO NA PESQUISA - Dengue - dengue.pdf`. `--doenca` pode se
    repetir para gerar vários de uma vez, se os JSON tiverem vários artigos.
 
 4. Suba o PDF na pasta **"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO
-   NOVIDADES"** do Drive (ela é pública por link; o arquivo herda).
+   NOVO NA PESQUISA"** do Drive (ela é pública por link; o arquivo herda).
 5. Em `build/revisao/<slug>.md`, troque a linha `- artigo` pela do novo artigo e
    ponha o ID do PDF no fim: `| pubmed: <PMID> | drive: <ID do arquivo>`.
 

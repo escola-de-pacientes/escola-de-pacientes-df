@@ -18,7 +18,7 @@ build/
   vitrine-dados.md  # dados curados da vitrine (publicações, prêmios, reportagens, trajetória)
   revisao/          # uma revisão guiada por doença (/revisao/<slug>/) — ver seção própria
 ferramentas/
-  novidade-pdf/     # gera o PDF do artigo da Novidade (não é publicado no site)
+  novo-na-pesquisa-pdf/  # gera o PDF do artigo de "Novo na pesquisa" (não é publicado no site)
   assets/           # CSS, JS de busca e imagens copiados para docs/assets/
   content/          # conteúdo das páginas principais (markdown simplificado)
   content2/         # conteúdo das subpáginas (nome de arquivo usa "__" como separador de pasta)
@@ -198,14 +198,40 @@ destino do link que o SimulaPacientes vai mostrar ao fim de uma simulação com
 resultado insatisfatório: o estudante cai no conteúdo da doença do paciente que
 acabou de atender.
 
-A página segue sempre a mesma linha de raciocínio:
+A página segue sempre a mesma linha de raciocínio. **Cada parte tem um nome
+só, o mesmo em todo lugar** — mapa do topo, trilha, cabeçalho do passo,
+tutorial, índice, arquivos de dados e Drive (decisão da coordenação,
+10/10/2026, depois de queixas de que os alunos não entendiam as etapas):
 
-| Bloco | O que tem |
+| Nome | O que tem |
 |---|---|
-| **Novidade** (no topo) | um artigo recente de pesquisa sobre a doença |
-| **Etapa 1 — pouco tempo** | vídeo curto e podcast |
-| **Etapa 2 — abordagem e terapêutica** | protocolos nacionais e capítulos em janelas do Drive, e vídeos mais longos |
-| **Etapa 3 — aprofundamento** | abas por área: farmacologia, semiologia, fisiopatologia, diretrizes, saúde pública… |
+| **Novo na pesquisa** (no topo, opcional) | um artigo recente de pesquisa sobre a doença |
+| **Passo 1 · O básico** | vídeo curto e podcast |
+| **Passo 2 · Como atender** | protocolos nacionais e capítulos em janelas do Drive, e vídeos mais longos |
+| **Passo 3 · Aprofunde** | mais material, em botões por assunto: diretrizes, fisiologia, semiologia, prescrição, saúde pública… |
+
+Os nomes ficam em `@RV_ETAPAS`, no `build.pl`. Para trocar um, troque ali (e
+neste README).
+
+**Como a página se organiza** (redesenho de 10/10/2026, pensado primeiro para o
+celular):
+
+- No topo, o **mapa dos passos**: três cartões com o número, o nome e o que há
+  dentro ("2 vídeos e 2 podcasts", "9 textos, 1 vídeo…", "7 assuntos"). Tocar
+  num cartão leva ao passo. A frase de cima diz o que fazer: "Siga os 3 passos,
+  na ordem. Com pouco tempo, faça só o primeiro."
+- "Novo na pesquisa" vem compacto, com uma frase explicando o que é e o aviso
+  de que é leitura extra. O artigo abre na janela "Ler o artigo completo".
+- **Todas as janelas do Drive começam fechadas.** Abertas, elas ocupavam a tela
+  inteira do celular e escondiam o resto do passo.
+- Quando um passo mistura tipos de material, cada grupo ganha um rótulo:
+  "Para ler", "Para assistir e ouvir", "Aula em slides", "Na internet".
+- No fim de cada passo: "Terminei o passo N" (salvo no aparelho; o passo ganha
+  um ✓ no mapa e na trilha) e "Ir para o passo N+1".
+- No celular, os vídeos aparecem em linha (capa à esquerda, título à direita) e
+  o tocador ocupa a largura quando a pessoa toca; os assuntos do passo 3 são
+  botões que quebram linha, todos à vista; a trilha do alto mostra o nome de
+  cada passo e rola sozinha até o passo atual.
 
 **Não há texto próprio sobre a doença** — decisão da coordenação (06/10/2026).
 A página aponta para o material (protocolo, capítulo, aula, vídeo) e não o
@@ -228,38 +254,43 @@ não entende para a geração com o número da linha.
 > do SimulaPacientes.** A página é pública, e o par caso → doença entregaria o
 > gabarito.
 
-### O tutorial: "Como funciona esta página"
+### O tutorial: "Como usar esta página"
 
 Pedido da coordenação (06/10/2026): quem chega precisa entender a página sem
-ninguém explicar — que a Novidade é um artigo atual, que a Etapa 1 é para quem
-tem pouco tempo, e assim por diante. Toda revisão, e o índice `/revisao/`, têm:
+ninguém explicar — que "Novo na pesquisa" é um artigo atual e opcional, que o
+passo 1 é para quem tem pouco tempo, e assim por diante. Toda revisão, e o
+índice `/revisao/`, têm:
 
-- o botão **"Como funciona esta página"** no topo e o botão flutuante
-  **"Tutorial"** no canto da tela, que abrem um passo a passo: a página rola até
-  cada parte, só ela fica acesa, e um cartão explica para que ela serve (9
-  passos na revisão, 5 no índice). Setas do teclado avançam e voltam; Esc fecha;
+- o link **"Como usar esta página"** no topo e o botão flutuante
+  **"Tutorial"** no canto da tela, que abrem uma sequência de dicas: a página
+  rola até cada parte, só ela fica acesa, e um cartão explica para que ela
+  serve (8 dicas na revisão, 3 no índice). O contador diz "Dica 1 de 8", e não
+  "Passo", para não confundir com os passos da revisão. Setas do teclado
+  avançam e voltam; Esc fecha;
 - um **convite** na primeira visita ("Primeira vez aqui?"), perto do botão
   flutuante. Ele **não abre o tutorial sozinho** — quem veio só buscar um PDF não
   pode ser interrompido — e não volta depois de dispensado ou visto (fica
   guardado no navegador, valendo para todas as revisões).
 
 Os textos de cada passo ficam no `build.pl` (`rv_tour_passos_doenca` e
-`rv_tour_passos_indice`), não no JavaScript: são moldura, como o nome das
-etapas. Cada passo aponta para um seletor da página; passo cujo alvo não existe
-(uma revisão sem Novidade, por exemplo) é pulado sozinho. Sem JavaScript, os
+`rv_tour_passos_indice`), não no JavaScript: são moldura, como o nome dos
+passos. Cada dica aponta para um seletor da página; dica cujo alvo não existe
+(uma revisão sem "Novo na pesquisa", por exemplo) é pulada sozinha. Sem JavaScript, os
 botões do tutorial nem aparecem.
 
-### A Novidade: o artigo e o PDF
+### "Novo na pesquisa": o artigo e o PDF
 
 - **Só artigo de acesso aberto no PubMed Central.** O texto completo fica
   público numa janela do site, e artigo pago (NEJM, Lancet, Nature Medicine
   fechados) não pode. Os primeiros escolhidos eram pagos e foram trocados em
   06/10/2026 por estudos de 2025–2026 de acesso aberto.
 - **O PDF fica no Drive**, na pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF /
-  SEÇÃO NOVIDADES" (pública por link). Na revisão, ele entra pelo campo
-  `drive:` da linha `- artigo`, e a janela "Texto completo do artigo" aparece
-  aberta logo abaixo do título.
-- **PDFs novos seguem o padrão de [`ferramentas/novidade-pdf/`](ferramentas/novidade-pdf/README.md)**:
+  SEÇÃO NOVO NA PESQUISA" (pública por link), com o nome
+  `NOVO NA PESQUISA - <Doença> - <slug>.pdf`. Na revisão, ele entra pelo campo
+  `drive:` da linha `- artigo`, na janela "Ler o artigo completo". A pasta e os
+  arquivos se chamavam "SEÇÃO NOVIDADES" e "NOVIDADE - …" até 10/10/2026;
+  renomear no Drive não muda o ID, e os links continuaram valendo.
+- **PDFs novos seguem o padrão de [`ferramentas/novo-na-pesquisa-pdf/`](ferramentas/novo-na-pesquisa-pdf/README.md)**:
   EB Garamond, texto 100% preto e formatação semelhante à ficha do PubMed. Os
   oito publicados em 06/10/2026 foram feitos antes desse padrão (fonte sem
   serifa, cinzas e azul) e, por decisão da coordenação, **ficam como estão**.
@@ -304,8 +335,9 @@ rolagem horizontal. As regras estão no fim do `style.css`.
 |---|---|
 | 06/10/2026 | Oito revisões publicadas (Hipertensão, Diabetes tipo 2, Dislipidemia, Dengue, DRC, DAC, IC, DPOC), índice `/revisao/`, item no menu, bloco na página inicial, link em Estudantes, faixa nas páginas de tema antigas e `revisoes.json` para o Hub — PR #29 |
 | 06/10/2026 | Novidade trocada por artigos de acesso aberto; PDFs na pasta SEÇÃO NOVIDADES do Drive, ligados pelo campo `drive:` — PR #29 |
-| 06/10/2026 | Tutorial guiado em todas as revisões e no índice; padrão novo dos PDFs da Novidade (EB Garamond, preto, estilo PubMed) em `ferramentas/novidade-pdf/` — PR #30 |
-| 06/10/2026 | Links para os temas com revisão (SFC 2, planos de aula, índice de Temas Clínicos, páginas de tema) passam a abrir a revisão; a página antiga aparece como "acervo completo" na busca e no A–Z |
+| 06/10/2026 | Tutorial guiado em todas as revisões e no índice; padrão novo dos PDFs da Novidade (EB Garamond, preto, estilo PubMed) em `ferramentas/novidade-pdf/` (hoje `ferramentas/novo-na-pesquisa-pdf/`) — PR #30 |
+| 06/10/2026 | Links para os temas com revisão (SFC 2, planos de aula, índice de Temas Clínicos, páginas de tema) passam a abrir a revisão; a página antiga aparece como "acervo completo" na busca e no A–Z — PR #31 |
+| 10/10/2026 | Redesenho para ficar claro (e pensado para o celular): mapa dos 3 passos no topo, um nome só por parte ("Novo na pesquisa", "O básico", "Como atender", "Aprofunde"), janelas fechadas, rótulos por grupo, "Ir para o passo seguinte", vídeos em linha no celular; seção "Novidade" renomeada em tudo, inclusive pasta e PDFs no Drive |
 
 ## Coluna do Estêvão
 

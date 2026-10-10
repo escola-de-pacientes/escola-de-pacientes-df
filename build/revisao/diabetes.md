@@ -9,18 +9,18 @@ BUSCA: DM2, glicemia, insulina, metformina
 Material reunido pelo grupo na pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO
 EPDF / 2.Diabetes" e no acervo do site (/diabetes/).
 
-## Novidade
+## Novo na pesquisa
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
-"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVIDADES" do Drive, e abre
+"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
 - artigo | https://doi.org/10.1136/bmj-2024-081820 | Dapagliflozin plus calorie restriction for remission of type 2 diabetes: multicentre, double blind, randomised, placebo controlled trial | BMJ · janeiro de 2025 | pubmed: 39843169 | drive: 1Fm0Xywb7ql-xf5ybEQtwkdRiqnELDYfg
 
-## Etapa 1
+## Passo 1
 - video | https://www.youtube.com/watch?v=V_KhsJe4vnc | O que é diabetes? | Drauzio Varella
 - video | https://www.youtube.com/watch?v=QQdZ0r7nc0E | Os principais fatores de risco para o diabetes tipo 2 | Drauzio Varella
 - podcast | https://open.spotify.com/episode/1QAynhjE9pl7NRqEoiHznO | TdC 187: Ozempic/semaglutida — 4 clinicagens | Tá de Clinicagem
 
-## Etapa 2
+## Passo 2
 - drive | 1PCWEXupH3MPfS_w8D6uFZy6BLi_ZSEWi | Protocolo Clínico e Diretrizes Terapêuticas do Diabete Melito Tipo 2 | Ministério da Saúde · Conitec · 2024
 - drive | 1nYtQn0StD8tkGp40D3oYRijjjocZ1IT6 | Diabetes: rastreio e diagnóstico | PACK Brasil 2025 · p. 138
 - drive | 1EJlm2tyhiFy0z4LdB1ZV4lz9lxU514Eo | Diabetes: rastreio e diagnóstico (continuação) | PACK Brasil 2025 · p. 139
@@ -36,7 +36,7 @@ numa janela da página pelo campo "drive:".
 - slides | 1BmzE5Cs7536I6tgnRn4TIoIvbr15KvDuWoSUOwI7uPQ | Aula: diabetes — tratamento | Escola de Pacientes
 - slides | 14s6VR4AqivO5poNT3AY6RxldBho6F154YgMbul-INM4 | Aula: DM1, DM2 e complicações | Escola de Pacientes
 
-## Etapa 3
+## Passo 3
 ### Diretrizes
 - drive | 1HBZujShQY7MK7Wb2k-KQt-KRQTfYSEqR | Standards of Care in Diabetes — 2026: introdução e metodologia | American Diabetes Association · Diabetes Care 2026
 - drive | 1m76pPvmJ8rpTz_YSLX3iAgItOXVSaSkc | Diretrizes da Sociedade Brasileira de Diabetes 2019–2020 | Sociedade Brasileira de Diabetes

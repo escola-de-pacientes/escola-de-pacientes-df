@@ -9,18 +9,18 @@ Material reunido pelo grupo na pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO
 EPDF / 3.Dislipidemia" (inclusive o documento "Links para Dislipidemia") e no
 acervo do site (/dislipidemia/).
 
-## Novidade
+## Novo na pesquisa
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
-"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVIDADES" do Drive, e abre
+"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
 - artigo | https://doi.org/10.1093/eurheartj/ehaf685 | Inclisiran-based treatment strategy in hypercholesterolaemia: the VICTORION-difference trial | Eur Heart J · 2026 | pubmed: 40884558 | drive: 1fZ0N-LtoduGd2lEs_VOEDr69XV97mVd7
 
-## Etapa 1
+## Passo 1
 - video | https://www.youtube.com/watch?v=0Mjci1jQ3hw | Dislipidemia: para entender de forma básica | YouTube | duracao: 6 min
 - video | https://www.youtube.com/watch?v=KD9r3Psl4BM | Dr. Drauzio responde dúvidas sobre colesterol | Drauzio Varella
 - podcast | https://open.spotify.com/episode/2YhkiyH1K3gqnj12ZM6DHF | Diretriz brasileira de dislipidemias 2025: o que muda nas indicações e nas combinações | Afya Cardiopapers
 
-## Etapa 2
+## Passo 2
 - drive | 1tFwQAjweyYWE0BYIP60p6CZZptExhkuv | Protocolo Clínico e Diretrizes Terapêuticas da Dislipidemia: prevenção de eventos cardiovasculares e pancreatite | Ministério da Saúde · Conitec · 2020
 - drive | 1iTp-rp_33HZL6h6efl5Pd3nR8701onii | Guia rápido: dislipidemia | Secretaria Municipal de Saúde de Londrina
 - doc | 1cPMFjW_l5hYwKl0nmPo2h0aLk7-htWWpptrluicx6bw | Dislipidemia | Tratado de Medicina de Família e Comunidade · Gusso, 2019 · cap. 177
@@ -31,7 +31,7 @@ numa janela da página pelo campo "drive:".
 - video | https://www.youtube.com/watch?v=Vepsn3YFSEo | Dislipidemia: para entender de forma aprofundada | YouTube | duracao: 18 min
 - video | https://www.youtube.com/watch?v=4XEHGOkukK4 | Tratamento não farmacológico da dislipidemia — Diretriz Brasileira de Dislipidemias 2025 | YouTube | duracao: 15 min
 
-## Etapa 3
+## Passo 3
 ### Diretrizes
 - drive | 1bCL3t6YpUbFQpu3dq5K-mdW7Z18ZV2Cx | Diretriz Brasileira de Dislipidemias e Prevenção da Aterosclerose 2025 | Arq Bras Cardiol 2025;122(9) · Sociedade Brasileira de Cardiologia
 ### Fisiologia

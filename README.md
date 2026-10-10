@@ -105,15 +105,15 @@ perl build/build.pl        # precisa do módulo URI::Escape
 
 ### Links de conteúdo nos planos de aula
 
-Em cada bloco **“Aula — tema clínico”**, o primeiro cartão deve abrir a página do tema no site. Quando o tema tem **revisão guiada** (`/revisao/<doença>/`), é ela a página do tema: o cartão aponta para lá e se chama **“— revisão guiada”**. Temas sem revisão continuam com o cartão **“conteúdo completo”** apontando para a página do tema, que reúne slides, Tratado MFC, PACK, checklists e orientações.
+Em cada bloco **“Aula — tema clínico”**, o primeiro cartão deve abrir a página do tema no site. Quando o tema tem **revisão guiada** (`/revisao/<doença>/`), é ela a página do tema: o cartão aponta para lá, se chama **“— revisão guiada”** e tem o subtítulo **“3 passos: o básico, como atender e aprofunde”** (desde 10/10/2026, com os nomes únicos dos passos). Temas sem revisão continuam com o cartão **“conteúdo completo”** apontando para a página do tema, que reúne slides, Tratado MFC, PACK, checklists e orientações.
 
 > **Link para tema com revisão vai para a revisão.** Desde 06/10/2026 o gerador
 > troca sozinho, no conteúdo em markdown, todo link para uma página de tema que
 > tem revisão (`/hipertensao`, `/diabetes`, `/dislipidemia`, `/dengue`,
 > `/cardio-infarto-do-miocardio`, `/cardio-insuficiencia-cardiaca`) pelo link da
 > revisão; o índice de Temas Clínicos também. A página antiga virou o **acervo
-> completo** — é assim que aparece na busca e no A–Z — e se chega nela pelo botão
-> "Acervo completo do tema" da revisão. Para linkar o acervo de propósito (um
+> completo** — é assim que aparece na busca e no A–Z — e se chega nela pelo link
+> "Acervo completo do tema", embaixo do mapa dos passos, no topo da revisão. Para linkar o acervo de propósito (um
 > slide, um PDF que só existe lá), termine o link com `#acervo`:
 > `[slides](/hipertensao#acervo)`. Nas páginas escritas em HTML a troca não é
 > automática: os cartões dos planos de aula foram trocados à mão, e os botões
@@ -362,7 +362,7 @@ rolagem horizontal. As regras estão no fim do `style.css`.
 | 06/10/2026 | Tutorial guiado em todas as revisões e no índice; padrão novo dos PDFs da Novidade (EB Garamond, preto, estilo PubMed) em `ferramentas/novidade-pdf/` (hoje `ferramentas/novo-na-pesquisa-pdf/`) — PR #30 |
 | 06/10/2026 | Links para os temas com revisão (SFC 2, planos de aula, índice de Temas Clínicos, páginas de tema) passam a abrir a revisão; a página antiga aparece como "acervo completo" na busca e no A–Z — PR #31 |
 | 10/10/2026 | Redesenho para ficar claro (e pensado para o celular): mapa dos 3 passos no topo, um nome só por parte ("Novo na pesquisa", "O básico", "Como atender", "Aprofunde"), janelas fechadas, rótulos por grupo, "Ir para o passo seguinte", vídeos em linha no celular; seção "Novidade" renomeada em tudo, inclusive pasta e PDFs no Drive — PR #32 |
-| 10/10/2026 | "Novo na pesquisa" trocado nas oito revisões por pesquisas "revolucionárias" (classe nova de remédio, GLP-1 e PCSK9 em comprimido, anticorpo para dengue, xenotransplante, IA no ECG, terapia gênica, implante para enfisema); PDFs no padrão EB Garamond; os anteriores foram para "ANTERIORES" no Drive |
+| 10/10/2026 | "Novo na pesquisa" trocado nas oito revisões por pesquisas "revolucionárias" (classe nova de remédio, GLP-1 e PCSK9 em comprimido, anticorpo para dengue, xenotransplante, IA no ECG, terapia gênica, implante para enfisema); PDFs no padrão EB Garamond; os anteriores foram para "ANTERIORES" no Drive — PR #33 |
 
 ## Coluna do Estêvão
 

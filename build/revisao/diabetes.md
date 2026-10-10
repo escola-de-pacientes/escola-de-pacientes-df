@@ -13,7 +13,7 @@ EPDF / 2.Diabetes" e no acervo do site (/diabetes/).
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
 "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
-- artigo | https://doi.org/10.1136/bmj-2024-081820 | Dapagliflozin plus calorie restriction for remission of type 2 diabetes: multicentre, double blind, randomised, placebo controlled trial | BMJ · janeiro de 2025 | pubmed: 39843169 | drive: 1Fm0Xywb7ql-xf5ybEQtwkdRiqnELDYfg
+- artigo | https://doi.org/10.1016/j.eclinm.2026.104045 | Efficacy and safety of HRS-7535, an oral small-molecule GLP-1 receptor agonist, in patients with diabetic kidney disease (SOLID-DKD): a randomised, double-blind, placebo-controlled, phase 2 trial | eClinicalMedicine · julho de 2026 · SOLID-DKD | pubmed: 42472282 | drive: 12VTX1dFLZIt5quSMLlBZo3qzS4yS3YGF
 
 ## Passo 1
 - video | https://www.youtube.com/watch?v=V_KhsJe4vnc | O que é diabetes? | Drauzio Varella

@@ -105,15 +105,15 @@ perl build/build.pl        # precisa do módulo URI::Escape
 
 ### Links de conteúdo nos planos de aula
 
-Em cada bloco **“Aula — tema clínico”**, o primeiro cartão deve abrir a página do tema no site. Quando o tema tem **revisão guiada** (`/revisao/<doença>/`), é ela a página do tema: o cartão aponta para lá e se chama **“— revisão guiada”**. Temas sem revisão continuam com o cartão **“conteúdo completo”** apontando para a página do tema, que reúne slides, Tratado MFC, PACK, checklists e orientações.
+Em cada bloco **“Aula — tema clínico”**, o primeiro cartão deve abrir a página do tema no site. Quando o tema tem **revisão guiada** (`/revisao/<doença>/`), é ela a página do tema: o cartão aponta para lá, se chama **“— revisão guiada”** e tem o subtítulo **“3 passos: o básico, como atender e aprofunde”** (desde 10/10/2026, com os nomes únicos dos passos). Temas sem revisão continuam com o cartão **“conteúdo completo”** apontando para a página do tema, que reúne slides, Tratado MFC, PACK, checklists e orientações.
 
 > **Link para tema com revisão vai para a revisão.** Desde 06/10/2026 o gerador
 > troca sozinho, no conteúdo em markdown, todo link para uma página de tema que
 > tem revisão (`/hipertensao`, `/diabetes`, `/dislipidemia`, `/dengue`,
 > `/cardio-infarto-do-miocardio`, `/cardio-insuficiencia-cardiaca`) pelo link da
 > revisão; o índice de Temas Clínicos também. A página antiga virou o **acervo
-> completo** — é assim que aparece na busca e no A–Z — e se chega nela pelo botão
-> "Acervo completo do tema" da revisão. Para linkar o acervo de propósito (um
+> completo** — é assim que aparece na busca e no A–Z — e se chega nela pelo link
+> "Acervo completo do tema", embaixo do mapa dos passos, no topo da revisão. Para linkar o acervo de propósito (um
 > slide, um PDF que só existe lá), termine o link com `#acervo`:
 > `[slides](/hipertensao#acervo)`. Nas páginas escritas em HTML a troca não é
 > automática: os cartões dos planos de aula foram trocados à mão, e os botões
@@ -284,16 +284,40 @@ botões do tutorial nem aparecem.
   público numa janela do site, e artigo pago (NEJM, Lancet, Nature Medicine
   fechados) não pode. Os primeiros escolhidos eram pagos e foram trocados em
   06/10/2026 por estudos de 2025–2026 de acesso aberto.
+- **O que se procura (pedido da coordenação, 10/10/2026): pesquisa
+  "revolucionária"**, algo que mude a prática, como classe nova de remédio,
+  comprimido no lugar de injeção, terapia gênica, xenotransplante, inteligência
+  artificial ou dispositivo novo. Prefira o ensaio principal (fase 2/3, ou o
+  primeiro resultado em humanos) a análises secundárias e revisões.
+- **Confira o texto antes de gerar o PDF.** O PubMed Central às vezes entrega o
+  texto sem as palavras em itálico. Em 10/10/2026, o estudo da Wolbachia em
+  Campo Grande veio sem "Wolbachia", "wMel" e "Aedes aegypti" em quase cem
+  frases e foi descartado. Nome de espécie, gene e "in vivo" costumam estar em
+  itálico.
 - **O PDF fica no Drive**, na pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF /
   SEÇÃO NOVO NA PESQUISA" (pública por link), com o nome
   `NOVO NA PESQUISA - <Doença> - <slug>.pdf`. Na revisão, ele entra pelo campo
   `drive:` da linha `- artigo`, na janela "Ler o artigo completo". A pasta e os
   arquivos se chamavam "SEÇÃO NOVIDADES" e "NOVIDADE - …" até 10/10/2026;
   renomear no Drive não muda o ID, e os links continuaram valendo.
-- **PDFs novos seguem o padrão de [`ferramentas/novo-na-pesquisa-pdf/`](ferramentas/novo-na-pesquisa-pdf/README.md)**:
-  EB Garamond, texto 100% preto e formatação semelhante à ficha do PubMed. Os
-  oito publicados em 06/10/2026 foram feitos antes desse padrão (fonte sem
-  serifa, cinzas e azul) e, por decisão da coordenação, **ficam como estão**.
+- **Os PDFs seguem o padrão de [`ferramentas/novo-na-pesquisa-pdf/`](ferramentas/novo-na-pesquisa-pdf/README.md)**:
+  EB Garamond, texto 100% preto e formatação semelhante à ficha do PubMed.
+  Desde a troca de 10/10/2026, os oito publicados estão nesse padrão. Os de
+  06/10/2026 (fonte sem serifa, cinzas e azul) foram para a subpasta
+  "ANTERIORES", dentro da mesma pasta do Drive.
+
+Artigos em uso desde 10/10/2026:
+
+| Revisão | Artigo | O que tem de novo |
+|---|---|---|
+| Hipertensão | BaxHTN, N Engl J Med 2025 (PMID 40888730) | baxdrostat, classe nova: inibidor da aldosterona sintase |
+| Diabetes tipo 2 | SOLID-DKD, eClinicalMedicine 2026 (PMID 42472282) | GLP-1 em comprimido, de molécula pequena |
+| Dislipidemia | Laroprovstat, Circulation 2026 (PMID 42137960) | primeiro inibidor de PCSK9 em comprimido |
+| Dengue | Dengue-mAb, JAMA Netw Open 2026 (PMID 42640641) | primeiro tratamento específico com efeito em humanos |
+| Doença renal crônica | Nat Commun 2025 (PMID 41006232) | rim de porco editado funcionando em paciente vivo |
+| Doença coronariana | Nat Commun 2026 (PMID 42129209) | IA que reconhece no ECG o infarto por oclusão |
+| Insuficiência cardíaca | AB-1002, Nat Med 2025 (PMID 41120766) | terapia gênica em dose única |
+| DPOC | BREATHE, Am J Respir Crit Care Med 2025 (PMID 40387356) | implante por broncoscopia para o enfisema |
 
 ### Ligar o SimulaPacientes às revisões
 
@@ -337,7 +361,8 @@ rolagem horizontal. As regras estão no fim do `style.css`.
 | 06/10/2026 | Novidade trocada por artigos de acesso aberto; PDFs na pasta SEÇÃO NOVIDADES do Drive, ligados pelo campo `drive:` — PR #29 |
 | 06/10/2026 | Tutorial guiado em todas as revisões e no índice; padrão novo dos PDFs da Novidade (EB Garamond, preto, estilo PubMed) em `ferramentas/novidade-pdf/` (hoje `ferramentas/novo-na-pesquisa-pdf/`) — PR #30 |
 | 06/10/2026 | Links para os temas com revisão (SFC 2, planos de aula, índice de Temas Clínicos, páginas de tema) passam a abrir a revisão; a página antiga aparece como "acervo completo" na busca e no A–Z — PR #31 |
-| 10/10/2026 | Redesenho para ficar claro (e pensado para o celular): mapa dos 3 passos no topo, um nome só por parte ("Novo na pesquisa", "O básico", "Como atender", "Aprofunde"), janelas fechadas, rótulos por grupo, "Ir para o passo seguinte", vídeos em linha no celular; seção "Novidade" renomeada em tudo, inclusive pasta e PDFs no Drive |
+| 10/10/2026 | Redesenho para ficar claro (e pensado para o celular): mapa dos 3 passos no topo, um nome só por parte ("Novo na pesquisa", "O básico", "Como atender", "Aprofunde"), janelas fechadas, rótulos por grupo, "Ir para o passo seguinte", vídeos em linha no celular; seção "Novidade" renomeada em tudo, inclusive pasta e PDFs no Drive — PR #32 |
+| 10/10/2026 | "Novo na pesquisa" trocado nas oito revisões por pesquisas "revolucionárias" (classe nova de remédio, GLP-1 e PCSK9 em comprimido, anticorpo para dengue, xenotransplante, IA no ECG, terapia gênica, implante para enfisema); PDFs no padrão EB Garamond; os anteriores foram para "ANTERIORES" no Drive — PR #33 |
 
 ## Coluna do Estêvão
 

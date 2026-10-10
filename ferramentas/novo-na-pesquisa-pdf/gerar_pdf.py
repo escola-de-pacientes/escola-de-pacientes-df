@@ -12,7 +12,8 @@ coordenação em 06/10/2026:
     texto completo.
 
 Os oito PDFs publicados em 06/10/2026 foram feitos ANTES deste padrão (fonte
-DejaVu, cinzas e azul) e ficam como estão. Este script vale para os próximos.
+DejaVu, cinzas e azul). Em 10/10/2026 os oito artigos foram trocados e os PDFs
+novos já saíram deste script; os antigos estão em "ANTERIORES", no Drive.
 
 Entrada: os dois JSON que o conector PubMed devolve —
   get_full_text_article   (texto completo do PubMed Central)

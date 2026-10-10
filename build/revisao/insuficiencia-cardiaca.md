@@ -13,7 +13,7 @@ acervo do site (/cardio-insuficiencia-cardiaca/).
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
 "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
-- artigo | https://doi.org/10.1093/eurheartj/ehaf655 | Vericiguat and mortality in heart failure and reduced ejection fraction: the VICTOR trial | Eur Heart J · fevereiro de 2026 | pubmed: 40884032 | drive: 17LCgN4qa8sCzuZnH5gkbW0cUzDJk8R0v
+- artigo | https://doi.org/10.1038/s41591-025-04011-z | Cardiotropic AAV gene therapy for heart failure: a phase 1 trial | Nat Med · outubro de 2025 | pubmed: 41120766 | drive: 1XByfdw9-4kcIgwUQS2O9R9ITFOcSjVna
 
 ## Passo 1
 - video | https://www.youtube.com/watch?v=TJhguf9JBZk | Doenças cardíacas crônicas | Drauzio Varella

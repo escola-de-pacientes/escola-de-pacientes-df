@@ -16,7 +16,7 @@ Dois arquivos daquela pasta estão vazios no Drive (0 bytes) e ficaram de fora:
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
 "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
-- artigo | https://doi.org/10.1093/eurheartj/ehae613 | Cardiovascular outcomes with semaglutide by severity of chronic kidney disease in type 2 diabetes: the FLOW trial | Eur Heart J · março de 2025 | pubmed: 39211948 | drive: 1uZ1Nd2bMlZ-TEhBIOaPJrQQapfiAcNmc
+- artigo | https://doi.org/10.1038/s41467-025-63153-3 | Physiologic Homeostasis in a Living Human after Pig Kidney Xenotransplantation | Nat Commun · setembro de 2025 | pubmed: 41006232 | drive: 1_TeJovadBL-kRj9XCpn754H4oCNP-MvY
 
 ## Passo 1
 - video | https://www.youtube.com/watch?v=xdloeuKIhkQ | O que é doença renal crônica? | YouTube

@@ -19,7 +19,9 @@ site: o gerador só lê `build/`.
   7. o texto completo, com os títulos de seção.
 
 > Os **oito PDFs publicados em 06/10/2026** foram feitos antes deste padrão
-> (fonte sem serifa, cinzas e azul) e **ficam como estão**. O padrão vale para os
+> (fonte sem serifa, cinzas e azul) e ficaram como estavam até 10/10/2026, quando
+> os oito artigos foram trocados e os PDFs novos já saíram neste padrão (os
+> antigos estão na subpasta "ANTERIORES" do Drive). O padrão vale para os
 > próximos.
 
 ## Como escolher o artigo

@@ -14,7 +14,7 @@ material abaixo veio de pastas de apoio do grupo, do acervo do site
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
 "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
-- artigo | https://doi.org/10.1093/eurheartj/ehaf514 | Aspirin, cardiovascular events, and major bleeding in older adults: extended follow-up of the ASPREE trial | Eur Heart J · novembro de 2025 | pubmed: 40796244 | drive: 1KzL5A0drDq3wuN-TXixWvbxlv4qHpgiZ
+- artigo | https://doi.org/10.1038/s41467-026-73023-1 | A deep learning ECG model for identification and localization of occlusion myocardial infarction | Nat Commun · maio de 2026 | pubmed: 42129209 | drive: 1gAQ1rdJW2hMB4OoNFKIxgylj1Alf78DS
 
 ## Passo 1
 - video | https://www.youtube.com/watch?v=2lRkQ0seKPg | Infarto (ataque cardíaco) | Drauzio Varella

@@ -13,7 +13,7 @@ acervo do site (/dislipidemia/).
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
 "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
-- artigo | https://doi.org/10.1093/eurheartj/ehaf685 | Inclisiran-based treatment strategy in hypercholesterolaemia: the VICTORION-difference trial | Eur Heart J · 2026 | pubmed: 40884558 | drive: 1fZ0N-LtoduGd2lEs_VOEDr69XV97mVd7
+- artigo | https://doi.org/10.1161/CIRCULATIONAHA.125.075973 | Laroprovstat, the First Oral Small-Molecule PCSK9 Inhibitor for the Treatment of Hypercholesterolemia: Results From a Randomized, Single-Blind, Placebo-Controlled Phase 1 Trial in Treatment-Naïve Patients | Circulation · maio de 2026 | pubmed: 42137960 | drive: 1EyyMR_PHoRK8AAX6tRDmwVExSiq9Zsdn
 
 ## Passo 1
 - video | https://www.youtube.com/watch?v=0Mjci1jQ3hw | Dislipidemia: para entender de forma básica | YouTube | duracao: 6 min

@@ -13,7 +13,7 @@ EPDF / 6.HAS" e no acervo do site (/hipertensao/).
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
 "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
-- artigo | https://doi.org/10.1056/NEJMoa2504068 | Multifaceted Strategies for Hypertension Control in Low-Income Patients | N Engl J Med · abril de 2026 | pubmed: 41950472 | drive: 1m_s91A-FwCL0bicS9_C7X3jVIMqn5zr-
+- artigo | https://doi.org/10.1056/NEJMoa2507109 | Efficacy and Safety of Baxdrostat in Uncontrolled and Resistant Hypertension | N Engl J Med · agosto de 2025 · BaxHTN | pubmed: 40888730 | drive: 1-g4ZDl6Fhi6Q5R3PBb1e0spdW3OYh-L1
 
 ## Passo 1
 - video | https://youtube.com/shorts/Ss8d3fh1z7A | O que mudou na Diretriz Brasileira de Hipertensão 2025 | YouTube Shorts | formato: vertical

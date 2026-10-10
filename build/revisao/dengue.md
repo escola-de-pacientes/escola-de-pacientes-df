@@ -13,7 +13,7 @@ EPDF / 1.Dengue" (inclusive o documento "Links legais") e no acervo do site
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
 "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
-- artigo | https://doi.org/10.1016/j.lana.2025.101309 | Dengue virus genetic diversity in unvaccinated and vaccinated dengue-infected individuals: an observational analysis of the Butantan-DV phase 3 trial in Brazil | Lancet Reg Health Am · novembro de 2025 | pubmed: 41403717 | drive: 1njcR6XzTGv-iaD6CLV5YLvmLGlwpOZij
+- artigo | https://doi.org/10.1001/jamanetworkopen.2026.29979 | Safety and Preliminary Efficacy of Dengue Monoclonal Antibody in Adult Patients: A Randomized Clinical Trial | JAMA Netw Open · agosto de 2026 | pubmed: 42640641 | drive: 12j94agsS_4UBS33UNSkRi84i47WqGEX6
 
 ## Passo 1
 - video | https://youtu.be/NWvkpEg1TN0 | Sintomas da dengue | Drauzio Varella

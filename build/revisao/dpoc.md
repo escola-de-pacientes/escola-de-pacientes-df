@@ -13,7 +13,7 @@ tema antiga para esta doença, por isso o ACERVO fica em branco.
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
 "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
-- artigo | https://doi.org/10.1093/ajrccm/aamag226 | Astegolimab for chronic obstructive pulmonary disease with frequent exacerbations: pooled analysis of the ALIENTO and ARNASA trials | Am J Respir Crit Care Med · setembro de 2026 | pubmed: 42148875 | drive: 1tVS-9IjTG6WHu2wLM7eGYaWVYiru9Wq3
+- artigo | https://doi.org/10.1164/rccm.202502-0378OC | Airway Scaffolds for Emphysema-related Hyperinflation: Six-Month Results from the BREATHE Trial | Am J Respir Crit Care Med · julho de 2025 · BREATHE | pubmed: 40387356 | drive: 19OJZD5ewZrh9Z9XHqK7FDSMBagxMVO42
 
 ## Passo 1
 - video | https://www.youtube.com/watch?v=OcvXedVZ0Bw | DPOC: enfisema pulmonar vs. bronquite crônica | YouTube

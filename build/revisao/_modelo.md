@@ -31,12 +31,12 @@ Tipos:
   doc     — Documento Google (capítulos do Tratado de MFC, por exemplo).
   slides  — Apresentação Google.
   link    — site externo, ou página do próprio site começando com "/".
-  artigo  — só na Novidade: endereço do artigo (DOI) e extras
+  artigo  — só em "Novo na pesquisa": endereço do artigo (DOI) e extras
             "pubmed: <número>" e "drive: <ID do PDF no Drive>". Com o drive,
             o artigo completo abre numa janela dentro da página.
             Só artigo de ACESSO ABERTO no PubMed Central. O PDF é gerado por
-            ferramentas/novidade-pdf/ (EB Garamond, preto, estilo PubMed) e
-            vai para a pasta "SEÇÃO NOVIDADES" do Drive.
+            ferramentas/novo-na-pesquisa-pdf/ (EB Garamond, preto, estilo PubMed) e
+            vai para a pasta "SEÇÃO NOVO NA PESQUISA" do Drive.
 
 Extras são "chave: valor", ex.: "duracao: 6 min".
 
@@ -45,22 +45,29 @@ senão a janela mostra um erro do Google para o público.
 ⚠️ Nunca coloque aqui roteiro, checklist de correção ou nome de caso do
 SimulaPacientes: a página é pública e isso entregaria o gabarito.
 
+SEÇÕES — os nomes são os mesmos que aparecem no site:
+  ## Novo na pesquisa  — opcional; um artigo recente (tipo "artigo").
+  ## Passo 1           — "O básico": vídeo curto e podcast.
+  ## Passo 2           — "Como atender": protocolos, capítulos, vídeos longos.
+  ## Passo 3           — "Aprofunde": cada "### Assunto" vira um botão.
+  Os nomes antigos ("## Novidade", "## Etapa N") ainda funcionam.
+
 Linhas que não começam com "-", "#" ou CHAVE: são notas, como estas, e são
 ignoradas.
 
-## Novidade
+## Novo na pesquisa
 - artigo | https://doi.org/10.xxxx/xxxxx | Título original do artigo | Revista · mês ano · nome do estudo | pubmed: 00000000 | drive: ID_DO_PDF
 
-## Etapa 1
+## Passo 1
 - video | https://youtu.be/XXXXXXXXXXX | Título do vídeo curto | Canal
 - podcast | https://open.spotify.com/episode/XXXXXXXXXXXXXXXXXXXXXX | Título do episódio | Podcast
 
-## Etapa 2
+## Passo 2
 - drive | ID_DO_PDF | Protocolo Clínico e Diretrizes Terapêuticas | Ministério da Saúde · ano
 - doc | ID_DO_DOCUMENTO | Capítulo do Tratado de MFC | Gusso, 2019
 - video | https://youtu.be/XXXXXXXXXXX | Aula mais longa | Canal
 
-## Etapa 3
+## Passo 3
 ### Farmacologia
 - drive | ID_DO_PDF | Capítulo de farmacologia | Livro
 ### Semiologia

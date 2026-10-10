@@ -9,19 +9,19 @@ BUSCA: HAS, pressão alta
 Material reunido pelo grupo na pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO
 EPDF / 6.HAS" e no acervo do site (/hipertensao/).
 
-## Novidade
+## Novo na pesquisa
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
-"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVIDADES" do Drive, e abre
+"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
 - artigo | https://doi.org/10.1056/NEJMoa2504068 | Multifaceted Strategies for Hypertension Control in Low-Income Patients | N Engl J Med · abril de 2026 | pubmed: 41950472 | drive: 1m_s91A-FwCL0bicS9_C7X3jVIMqn5zr-
 
-## Etapa 1
+## Passo 1
 - video | https://youtube.com/shorts/Ss8d3fh1z7A | O que mudou na Diretriz Brasileira de Hipertensão 2025 | YouTube Shorts | formato: vertical
 - video | https://youtu.be/MZDFdLSL6cA | Não subestime a hipertensão | Drauzio Varella
 - podcast | https://youtu.be/sT-IQKuuLZo | Como prevenir a hipertensão | Podcast Drauzio Varella
 - podcast | https://open.spotify.com/episode/1bfsEAIlyTK5MxDvG6TNS6 | TdC 215: Diagnostiquei hipertensão. E agora? | Tá de Clinicagem
 
-## Etapa 2
+## Passo 2
 - drive | 1zpGTd59SFVFJ8-ddApdAxFc99vIUzPyf | Protocolo Clínico e Diretrizes Terapêuticas da Hipertensão Arterial Sistêmica | Ministério da Saúde · Conitec · 2025
 - drive | 1Ws5oc6gFzc1OYXD9gYgyNhoUKFlhUmMM | Hipertensão: diagnóstico | PACK Brasil 2025 · p. 143
 - drive | 1nPSKL7CxOQVBbuxnPy4ALgGiAYNy39rO | Hipertensão: cuidados de rotina | PACK Brasil 2025 · p. 144
@@ -35,7 +35,7 @@ numa janela da página pelo campo "drive:".
 - podcast | https://open.spotify.com/episode/4hYUPrcqGaDu8vNeZ2Lyof | Guia TdC: diretriz de hipertensão arterial (ESC 2024) | Tá de Clinicagem
 - slides | 1Ew8GU1RlWn6CWQ9wAuhfKIbCN0KIUmnBvO6Hq2bLk1w | Aula: hipertensão na APS — diagnóstico, diferenciais, exames e tratamento | Escola de Pacientes
 
-## Etapa 3
+## Passo 3
 ### Diretrizes
 - drive | 1x_370Rh45dmCTiqrnr7Vy64cNTF7aPZD | Diretriz Brasileira de Hipertensão Arterial 2025 — texto completo | Arq Bras Cardiol 2025;122(9)
 - drive | 1IQ3qXqJq-e2cBElvs2mMlnGlsKActiVf | 2024 ESC Guidelines for the management of elevated blood pressure and hypertension | European Heart Journal

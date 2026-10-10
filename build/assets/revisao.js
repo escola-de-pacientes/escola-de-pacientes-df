@@ -45,6 +45,8 @@
     f.title = b.getAttribute('aria-label') || 'Vídeo';
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
     f.allowFullscreen = true;
+    var fig = b.closest('.rv-media');
+    if (fig) fig.classList.add('tocando');
     b.parentNode.replaceChild(f, b);
   });
 
@@ -94,12 +96,13 @@
     escolhe(abas[0]);
   });
 
-  // ---------- trilha: etapa atual e barra de progresso ----------
+  // ---------- trilha: passo atual e barra de progresso ----------
   var trilha = document.querySelector('.rv-trilha');
   if (trilha) {
     var chips = Array.prototype.slice.call(trilha.querySelectorAll('a[data-alvo]'));
     var secoes = chips.map(function (c) { return document.querySelector(c.getAttribute('href')); });
     var barra = trilha.querySelector('.rv-progresso span');
+    var trilhaIn = trilha.querySelector('.rv-trilha-in');
     var corpo = document.querySelector('.rv-corpo');
     var pendente = false;
     function atualiza() {
@@ -107,7 +110,14 @@
       var linha = trilha.getBoundingClientRect().bottom + 40;
       var atual = -1;
       secoes.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= linha) atual = i; });
-      chips.forEach(function (c, i) { c.classList.toggle('ativa', i === atual); });
+      chips.forEach(function (c, i) {
+        var era = c.classList.contains('ativa');
+        c.classList.toggle('ativa', i === atual);
+        // no celular a trilha não cabe inteira: rola só ela até o passo atual
+        if (i === atual && !era && trilhaIn.scrollWidth > trilhaIn.clientWidth) {
+          trilhaIn.scrollTo({ left: c.offsetLeft - (trilhaIn.clientWidth - c.offsetWidth) / 2, behavior: calmo ? 'auto' : 'smooth' });
+        }
+      });
       if (barra && corpo) {
         var r = corpo.getBoundingClientRect();
         var total = r.height - window.innerHeight * 0.6;
@@ -122,15 +132,17 @@
     atualiza();
   }
 
-  // ---------- etapas concluídas (só neste navegador) ----------
+  // ---------- passos terminados (só neste navegador) ----------
   var botoes = Array.prototype.slice.call(document.querySelectorAll('.rv-concluir'));
   var aviso = document.querySelector('.rv-trilha-ok');
   function marca(btn, feito, anima) {
     var n = btn.getAttribute('data-etapa');
     btn.setAttribute('aria-pressed', feito ? 'true' : 'false');
-    btn.querySelector('.rv-c-txt').textContent = feito ? 'Etapa ' + n + ' concluída' : 'Marcar etapa ' + n + ' como concluída';
-    var chip = trilha && trilha.querySelector('a[data-alvo="' + n + '"]');
-    if (chip) chip.classList.toggle('feita', feito);
+    btn.querySelector('.rv-c-txt').textContent = feito ? 'Passo ' + n + ' terminado' : 'Terminei o passo ' + n;
+    // o passo feito ganha um ✓ na trilha e no mapa do topo
+    Array.prototype.forEach.call(document.querySelectorAll('.rv-trilha a[data-alvo="' + n + '"], .rv-mapa a[data-alvo="' + n + '"]'), function (a) {
+      a.classList.toggle('feita', feito);
+    });
     var todas = botoes.length && botoes.every(function (b) { return b.getAttribute('aria-pressed') === 'true'; });
     if (aviso) {
       aviso.textContent = todas ? 'Revisão concluída 🎉' : '';
@@ -148,7 +160,7 @@
     });
   });
 
-  // uma chuvinha curta de pontos na cor da doença, quando as três etapas fecham
+  // uma chuvinha curta de pontos na cor da doença, quando todos os passos fecham
   function festa() {
     var cor = getComputedStyle(document.body).getPropertyValue('--rv') || '#1a73e8';
     var cores = [cor.trim(), '#f9ab00', '#1a73e8', '#188038'];
@@ -283,7 +295,7 @@
       atual = n;
       var p = passos[n];
       alvoAtual = document.querySelector(p.alvo);
-      tela.querySelector('.rv-tour-conta').textContent = 'Passo ' + (n + 1) + ' de ' + passos.length;
+      tela.querySelector('.rv-tour-conta').textContent = 'Dica ' + (n + 1) + ' de ' + passos.length;
       tela.querySelector('#rv-tour-t').textContent = p.titulo;
       tela.querySelector('#rv-tour-x').textContent = p.texto;
       tela.querySelector('.rv-tour-pontos').innerHTML = passos.map(function (_, i) {

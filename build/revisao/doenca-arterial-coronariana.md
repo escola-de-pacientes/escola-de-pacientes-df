@@ -10,18 +10,18 @@ A pasta "4.Doença Arterial Coronariana" só tinha um atalho que não abre; o
 material abaixo veio de pastas de apoio do grupo, do acervo do site
 (/cardio-infarto-do-miocardio/) e de busca.
 
-## Novidade
+## Novo na pesquisa
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
-"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVIDADES" do Drive, e abre
+"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
 - artigo | https://doi.org/10.1093/eurheartj/ehaf514 | Aspirin, cardiovascular events, and major bleeding in older adults: extended follow-up of the ASPREE trial | Eur Heart J · novembro de 2025 | pubmed: 40796244 | drive: 1KzL5A0drDq3wuN-TXixWvbxlv4qHpgiZ
 
-## Etapa 1
+## Passo 1
 - video | https://www.youtube.com/watch?v=2lRkQ0seKPg | Infarto (ataque cardíaco) | Drauzio Varella
 - video | https://www.youtube.com/watch?v=QFSm6HhXU50 | Como identificar e agir diante de um infarto | Drauzio Varella
 - podcast | https://open.spotify.com/episode/2iRtuFP8Oj7msFQdfeg5Lw | TdC 283: Manejo da doença coronariana crônica | Tá de Clinicagem
 
-## Etapa 2
+## Passo 2
 - drive | 1-dtCOedBfWE9CfVxiCEX_Sq6FzwmSIwn | Diretriz Brasileira de Síndrome Coronariana Crônica 2025 | Sociedade Brasileira de Cardiologia
 - doc | 1-wiFI6_VIUcdlSaPIhPiu5K8ue5Xa6H81-nKR0ym9ik | Dor torácica, angina e infarto agudo do miocárdio | Tratado de Medicina de Família e Comunidade · Gusso, 2019 · cap. 158
 - doc | 18l6zSFEPdkWH0DhfoB7F5l2BiX4N8LjWcTMl6w646O8 | Prevenção primária e secundária das doenças cardiovasculares | Tratado de MFC · Gusso, 2019 · cap. 157
@@ -33,7 +33,7 @@ numa janela da página pelo campo "drive:".
 - video | https://www.youtube.com/watch?v=Z_nii1eFI2o | Angina estável — doença arterial coronariana | SanarFlix · aula de cardiologia
 - podcast | https://open.spotify.com/episode/19jGaM0achTHwX7BkuIGep | TdC 213: 3 casos de dor torácica — condutas no PS | Tá de Clinicagem
 
-## Etapa 3
+## Passo 3
 ### Fisiopatologia
 - drive | 1dzlbu24f11ZkI63BavOySw_xoPrAfTYn | Coronary Artery Disease | StatPearls · NCBI Bookshelf
 - drive | 1IG8iM3rR_05iMUaOH3yKcbyS2U13_Ni3 | Fisiologia cardiovascular | Silverthorn · Fisiologia Humana · cap. 14

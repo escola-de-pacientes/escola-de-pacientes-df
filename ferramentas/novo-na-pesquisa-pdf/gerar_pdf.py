@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""PDF do artigo da seção Novidade das revisões por doença.
+"""PDF do artigo da seção "Novo na pesquisa" das revisões por doença.
 
-Monta o PDF que vai para a pasta "SEÇÃO NOVIDADES" do Drive e abre numa
+Monta o PDF que vai para a pasta "SEÇÃO NOVO NA PESQUISA" do Drive e abre numa
 janela no topo de cada revisão (/revisao/<doença>/). O padrão foi pedido pela
 coordenação em 06/10/2026:
 
@@ -214,15 +214,15 @@ def gerar(art, meta, slug, doenca, saida):
     titulo = (meta.get('title') or art.get('title') or '').rstrip('.')
     citacao = linha_de_citacao(meta)
     autores, afiliacoes = autores_e_afiliacoes(meta)
-    arquivo = os.path.join(saida, f'NOVIDADE - {doenca} - {slug}.pdf')
+    arquivo = os.path.join(saida, f'NOVO NA PESQUISA - {doenca} - {slug}.pdf')
 
     doc = SimpleDocTemplate(arquivo, pagesize=A4, leftMargin=2.3 * cm, rightMargin=2.3 * cm,
                             topMargin=2 * cm, bottomMargin=2 * cm, title=titulo,
                             author=', '.join(f"{a.get('fore_name', '')} {a.get('last_name', '')}".strip()
                                              for a in (meta.get('authors') or [])[:6]),
-                            subject=f'Novidade — revisão guiada de {doenca} — Escola de Pacientes')
+                            subject=f'Novo na pesquisa — revisão guiada de {doenca} — Escola de Pacientes')
     f = [
-        Paragraph(f'ESCOLA DE PACIENTES · REVISÃO GUIADA · NOVIDADE — {txt(doenca.upper(), True)}', ST['selo']),
+        Paragraph(f'ESCOLA DE PACIENTES · REVISÃO GUIADA · NOVO NA PESQUISA — {txt(doenca.upper(), True)}', ST['selo']),
         Spacer(1, 4),
         HRFlowable(width='100%', thickness=0.6, color=PRETO, spaceAfter=6),
         Paragraph(txt(citacao) + (f'<br/>doi: {txt(doi)}' if doi else ''), ST['cita']),

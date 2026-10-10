@@ -150,11 +150,15 @@ my %PAGINA_HTML = map { $_->{slug} => $_ } @PAGINAS_HTML;
 # exatamente no conteúdo do paciente que atendeu.
 #
 # A página segue uma linha de raciocínio, e é por isso que ela tem forma fixa:
-#   Novidade  — um artigo recente de pesquisa, no topo;
-#   Etapa 1   — pouco tempo: vídeo curto e podcast;
-#   Etapa 2   — abordagem e terapêutica: protocolos nacionais e capítulos, em
-#               janelas do Drive, e vídeos mais longos;
-#   Etapa 3   — aprofundamento por área (farmaco, semio, fisiopato...), em abas.
+#   Novo na pesquisa — um artigo recente de pesquisa, no topo (opcional);
+#   Passo 1 · O básico      — vídeo curto e podcast;
+#   Passo 2 · Como atender  — protocolos nacionais e capítulos, em janelas do
+#                             Drive, e vídeos mais longos;
+#   Passo 3 · Aprofunde     — mais material por assunto (farmaco, semio,
+#                             fisiopato...), em abas.
+# Os nomes ficam em @RV_ETAPAS e são os mesmos em todo lugar. Nos arquivos de
+# dados, as seções são "## Novo na pesquisa" e "## Passo N" (os nomes antigos,
+# "Novidade" e "Etapa N", ainda são aceitos).
 #
 # NÃO HÁ TEXTO PRÓPRIO SOBRE A DOENÇA. Decisão da coordenação (06/10/2026): a
 # página aponta para o material — protocolo, capítulo, aula, vídeo — e não o
@@ -177,6 +181,25 @@ my %PAGINA_HTML = map { $_->{slug} => $_ } @PAGINAS_HTML;
 # caso do SimulaPacientes.
 # cores disponíveis para uma revisão (os tons ficam em assets/revisao.css)
 my %REV_COR = map { $_ => 1 } qw(vermelho azul ambar verde roxo rosa teal indigo);
+# Declarados aqui em cima, e não junto das funções da revisão: as páginas de
+# tema (com a faixa que cita os passos) são geradas antes daquele trecho do
+# arquivo, e um "my" lá embaixo ainda estaria vazio.
+# Um nome curto por passo, o MESMO em todo lugar (mapa do topo, trilha,
+# cabeçalho do passo, tutorial, índice). Pedido da coordenação (10/10/2026):
+# alunos não entendiam o que era cada etapa — tinha três nomes para cada uma.
+my @RV_ETAPAS = (
+    { n => 1, nome => 'O básico',
+      lead => 'Vídeo curto e podcast para entender o principal. Com pouco tempo, faça só este passo.' },
+    { n => 2, nome => 'Como atender',
+      lead => 'Os protocolos oficiais e os capítulos que mostram como diagnosticar e tratar. Toque num item para abrir aqui mesmo.' },
+    { n => 3, nome => 'Aprofunde',
+      lead => 'Mais material, separado por assunto. Escolha um e leia o quanto quiser.' },
+);
+# palavras para "2 vídeos e 2 podcasts" (rv_contagem), no mapa do topo
+my %RV_CONTA = (video => 'vídeo', podcast => 'podcast', drive => 'texto', doc => 'texto',
+                slides => 'aula', link => 'site', artigo => 'artigo');
+my %RV_PLURAL = ('vídeo' => 'vídeos', podcast => 'podcasts', texto => 'textos',
+                 aula => 'aulas', site => 'sites', artigo => 'artigos');
 
 my (@REVISOES, %REVISAO, %REVISAO_DO_ACERVO);
 {
@@ -232,14 +255,14 @@ sub ler_revisao {
         }
         if ($l =~ /^##\s+(.+?)\s*$/) {
             my $s = lc $1;
-            $secao = $s =~ /novidade/ ? 'novidade'
-                   : $s =~ /etapa\s*([123])/ ? $1
-                   : $erro->("seção '$1' desconhecida (use Novidade, Etapa 1, Etapa 2 ou Etapa 3)");
+            $secao = $s =~ /novo na pesquisa|novidade/ ? 'novidade'
+                   : $s =~ /(?:passo|etapa)\s*([123])/ ? $1
+                   : $erro->("seção '$1' desconhecida (use Novo na pesquisa, Passo 1, Passo 2 ou Passo 3)");
             $area = undef;
             next;
         }
         if ($l =~ /^###\s+(.+?)\s*$/) {
-            $erro->("subtítulo de área só existe na Etapa 3") unless $secao eq '3';
+            $erro->("subtítulo de área só existe no Passo 3") unless $secao eq '3';
             $area = { nome => $1, itens => [] };
             push @{ $r{areas} }, $area;
             next;
@@ -273,7 +296,7 @@ sub ler_revisao {
             $erro->("tipo '$tipo' desconhecido (video, podcast, drive, doc, slides, link, artigo)");
         }
         if    ($secao eq 'novidade') {
-            $erro->("a Novidade é um artigo: use '- artigo | ...'") unless $tipo eq 'artigo';
+            $erro->("'Novo na pesquisa' é um artigo: use '- artigo | ...'") unless $tipo eq 'artigo';
             push @{ $r{novidade} }, \%it;
         }
         elsif ($secao eq '1' or $secao eq '2') { push @{ $r{etapa}{$secao} }, \%it; }
@@ -284,7 +307,7 @@ sub ler_revisao {
             }
             push @{ $area->{itens} }, \%it;
         }
-        else { $erro->("item fora de seção — coloque-o sob '## Novidade' ou '## Etapa N'"); }
+        else { $erro->("item fora de seção — coloque-o sob '## Novo na pesquisa' ou '## Passo N'"); }
     }
     close $fh;
     die "build/revisao/$slug.md: falta o título (# Nome da doença).\n" unless $r{titulo};
@@ -2454,20 +2477,6 @@ my %RV_TIPO = (
     link    => ['language',      'Site'],
     artigo  => ['science',       'Artigo'],
 );
-my @RV_ETAPAS = (
-    { n => 1, curto => 'Pouco tempo', icone => 'bolt',
-      kicker => 'Etapa 1 · para quem tem pouco tempo',
-      titulo => 'O essencial, rápido',
-      lead   => 'Um vídeo curto e um podcast para relembrar o que importa antes de ir mais fundo.' },
-    { n => 2, curto => 'Abordagem', icone => 'stethoscope',
-      kicker => 'Etapa 2 · abordagem e terapêutica',
-      titulo => 'Como conduzir este paciente',
-      lead   => 'Os protocolos nacionais e os capítulos que orientam a consulta e o tratamento, em janelas que abrem aqui mesmo — e vídeos mais longos, para ver alguém explicando.' },
-    { n => 3, curto => 'Aprofundamento', icone => 'neurology',
-      kicker => 'Etapa 3 · aprofundamento',
-      titulo => 'A doença vista de cada área',
-      lead   => 'Fisiopatologia, farmacologia, semiologia e o olhar de outras especialidades. Escolha uma aba e vá até onde a curiosidade levar.' },
-);
 my $RV_SIMULA_URL = 'https://simulapacientes.escoladepacientes.com/catalogo';
 
 sub rv_total_itens {
@@ -2525,9 +2534,10 @@ sub rv_podcast_html {
 # A "janela": um documento do Drive que abre dentro da página. Fechada, é uma
 # linha com título e fonte; aberta, é o PDF inteiro. O iframe só ganha `src`
 # quando a janela abre (assets/revisao.js) — dez PDFs carregando juntos
-# travariam o celular. A primeira janela de cada etapa já vem aberta.
+# travariam o celular. Todas começam fechadas: aberta, uma janela ocupava a
+# tela inteira do celular e escondia o resto do passo.
 sub rv_janela_html {
-    my ($it, $aberta) = @_;
+    my ($it) = @_;
     my ($src, $view, $lugar);
     if ($it->{tipo} eq 'drive') {
         $src  = "https://drive.google.com/file/d/$it->{id}/preview";
@@ -2544,15 +2554,13 @@ sub rv_janela_html {
     }
     my ($ico) = @{ $RV_TIPO{ $it->{tipo} } };
     my $t = esc($it->{titulo});
-    my $open = $aberta ? ' open' : '';
-    my $iframe_src = $aberta ? qq{src="$src"} : qq{data-src="$src"};
     my $classe = $it->{tipo} eq 'slides' ? 'rv-janela rv-j-slides' : 'rv-janela';
-    return qq{<details class="$classe rv-reveal"$open>}
+    return qq{<details class="$classe rv-reveal">}
          . qq{<summary><span class="rv-j-ico" aria-hidden="true"><span class="msym">$ico</span></span>}
-         . qq{<span class="rv-j-txt"><b>$t</b>} . rv_fonte_html($it, $RV_TIPO{ $it->{tipo} }[1]) . qq{</span>}
-         . qq{<span class="rv-j-acao"><span class="rv-j-abrir">Abrir aqui</span><span class="rv-j-fechar">Fechar</span>}
+         . qq{<span class="rv-j-txt"><b>$t</b>} . rv_fonte_html($it) . qq{</span>}
+         . qq{<span class="rv-j-acao"><span class="rv-j-abrir">Abrir</span><span class="rv-j-fechar">Fechar</span>}
          . qq{<span class="msym rv-j-chev" aria-hidden="true">expand_more</span></span></summary>}
-         . qq{<div class="rv-j-corpo"><iframe $iframe_src title="$t" loading="lazy" allow="autoplay"></iframe>}
+         . qq{<div class="rv-j-corpo"><iframe data-src="$src" title="$t" loading="lazy" allow="autoplay"></iframe>}
          . qq{<p class="rv-j-pe"><a href="$view" target="_blank" rel="noopener">$lugar ↗</a></p></div>}
          . qq{</details>};
 }
@@ -2569,61 +2577,110 @@ sub rv_link_html {
 
 # Desenha uma lista de itens na ordem do arquivo, juntando os vizinhos do
 # mesmo feitio: mídias lado a lado, janelas uma embaixo da outra, sites em
-# grade. A ordem é de quem montou a revisão, não do gerador.
+# grade. A ordem é de quem montou a revisão, não do gerador. Quando a lista
+# mistura feitios, cada grupo ganha um rótulo curto ("Para ler", "Para
+# assistir") — é o que diz ao aluno o que fazer com aquilo.
 sub rv_itens_html {
-    my ($itens, $p, $abre_primeira) = @_;
-    my $grupo = sub {
+    my ($itens, $p) = @_;
+    my $feitio = sub {
         my $t = $_[0]{tipo};
         return $t eq 'video' || $t eq 'podcast' ? 'midia'
              : $t eq 'link' || $t eq 'artigo'   ? 'links' : 'janelas';
     };
-    my ($h, $atual, $primeira) = ('', '', $abre_primeira);
+    my @grupos;
     for my $it (@$itens) {
-        my $g = $grupo->($it);
-        if ($g ne $atual) {
-            $h .= "</div>\n" if $atual;
-            $h .= qq{<div class="rv-$g">\n};
-            $atual = $g;
-        }
-        if    ($it->{tipo} eq 'video')   { $h .= rv_video_html($it) }
-        elsif ($it->{tipo} eq 'podcast') { $h .= rv_podcast_html($it) }
-        elsif ($g eq 'janelas')          { $h .= rv_janela_html($it, $primeira); $primeira = 0; }
-        else                             { $h .= rv_link_html($it, $p) }
-        $h .= "\n";
+        my $g = $feitio->($it);
+        push @grupos, [$g] unless @grupos && $grupos[-1][0] eq $g;
+        push @{ $grupos[-1] }, $it;
     }
-    $h .= "</div>\n" if $atual;
+    my $h = '';
+    for my $gr (@grupos) {
+        my ($g, @its) = @$gr;
+        if (@grupos > 1) {
+            my %t = map { $_->{tipo} => 1 } @its;
+            my ($ico, $rot) =
+                  $g eq 'links'                      ? ('language',    'Na internet')
+                : $g eq 'janelas' && keys %t == 1 && $t{slides} ? ('slideshow', 'Aula em slides')
+                : $g eq 'janelas'                    ? ('menu_book',   'Para ler')
+                : $t{video} && $t{podcast}           ? ('play_circle', 'Para assistir e ouvir')
+                : $t{podcast}                        ? ('headphones',  'Para ouvir')
+                :                                      ('play_circle', 'Para assistir');
+            $h .= qq{<p class="rv-grupo-rot"><span class="msym" aria-hidden="true">$ico</span>$rot</p>\n};
+        }
+        $h .= qq{<div class="rv-$g">\n};
+        for my $it (@its) {
+            if    ($it->{tipo} eq 'video')   { $h .= rv_video_html($it) }
+            elsif ($it->{tipo} eq 'podcast') { $h .= rv_podcast_html($it) }
+            elsif ($g eq 'janelas')          { $h .= rv_janela_html($it) }
+            else                             { $h .= rv_link_html($it, $p) }
+            $h .= "\n";
+        }
+        $h .= "</div>\n";
+    }
     return $h;
+}
+
+sub rv_contagem {
+    my ($itens) = @_;
+    my (%n, @ordem);
+    for my $it (@$itens) {
+        my $k = $RV_CONTA{ $it->{tipo} } // next;
+        push @ordem, $k unless $n{$k}++;
+    }
+    my @p = map { $n{$_} . ' ' . ($n{$_} == 1 ? $_ : $RV_PLURAL{$_}) } @ordem;
+    return @p > 1 ? join(', ', @p[0 .. $#p - 1]) . " e $p[-1]" : ($p[0] // '');
+}
+
+# Os passos que esta revisão tem, cada um com o resumo do que há dentro.
+# Revisão sem algum passo pula o número, mas não renumera: "Passo 3" é
+# sempre o aprofundamento.
+sub rv_passos_de {
+    my ($r) = @_;
+    my @ps;
+    for my $e (@RV_ETAPAS) {
+        my $resumo;
+        if ($e->{n} == 3) {
+            my $a = grep { @{ $_->{itens} } } @{ $r->{areas} };
+            next unless $a;
+            $resumo = $a == 1 ? '1 assunto' : "$a assuntos";
+        } else {
+            next unless @{ $r->{etapa}{ $e->{n} } };
+            $resumo = rv_contagem($r->{etapa}{ $e->{n} });
+        }
+        push @ps, { %$e, resumo => $resumo };
+    }
+    return @ps;
 }
 
 sub rv_novidade_html {
     my ($r, $p) = @_;
     my @n = @{ $r->{novidade} };
     return '' unless @n;
-    my $h = qq{<section class="rv-novidade" id="novidade" data-etapa="novidade"><div class="wrap">\n};
+    my $h = qq{<section class="rv-novidade" id="novo-na-pesquisa" data-etapa="novidade"><div class="wrap">\n};
     for my $it (@n) {
-        my $pubmed = $it->{pubmed}
-            ? qq{<a class="btn btn-ghost" href="https://pubmed.ncbi.nlm.nih.gov/$it->{pubmed}/" target="_blank" rel="noopener">Resumo no PubMed ↗</a>} : '';
         my $janela = $it->{drive}
-            ? rv_janela_html({ tipo => 'drive', id => $it->{drive}, titulo => 'Texto completo do artigo', fonte => 'versão de acesso aberto do PubMed Central' }, 1) : '';
+            ? rv_janela_html({ tipo => 'drive', id => $it->{drive}, titulo => 'Ler o artigo completo', fonte => 'abre aqui mesmo, sem sair da página' }) : '';
+        my @fora = (qq{<a href="$it->{url}" target="_blank" rel="noopener">} . ($janela ? 'Ver na revista' : 'Ler o artigo') . ' ↗</a>');
+        push @fora, qq{<a href="https://pubmed.ncbi.nlm.nih.gov/$it->{pubmed}/" target="_blank" rel="noopener">Resumo no PubMed ↗</a>} if $it->{pubmed};
         $h .= qq{<article class="rv-nv rv-reveal">}
-            . qq{<div class="rv-nv-topo"><span class="rv-selo"><span class="rv-pulso" aria-hidden="true"></span>Novidade</span>}
-            . qq{<span class="rv-nv-diz">Saiu na pesquisa — um estudo recente sobre esta doença</span></div>}
+            . qq{<div class="rv-nv-topo"><span class="rv-selo"><span class="rv-pulso" aria-hidden="true"></span>Novo na pesquisa</span>}
+            . qq{<span class="rv-nv-diz">Leitura extra, não precisa começar por aqui</span></div>}
+            . qq{<p class="rv-nv-explica">Um estudo científico recente sobre esta doença, para você saber o que está mudando.</p>}
             . qq{<h2 class="rv-nv-titulo" lang="en">@{[esc($it->{titulo})]}</h2>}
             . ($it->{fonte} ? qq{<p class="rv-nv-fonte">@{[esc($it->{fonte})]}</p>} : '')
-            . qq{<div class="rv-nv-acoes"><a class="btn btn-primary" href="$it->{url}" target="_blank" rel="noopener">Ler o artigo completo ↗</a>$pubmed</div>}
             . $janela
+            . qq{<p class="rv-nv-fora">} . join('<span aria-hidden="true"> · </span>', @fora) . qq{</p>}
             . qq{</article>\n};
     }
     return $h . qq{</div></section>\n};
 }
 
 sub rv_etapa_html {
-    my ($r, $e, $p) = @_;
+    my ($r, $e, $p, $total, $prox) = @_;
     my $n = $e->{n};
     my $corpo;
     if ($n == 3) {
         my @areas = grep { @{ $_->{itens} } } @{ $r->{areas} };
-        return '' unless @areas;
         my ($abas, $paineis) = ('', '');
         my $i = 0;
         for my $a (@areas) {
@@ -2634,55 +2691,58 @@ sub rv_etapa_html {
                    . ($i ? ' tabindex="-1"' : '') . qq{>@{[esc($a->{nome})]}<small>$qtd</small></button>};
             $paineis .= qq{<div class="rv-painel" role="tabpanel" id="$id" aria-labelledby="aba-$id">}
                       . qq{<h3 class="rv-painel-titulo">@{[esc($a->{nome})]}</h3>\n}
-                      . rv_itens_html($a->{itens}, $p, $i == 0) . qq{</div>\n};
+                      . rv_itens_html($a->{itens}, $p) . qq{</div>\n};
             $i++;
         }
-        $corpo = qq{<div class="rv-abas" role="tablist" aria-label="Áreas do aprofundamento">$abas</div>\n$paineis};
+        $corpo = qq{<p class="rv-abas-rot">Escolha um assunto:</p>\n}
+               . qq{<div class="rv-abas" role="tablist" aria-label="Assuntos do passo 3">$abas</div>\n$paineis};
     } else {
-        my $itens = $r->{etapa}{$n};
-        return '' unless @$itens;
-        $corpo = rv_itens_html($itens, $p, 1);
+        $corpo = rv_itens_html($r->{etapa}{$n}, $p);
     }
+    my $seguinte = $prox
+        ? qq{<a class="btn btn-primary rv-seguinte" href="#etapa-$prox->{n}">Ir para o passo $prox->{n}<span class="msym" aria-hidden="true">arrow_downward</span></a>}
+        : qq{<a class="btn btn-primary rv-seguinte" href="#fim">Terminar<span class="msym" aria-hidden="true">arrow_downward</span></a>};
     return qq{<section class="rv-etapa" id="etapa-$n" data-etapa="$n"><div class="wrap">\n}
          . qq{<header class="rv-etapa-topo rv-reveal"><span class="rv-num" aria-hidden="true">$n</span>}
-         . qq{<div><p class="rv-etapa-kicker"><span class="msym" aria-hidden="true">$e->{icone}</span>$e->{kicker}</p>}
-         . qq{<h2>$e->{titulo}</h2><p class="rv-etapa-lead">$e->{lead}</p></div></header>\n}
+         . qq{<div><p class="rv-etapa-kicker">Passo $n de $total</p>}
+         . qq{<h2>$e->{nome}</h2><p class="rv-etapa-lead">$e->{lead}</p></div></header>\n}
          . $corpo
-         . qq{<div class="rv-concluir-linha"><button class="rv-concluir" type="button" data-etapa="$n" aria-pressed="false">}
-         . qq{<span class="msym" aria-hidden="true">check_circle</span><span class="rv-c-txt">Marcar etapa $n como concluída</span></button></div>\n}
+         . qq{<div class="rv-etapa-pe"><button class="rv-concluir" type="button" data-etapa="$n" aria-pressed="false">}
+         . qq{<span class="msym" aria-hidden="true">check_circle</span><span class="rv-c-txt">Terminei o passo $n</span></button>$seguinte</div>\n}
          . qq{</div></section>\n};
 }
 
 sub rv_cartao_html {
-    my ($r, $p, $extra) = @_;
+    my ($r, $p) = @_;
     my $n = rv_total_itens($r);
-    my $nv = @{ $r->{novidade} } ? qq{<span class="rv-c-nv">Novidade</span>} : '';
     return qq{<a class="rv-cartao rv-cor-$r->{cor} rv-reveal" href="${p}revisao/$r->{slug}/">}
          . qq{<span class="rv-c-ico" aria-hidden="true"><span class="msym">$r->{icone}</span></span>}
-         . qq{<span class="rv-c-txt"><b>@{[esc($r->{curto})]}</b><small>3 etapas · $n materiais$nv</small></span>}
+         . qq{<span class="rv-c-txt"><b>@{[esc($r->{curto})]}</b><small>$n materiais</small></span>}
          . qq{<span class="rv-c-seta" aria-hidden="true">→</span></a>};
 }
 
 sub rv_faixa_acervo_html {
     my ($r, $p) = @_;
+    my $passos = join(', ', map { lc $_->{nome} } rv_passos_de($r));
+    $passos =~ s/, ([^,]+)$/ e $1/;
     return qq{<a class="rv-faixa rv-cor-$r->{cor}" href="${p}revisao/$r->{slug}/">}
          . qq{<span class="rv-faixa-ico" aria-hidden="true"><span class="msym">route</span></span>}
          . qq{<span class="rv-faixa-txt"><b>Nova: revisão guiada de @{[esc($r->{curto})]}</b>}
-         . qq{<small>Novidade da pesquisa, o essencial em vídeo e podcast, protocolos para a conduta e aprofundamento por área — em etapas. Esta página continua como o acervo completo do tema.</small></span>}
+         . qq{<small>O tema em passos: $passos. Esta página continua como o acervo completo.</small></span>}
          . qq{<span class="rv-faixa-seta" aria-hidden="true">→</span></a>};
 }
 
 # ---------------- tutorial guiado ----------------
 # Pedido da coordenação (06/10/2026): quem chega precisa entender a página —
-# que a Novidade é um artigo atual, que a Etapa 1 é para quem tem pouco tempo,
-# e assim por diante. O botão "Como funciona esta página" (no topo) e o botão
+# que "Novo na pesquisa" é um artigo atual, que o passo 1 é para quem tem pouco tempo,
+# e assim por diante. O botão "Como usar esta página" (no topo) e o botão
 # flutuante "?" (em toda a página) abrem um passo a passo que rola até cada
 # parte, acende só ela e explica para que serve.
 #
 # Os textos ficam AQUI, e não no revisao.js, pelo mesmo motivo de toda a
 # moldura: o gerador é o único lugar que diz o que a página é. O script só
 # lê a lista (um <script type="application/json">) e conduz. Passo cujo alvo
-# não existe na página (uma revisão sem Novidade, por exemplo) é pulado.
+# não existe na página (uma revisão sem "Novo na pesquisa", por exemplo) é pulado.
 sub rv_tour_html {
     my (@passos) = @_;
     my $json = JSON::PP->new->utf8(0)->canonical->encode(
@@ -2699,63 +2759,73 @@ sub rv_tour_html {
 sub rv_tour_passos_doenca {
     my ($r) = @_;
     my $d = $r->{curto};
+    my @ps = rv_passos_de($r);
+    my %e = map { $_->{n} => $_ } @ps;
+    my $q = @ps;
     return (
-        ['.rv-hero-txt', 'Bem-vindo à revisão guiada',
-         "Esta página reúne o material de $d numa ordem pensada para estudar: do mais rápido ao mais aprofundado. Em poucos passos, mostro como ela funciona."],
-        ['.rv-trilha', 'A trilha das etapas',
-         'Esta barra fica sempre no alto da tela. Ela mostra em que parte você está e quanto da página já percorreu. Clique numa etapa para ir direto até ela.'],
-        ['#novidade', 'Novidade: o que a pesquisa trouxe de novo',
-         "Um artigo científico recente sobre $d. Não é por onde você precisa começar: serve para saber o que está mudando. O texto completo abre na janela logo abaixo do título, e os botões levam ao artigo original e ao resumo no PubMed."],
-        ['#etapa-1', 'Etapa 1 — se você tem pouco tempo',
-         'Um vídeo curto e um podcast com o essencial da doença. Se só dá para estudar alguns minutos agora, fique nesta etapa: ela já cobre o principal.'],
-        ['#etapa-2', 'Etapa 2 — como conduzir o paciente',
-         'Os protocolos do Ministério da Saúde, os capítulos de referência e as aulas que orientam a consulta e o tratamento. Cada linha é uma janela: clique nela para abrir o documento aqui mesmo, sem sair da página.'],
-        ['#etapa-3 .rv-abas', 'Etapa 3 — para se aprofundar',
-         'Cada aba é uma área: fisiologia, farmacologia, semiologia, diretrizes, saúde pública. Escolha uma e vá até onde a curiosidade levar.'],
-        ['.rv-concluir', 'Marque o que já estudou',
-         'No fim de cada etapa há este botão. Marcar como concluída acende a etapa na trilha, e o progresso fica salvo neste navegador.'],
-        ['.rv-fim-card', 'Depois de revisar',
-         'Volte ao SimulaPacientes e atenda o paciente de novo. É o jeito mais honesto de saber se o conteúdo ficou.'],
-        ['.rv-tour-fab', 'Sempre que precisar',
-         'Este botão fica no canto da tela e reabre o tutorial a qualquer momento.'],
+        ['.rv-mapa', "A revisão tem $q passos",
+         'Do mais rápido ao mais completo. Siga na ordem e toque num passo para ir direto até ele. Com pouco tempo, faça só o passo 1.'],
+        ['#novo-na-pesquisa', 'Novo na pesquisa',
+         "Um estudo científico recente sobre $d. É leitura extra: não precisa começar por aqui. Toque em “Ler o artigo completo” para abrir o texto na própria página."],
+        ($e{1} ? ['#etapa-1', "Passo 1 · $e{1}{nome}",
+         'Um vídeo curto e um podcast com o principal. Toque no vídeo para assistir aqui mesmo.'] : ()),
+        ($e{2} ? ['#etapa-2', "Passo 2 · $e{2}{nome}",
+         'Protocolos do Ministério da Saúde, capítulos de livro e aulas. Toque numa linha para abrir o texto sem sair da página; toque de novo para fechar.'] : ()),
+        ($e{3} ? ['#etapa-3 .rv-abas', "Passo 3 · $e{3}{nome}",
+         'Cada botão é um assunto: fisiologia, remédios, exame físico e outros. Escolha um.'] : ()),
+        ['.rv-etapa-pe', 'No fim de cada passo',
+         'Marque “Terminei” para lembrar onde parou (fica salvo neste aparelho) e siga para o próximo passo.'],
+        ['.rv-trilha', 'Esta barra mostra onde você está',
+         'Ela fica presa no alto da tela enquanto você rola. Toque num passo para pular até ele.'],
+        ['.rv-fim-card', 'Terminou?',
+         'Volte ao SimulaPacientes e atenda o paciente de novo. É o melhor jeito de ver se o conteúdo ficou.'],
     );
 }
 
 sub rv_tour_passos_indice {
     return (
-        ['.rv-hero-txt', 'Revisão por doença',
-         'Cada doença dos pacientes digitais tem uma revisão guiada, pensada para quem acabou de atender e quer revisar o que errou.'],
-        ['.rv-passos', 'Toda revisão tem a mesma ordem',
-         'Primeiro a Novidade, um artigo recente de pesquisa. Depois três etapas: o essencial para quem tem pouco tempo, a conduta com o paciente e o aprofundamento por área.'],
         ['.rv-cartoes', 'Escolha a doença',
-         'Clique numa doença para abrir a revisão. Lá dentro, o botão “Como funciona esta página” mostra cada parte em detalhe.'],
+         'Cada doença tem uma revisão guiada. Toque numa para abrir.'],
+        ['.rv-passos', 'Toda revisão é igual',
+         'Três passos, na ordem: o básico (vídeo curto e podcast), como atender (protocolos e capítulos) e aprofunde (mais material por assunto). No topo, um estudo recente, para quem quiser.'],
         ['.rv-link-acervo', 'O acervo continua aqui',
-         'Os slides, capítulos, orientações e pastas do Drive de todos os temas continuam no acervo de temas clínicos.'],
-        ['.rv-tour-fab', 'Sempre que precisar',
-         'Este botão fica no canto da tela e reabre o tutorial a qualquer momento.'],
+         'Slides, capítulos, orientações e pastas do Drive de todos os temas.'],
     );
+}
+
+# O mapa do topo: os passos à vista antes de qualquer conteúdo. É a resposta
+# para "o que é o passo 1, 2 e 3" — cada um com o nome, o que tem dentro e um
+# toque para ir até ele.
+sub rv_mapa_html {
+    my (@ps) = @_;
+    return qq{<ol class="rv-mapa">}
+         . join('', map {
+               qq{<li><a href="#etapa-$_->{n}" data-alvo="$_->{n}">}
+             . qq{<span class="rv-mapa-n">$_->{n}</span>}
+             . qq{<span class="rv-mapa-txt"><b>$_->{nome}</b><small>$_->{resumo}</small></span>}
+             . qq{<span class="msym rv-mapa-seta" aria-hidden="true">arrow_downward</span></a></li>}
+           } @ps)
+         . qq{</ol>};
 }
 
 sub rv_pagina_html {
     my ($r, $p) = @_;
     my $t = esc($r->{titulo});
-    my $acervo_btn = $r->{acervo}
-        ? qq{<a class="btn btn-ghost" href="$p$r->{acervo}/"><span class="msym" aria-hidden="true">inventory_2</span> Acervo completo do tema</a>} : '';
-    my @chips = (@{ $r->{novidade} } ? qq{<a href="#novidade" data-alvo="novidade"><span class="rv-dot rv-dot-nv"><span class="msym">auto_awesome</span></span><span class="rv-chip-txt">Novidade</span></a>} : ());
-    for my $e (@RV_ETAPAS) {
-        my $tem = $e->{n} == 3 ? scalar(grep { @{ $_->{itens} } } @{ $r->{areas} }) : scalar(@{ $r->{etapa}{ $e->{n} } });
-        next unless $tem;
-        push @chips, qq{<a href="#etapa-$e->{n}" data-alvo="$e->{n}"><span class="rv-dot">$e->{n}</span><span class="rv-chip-txt">$e->{curto}</span></a>};
-    }
+    my @ps = rv_passos_de($r);
+    my $q = @ps;
+    my $acervo = $r->{acervo}
+        ? qq{<a class="rv-mini" href="$p$r->{acervo}/"><span class="msym" aria-hidden="true">inventory_2</span>Acervo completo do tema</a>} : '';
+    my @chips = (@{ $r->{novidade} } ? qq{<a href="#novo-na-pesquisa" data-alvo="novidade"><span class="rv-dot rv-dot-nv"><span class="msym">auto_awesome</span></span><span class="rv-chip-txt">Novo na pesquisa</span></a>} : ());
+    push @chips, map { qq{<a href="#etapa-$_->{n}" data-alvo="$_->{n}"><span class="rv-dot">$_->{n}</span><span class="rv-chip-txt">$_->{nome}</span></a>} } @ps;
     my $chips = join '<span class="rv-trilha-fio" aria-hidden="true"></span>', @chips;
     my @outras = grep { $_->{slug} ne $r->{slug} } @REVISOES;
     my $outras = @outras
         ? qq{<h2 class="rv-outras-titulo">Outras revisões</h2>\n<div class="rv-cartoes">\n}
           . join("\n", map { rv_cartao_html($_, $p) } @outras) . qq{\n</div>} : '';
-    my $etapas = join '', map { rv_etapa_html($r, $_, $p) } @RV_ETAPAS;
+    my $etapas = join '', map { rv_etapa_html($r, $ps[$_], $p, $q, $ps[$_ + 1]) } 0 .. $#ps;
     my $novidade = rv_novidade_html($r, $p);
-    my $acervo_fim = $r->{acervo}
-        ? qq{<a class="btn btn-ghost" href="$p$r->{acervo}/">Ver o acervo completo do tema</a>} : '';
+    my $mapa = rv_mapa_html(@ps);
+    my $lead = $q > 1 ? "Siga os $q passos, na ordem. Com pouco tempo, faça só o primeiro." : '';
 
     my $tour = rv_tour_html(rv_tour_passos_doenca($r));
     return <<HTML;
@@ -2764,15 +2834,13 @@ sub rv_pagina_html {
 <div class="rv-hero-fundo" aria-hidden="true"><span></span><span></span><span></span></div>
 <div class="wrap">
 <nav class="breadcrumb" aria-label="Localização"><a href="$p">Início</a><span class="sep">›</span><a href="${p}revisao/">Revisão por doença</a><span class="sep">›</span><span>$t</span></nav>
-<div class="rv-hero-grade">
 <div class="rv-hero-txt">
-<p class="rv-kicker"><span class="msym" aria-hidden="true">route</span>Revisão guiada</p>
+<p class="rv-kicker"><span class="msym" aria-hidden="true">$r->{icone}</span>Revisão guiada</p>
 <h1>$t</h1>
-<p class="rv-lead">Do essencial ao aprofundado, em etapas. Comece pela que cabe no seu tempo agora.</p>
-<div class="rv-hero-acoes"><a class="btn btn-primary" href="#etapa-1">Começar a revisão</a><button class="btn btn-ghost rv-tour-abre" type="button"><span class="msym" aria-hidden="true">help</span> Como funciona esta página</button>$acervo_btn</div>
+<p class="rv-lead">$lead</p>
 </div>
-<div class="rv-hero-arte" aria-hidden="true"><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-hero-ico msym">$r->{icone}</span></div>
-</div>
+$mapa
+<div class="rv-hero-mini"><button class="rv-mini rv-tour-abre" type="button"><span class="msym" aria-hidden="true">help</span>Como usar esta página</button>$acervo</div>
 </div>
 </header>
 
@@ -2784,19 +2852,19 @@ sub rv_pagina_html {
 </div>
 </aside>
 
-<nav class="rv-trilha" aria-label="Etapas desta revisão">
+<nav class="rv-trilha" aria-label="Passos desta revisão">
 <div class="wrap rv-trilha-in">$chips<span class="rv-trilha-ok" aria-live="polite"></span></div>
 <div class="rv-progresso" aria-hidden="true"><span></span></div>
 </nav>
 
 <main id="conteudo" class="rv-corpo">
 $novidade$etapas
-<section class="rv-fim"><div class="wrap">
+<section class="rv-fim" id="fim"><div class="wrap">
 <div class="rv-fim-card rv-reveal">
 <span class="rv-fim-ico" aria-hidden="true"><span class="msym">replay</span></span>
-<div><h2>Revisou? Atenda de novo.</h2>
-<p>O jeito mais honesto de saber se ficou é voltar ao paciente.</p></div>
-<div class="rv-fim-acoes"><a class="btn btn-primary" href="$RV_SIMULA_URL" target="_blank" rel="noopener">Abrir o SimulaPacientes ↗</a>$acervo_fim</div>
+<div><h2>Terminou? Atenda de novo.</h2>
+<p>Volte ao paciente no SimulaPacientes e veja se o conteúdo ficou.</p></div>
+<div class="rv-fim-acoes"><a class="btn btn-primary" href="$RV_SIMULA_URL" target="_blank" rel="noopener">Abrir o SimulaPacientes ↗</a></div>
 </div>
 $outras
 </div></section>
@@ -2810,34 +2878,34 @@ sub rv_indice_html {
     my ($p) = @_;
     my $cartoes = join "\n", map { rv_cartao_html($_, $p) } @REVISOES;
     my $tour = rv_tour_html(rv_tour_passos_indice());
+    my @li = (
+        ['rv-dot rv-dot-nv', '<span class="msym">auto_awesome</span>', 'Novo na pesquisa', 'um estudo recente, para quem quiser (opcional)'],
+        map { ['rv-dot', $_->{n}, $_->{nome}, $_->{n} == 1 ? 'vídeo curto e podcast' : $_->{n} == 2 ? 'protocolos e capítulos para diagnosticar e tratar' : 'mais material, separado por assunto'] } @RV_ETAPAS
+    );
+    my $passos = join "\n", map { qq{<li class="rv-reveal"><span class="$_->[0]">$_->[1]</span><b>$_->[2]</b><small>$_->[3]</small></li>} } @li;
     return <<HTML;
 <div class="rv rv-indice">
 <header class="rv-hero">
 <div class="rv-hero-fundo" aria-hidden="true"><span></span><span></span><span></span></div>
 <div class="wrap">
 <nav class="breadcrumb" aria-label="Localização"><a href="$p">Início</a><span class="sep">›</span><span>Revisão por doença</span></nav>
-<div class="rv-hero-grade">
 <div class="rv-hero-txt">
 <p class="rv-kicker"><span class="msym" aria-hidden="true">route</span>Estude por doença</p>
 <h1>Revisão por doença</h1>
-<p class="rv-lead">Para cada doença, uma revisão em etapas: o que acabou de sair na pesquisa, o essencial para quem tem pouco tempo, os protocolos para conduzir o paciente e o aprofundamento por área.</p>
-<div class="rv-hero-acoes"><button class="btn btn-ghost rv-tour-abre" type="button"><span class="msym" aria-hidden="true">help</span> Como funciona</button></div>
+<p class="rv-lead">Escolha a doença. Cada revisão tem 3 passos, do mais rápido ao mais completo.</p>
 </div>
-<div class="rv-hero-arte" aria-hidden="true"><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-anel"></span><span class="rv-hero-ico msym">route</span></div>
-</div>
+<div class="rv-hero-mini"><button class="rv-mini rv-tour-abre" type="button"><span class="msym" aria-hidden="true">help</span>Como usar</button></div>
 </div>
 </header>
 <main id="conteudo" class="rv-corpo">
 <section class="rv-etapa"><div class="wrap">
-<ol class="rv-passos">
-<li class="rv-reveal"><span class="rv-dot rv-dot-nv"><span class="msym">auto_awesome</span></span><b>Novidade</b><small>um estudo recente, no topo da página</small></li>
-<li class="rv-reveal"><span class="rv-dot">1</span><b>Pouco tempo</b><small>vídeo curto e podcast</small></li>
-<li class="rv-reveal"><span class="rv-dot">2</span><b>Abordagem</b><small>protocolos e capítulos para a conduta</small></li>
-<li class="rv-reveal"><span class="rv-dot">3</span><b>Aprofundamento</b><small>farmaco, semio, fisiopato e outras áreas</small></li>
-</ol>
 <div class="rv-cartoes rv-cartoes-grandes">
 $cartoes
 </div>
+<h2 class="rv-outras-titulo">Como é cada revisão</h2>
+<ol class="rv-passos">
+$passos
+</ol>
 <a class="rv-link rv-link-acervo rv-reveal" href="${p}temas/"><span class="rv-l-ico" aria-hidden="true"><span class="msym">inventory_2</span></span><span class="rv-l-txt"><b>Acervo de temas clínicos</b><small>todas as doenças e temas, com slides, capítulos, orientações e pastas do Drive</small></span><span class="rv-l-seta" aria-hidden="true">→</span></a>
 </div></section>
 </main>
@@ -2855,7 +2923,7 @@ sub rv_home_html {
   <div class="wrap">
     <p class="kicker">Revisão por doença</p>
     <h2 class="section-title">Revise a doença do paciente que você atendeu.</h2>
-    <p class="section-lead">Uma revisão guiada para cada doença dos pacientes digitais: a novidade da pesquisa, o essencial em minutos, os protocolos para a conduta e o aprofundamento por área.</p>
+    <p class="section-lead">Escolha a doença e siga 3 passos: o básico, como atender e aprofunde.</p>
     <div class="rv-cartoes">
 $cartoes
     </div>
@@ -2874,7 +2942,7 @@ if (@REVISOES) {
             qr_url => "$SITE_URL/revisao/$r->{slug}/",
             qr_dir => $dir,
             title  => esc($r->{titulo}) . " — revisão guiada — $SITE",
-            desc   => "Revisão guiada de " . esc($r->{titulo}) . ": novidade da pesquisa, o essencial em vídeo e podcast, protocolos para a conduta e aprofundamento por área.",
+            desc   => "Revisão guiada de " . esc($r->{titulo}) . " em 3 passos: o básico (vídeo curto e podcast), como atender (protocolos e capítulos) e aprofunde (mais material por assunto).",
             p      => $p,
             canon  => "$SITE_URL/revisao/$r->{slug}/",
             header => header_html($p, "revisao/$r->{slug}"),
@@ -2891,7 +2959,7 @@ if (@REVISOES) {
             qr_url => "$SITE_URL/revisao/",
             qr_dir => "$OUT/revisao",
             title  => "Revisão por doença — $SITE",
-            desc   => "Revisões guiadas por doença: novidade da pesquisa, o essencial em vídeo e podcast, protocolos para a conduta e aprofundamento por área.",
+            desc   => "Revisões guiadas por doença em 3 passos: o básico (vídeo curto e podcast), como atender (protocolos e capítulos) e aprofunde (mais material por assunto).",
             p      => $p,
             canon  => "$SITE_URL/revisao/",
             header => header_html($p, 'revisao'),

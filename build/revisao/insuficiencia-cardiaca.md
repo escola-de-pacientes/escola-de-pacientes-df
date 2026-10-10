@@ -9,17 +9,17 @@ Material reunido pelo grupo na pasta "3. CONTEÚDOS DE DOENÇAS PARA O SITE DO
 EPDF / Cardiologia / Insuficiência Cardíaca", em pastas de apoio do grupo e no
 acervo do site (/cardio-insuficiencia-cardiaca/).
 
-## Novidade
+## Novo na pesquisa
 Artigo de acesso aberto (PubMed Central). O texto completo está em PDF na pasta
-"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVIDADES" do Drive, e abre
+"3. CONTEÚDOS DE DOENÇAS PARA O SITE DO EPDF / SEÇÃO NOVO NA PESQUISA" do Drive, e abre
 numa janela da página pelo campo "drive:".
 - artigo | https://doi.org/10.1093/eurheartj/ehaf655 | Vericiguat and mortality in heart failure and reduced ejection fraction: the VICTOR trial | Eur Heart J · fevereiro de 2026 | pubmed: 40884032 | drive: 17LCgN4qa8sCzuZnH5gkbW0cUzDJk8R0v
 
-## Etapa 1
+## Passo 1
 - video | https://www.youtube.com/watch?v=TJhguf9JBZk | Doenças cardíacas crônicas | Drauzio Varella
 - podcast | https://open.spotify.com/episode/3u0J1r8aF1eGmOmrThYJVf | Ep. 87 — Insuficiência cardíaca: tratamento ambulatorial | Tá de Clinicagem
 
-## Etapa 2
+## Passo 2
 - drive | 1SoqrAsrAbirIPP0sjUntW2LA99ViYrtN | Protocolo Clínico e Diretrizes Terapêuticas da Insuficiência Cardíaca com Fração de Ejeção Reduzida | Ministério da Saúde · Portaria Conjunta SAES/SECTICS nº 10 · 2024
 - drive | 10f0ZoZZzuB4EaNDMyrOb7u_XWgIEod2q | Insuficiência cardíaca: cuidados | PACK Brasil 2025 · p. 146
 - drive | 1cN7bjDAi_GbNfvDNZiHkyGy2ft9LntY0 | Insuficiência cardíaca: tratamento | PACK Brasil 2025 · p. 147
@@ -31,7 +31,7 @@ numa janela da página pelo campo "drive:".
 - slides | 1L3MpVdPnzrslAzsTLXayukpm6xt_5DQP | Aula: insuficiência cardíaca — conceito e importância clínica | Escola de Pacientes
 - slides | 1_UEe8Yg4TABhazQ4OOwhSrfJ3BkEEn2I | Aula: insuficiência cardíaca — atualizações | Escola de Pacientes
 
-## Etapa 3
+## Passo 3
 ### Farmacologia
 - drive | 1xLVuJYC-WFVIFxwF6GeV6WCBCcw1PjPo | Terapia da insuficiência cardíaca | Goodman & Gilman · As Bases Farmacológicas da Terapêutica · cap. 29
 ### Fisiopatologia
